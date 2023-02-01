@@ -16,9 +16,9 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 
 Request has been submitted ☕
 
-### From zip file
+### From local
 
-Build from local. See [CONTRIBUTING.md](CONTRIBUTING.md).
+[Load this folder with as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Covered features
 
