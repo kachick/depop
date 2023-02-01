@@ -18,7 +18,7 @@ Request has been submitted ☕
 
 ### From local
 
-[Load this folder with as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+[Load this folder as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Covered features
 
@@ -31,7 +31,7 @@ Request has been submitted ☕
 ## Limitations
 
 Currently avoiding the use of JavaScript.\
-So the following feature cannot be suppressed because GitHub does not provide a selectable tag.
+So the following feature cannot be suppressed because GitHub does not provide a selectable attribute.
 
 - Sponsors
 
