@@ -1,0 +1,11 @@
+name: Lint
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  dprint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dprint/check@v2.2
