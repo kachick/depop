@@ -1,0 +1,19 @@
+{
+  "name": "Eyes away from GitHub popularity",
+  "description": "Hide stars, followers and watchers in GitHub",
+  "version": "0.0.0.4",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "css": ["style.css"]
+    }
+  ],
+  "permissions": ["activeTab"],
+  "icons": {
+    "128": "assets/icon-sadness-star.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'"
+  }
+}

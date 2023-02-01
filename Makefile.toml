@@ -1,0 +1,25 @@
+[config]
+skip_core_tasks = true
+
+[tasks.build]
+category = "Tools"
+description = "Build archive that Google want"
+script = [
+  # Avoid to name `.crx`. See https://developer.chrome.com/docs/webstore/publish/ for further detail
+  'zip eyes_away_from_github-popularity-$(cat manifest.json | jq --raw-output .version).zip manifest.json README.md LICENSE style.css assets/icon-sadness-star.png',
+]
+
+[tasks.resize]
+category = "Tools"
+description = "Resize icons that Google want"
+script = [
+  'mogrify -resize 128x128! assets/icon-*.png',
+]
+
+[tasks.help]
+category = "Tools"
+description = 'Might help you - (This one)'
+script = [
+  'makers --list-category-steps Tools',
+]
+

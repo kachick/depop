@@ -1,0 +1,5 @@
+*.crx
+*.zip
+
+# For assets
+*.Zone.Identifier

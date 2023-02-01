@@ -1,10 +1,19 @@
 {
   "editor.defaultFormatter": "dprint.dprint",
   "editor.formatOnSave": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["manifest.json"],
+      "url": "https://json.schemastore.org/chrome-manifest"
+    }
+  ],
   "cSpell.words": [
     "cachix",
     "dprint",
     "nixos",
-    "nixpkgs"
+    "nixpkgs",
+    "remoting",
+    "rentzsch",
+    "unstar"
   ]
 }
