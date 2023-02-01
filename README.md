@@ -4,13 +4,23 @@
 
 A Chrome Extension to hide stars, followers and watchers in GitHub
 
+![Screen Shot](assets/screenshot-overview.png)
+
 ## Why?
 
 I don't want my heart to be disturbed by the "±", especially during coding and research.
 
-## Usage
+## Install
 
-Covered following features
+### Chrome Web Store
+
+Request has been submitted ☕
+
+### From zip file
+
+Build from local. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Covered features
 
 - User
 - Repository index
