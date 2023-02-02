@@ -1,7 +1,7 @@
 {
   "name": "Eyes away from GitHub popularity",
   "description": "Hide stars, followers and watchers in GitHub",
-  "version": "0.0.0.5",
+  "version": "0.0.0.6",
   "manifest_version": 3,
   "homepage_url": "https://github.com/kachick/eyes_away_from_github-popularity",
   "content_scripts": [
@@ -10,7 +10,6 @@
       "css": ["style.css"]
     }
   ],
-  "permissions": ["activeTab"],
   "icons": {
     "128": "assets/icon-sadness-star.png"
   },
