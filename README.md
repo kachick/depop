@@ -12,13 +12,8 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 
 ## Install
 
-### Chrome Web Store
-
-Request has been submitted ☕
-
-### From local
-
-[Load this folder as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+- [Chrome Web Store](https://chrome.google.com/webstore/detail/eyes-away-from-github-pop/bblbchjekobacogfioehogggccfagkmk)
+- [Load this folder as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Covered features
 
