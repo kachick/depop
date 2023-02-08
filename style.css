@@ -1,7 +1,6 @@
 /* Might be matched when it has same naming repository, however current GitHub does not set any meaningfull class and ID */
 a[href$='/stargazers'],
 a[href$='?tab=followers'],
-a[href$='/followers'],
 a[href$='/network/members'],
 a[href$='/watchers'] strong,
 #repo-stars-counter-star,
@@ -11,6 +10,7 @@ a[href$='/watchers'] strong,
   display: none;
 }
 
+li:has(> a[href$='/followers']),
 div[aria-label='Explore repositories'] div:has(> svg[aria-label='star']) {
   display: none !important;
 }
