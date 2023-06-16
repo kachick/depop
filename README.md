@@ -1,6 +1,6 @@
-# Eyes away from GitHub popularity
+# depop
 
-[![CI](https://github.com/kachick/eyes_away_from_github-popularity/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/kachick/eyes_away_from_github-popularity/actions/workflows/lint.yml?query=event%3Apush++)
+[![CI](https://github.com/kachick/depop/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/kachick/depop/actions/workflows/lint.yml?query=event%3Apush++)
 
 A Chrome Extension to hide stars, followers and watchers in GitHub
 
