@@ -24,3 +24,9 @@ help - Might help you - (This one)
   adding: LICENSE (deflated 41%)
   adding: style.css (deflated 45%)
 ```
+
+## For maintainers
+
+1. `makers build`
+2. Upload the build file `depop-VERSION.zip` as a new package from [developper dashboard](https://chrome.google.com/webstore/devconsole/2dc05d4b-8c8e-4356-a2be-080a15ab2903/bblbchjekobacogfioehogggccfagkmk/edit/package)
+3. ☕
