@@ -5,7 +5,7 @@ on:
     paths:
       - '.github/workflows/dprint-update-plugin.yml'
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 17 * * 1'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ permissions:
 
 # Allow one concurrent updates
 concurrency:
-  group: 'dprint'
+  group: 'update-dprint'
   cancel-in-progress: true
 
 jobs:
@@ -24,11 +24,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - id: update-dprint-plugins
-        uses: kachick/action-update-dprint-plugins@main
+        uses: kachick/action-update-dprint-plugins@v1.0.0
         with:
-          base-branch: 'main'
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
-      # Enable `Allow auto-merge` in your repository settings if you need following steps
+          base-branch: 'main' # Enable `Allow auto-merge` in your repository settings if you need following steps
       - name: Merge sent PR
         if: ${{ steps.update-dprint-plugins.outputs.pr_url != '' }}
         run: gh pr merge --auto --squash --delete-branch "${{ steps.update-dprint-plugins.outputs.pr_url }}"
