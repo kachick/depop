@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "bundle": "deno run -A scripts/bundle.ts > dist/index.js"
+  },
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns"
+    ],
+    "types": [
+      "https://unpkg.com/chrome-types@0.1.211/index.d.ts"
+    ]
+  }
+}

@@ -5,7 +5,7 @@
     "printWidth": 120,
     "singleQuote": true
   },
-  "includes": ["**/*.{json,md,yml,css,html}"],
+  "includes": ["**/*.{json,jsonc,md,yml,css,html}"],
   "plugins": [
     "https://plugins.dprint.dev/json-0.17.4.wasm",
     "https://plugins.dprint.dev/markdown-0.15.3.wasm",

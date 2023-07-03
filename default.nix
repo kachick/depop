@@ -9,5 +9,6 @@ pkgs.mkShell {
     pkgs.cargo-make
     pkgs.jq
     pkgs.imagemagick
+    pkgs.deno
   ];
 }

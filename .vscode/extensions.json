@@ -5,6 +5,7 @@
     "streetsidesoftware.code-spell-checker",
     "dprint.dprint",
     "jnoortheen.nix-ide",
-    "tamasfe.even-better-toml"
+    "tamasfe.even-better-toml",
+    "denoland.vscode-deno"
   ]
 }
