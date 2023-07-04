@@ -15,7 +15,12 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/eyes-away-from-github-pop/bblbchjekobacogfioehogggccfagkmk)
 - [Load this folder as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
-## Covered features
+## Usage
+
+Stars will be hidden in default as possible or I know.\
+Some features can be hidden if you enabled them in [options page](chrome-extension://cogagkopinhlfdndkndbpkbhahgjjfid/static/options.html).
+
+## Covered GitHub features
 
 - User
 - Repository index
