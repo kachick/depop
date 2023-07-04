@@ -1,6 +1,9 @@
 {
   "version": "2",
   "remote": {
+    "https://cdn.skypack.dev/-/fflate@v0.8.0-9lwslwAa54POmYjLobRf/dist=es2019,mode=imports,min/optimized/fflate.js": "ea55d28973170b0a00ec64b3982153e7baa4d6e0f7cc824375325e348fec4168",
+    "https://cdn.skypack.dev/-/fflate@v0.8.0-9lwslwAa54POmYjLobRf/dist=es2019,mode=raw/lib/index.d.ts": "cb25d68883acc2f10a19f3289541aedec1d08576e7bb7391ea8c51f120adeec5",
+    "https://cdn.skypack.dev/fflate@0.8.0?min": "d320b73423a4efb176248d0771c2eab45fc8d4ce5a1994e6b7e00508e0187f72",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
     "https://deno.land/std@0.140.0/bytes/bytes_list.ts": "67eb118e0b7891d2f389dad4add35856f4ad5faab46318ff99653456c23b025d",

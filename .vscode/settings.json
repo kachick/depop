@@ -17,12 +17,14 @@
     "cachix",
     "depop",
     "dprint",
+    "fflate",
     "mogrify",
     "nixos",
     "nixpkgs",
     "remoting",
     "rentzsch",
-    "unstar"
+    "unstar",
+    "Zippable"
   ],
   "deno.enable": true
 }

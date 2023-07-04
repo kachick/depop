@@ -5,7 +5,6 @@ pkgs.mkShell {
     pkgs.nil
     pkgs.nixpkgs-fmt
     pkgs.dprint
-    pkgs.zip
     pkgs.imagemagick
     pkgs.deno
   ];
