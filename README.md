@@ -8,8 +8,7 @@ A Chrome Extension to hide stars, followers and watchers in GitHub
 
 ## Why?
 
-I don't want my heart to be disturbed by the "±", especially during coding and
-research.
+I don't want my heart to be disturbed by the "±", especially during coding and research.
 
 ## Install
 
