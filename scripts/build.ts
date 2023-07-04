@@ -1,6 +1,6 @@
 const version = JSON.parse(await Deno.readTextFile("manifest.json")).version;
 if (typeof version !== "string") {
-  throw Error;
+  throw new Error("Version is not found in manifest.json");
 }
 const product = `out/depop-${version}.zip`;
 

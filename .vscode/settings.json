@@ -4,6 +4,9 @@
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
   "json.schemas": [
     {
       "fileMatch": ["manifest.json"],
