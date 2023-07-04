@@ -1,6 +1,12 @@
 {
   "editor.defaultFormatter": "dprint.dprint",
   "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
   "json.schemas": [
     {
       "fileMatch": ["manifest.json"],
@@ -16,5 +22,6 @@
     "remoting",
     "rentzsch",
     "unstar"
-  ]
+  ],
+  "deno.enable": true
 }

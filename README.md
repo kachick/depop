@@ -21,22 +21,25 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 - Repository index
 - Repository detail
 - Pinned Repositories
-- Explore repositories
+- "Explore repositories" and/or the stars
 
 ## Limitations
 
-Currently avoiding the use of JavaScript.\
-So the following feature cannot be suppressed because GitHub does not provide a selectable attribute.
+Following feature cannot be suppressed
 
 - Sponsors
 
 ## Inspired
 
-While digging into this feature, I noticed that [rentzsch/unpopular](https://github.com/rentzsch/unpopular/tree/863963e26c1a758a53eb33747e0fec6f26ac130d) exists.\
-The way looks simple and reasonable to me, it just apply CSS without any JavaScript.\
+While digging into this feature, I noticed that
+[rentzsch/unpopular](https://github.com/rentzsch/unpopular/tree/863963e26c1a758a53eb33747e0fec6f26ac130d)
+exists.\
+The way looks simple and reasonable to me, it just apply CSS without any
+JavaScript.\
 However, I started this project from below reasons.
 
 - Applying CSS doesn't work with the current GitHub WebUI
 - There is no activity in these 8 years
-- It uses manifest version2. [Google will disable it with version3](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/).
+- It uses manifest version2.
+  [Google will disable it with version3](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/).
 - I want to focus on GitHub, would not consider around Twitter

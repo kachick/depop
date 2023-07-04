@@ -1,5 +1,8 @@
 *.crx
 *.zip
+out/*.zip
+out/*.crx
+dist/*.js
 
 # For assets
 *.Zone.Identifier
