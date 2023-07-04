@@ -1,0 +1,24 @@
+name: Stylelint
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/stylelint.yml'
+      - '**.css'
+      - 'deno.*'
+  pull_request:
+    paths:
+      - '.github/workflows/stylelint.yml'
+      - '**.css'
+      - 'deno.*'
+
+jobs:
+  check:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: '1.34.2'
+      - run: deno task cache-stylelint && deno task stylelint
