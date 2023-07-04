@@ -22,11 +22,6 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 - Repository detail
 - Pinned Repositories
 - "Explore repositories" and/or the stars
-
-## Limitations
-
-Following feature cannot be suppressed
-
 - Sponsors
 
 ## Inspired
