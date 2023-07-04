@@ -6,7 +6,6 @@ pkgs.mkShell {
     pkgs.nixpkgs-fmt
     pkgs.dprint
     pkgs.zip
-    pkgs.cargo-make
     pkgs.jq
     pkgs.imagemagick
     pkgs.deno

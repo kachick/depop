@@ -10,16 +10,16 @@
 > nix-shell
 (prepared bash)
 
-> makers help
-Tools
-----------
-build - Build archive that Google want
-empty - Empty Task
-help - Might help you - (This one)
+> deno task
+Available tasks:
+- build
+- bundle
+...
 
-> makers build
-[cargo-make] INFO - Running Task: build
-Built to out/depop-0.0.0.9.zip
+> deno task build
+...
+Built to out/depop-0.0.0.9.zip:
+...
 ```
 
 ## For maintainers
