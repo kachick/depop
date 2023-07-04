@@ -3,7 +3,7 @@
     "build": "deno task bundle && deno run --allow-read --allow-run scripts/build.ts",
     "bundle": "deno task clean && deno run -A scripts/bundle.ts --entrypoint='../src/main.ts' > dist/main.js && deno run -A scripts/bundle.ts --entrypoint='../src/options.tsx' > dist/options.js",
     "clean": "rm -rf ./dist/*.js",
-    "check": "dprint check && deno fmt --check && deno lint && deno check src/*.ts*",
+    "check": "dprint check && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts",
     "dependencies": "deno --version && mogrify --version && dprint --version && zip --version",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icon-*.png"
@@ -20,13 +20,13 @@
     ]
   },
   "lint": {
-    "include": ["src/", "static/"],
+    "include": ["src/", "static/", "scripts/"],
     "rules": {
       "tags": ["recommended"]
     }
   },
   "fmt": {
     "singleQuote": true,
-    "include": ["src/", "static/"]
+    "include": ["src/", "static/", "scripts/"]
   }
 }
