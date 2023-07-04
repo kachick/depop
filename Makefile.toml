@@ -9,9 +9,18 @@ script = [
   'deno run --allow-read --allow-run scripts/build.ts',
 ]
 
+[tasks.cleanup]
+category = "Tools"
+description = "Cleanup intermediate files"
+script = [
+  'rm -rf ./dist/*.js'
+]
+
+
 [tasks.bundle]
 category = "Tools"
 description = "TypeScript to JavaScript"
+dependencies = ['cleanup']
 script = [
   'deno run -A scripts/bundle.ts --entrypoint="../src/main.ts" > dist/main.js',
   'deno run -A scripts/bundle.ts --entrypoint="../src/options.tsx" > dist/options.js'

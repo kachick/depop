@@ -6,6 +6,10 @@ const product = `out/depop-${version}.zip`;
 
 const decoder = new TextDecoder();
 
+const staticFiles = Array.from(Deno.readDirSync("static")).flatMap((dir) =>
+  dir.isFile ? [`static/${dir.name}`] : []
+);
+
 const distFiles = Array.from(Deno.readDirSync("dist")).flatMap((dir) =>
   dir.isFile ? [`dist/${dir.name}`] : []
 );
@@ -18,6 +22,7 @@ const command = new Deno.Command("zip", {
     "README.md",
     "LICENSE",
     "assets/icon-sadness-star.png",
+    ...staticFiles,
     ...distFiles,
   ],
 });
