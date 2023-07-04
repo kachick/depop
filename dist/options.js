@@ -6642,7 +6642,7 @@ function App() {
     if (isLoading) {
         return We.createElement("div", null, "...Loading");
     }
-    return We.createElement("div", null, We.createElement("p", null, "foobar!"), We.createElement("label", {
+    return We.createElement("div", null, We.createElement("label", {
         htmlFor: "isEnableExploreRepositoriesSideBar"
     }, "Explore repositories"), We.createElement("input", {
         id: "isEnableExploreRepositoriesSideBar",

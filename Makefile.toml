@@ -13,7 +13,7 @@ script = [
 category = "Tools"
 description = "TypeScript to JavaScript"
 script = [
-  'deno run -A scripts/bundle.ts --entrypoint="../src/main.ts" > dist/index.js',
+  'deno run -A scripts/bundle.ts --entrypoint="../src/main.ts" > dist/main.js',
   'deno run -A scripts/bundle.ts --entrypoint="../src/options.tsx" > dist/options.js'
 ]
 

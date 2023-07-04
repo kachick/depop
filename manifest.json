@@ -11,7 +11,7 @@
     {
       "matches": ["https://github.com/*"],
       "css": ["dist/style.css"],
-      "js": ["dist/index.js"]
+      "js": ["dist/main.js"]
     }
   ],
   "options_page": "dist/options.html",
