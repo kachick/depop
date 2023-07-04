@@ -6633,28 +6633,28 @@ n(r, l(s()));
 var { createRoot: O2 , hydrateRoot: g  } = y1, { default: f1 , ...P } = y1, v = f1 !== void 0 ? f1 : P;
 function App() {
     const [isLoading, setIsLoading] = Ae(true);
-    const [isEnableExploreRepositoriesSideBar, setIsEnableExploreRepositoriesSideBar] = Ae(true);
+    const [isHideExploreRepositories, setIsHideExploreRepositories] = Ae(true);
     Te(()=>{
         chrome.storage.sync.get([
-            "isEnableExploreRepositoriesSideBar"
-        ]).then((keys)=>setIsEnableExploreRepositoriesSideBar(keys.isEnableExploreRepositoriesSideBar)).finally(()=>setIsLoading(false));
+            "isHideExploreRepositories"
+        ]).then((keys)=>setIsHideExploreRepositories(keys.isHideExploreRepositories)).finally(()=>setIsLoading(false));
     }, []);
     if (isLoading) {
         return We.createElement("div", null, "...Loading");
     }
     return We.createElement("div", null, We.createElement("label", {
-        htmlFor: "isEnableExploreRepositoriesSideBar"
-    }, "Explore repositories"), We.createElement("input", {
-        id: "isEnableExploreRepositoriesSideBar",
+        htmlFor: "isHideExploreRepositories"
+    }, "Hide ", We.createElement("strong", null, "Explore repositories")), We.createElement("input", {
+        id: "isHideExploreRepositories",
         type: "checkbox",
-        checked: isEnableExploreRepositoriesSideBar,
+        checked: isHideExploreRepositories,
         onChange: (_ev)=>{
-            const toggled = !isEnableExploreRepositoriesSideBar;
-            setIsEnableExploreRepositoriesSideBar(toggled);
+            const toggled = !isHideExploreRepositories;
+            setIsHideExploreRepositories(toggled);
             chrome.storage.sync.set({
-                "isEnableExploreRepositoriesSideBar": toggled
+                "isHideExploreRepositories": toggled
             }).then(()=>{
-                console.log(`isEnableExploreRepositoriesSideBar is set to ${toggled}`);
+                console.log(`isHideExploreRepositories is set to ${toggled}`);
             });
         }
     }));

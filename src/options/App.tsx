@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "https://esm.sh/react@18.2.0";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [
-    isEnableExploreRepositoriesSideBar,
-    setIsEnableExploreRepositoriesSideBar,
+    isHideExploreRepositories,
+    setIsHideExploreRepositories,
   ] = useState(true);
 
   useEffect(() => {
     chrome.storage.sync.get([
-      "isEnableExploreRepositoriesSideBar",
+      "isHideExploreRepositories",
     ]).then((keys) =>
-      setIsEnableExploreRepositoriesSideBar(
-        keys.isEnableExploreRepositoriesSideBar,
+      setIsHideExploreRepositories(
+        keys.isHideExploreRepositories,
       )
     ).finally(() => setIsLoading(false));
   }, []);
@@ -23,23 +23,23 @@ function App() {
 
   return (
     <div>
-      <label htmlFor="isEnableExploreRepositoriesSideBar">
-        Explore repositories
+      <label htmlFor="isHideExploreRepositories">
+        Hide <strong>Explore repositories</strong>
       </label>
       <input
-        id="isEnableExploreRepositoriesSideBar"
+        id="isHideExploreRepositories"
         type="checkbox"
-        checked={isEnableExploreRepositoriesSideBar}
+        checked={isHideExploreRepositories}
         onChange={(_ev) => {
-          const toggled = !isEnableExploreRepositoriesSideBar;
-          setIsEnableExploreRepositoriesSideBar(
+          const toggled = !isHideExploreRepositories;
+          setIsHideExploreRepositories(
             toggled,
           );
           chrome.storage.sync.set({
-            "isEnableExploreRepositoriesSideBar": toggled,
+            "isHideExploreRepositories": toggled,
           }).then(() => {
             console.log(
-              `isEnableExploreRepositoriesSideBar is set to ${toggled}`,
+              `isHideExploreRepositories is set to ${toggled}`,
             );
           });
         }}

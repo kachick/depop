@@ -1,9 +1,9 @@
 const exploreRepositoriesSideBar = document.querySelector("div[aria-label='Explore repositories']");
 if (exploreRepositoriesSideBar) {
     chrome.storage.sync.get([
-        "isEnableExploreRepositoriesSideBar"
+        "isHideExploreRepositories"
     ]).then((keys)=>{
-        if (keys.isEnableExploreRepositoriesSideBar) {
+        if (keys.isHideExploreRepositories) {
             exploreRepositoriesSideBar.setAttribute("hidden", "true");
         }
     });

@@ -4,10 +4,10 @@ const exploreRepositoriesSideBar = document.querySelector(
 
 if (exploreRepositoriesSideBar) {
   chrome.storage.sync.get([
-    "isEnableExploreRepositoriesSideBar",
+    "isHideExploreRepositories",
   ]).then((keys) => {
     // Prefer hidden rather than display:none https://primer.style/css/utilities/layout#the-html-hidden-attribute
-    if (keys.isEnableExploreRepositoriesSideBar) {
+    if (keys.isHideExploreRepositories) {
       exploreRepositoriesSideBar.setAttribute(
         "hidden",
         // Both `true` and `false` will be interpreted as `true`.
