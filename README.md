@@ -22,13 +22,11 @@ research.
 - Repository index
 - Repository detail
 - Pinned Repositories
-- Explore repositories
+- "Explore repositories" and/or the stars
 
 ## Limitations
 
-Currently avoiding the use of JavaScript.\
-So the following feature cannot be suppressed because GitHub does not provide a
-selectable attribute.
+Following feature cannot be suppressed
 
 - Sponsors
 
