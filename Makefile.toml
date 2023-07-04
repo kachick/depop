@@ -4,9 +4,16 @@ skip_core_tasks = true
 [tasks.build]
 category = "Tools"
 description = "Build archive that Google want"
+dependencies = ['bundle']
 script = [
-  # Avoid to name `.crx`. See https://developer.chrome.com/docs/webstore/publish/ for further detail
-  'zip depop-$(cat manifest.json | jq --raw-output .version).zip manifest.json README.md LICENSE dist/** assets/icon-sadness-star.png',
+  'deno run --allow-read --allow-run scripts/build.ts',
+]
+
+[tasks.bundle]
+category = "Tools"
+description = "TypeScript to JavaScript"
+script = [
+  'deno run -A scripts/bundle.ts > dist/index.js',
 ]
 
 [tasks.resize]

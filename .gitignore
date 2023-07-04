@@ -1,5 +1,7 @@
 *.crx
 *.zip
+out/*
+!out/.gitkeep
 
 # For assets
 *.Zone.Identifier

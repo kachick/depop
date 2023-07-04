@@ -1,8 +1,4 @@
 {
-  "tasks": {
-    "dev": "deno run --watch main.ts",
-    "bundle": "deno run -A scripts/bundle.ts > dist/index.js"
-  },
   "compilerOptions": {
     "lib": [
       "dom",

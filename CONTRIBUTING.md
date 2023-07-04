@@ -19,10 +19,7 @@ help - Might help you - (This one)
 
 > makers build
 [cargo-make] INFO - Running Task: build
-  adding: manifest.json (deflated 35%)
-  adding: README.md (deflated 40%)
-  adding: LICENSE (deflated 41%)
-  adding: style.css (deflated 45%)
+Built to out/depop-0.0.0.9.zip
 ```
 
 ## For maintainers
