@@ -4,5 +4,7 @@ out/*.zip
 out/*.crx
 dist/*.js
 
+node_modules/
+
 # For assets
 *.Zone.Identifier
