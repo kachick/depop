@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "https://esm.sh/react@18.2.0";
+import React, { useEffect, useState } from 'https://esm.sh/react@18.2.0';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,8 +13,8 @@ function App() {
 
   useEffect(() => {
     chrome.storage.sync.get([
-      "isHideExploreRepositories",
-      "isHideSponsors",
+      'isHideExploreRepositories',
+      'isHideSponsors',
     ]).then((keys): void => {
       setIsHideExploreRepositories(
         keys.isHideExploreRepositories,
@@ -29,19 +29,19 @@ function App() {
 
   return (
     <form>
-      <div className="form-checkbox">
+      <div className='form-checkbox'>
         <label>
           <input
-            type="checkbox"
+            type='checkbox'
             checked={isHideExploreRepositories}
-            aria-describedby="help-text-for-isHideExploreRepositories-checkbox"
+            aria-describedby='help-text-for-isHideExploreRepositories-checkbox'
             onChange={(_ev) => {
               const toggled = !isHideExploreRepositories;
               setIsHideExploreRepositories(
                 toggled,
               );
               chrome.storage.sync.set({
-                "isHideExploreRepositories": toggled,
+                'isHideExploreRepositories': toggled,
               }).then(() => {
                 console.log(
                   `isHideExploreRepositories is set to ${toggled}`,
@@ -52,25 +52,25 @@ function App() {
           Hide "Explore repositories"
         </label>
         <p
-          className="note"
-          id="help-text-for-isHideExploreRepositories-checkbox"
+          className='note'
+          id='help-text-for-isHideExploreRepositories-checkbox'
         >
           Hide the section in right-sidebar if enabled this option
         </p>
       </div>
-      <div className="form-checkbox">
+      <div className='form-checkbox'>
         <label>
           <input
-            type="checkbox"
+            type='checkbox'
             checked={isHideSponsors}
-            aria-describedby="help-text-for-isHideSponsors-checkbox"
+            aria-describedby='help-text-for-isHideSponsors-checkbox'
             onChange={(_ev) => {
               const toggled = !isHideSponsors;
               setIsHideSponsors(
                 toggled,
               );
               chrome.storage.sync.set({
-                "isHideSponsors": toggled,
+                'isHideSponsors': toggled,
               }).then(() => {
                 console.log(
                   `isHideSponsors is set to ${toggled}`,
@@ -81,8 +81,8 @@ function App() {
           Hide "Sponsors"
         </label>
         <p
-          className="note"
-          id="help-text-for-isHideSponsors-checkbox"
+          className='note'
+          id='help-text-for-isHideSponsors-checkbox'
         >
           Hide the section in left-sidebar if enabled this option
         </p>
