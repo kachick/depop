@@ -17,8 +17,10 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 
 ## Usage
 
-Stars will be hidden in default as possible or I know.\
-Some features can be hidden if you enabled them in [options page](chrome-extension://cogagkopinhlfdndkndbpkbhahgjjfid/static/options.html).
+By default, stars are hidden as much as possible.\
+Some features can be hidden by enabling them on the [Options page](https://developer.chrome.com/docs/extensions/mv3/options/).
+
+![Screen Shot](assets/screenshot-options.png)
 
 ## Covered GitHub features
 
