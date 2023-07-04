@@ -22,29 +22,37 @@ function App() {
   }
 
   return (
-    <div>
-      <label htmlFor="isHideExploreRepositories">
-        Hide <strong>Explore repositories</strong>
-      </label>
-      <input
-        id="isHideExploreRepositories"
-        type="checkbox"
-        checked={isHideExploreRepositories}
-        onChange={(_ev) => {
-          const toggled = !isHideExploreRepositories;
-          setIsHideExploreRepositories(
-            toggled,
-          );
-          chrome.storage.sync.set({
-            "isHideExploreRepositories": toggled,
-          }).then(() => {
-            console.log(
-              `isHideExploreRepositories is set to ${toggled}`,
-            );
-          });
-        }}
-      />
-    </div>
+    <form>
+      <div className="form-checkbox">
+        <label>
+          <input
+            type="checkbox"
+            checked={isHideExploreRepositories}
+            aria-describedby="help-text-for-isHideExploreRepositories-checkbox"
+            onChange={(_ev) => {
+              const toggled = !isHideExploreRepositories;
+              setIsHideExploreRepositories(
+                toggled,
+              );
+              chrome.storage.sync.set({
+                "isHideExploreRepositories": toggled,
+              }).then(() => {
+                console.log(
+                  `isHideExploreRepositories is set to ${toggled}`,
+                );
+              });
+            }}
+          />
+          Hide "Explore repositories"
+        </label>
+        <p
+          className="note"
+          id="help-text-for-isHideExploreRepositories-checkbox"
+        >
+          Hide the whole component in sidebar if enabled this option
+        </p>
+      </div>
+    </form>
   );
 }
 

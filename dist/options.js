@@ -6642,12 +6642,12 @@ function App() {
     if (isLoading) {
         return We.createElement("div", null, "...Loading");
     }
-    return We.createElement("div", null, We.createElement("label", {
-        htmlFor: "isHideExploreRepositories"
-    }, "Hide ", We.createElement("strong", null, "Explore repositories")), We.createElement("input", {
-        id: "isHideExploreRepositories",
+    return We.createElement("form", null, We.createElement("div", {
+        className: "form-checkbox"
+    }, We.createElement("label", null, We.createElement("input", {
         type: "checkbox",
         checked: isHideExploreRepositories,
+        "aria-describedby": "help-text-for-isHideExploreRepositories-checkbox",
         onChange: (_ev)=>{
             const toggled = !isHideExploreRepositories;
             setIsHideExploreRepositories(toggled);
@@ -6657,7 +6657,10 @@ function App() {
                 console.log(`isHideExploreRepositories is set to ${toggled}`);
             });
         }
-    }));
+    }), 'Hide "Explore repositories"'), We.createElement("p", {
+        className: "note",
+        id: "help-text-for-isHideExploreRepositories-checkbox"
+    }, "Hide the whole component in sidebar if enabled this option")));
 }
 function assertIsDefined(val) {
     if (val === undefined || val === null) {
