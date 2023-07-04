@@ -6,12 +6,12 @@ const product = `out/depop-${version}.zip`;
 
 const decoder = new TextDecoder();
 
-const staticFiles = Array.from(Deno.readDirSync('static')).flatMap((filename) =>
-  filename.isFile ? [`static/${filename.name}`] : []
-);
+const staticFiles = Array.from(Deno.readDirSync('static')).flatMap((
+  dirEntity,
+) => dirEntity.isFile ? [`static/${dirEntity.name}`] : []);
 
-const distFiles = Array.from(Deno.readDirSync('dist')).flatMap((filename) =>
-  filename.isFile ? [`dist/${filename.name}`] : []
+const distFiles = Array.from(Deno.readDirSync('dist')).flatMap((dirEntity) =>
+  dirEntity.isFile ? [`dist/${dirEntity.name}`] : []
 );
 
 // Avoid to name `.crx`. See https://developer.chrome.com/docs/webstore/publish/ for further detail
