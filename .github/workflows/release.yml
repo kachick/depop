@@ -18,11 +18,12 @@ jobs:
         id: build
         # Do not use `echo json=$(script)` syntax here. The script generates multilines.
         # https://github.com/kachick/renovate-config-asdf/blob/8abd3de61377ea4fd899e57d0c6c3f28d05ed80b/.github/workflows/ci-tool-versions.yml#L17
+        # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-of-a-multiline-string
         run: |
-          tempfile="$(mktemp)"
-          echo -n 'report=' | tee --append "$tempfile"
-          deno task build | tee --append "$tempfile"
-          tee -a "$GITHUB_OUTPUT" < "$tempfile"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "report<<$EOF" | tee --append "$GITHUB_OUTPUT"
+          deno task build | tee --append "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v1
         if: startsWith(github.ref, 'refs/tags/')
