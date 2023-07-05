@@ -28,8 +28,8 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 - Repository index
 - Repository detail
 - Pinned Repositories
-- "Explore repositories" and/or the stars # Since 0.0.0.9
-- Sponsors # Since 0.0.0.9
+- "Explore repositories" and/or the stars
+- Sponsors
 
 ## Inspired
 
