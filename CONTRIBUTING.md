@@ -26,9 +26,11 @@ Built to out/depop-0.0.0.10.zip:
 ...
 ```
 
-## For maintainers
+## Release
 
-1. `deno task build`
-2. Upload the build file `depop-VERSION.zip` as a new package from
+1. Bump version in [manifest file](manifest.json)
+2. `deno task build`
+3. Add git tag and push.
+4. Upload the build file `depop-VERSION.zip` as a new package from
    [Developer Dashboard](https://chrome.google.com/webstore/devconsole/2dc05d4b-8c8e-4356-a2be-080a15ab2903/bblbchjekobacogfioehogggccfagkmk/edit/package)
-3. ☕
+5. ☕
