@@ -7,5 +7,6 @@ pkgs.mkShell {
     pkgs.dprint
     pkgs.imagemagick
     pkgs.deno
+    pkgs.actionlint
   ];
 }
