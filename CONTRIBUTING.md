@@ -22,7 +22,7 @@ Available tasks:
 ```console
 > deno task build
 ...
-Built to out/depop-0.0.0.10.zip:
+Built to out/depop-0.0.0.11.zip:
 ...
 ```
 
