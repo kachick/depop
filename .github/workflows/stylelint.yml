@@ -21,4 +21,4 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: '1.34.2'
-      - run: deno task cache-stylelint && deno task stylelint
+      - run: deno task stylelint
