@@ -6,7 +6,10 @@ a[href$='/watchers'] strong,
 #repo-stars-counter-star,
 #repo-stars-counter-unstar,
 #repo-network-counter,
-#repo-notifications-counter {
+#repo-notifications-counter,
+/* Do not hide other endpoints like `api/top-langs` */
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?'])
+{
   display: none;
 }
 

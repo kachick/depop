@@ -34,6 +34,10 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 - "Explore repositories" and/or the stars
 - Sponsors
 
+### Covered third party features
+
+- [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) # Since 0.0.0.11
+
 ## Inspired
 
 While digging into this feature, I noticed that
