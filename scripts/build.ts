@@ -6,7 +6,7 @@ if (typeof version !== 'string') {
   throw new Error('Version is not found in manifest.json');
 }
 
-const paths = [
+const includesPaths = [
   'manifest.json',
   'README.md',
   'LICENSE',
@@ -23,10 +23,10 @@ const productPath = `out/depop-${version}.zip`;
 
 Deno.writeFileSync(
   productPath,
-  fflate.zipSync(paths.reduce(
+  fflate.zipSync(includesPaths.reduce(
     (acc, path) => ({ ...acc, [path]: Deno.readFileSync(path) }),
     {},
   )),
 );
 
-console.log(`Built to ${productPath}:`, paths);
+console.log(JSON.stringify({ productPath, includesPaths }, undefined, 4));
