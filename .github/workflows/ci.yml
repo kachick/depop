@@ -6,7 +6,7 @@ on:
 
 defaults:
   run:
-    # Make fail-fast option. https://github.com/github/docs/pull/18934
+    # Enable fail-fast option. https://github.com/github/docs/pull/18934
     shell: 'bash'
 
 jobs:
