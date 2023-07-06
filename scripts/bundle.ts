@@ -8,7 +8,7 @@ if (typeof entrypoint !== 'string') {
   throw new Error('Need to specify entrypoint');
 }
 
-const result = await bundle(entrypoint);
+const result = await bundle(new URL(entrypoint, import.meta.url));
 
 const { code } = result;
-Deno.stdout.writeSync(new TextEncoder().encode(code));
+console.log(code);
