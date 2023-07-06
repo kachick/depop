@@ -7,17 +7,18 @@ if (typeof version !== 'string') {
   throw new Error('Version is not found in manifest.json');
 }
 
+const getOrderedPathList = (dirPath: string): string[] =>
+  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) =>
+    dirEntity.isFile ? [`${dirPath}/${dirEntity.name}`] : []
+  ).toSorted();
+
 const includesPaths = [
   'manifest.json',
   'README.md',
   'LICENSE',
   'assets/icon-sadness-star.png',
-  ...Array.from(Deno.readDirSync('static')).flatMap((
-    dirEntity,
-  ) => dirEntity.isFile ? [`static/${dirEntity.name}`] : []),
-  ...Array.from(Deno.readDirSync('dist')).flatMap((dirEntity) =>
-    dirEntity.isFile ? [`dist/${dirEntity.name}`] : []
-  ),
+  ...getOrderedPathList('static'),
+  ...getOrderedPathList('dist'),
 ];
 
 const productBasename = `depop-${version}.zip`;
