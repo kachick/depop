@@ -1,7 +1,7 @@
 {
   "tasks": {
     "build": "deno task bundle && deno run --allow-read --allow-write scripts/build.ts",
-    "bundle": "deno task clean; deno run -A scripts/bundle.ts --entrypoint='../src/main.ts' > dist/main.js && deno run -A scripts/bundle.ts --entrypoint='../src/options.tsx' > dist/options.js",
+    "bundle": "deno task clean; deno run -A scripts/bundle.ts --entrypoint='src/main.ts' > dist/main.js && deno run -A scripts/bundle.ts --entrypoint='src/options.tsx' > dist/options.js",
     "clean": "rm -rf ./dist/*.js ./out/*.zip",
     "check": "dprint check && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts",
     "stylelint": "deno task cache-stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.9.0/stylelint static/*.css | deno run --allow-sys scripts/isEmpty.ts",
