@@ -1,7 +1,7 @@
 {
   "name": "depop",
   "description": "Hide stars, followers and watchers in GitHub",
-  "version": "0.0.0.11",
+  "version": "0.0.0.12",
   "manifest_version": 3,
   "homepage_url": "https://github.com/kachick/depop",
   "permissions": [

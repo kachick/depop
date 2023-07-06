@@ -36,7 +36,7 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 
 ### Covered third party features
 
-- [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) # Since 0.0.0.11
+- [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats)
 
 ## Inspired
 
