@@ -10,4 +10,4 @@ if (typeof entrypoint !== 'string') {
 const result = await bundle(new URL(entrypoint, import.meta.url));
 
 const { code } = result;
-console.log(code);
+Deno.stdout.writeSync(new TextEncoder().encode(code));
