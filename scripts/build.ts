@@ -20,7 +20,8 @@ const includesPaths = [
   ),
 ];
 
-const productPath = `out/depop-${version}.zip`;
+const productBasename = `depop-${version}.zip`;
+const productPath = `out/${productBasename}`;
 const zipStructure = new Map<string, { content: Uint8Array; sha256: string }>();
 
 for (const path of includesPaths) {
@@ -43,6 +44,7 @@ console.log(
   JSON.stringify(
     {
       productPath,
+      productBasename,
       structure: Array.from(zipStructure.entries()).reduce(
         (acc, [path, { sha256 }]) => ({ ...acc, [path]: sha256 }),
         {},
