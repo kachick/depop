@@ -30,21 +30,25 @@ for (const path of includesPaths) {
   zipStructure.set(path, { content, sha256: toHashString(digest) });
 }
 
-Deno.writeFileSync(
-  productPath,
-  fflate.zipSync(
-    Array.from(zipStructure.entries()).reduce(
-      (acc, [path, { content }]) => ({ ...acc, [path]: content }),
-      {},
-    ),
+const zipped = fflate.zipSync(
+  Array.from(zipStructure.entries()).reduce(
+    (acc, [path, { content }]) => ({ ...acc, [path]: content }),
+    {},
   ),
 );
+
+const productSha256 = toHashString(
+  await crypto.subtle.digest('SHA-256', zipped),
+);
+
+Deno.writeFileSync(productPath, zipped);
 
 console.log(
   JSON.stringify(
     {
       productPath,
       productBasename,
+      productSha256,
       structure: Array.from(zipStructure.entries()).reduce(
         (acc, [path, { sha256 }]) => ({ ...acc, [path]: sha256 }),
         {},
