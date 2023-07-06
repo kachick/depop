@@ -6,4 +6,8 @@ import { assertIsDefined } from './typeguards.ts';
 const root = document.getElementById('root');
 assertIsDefined<HTMLElement | null>(root);
 
-createRoot(root).render(StrictMode({ children: <App /> }));
+createRoot(root).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
