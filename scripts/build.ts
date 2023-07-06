@@ -26,7 +26,7 @@ const zipStructure = new Map<string, { content: Uint8Array; sha256: string }>();
 for (const path of includesPaths) {
   const content = Deno.readFileSync(path);
   const digest = await crypto.subtle.digest('SHA-256', content);
-  zipStructure.set(path, { content, sha256: toHashString(digest, 'base64') });
+  zipStructure.set(path, { content, sha256: toHashString(digest) });
 }
 
 Deno.writeFileSync(
