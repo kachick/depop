@@ -6,7 +6,8 @@
     "check": "dprint check && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts",
     "stylelint": "deno task cache-stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.9.0/stylelint static/*.css | deno run --allow-sys scripts/isEmpty.ts",
     "dependencies": "deno --version && mogrify --version && dprint --version && actionlint --version",
-    "recache": "rm deno.lock && deno cache --lock-write --node-modules-dir npm:stylelint@15.9.0 npm:stylelint-config-recommended@12.0.0 **/*.ts **/*.tsx",
+    "reload": "deno cache --node-modules-dir --reload --lock=deno.lock **/*.ts **/*.tsx",
+    "update": "deno cache --node-modules-dir --lock-write **/*.ts **/*.tsx",
     "cache-stylelint": "deno cache --node-modules-dir npm:stylelint@15.9.0 npm:stylelint-config-recommended@12.0.0",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icon-*.png"
