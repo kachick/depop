@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'https://esm.sh/react@18.2.0';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

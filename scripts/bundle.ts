@@ -1,6 +1,6 @@
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
-import { bundle } from 'https://deno.land/x/emit@0.24.0/mod.ts';
-import { parse } from 'https://deno.land/std@0.193.0/flags/mod.ts';
+import { bundle } from 'emit';
+import { parse } from 'std/flags';
 
 const flags = parse(Deno.args);
 const entrypoint = flags.entrypoint;
