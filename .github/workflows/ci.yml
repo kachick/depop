@@ -33,10 +33,10 @@ jobs:
       - name: Ensure cache before build
         run: deno task cache
       - name: Install gh-action-multiline
-        run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-multiline/v0.1.0/scripts/install-in-github-action.sh | sh -s
+        run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-multiline/main/scripts/install-in-github-action.sh | sh -s v0.1.1
       - name: Build
         id: build
-        run: deno task build | gh-action-multiline report | tee --append "$GITHUB_OUTPUT"
+        run: deno task build | gh-action-multiline -name=report | tee --append "$GITHUB_OUTPUT"
       - name: Upload the product for nightly use and debug
         uses: actions/upload-artifact@v3
         with:
