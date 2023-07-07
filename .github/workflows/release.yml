@@ -19,16 +19,11 @@ jobs:
           deno-version: '1.34.2'
       - name: Ensure cache before build
         run: deno task cache
+      - name: Install gh-action-multiline
+        run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-multiline/v0.1.0/scripts/install-in-github-action.sh | sh -s
       - name: Build
         id: build
-        # Do not use `echo json=$(script)` syntax here. The script generates multilines.
-        # https://github.com/kachick/renovate-config-asdf/blob/8abd3de61377ea4fd899e57d0c6c3f28d05ed80b/.github/workflows/ci-tool-versions.yml#L17
-        # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-of-a-multiline-string
-        run: |
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "report<<$EOF" | tee --append "$GITHUB_OUTPUT"
-          deno task build | tee --append "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
+        run: deno task build | gh-action-multiline report | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v1
         with:
