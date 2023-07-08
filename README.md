@@ -33,6 +33,7 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 - Pinned Repositories
 - "Explore repositories" and/or the stars
 - Sponsors
+- Achievements # 0.0.0.13+
 
 ### Covered third party features
 

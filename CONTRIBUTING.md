@@ -26,6 +26,16 @@ Built to out/depop-0.0.0.12.zip:
 ...
 ```
 
+## How to struggle with CSS selector?
+
+In the Chrome Developer Tools, type the following in the console.
+
+```javascript
+document.querySelectorAll("div:has(> h2 a[href$='?tab=achievements'])");
+```
+
+Then expand the `NodeList(2)`, and hover to them, chrome tells us where the element is.
+
 ## Release
 
 1. Bump version in [manifest file](manifest.json)
