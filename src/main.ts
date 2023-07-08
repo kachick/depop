@@ -38,3 +38,16 @@ chrome.storage.sync.get([
     }
   }
 });
+
+const highlightsH2Node = document.evaluate(
+  '/html/body//div[@class=\'Layout-sidebar\']//h2[text()=\'Highlights\']',
+  document,
+  null,
+  XPathResult.FIRST_ORDERED_NODE_TYPE,
+  null,
+).singleNodeValue;
+
+const highlightsComponent = highlightsH2Node?.parentElement;
+if (highlightsComponent) {
+  hide(highlightsComponent);
+}
