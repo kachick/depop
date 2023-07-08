@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/kachick/depop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kachick/depop/actions/workflows/ci.yml?query=event%3Apush++)
 
-A Chrome Extension to hide stars, followers and watchers in GitHub
+A Chrome Extension to hide stars, followers, watchers, sponsors, and other stats on GitHub
 
 ![Screen Shot](assets/screenshot-overview.png)
 
@@ -25,7 +25,7 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 
 ![Screen Shot](assets/screenshot-options.png)
 
-## Covered GitHub features
+## Suppressable GitHub stats
 
 - User
 - Repository index
@@ -33,8 +33,10 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 - Pinned Repositories
 - "Explore repositories" and/or the stars
 - Sponsors
+- Achievements # 0.0.0.13+
+- Highlights # 0.0.0.13+
 
-### Covered third party features
+### Suppressable third party stats
 
 - [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats)
 
