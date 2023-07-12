@@ -16,7 +16,7 @@
   ],
   "options_page": "options.html",
   "icons": {
-    "128": "assets/icon-sadness-star.png"
+    "128": "icon-sadness-star.png"
   },
   "content_security_policy": {
     "extension_pages": "default-src 'self'"
