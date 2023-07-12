@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "build": "deno run --cached-only --allow-read --allow-write --allow-env scripts/build.ts",
+    "build": "deno run  --allow-net --cached-only --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
     "check": "dprint check && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts",
     "stylelint": "deno task cache-stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.9.0/stylelint static/*.css | deno run --allow-sys scripts/checkEmpty.ts",
