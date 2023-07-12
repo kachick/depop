@@ -1,6 +1,7 @@
 *.crx
 *.zip
 dist/
+tmp/
 
 node_modules/
 
