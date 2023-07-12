@@ -13,7 +13,7 @@
 > deno task
 Available tasks:
 - build
-- bundle
+- check
 ...
 ```
 

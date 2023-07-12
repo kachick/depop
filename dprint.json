@@ -6,7 +6,7 @@
     "singleQuote": true
   },
   "includes": ["**/*.{json,jsonc,md,yml,css,html}"],
-  "excludes": ["dist/"],
+  "excludes": ["dist/", "node_modules/", ".git/", "**/primer.css"],
   "plugins": [
     "https://plugins.dprint.dev/json-0.17.4.wasm",
     "https://plugins.dprint.dev/markdown-0.15.3.wasm",
