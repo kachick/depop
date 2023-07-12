@@ -3,7 +3,7 @@
     "build": "deno run --allow-net --cached-only --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
     "check": "dprint check && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts",
-    "stylelint": "deno task cache-stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.9.0/stylelint static/*.css | deno run --allow-sys scripts/checkEmpty.ts",
+    "stylelint": "deno task cache-stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.9.0/stylelint src/*.css | deno run --allow-sys scripts/checkEmpty.ts",
     "dependencies": "deno --version && mogrify --version && dprint --version && actionlint --version",
     "cache": "deno cache --node-modules-dir --reload **/*.ts **/*.tsx",
     "update": "deno cache --lock-write --node-modules-dir npm:stylelint@15.9.0 npm:stylelint-config-recommended@12.0.0 **/*.ts **/*.tsx",
