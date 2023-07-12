@@ -36,10 +36,13 @@ document.querySelectorAll("div:has(> h2 a[href$='?tab=achievements'])");
 
 Then expand the `NodeList(2)`, and hover to them, chrome tells us where the element is.
 
-## Carefully handle [src/manifestSchemaAdjusted.json]
+## Carefully handle adjusted JSON schema
+
+[src/manifestSchemaAdjusted.json](src/manifestSchemaAdjusted.json)
 
 The filled enum is not perfect. It should contain URIs. But you can update as following steps
 
+1. Download the base schema from <https://github.com/SchemaStore/schemastore/blob/fd34ef2aa89e5007ed67d6844f1519cfec75678c/src/schemas/json/chrome-manifest.json>
 1. Download and extract and formats the <https://developer.chrome.com/docs/extensions/mv3/permission_warnings/> as `tmp/scrape.html`
 1. `rg '<tr id="([^"]+)">' -or '"$1",'  tmp/scrape.html` will show the most definitions, but not correct, and it includes non enum like URL patterns
 

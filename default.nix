@@ -8,5 +8,6 @@ pkgs.mkShell {
     pkgs.imagemagick
     pkgs.deno
     pkgs.actionlint
+    pkgs.ripgrep
   ];
 }
