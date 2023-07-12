@@ -43,6 +43,7 @@ const gatherDist = Promise.all([
   Deno.copyFile(manifestPath, 'dist/manifest.json'),
   Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
   Deno.copyFile('src/options.html', 'dist/options.html'),
+  Deno.copyFile('src/options.css', 'dist/options.css'),
   Deno.copyFile('vendor/primer.css', 'dist/primer.css'),
   Deno.copyFile(
     'assets/icon-sadness-star.png',
