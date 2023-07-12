@@ -1,7 +1,7 @@
 {
   "name": "depop",
   "description": "Hide stars, followers and watchers in GitHub",
-  "version": "0.0.0.13",
+  "version": "0.0.0.14",
   "manifest_version": 3,
   "homepage_url": "https://github.com/kachick/depop",
   "permissions": [
@@ -10,11 +10,11 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-      "css": ["static/style.css"],
-      "js": ["dist/main.js"]
+      "css": ["github-patcher.css"],
+      "js": ["github-patcher.js"]
     }
   ],
-  "options_page": "static/options.html",
+  "options_page": "options.html",
   "icons": {
     "128": "assets/icon-sadness-star.png"
   },

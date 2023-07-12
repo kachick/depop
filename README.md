@@ -16,7 +16,7 @@ Choose one of the following options.
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/eyes-away-from-github-pop/bblbchjekobacogfioehogggccfagkmk)
 - Download zip archive from [release page](https://github.com/kachick/depop/releases) and load it from `chrome://extensions/`.
-- [Run build task](CONTRIBUTING.md) and [load this folder as an unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+- [Run build task](CONTRIBUTING.md) and load "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Usage
 
