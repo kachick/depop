@@ -20,6 +20,7 @@
               deno
               actionlint
               ripgrep
+              typos
             ];
           };
       });

@@ -16,18 +16,5 @@
       "url": "https://json.schemastore.org/chrome-manifest"
     }
   ],
-  "cSpell.words": [
-    "cachix",
-    "depop",
-    "dprint",
-    "fflate",
-    "mogrify",
-    "nixos",
-    "nixpkgs",
-    "remoting",
-    "rentzsch",
-    "unstar",
-    "Zippable"
-  ],
   "deno.enable": true
 }
