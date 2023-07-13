@@ -1,5 +1,5 @@
 import Ajv from 'https://esm.sh/ajv@8.12.0';
-// Do not include from https://json.schemastore.org/chrome-manifest, current official stored has wrong defintions
+// Do not include from https://json.schemastore.org/chrome-manifest, current official stored has wrong definitions
 // See https://github.com/SchemaStore/schemastore/issues/2861 for further detail
 import manifestSchema from '../src/manifestSchemaAdjusted.json' assert {
   type: 'json',

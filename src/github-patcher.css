@@ -1,4 +1,4 @@
-/* Might be matched when it has same naming repository, however current GitHub does not set any meaningfull class and ID */
+/* Might be matched when it has same naming repository, however current GitHub does not set any meaningful class and ID */
 a[href$='/stargazers'],
 a[href$='?tab=followers'],
 a[href$='/network/members'],
