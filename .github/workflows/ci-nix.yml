@@ -5,11 +5,13 @@ on:
     paths:
       - '.github/workflows/ci-nix.yml'
       - '*.nix'
+      - 'flake.*'
       - 'deno.jsonc'
   pull_request:
     paths:
       - '.github/workflows/ci-nix.yml'
       - '*.nix'
+      - 'flake.*'
       - 'deno.jsonc'
   schedule:
     # Every 10:42 JST
@@ -27,5 +29,6 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@v2
       - name: Print nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
-      - run: nix-shell --run 'echo This step should be done before any other "nix-shell" steps because of measuring Nix build time'
-      - run: nix-shell --run 'deno task all'
+      - run: nix flake check
+      - run: nix develop --command echo 'This step should be done before any other "nix develop" steps because of measuring Nix build time'
+      - run: nix develop --command deno task all
