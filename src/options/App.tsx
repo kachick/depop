@@ -1,3 +1,5 @@
+/** @jsxImportSource https://esm.sh/v128/react@18.2.0 */
+
 import React, { useEffect, useState } from 'https://esm.sh/react@18.2.0';
 
 function App() {
