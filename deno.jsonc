@@ -21,7 +21,7 @@
       "deno.ns"
     ],
     "types": [
-      "https://unpkg.com/chrome-types@0.1.211/index.d.ts"
+      "https://esm.sh/v128/chrome-types@0.1.216/index.d.ts"
     ]
   },
   "lint": {
