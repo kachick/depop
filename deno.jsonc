@@ -5,13 +5,13 @@
     "check": "dprint check && typos && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run scripts/manifestValidator.ts",
     "stylelint": "deno task cache:stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.9.0/stylelint src/*.css | deno run --allow-sys scripts/checkEmpty.ts",
-    "dependencies": "deno --version && mogrify --version && dprint --version && typos --version && actionlint --version && rg --version",
+    "deps": "deno --version && mogrify --version && dprint --version && typos --version && actionlint --version && rg --version",
     "cache": "deno cache --node-modules-dir --reload **/*.ts **/*.tsx",
     "update": "deno cache --lock-write --node-modules-dir npm:stylelint@15.9.0 npm:stylelint-config-recommended@12.0.0 **/*.ts **/*.tsx",
     "cache:stylelint": "deno cache --node-modules-dir npm:stylelint@15.9.0 npm:stylelint-config-recommended@12.0.0",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icon-*.png",
-    "all": "deno task dependencies && deno task check && deno task build && deno task stylelint && deno task resize"
+    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
   },
   "compilerOptions": {
     "lib": [
