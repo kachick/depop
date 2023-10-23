@@ -19,11 +19,11 @@ jobs:
           deno-version: '1.37.1' # selfup { "regex": "\\d[^']+", "script": "deno --version | head -n 1 | cut -d ' ' -f 2" }
       - name: Ensure cache before build
         run: deno task cache
-      - name: Install gh-action-multiline
-        run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-multiline/main/scripts/install-in-github-action.sh | sh -s v0.1.1
+      - name: Install gh-action-escape
+        run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-escape/v0.2.0/scripts/install-in-github-action.sh | sh -s v0.2.0
       - name: Build
         id: build
-        run: deno task build | gh-action-multiline -name=report | tee --append "$GITHUB_OUTPUT"
+        run: deno task build | gh-action-escape -name=report | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v2
         with:
