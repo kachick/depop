@@ -40,7 +40,7 @@ jobs:
         id: build
         run: deno task build | gh-action-escape -name=report | tee --append "$GITHUB_OUTPUT"
       - name: Upload the product for nightly use and debug
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: '${{ fromJson(steps.build.outputs.report).productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).productPath }}'
