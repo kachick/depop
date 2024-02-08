@@ -5,6 +5,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+defaults:
+  run:
+    # Enable fail-fast option. https://github.com/github/docs/pull/18934
+    shell: 'bash'
+
 jobs:
   check:
     timeout-minutes: 15
