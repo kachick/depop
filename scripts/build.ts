@@ -1,9 +1,9 @@
-import { toHashString } from 'https://deno.land/std@0.215.0/crypto/to_hash_string.ts';
+import { encodeHex } from 'https://deno.land/std@0.215.0/encoding/hex.ts';
 import {
   basename,
   extname,
   join,
-} from 'https://deno.land/std@0.215.0/path/posix.ts';
+} from 'https://deno.land/std@0.215.0/path/mod.ts';
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
@@ -69,7 +69,7 @@ const zipStructure = new Map<
 
 const sha256 = async (content: Uint8Array) => {
   const digest = await crypto.subtle.digest('SHA-256', content);
-  return toHashString(digest);
+  return encodeHex(digest);
 };
 
 for (const path of getOrderedPathList('dist')) {
