@@ -1,18 +1,18 @@
-import { toHashString } from 'https://deno.land/std@0.193.0/crypto/to_hash_string.ts';
+import { toHashString } from 'https://deno.land/std@0.215.0/crypto/to_hash_string.ts';
 import {
   basename,
   extname,
   join,
-} from 'https://deno.land/std@0.193.0/path/posix.ts';
+} from 'https://deno.land/std@0.215.0/path/posix.ts';
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
 import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
   type: 'json',
 };
-import { assertEquals } from 'https://deno.land/std@0.193.0/testing/asserts.ts';
+import { assertEquals } from 'https://deno.land/std@0.215.0/testing/asserts.ts';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
-import { bundle } from 'https://deno.land/x/emit@0.24.0/mod.ts';
+import { bundle } from 'https://deno.land/x/emit@0.35.0/mod.ts';
 // @deno-types="https://cdn.skypack.dev/-/fflate@v0.8.0-9lwslwAa54POmYjLobRf/dist=es2019,mode=raw/lib/index.d.ts"
 import * as fflate from 'https://cdn.skypack.dev/fflate@0.8.0?min';
 import Ajv from 'https://esm.sh/v128/ajv@8.12.0';
