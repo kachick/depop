@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "build": "deno run --allow-net --cached-only --allow-read --allow-write --allow-env scripts/build.ts",
+    "build": "deno run --quiet --allow-net --cached-only --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run scripts/manifestValidator.ts",

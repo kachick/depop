@@ -41,7 +41,7 @@ jobs:
         run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-escape/v0.2.0/scripts/install-in-github-action.sh | sh -s v0.2.0
       - name: Build
         id: build
-        run: deno task build | gh-action-escape -name=report | tee --append "$GITHUB_OUTPUT"
+        run: deno task build 2>/dev/null | gh-action-escape -name=report 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Upload the product for nightly use and debug
         uses: actions/upload-artifact@v4
         with:
