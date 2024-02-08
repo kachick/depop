@@ -4,10 +4,10 @@ import {
   extname,
   join,
 } from 'https://deno.land/std@0.193.0/path/posix.ts';
-import manifestJson from '../src/manifest.json' assert {
+import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
-import manifestSchema from '../src/manifestSchemaAdjusted.json' assert {
+import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
   type: 'json',
 };
 import { assertEquals } from 'https://deno.land/std@0.193.0/testing/asserts.ts';
