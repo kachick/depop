@@ -133,7 +133,7 @@ const validateProduct = async (zipped: Uint8Array) => {
 const [ok, errors] = await validateProduct(zipped);
 
 if (ok) {
-  console.log(
+  Deno.stdout.writeSync(new TextEncoder().encode(
     JSON.stringify(
       {
         productPath,
@@ -146,7 +146,7 @@ if (ok) {
       undefined,
       4,
     ),
-  );
+  ));
 } else {
   console.error(errors);
   Deno.exit(1);
