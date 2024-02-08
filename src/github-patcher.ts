@@ -14,7 +14,7 @@ chrome.storage.sync.get([
 ]).then((keys): void => {
   if (keys.isHideExploreRepositories) {
     const exploreRepositoriesComponent = document.querySelector(
-      'div[aria-label=\'Explore repositories\']',
+      "div[aria-label='Explore repositories']",
     );
 
     if (exploreRepositoriesComponent) {
@@ -24,7 +24,7 @@ chrome.storage.sync.get([
 
   if (keys.isHideSponsors) {
     const sponsorsH2Node = document.evaluate(
-      '/html/body//div[@class=\'Layout-sidebar\']//h2[text()=\'Sponsors\']',
+      "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
       document,
       null,
       XPathResult.FIRST_ORDERED_NODE_TYPE,
@@ -40,7 +40,7 @@ chrome.storage.sync.get([
 });
 
 const highlightsH2Node = document.evaluate(
-  '/html/body//div[@class=\'Layout-sidebar\']//h2[text()=\'Highlights\']',
+  "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
   document,
   null,
   XPathResult.FIRST_ORDERED_NODE_TYPE,
