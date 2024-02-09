@@ -11,7 +11,7 @@ on:
 
 jobs:
   update-nixpkgs:
-    uses: kachick/selfup/.github/workflows/reusable-bump-flake-lock-and-selfup.yml@ee6025f0097097c263defd80a7ff6c795d896cd5
+    uses: kachick/selfup/.github/workflows/reusable-bump-flake-lock-and-selfup.yml@66ff577e5b969ff46847a8958a877c30b7b52c05
     if: (github.event.sender.login == 'kachick') || (github.event_name != 'pull_request')
     with:
       dry-run: ${{ github.event_name == 'pull_request' }}
