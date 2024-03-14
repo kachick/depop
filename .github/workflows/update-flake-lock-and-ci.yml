@@ -1,4 +1,4 @@
-name: Update flake.lock and CI dependencies
+name: 🤖🆙❄️
 on:
   pull_request:
     paths:
@@ -15,6 +15,7 @@ jobs:
     if: (github.event.sender.login == 'kachick') || (github.event_name != 'pull_request')
     with:
       dry-run: ${{ github.event_name == 'pull_request' }}
+      pr-title: 'Bump flake.lock and related dependencies'
     secrets:
       APP_ID: ${{ secrets.APP_ID }}
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
