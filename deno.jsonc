@@ -11,27 +11,27 @@
     "cache:stylelint": "deno cache --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icon-*.png",
-    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
+    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize",
   },
   "compilerOptions": {
     "lib": [
       "dom",
       "dom.iterable",
       "dom.asynciterable",
-      "deno.ns"
+      "deno.ns",
     ],
     "types": [
-      "https://esm.sh/v128/chrome-types@0.1.216/index.d.ts"
-    ]
+      "https://esm.sh/v128/chrome-types@0.1.216/index.d.ts",
+    ],
   },
   "lint": {
     "include": ["src/", "scripts/"],
     "rules": {
-      "tags": ["recommended"]
-    }
+      "tags": ["recommended"],
+    },
   },
   "fmt": {
     "singleQuote": true,
-    "include": ["src/", "scripts/"]
-  }
+    "include": ["src/", "scripts/"],
+  },
 }
