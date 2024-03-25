@@ -8,46 +8,50 @@ const hide = (element: Element): void => {
   );
 };
 
-chrome.storage.sync.get([
-  'isHideExploreRepositories',
-  'isHideSponsors',
-]).then((keys): void => {
-  if (keys.isHideExploreRepositories) {
-    const exploreRepositoriesComponent = document.querySelector(
-      "div[aria-label='Explore repositories']",
-    );
+const main = (): void => {
+  chrome.storage.sync.get([
+    'isHideExploreRepositories',
+    'isHideSponsors',
+  ]).then((keys): void => {
+    if (keys.isHideExploreRepositories) {
+      const exploreRepositoriesComponent = document.querySelector(
+        "div[aria-label='Explore repositories']",
+      );
 
-    if (exploreRepositoriesComponent) {
-      hide(exploreRepositoriesComponent);
+      if (exploreRepositoriesComponent) {
+        hide(exploreRepositoriesComponent);
+      }
     }
-  }
 
-  if (keys.isHideSponsors) {
-    const sponsorsH2Node = document.evaluate(
-      "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null,
-    ).singleNodeValue;
+    if (keys.isHideSponsors) {
+      const sponsorsH2Node = document.evaluate(
+        "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null,
+      ).singleNodeValue;
 
-    const sponsorsComponent = sponsorsH2Node?.parentElement?.parentElement;
+      const sponsorsComponent = sponsorsH2Node?.parentElement?.parentElement;
 
-    if (sponsorsComponent) {
-      hide(sponsorsComponent);
+      if (sponsorsComponent) {
+        hide(sponsorsComponent);
+      }
     }
+  });
+
+  const highlightsH2Node = document.evaluate(
+    "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null,
+  ).singleNodeValue;
+
+  const highlightsComponent = highlightsH2Node?.parentElement;
+  if (highlightsComponent) {
+    hide(highlightsComponent);
   }
-});
+};
 
-const highlightsH2Node = document.evaluate(
-  "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
-  document,
-  null,
-  XPathResult.FIRST_ORDERED_NODE_TYPE,
-  null,
-).singleNodeValue;
-
-const highlightsComponent = highlightsH2Node?.parentElement;
-if (highlightsComponent) {
-  hide(highlightsComponent);
-}
+document.addEventListener('load', main, { passive: true });
