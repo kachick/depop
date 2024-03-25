@@ -54,4 +54,4 @@ const main = (): void => {
   }
 };
 
-document.addEventListener('load', main, { passive: true });
+document.addEventListener('DOMContentLoaded', main, { passive: true });
