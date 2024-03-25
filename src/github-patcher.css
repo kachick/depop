@@ -15,6 +15,6 @@ a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?'])
 
 li:has(> a[href$='/followers']),
 div:has(> h2 a[href$='?tab=achievements']),
-div[aria-label='Explore repositories'] div:has(> svg[aria-label='star']) {
+aside[aria-label='Explore'] div[aria-label='Explore repositories'] div:has(> svg[aria-label='star']) {
   display: none !important;
 }
