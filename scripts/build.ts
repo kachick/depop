@@ -50,7 +50,7 @@ const gatherDist = Promise.all([
   Deno.copyFile('src/options.css', 'dist/options.css'),
   Deno.copyFile('vendor/primer.css', 'dist/primer.css'),
   Deno.copyFile(
-    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-gimp.png',
+    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png',
     'dist/icon-sadness-star.png',
   ),
 ]);
