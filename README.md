@@ -25,7 +25,7 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 
 ![Screen Shot](assets/screenshots/options.png)
 
-## Suppressable GitHub stats
+## Suppressible GitHub stats
 
 - User
 - Repository index
@@ -36,7 +36,7 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 - Achievements # 0.0.0.13+
 - Highlights # 0.0.0.13+
 
-### Suppressable third party stats
+### Suppressible third party stats
 
 - [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats)
 
