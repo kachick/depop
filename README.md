@@ -1,6 +1,7 @@
 # depop
 
 [![CI](https://github.com/kachick/depop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kachick/depop/actions/workflows/ci.yml?query=event%3Apush++)
+[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/bblbchjekobacogfioehogggccfagkmk?style=flat&logo=googlechrome&color=%231a73e8)](https://chrome.google.com/webstore/detail/eyes-away-from-github-pop/bblbchjekobacogfioehogggccfagkmk)
 
 A Chrome Extension to hide stars, followers, watchers, sponsors, and other stats on GitHub
 
