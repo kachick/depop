@@ -10,7 +10,7 @@
     "update": "deno cache --lock-write --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0 **/*.ts **/*.tsx",
     "cache:stylelint": "deno cache --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0",
     // Required ImageMagick dependency
-    "resize": "mogrify -resize 128x128! assets/icon/**/*.png",
+    "resize": "mogrify -resize 128x128! assets/icons/**/*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize",
   },

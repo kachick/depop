@@ -4,7 +4,7 @@
 
 A Chrome Extension to hide stars, followers, watchers, sponsors, and other stats on GitHub
 
-![Screen Shot](assets/screenshot-overview.png)
+![Screen Shot](assets/screenshots/overview.png)
 
 ## Why?
 
@@ -23,7 +23,7 @@ Choose one of the following options.
 By default, stars are hidden as much as possible.\
 Some features can be hidden by enabling them on the [Options page](https://developer.chrome.com/docs/extensions/mv3/options/).
 
-![Screen Shot](assets/screenshot-options.png)
+![Screen Shot](assets/screenshots/options.png)
 
 ## Suppressable GitHub stats
 
