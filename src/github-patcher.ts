@@ -9,12 +9,10 @@ const hide = (element: Element): void => {
 };
 
 const main = (): void => {
-  console.log(`executed main`);
   chrome.storage.sync.get([
     'isHideExploreRepositories',
     'isHideSponsors',
   ]).then((keys): void => {
-    console.log(`executed callback`);
     if (keys.isHideExploreRepositories) {
       const exploreRepositoriesComponent = document.querySelector(
         "aside[aria-label='Explore'] div[aria-label='Explore repositories']",
@@ -23,8 +21,6 @@ const main = (): void => {
       if (exploreRepositoriesComponent) {
         hide(exploreRepositoriesComponent);
       }
-
-      console.log(`executed isHideExploreRepositories`);
     }
 
     if (keys.isHideSponsors) {
@@ -41,8 +37,6 @@ const main = (): void => {
       if (sponsorsComponent) {
         hide(sponsorsComponent);
       }
-
-      console.log(`executed isHideSponsors`);
     }
   });
 
@@ -58,7 +52,6 @@ const main = (): void => {
   if (highlightsComponent) {
     hide(highlightsComponent);
   }
-  console.log(`finished main`);
 };
 
 if (document.readyState !== 'complete') {
