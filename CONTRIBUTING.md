@@ -46,6 +46,10 @@ The filled enum is not perfect. It should contain URIs. But you can update as fo
 1. Download and extract and formats the <https://developer.chrome.com/docs/extensions/mv3/permission_warnings/> as `tmp/scrape.html`
 1. `rg '<tr id="([^"]+)">' -or '"$1",'  tmp/scrape.html` will show the most definitions, but not correct, and it includes non enum like URL patterns
 
+## Which timing is the best to execute?
+
+[This article](https://stackoverflow.com/questions/43233115/chrome-content-scripts-arent-working-domcontentloaded-listener-does-not-execut) may help you.
+
 ## Release
 
 1. Bump version in [manifest file](manifest.json)

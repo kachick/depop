@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-      "run_at": "document_end",
+      "run_at": "document_idle",
       "css": ["github-patcher.css"],
       "js": ["github-patcher.js"]
     }
