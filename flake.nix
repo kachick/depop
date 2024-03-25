@@ -20,15 +20,18 @@
             buildInputs = [
               # https://github.com/NixOS/nix/issues/730#issuecomment-162323824
               bashInteractive
-
               nil
               nixpkgs-fmt
+
               dprint
-              imagemagick
               deno
               actionlint
               ripgrep
               typos
+
+              # To maintain icons
+              imagemagick
+              exiftool
             ];
           };
       });
