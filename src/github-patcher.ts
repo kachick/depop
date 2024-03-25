@@ -16,12 +16,12 @@ const main = (): void => {
   ]).then((keys): void => {
     console.log(`executed callback`);
     if (keys.isHideExploreRepositories) {
-      const exploreRepositoriesComponent = document.querySelector(
+      const exploreRepositoriesComponents = document.querySelectorAll(
         "div[aria-label='Explore repositories']",
       );
 
-      if (exploreRepositoriesComponent) {
-        hide(exploreRepositoriesComponent);
+      for (const component of exploreRepositoriesComponents) {
+        hide(component);
       }
 
       console.log(`executed isHideExploreRepositories`);
