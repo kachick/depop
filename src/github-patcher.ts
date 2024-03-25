@@ -8,38 +8,33 @@ const hide = (element: Element): void => {
   );
 };
 
-const main = (): void => {
-  chrome.storage.sync.get([
-    'isHideExploreRepositories',
-    'isHideSponsors',
-  ]).then((keys): void => {
-    if (keys.isHideExploreRepositories) {
-      const exploreRepositoriesComponent = document.querySelector(
-        "aside[aria-label='Explore'] div[aria-label='Explore repositories']",
-      );
+const hideExploreRepositories = (): void => {
+  const exploreRepositoriesComponent = document.querySelector(
+    "aside[aria-label='Explore'] div[aria-label='Explore repositories']",
+  );
 
-      if (exploreRepositoriesComponent) {
-        hide(exploreRepositoriesComponent);
-      }
-    }
+  if (exploreRepositoriesComponent) {
+    hide(exploreRepositoriesComponent);
+  }
+};
 
-    if (keys.isHideSponsors) {
-      const sponsorsH2Node = document.evaluate(
-        "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null,
-      ).singleNodeValue;
+const hideSponsors = (): void => {
+  const sponsorsH2Node = document.evaluate(
+    "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null,
+  ).singleNodeValue;
 
-      const sponsorsComponent = sponsorsH2Node?.parentElement?.parentElement;
+  const sponsorsComponent = sponsorsH2Node?.parentElement?.parentElement;
 
-      if (sponsorsComponent) {
-        hide(sponsorsComponent);
-      }
-    }
-  });
+  if (sponsorsComponent) {
+    hide(sponsorsComponent);
+  }
+};
 
+const hideHighlights = (): void => {
   const highlightsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
     document,
@@ -54,7 +49,24 @@ const main = (): void => {
   }
 };
 
+const hideComponents = (): void => {
+  chrome.storage.sync.get([
+    'isHideExploreRepositories',
+    'isHideSponsors',
+  ]).then(({ isHideExploreRepositories, isHideSponsors }): void => {
+    if (isHideExploreRepositories) {
+      hideExploreRepositories();
+    }
+
+    if (isHideSponsors) {
+      hideSponsors();
+    }
+  });
+
+  hideHighlights();
+};
+
 if (document.readyState !== 'complete') {
-  document.addEventListener('load', main, { passive: true });
+  document.addEventListener('load', hideComponents, { passive: true });
 }
-main();
+hideComponents();
