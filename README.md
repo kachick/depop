@@ -1,7 +1,7 @@
 # depop
 
 [![CI](https://github.com/kachick/depop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kachick/depop/actions/workflows/ci.yml?query=event%3Apush++)
-[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/bblbchjekobacogfioehogggccfagkmk?style=flat&logo=googlechrome&color=%231a73e8)](https://chrome.google.com/webstore/detail/eyes-away-from-github-pop/bblbchjekobacogfioehogggccfagkmk)
+[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/bblbchjekobacogfioehogggccfagkmk?style=flat&logo=googlechrome&color=%231a73e8)](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
 
 A Chrome Extension to hide stars, followers, watchers, sponsors, and other stats on GitHub
 
@@ -15,7 +15,7 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 
 Choose one of the following options.
 
-- [Chrome Web Store](https://chrome.google.com/webstore/detail/eyes-away-from-github-pop/bblbchjekobacogfioehogggccfagkmk)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
 - Download zip archive from [release page](https://github.com/kachick/depop/releases) and load it from `chrome://extensions/`.
 - [Run build task](CONTRIBUTING.md) and load "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
