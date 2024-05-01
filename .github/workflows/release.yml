@@ -25,7 +25,7 @@ jobs:
         id: build
         run: deno task build | gh-action-escape -name=report | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
-        uses: kachick/wait-other-jobs@v2
+        uses: kachick/wait-other-jobs@v3
         with:
           min-interval-seconds: '15'
         if: startsWith(github.ref, 'refs/tags/')
