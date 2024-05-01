@@ -27,7 +27,13 @@ jobs:
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v3
         with:
-          min-interval-seconds: '15'
+          skip-same-workflow: 'true'
+          skip-list: |
+            [
+              {
+                "workflowFile": "merge-bot-pr.yml"
+              }
+            ]
         if: startsWith(github.ref, 'refs/tags/')
       - name: Release
         uses: softprops/action-gh-release@v2
