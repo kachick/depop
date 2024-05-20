@@ -11,12 +11,12 @@ jobs:
     permissions:
       contents: write
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v1
         with:
-          deno-version: '1.42.4' # selfup { "regex": "\\d[^']+", "script": "deno --version | head -n 1 | cut -d ' ' -f 2" }
+          deno-version: '1.43.1' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
       - name: Ensure cache before build
         run: deno task cache
       - name: Install gh-action-escape

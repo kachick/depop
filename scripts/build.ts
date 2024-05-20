@@ -13,8 +13,8 @@ import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
 import { assertEquals } from 'https://deno.land/std@0.215.0/testing/asserts.ts';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
 import { bundle } from 'https://deno.land/x/emit@0.35.0/mod.ts';
-// @deno-types="https://cdn.skypack.dev/-/fflate@v0.8.0-9lwslwAa54POmYjLobRf/dist=es2019,mode=raw/lib/index.d.ts"
-import * as fflate from 'https://cdn.skypack.dev/fflate@0.8.0?min';
+// @deno-types="https://cdn.skypack.dev/-/fflate@v0.8.2-5l9B8rfElbxSDZ5tcGZe/dist=es2019,mode=raw/lib/index.d.ts"
+import * as fflate from 'https://cdn.skypack.dev/fflate@0.8.2?min';
 import Ajv from 'https://esm.sh/v128/ajv@8.12.0';
 import prettyBytes from 'https://esm.sh/v128/pretty-bytes@6.1.0';
 

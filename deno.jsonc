@@ -1,11 +1,11 @@
 {
   "tasks": {
-    "build": "deno run --quiet --allow-net --cached-only --allow-read --allow-write --allow-env scripts/build.ts",
+    "build": "deno run --quiet --allow-net --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run scripts/manifestValidator.ts",
     "stylelint": "deno task cache:stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.10.3/stylelint src/*.css | deno run --allow-sys scripts/checkEmpty.ts",
-    "deps": "deno --version && mogrify --version && dprint --version && typos --version && actionlint --version && rg --version",
+    "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
     "cache": "deno cache --node-modules-dir --reload **/*.ts **/*.tsx",
     "update": "deno cache --lock-write --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0 **/*.ts **/*.tsx",
     "cache:stylelint": "deno cache --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0",
