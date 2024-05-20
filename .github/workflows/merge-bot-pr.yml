@@ -8,15 +8,31 @@ permissions:
   # actions: read # For private repositories
 
 jobs:
+  judge-dependabot:
+    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    outputs:
+      merge: ${{ steps.conclusion.outputs.merge }}
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: dependabot
+        uses: dependabot/fetch-metadata@5e5f99653a5b510e8555840e80cbf1514ad4af38 # v2.1.0
+      - name: Judge
+        id: conclusion
+        if: >-
+          steps.dependabot.outputs.update-type != 'version-update:semver-major' ||
+          contains(steps.dependabot.outputs.dependency-names, 'DeterminateSystems')
+        run: echo -n 'merge=true' | tee -a "$GITHUB_OUTPUT"
   dependabot:
     runs-on: ubuntu-24.04
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    needs: [judge-dependabot]
+    if: ${{ needs.judge-dependabot.outputs.merge == 'true' }}
     steps:
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v2.1.0
       - name: Wait other jobs
-        if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
         uses: kachick/wait-other-jobs@v3
         with:
           skip-same-workflow: 'true'
@@ -28,7 +44,6 @@ jobs:
             ]
         timeout-minutes: 10
       - name: Approve and merge
-        if: ${{ (steps.metadata.outputs.update-type != 'version-update:semver-major') || contains(steps.metadata.outputs.dependency-names, 'DeterminateSystems') }}
         run: gh pr review --approve "$PR_URL" && gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
