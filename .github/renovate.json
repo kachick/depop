@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
     "github>kachick/renovate-config-dprint#1.1.0"
   ],
   "labels": ["dependencies", "renovate"],
