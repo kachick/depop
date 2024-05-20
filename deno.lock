@@ -972,6 +972,7 @@
     }
   },
   "redirects": {
+    "https://cdn.skypack.dev/fflate@0.8.2/lib/index.d.ts": "https://cdn.skypack.dev/-/fflate@v0.8.2-5l9B8rfElbxSDZ5tcGZe/dist=es2019,mode=raw/lib/index.d.ts",
     "https://esm.sh/v128/@types/react-dom@~18.2/client~.d.ts": "https://esm.sh/v128/@types/react-dom@18.2.25/client~.d.ts",
     "https://esm.sh/v128/@types/react@~18.2/index.d.ts": "https://esm.sh/v128/@types/react@18.2.38/index.d.ts",
     "https://esm.sh/v128/@types/react@~18.2/jsx-runtime~.d.ts": "https://esm.sh/v128/@types/react@18.2.38/jsx-runtime~.d.ts"
