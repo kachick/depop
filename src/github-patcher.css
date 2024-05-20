@@ -8,13 +8,14 @@ a[href$='/watchers'] strong,
 #repo-network-counter,
 #repo-notifications-counter,
 /* Do not hide other endpoints like `api/top-langs` */
-a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?'])
-{
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
   display: none;
 }
 
 li:has(> a[href$='/followers']),
 div:has(> h2 a[href$='?tab=achievements']),
-aside[aria-label='Explore'] div[aria-label='Explore repositories'] div:has(> svg[aria-label='star']) {
+aside[aria-label='Explore']
+  div[aria-label='Explore repositories']
+  div:has(> svg[aria-label='star']) {
   display: none !important;
 }
