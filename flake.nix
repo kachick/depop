@@ -25,7 +25,6 @@
 
               dprint
               deno
-              actionlint
               ripgrep
               typos
 
