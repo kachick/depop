@@ -23,6 +23,10 @@ jobs:
         with:
           dprint-version: '0.45.1' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","dprint --version | cut -d ' ' -f 2"]}
       - uses: crate-ci/typos@v1.21.0 # selfup {"extract":"\\d\\.\\d+\\.\\d+","replacer":["bash","-c","typos --version | cut -d ' ' -f 2"]}
+      - name: Set up Go
+        uses: actions/setup-go@v5
+      - name: Install yamlfmt
+        run: go install github.com/google/yamlfmt/cmd/yamlfmt@v0.12.1 # TODO: Apply selfup after https://github.com/google/yamlfmt/pull/180
       - uses: denoland/setup-deno@v1
         with:
           deno-version: '1.43.1' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
