@@ -33,7 +33,6 @@
 
               dprint
               deno
-              yamlfmt
               ripgrep
               typos
 

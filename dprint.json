@@ -1,6 +1,7 @@
 {
   "json": {},
   "markdown": {},
+  "yaml": { "quotes": "preferSingle" },
   "malva": {
     "quotes": "preferSingle"
   },
@@ -10,6 +11,7 @@
     "https://plugins.dprint.dev/markdown-0.16.4.wasm",
     "https://plugins.dprint.dev/toml-0.6.1.wasm",
     "https://plugins.dprint.dev/g-plane/malva-v0.4.0.wasm",
-    "https://plugins.dprint.dev/g-plane/markup_fmt-v0.8.0.wasm"
+    "https://plugins.dprint.dev/g-plane/markup_fmt-v0.8.0.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.2.0.wasm"
   ]
 }
