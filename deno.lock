@@ -972,15 +972,12 @@
     }
   },
   "redirects": {
-    "https://cdn.skypack.dev/fflate@0.8.2/lib/index.d.ts": "https://cdn.skypack.dev/-/fflate@v0.8.2-5l9B8rfElbxSDZ5tcGZe/dist=es2019,mode=raw/lib/index.d.ts",
     "https://esm.sh/v128/@types/react-dom@~18.2/client~.d.ts": "https://esm.sh/v128/@types/react-dom@18.2.25/client~.d.ts",
     "https://esm.sh/v128/@types/react@~18.2/index.d.ts": "https://esm.sh/v128/@types/react@18.2.38/index.d.ts",
     "https://esm.sh/v128/@types/react@~18.2/jsx-runtime~.d.ts": "https://esm.sh/v128/@types/react@18.2.38/jsx-runtime~.d.ts"
   },
   "remote": {
-    "https://cdn.skypack.dev/-/fflate@v0.8.0-9lwslwAa54POmYjLobRf/dist=es2019,mode=imports,min/optimized/fflate.js": "ea55d28973170b0a00ec64b3982153e7baa4d6e0f7cc824375325e348fec4168",
     "https://cdn.skypack.dev/-/fflate@v0.8.2-5l9B8rfElbxSDZ5tcGZe/dist=es2019,mode=imports,min/optimized/fflate.js": "2f6e5e1b027a0608592f3568245555bc67dd0301f39feba925f0dd566712cba0",
-    "https://cdn.skypack.dev/fflate@0.8.0?min": "d320b73423a4efb176248d0771c2eab45fc8d4ce5a1994e6b7e00508e0187f72",
     "https://cdn.skypack.dev/fflate@0.8.2?min": "41d0f54d1836564304e08f5cf6ce59bf58c9dd7f1385f84d76c5d3ccf6c7799e",
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
