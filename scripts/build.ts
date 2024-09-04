@@ -1,12 +1,12 @@
-import { encodeHex } from 'jsr:@std/encoding';
-import { basename, extname, join } from 'jsr:@std/path';
+import { encodeHex } from '@std/encoding';
+import { basename, extname, join } from '@std/path';
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
 import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
   type: 'json',
 };
-import { assertEquals } from 'jsr:@std/assert';
+import { assertEquals } from '@std/assert';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
 import { bundle } from 'jsr:@deno/emit';
 import * as fflate from 'fflate';
