@@ -41,8 +41,8 @@
     "@std/assert": "jsr:@std/assert@^1.0.3",
     "@std/encoding": "jsr:@std/encoding@^1.0.3",
     "@std/path": "jsr:@std/path@^1.0.3",
-    "ajv": "npm:ajv@8.17.1",
-    "fflate": "npm:fflate@0.8.2",
-    "pretty-bytes": "npm:pretty-bytes@6.1.1",
+    "ajv": "https://esm.sh/v135/ajv@8.17.1",
+    "fflate": "https://esm.sh/v135/fflate@0.8.2",
+    "pretty-bytes": "https://esm.sh/v135/pretty-bytes@6.1.1",
   },
 }

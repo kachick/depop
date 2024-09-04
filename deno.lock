@@ -993,6 +993,15 @@
     "https://deno.land/x/wasmbuild@0.15.1/loader.ts": "8c2fc10e21678e42f84c5135d8ab6ab7dc92424c3f05d2354896a29ccfd02a63",
     "https://esm.sh/stable/react@18.3.1/denonext/jsx-runtime.js": "5ff1e02a3bb5c69dd3535d77054b182f1ea51c5eeaf24a396984f6b7012c2716",
     "https://esm.sh/stable/react@18.3.1/denonext/react.mjs": "fc048ffc55366baf7669519127d186761db72046e2bebf35fe8d0de3964defa3",
+    "https://esm.sh/v135/ajv@8.17.1": "f2af562a887a3735d76e7d53677db13dfea1d90f03184182956f689d59d2d5a0",
+    "https://esm.sh/v135/ajv@8.17.1/denonext/ajv.mjs": "704f78083e7ac737f67c38f37a3473d135e2204219db8ccd992a13f6a1f4e212",
+    "https://esm.sh/v135/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "6313b3e05436550e1c0aeb2a282206b9b8d9213b4c6f247964dd7bb4835fb9e5",
+    "https://esm.sh/v135/fast-uri@3.0.1/denonext/fast-uri.mjs": "fac5187f11b297bc2be866610ab5acefa2bce51aa681e8d5f28d24f0c76cbd7d",
+    "https://esm.sh/v135/fflate@0.8.2": "740d5f3a946862ae10a5230bbd37ee409bd1023c5aa2ed4d9d5682395b801016",
+    "https://esm.sh/v135/fflate@0.8.2/denonext/fflate.mjs": "7acb5ade74bddbec501ccd1aff65abd1eb47517e21c2413ef567461677786efe",
+    "https://esm.sh/v135/json-schema-traverse@1.0.0/denonext/json-schema-traverse.mjs": "c5da8353bc014e49ebbb1a2c0162d29969a14c325da19644e511f96ba670cc45",
+    "https://esm.sh/v135/pretty-bytes@6.1.1": "aab0a1cce056d0bffc3325d8a61e13ce3cf3b33e4e497694863fa3a46a1eb492",
+    "https://esm.sh/v135/pretty-bytes@6.1.1/denonext/pretty-bytes.mjs": "29faa921f24d6478ee740b6994f9b3cd7acb2fc452896d519403f7698d760c3b",
     "https://esm.sh/v135/react-dom@18.3.1": "8ce1b3c896918d0e6ccbe49775ca04866aba2fe0e8d2728bdbeb91faf60779b7",
     "https://esm.sh/v135/react-dom@18.3.1/client": "3e23a449c16029111f8fa64809dd83ea5f896a4065f956b6b6d87998854efa1e",
     "https://esm.sh/v135/react-dom@18.3.1/denonext/client.js": "51910a60c05a5614b9dbec634d8594f74a4300fed2023dbdf1f8ea2a41a82b96",
@@ -1006,10 +1015,7 @@
       "jsr:@deno/emit@^0.45.0",
       "jsr:@std/assert@^1.0.3",
       "jsr:@std/encoding@^1.0.3",
-      "jsr:@std/path@^1.0.3",
-      "npm:ajv@8.17.1",
-      "npm:fflate@0.8.2",
-      "npm:pretty-bytes@6.1.1"
+      "jsr:@std/path@^1.0.3"
     ]
   }
 }
