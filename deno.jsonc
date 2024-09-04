@@ -38,6 +38,6 @@
     "include": ["src/", "scripts/"],
   },
   "imports": {
-    "react": "npm:react",
+    "react": "npm:react@18.3.1",
   },
 }

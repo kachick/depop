@@ -83,7 +83,7 @@
   "remote": {},
   "workspace": {
     "dependencies": [
-      "npm:react"
+      "npm:react@18.3.1"
     ]
   }
 }
