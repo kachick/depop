@@ -1,6 +1,6 @@
-/** @jsxImportSource https://esm.sh/v128/react@18.2.0 */
+/** @jsxImportSource https://esm.sh/v128/react@18.2.0?pin=v135 */
 
-import { useEffect, useState } from 'https://esm.sh/v128/react@18.2.0';
+import { useEffect, useState } from 'https://esm.sh/v128/react@18.2.0?pin=v135';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

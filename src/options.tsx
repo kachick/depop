@@ -1,7 +1,7 @@
-/** @jsxImportSource https://esm.sh/v128/react@18.2.0 */
+/** @jsxImportSource https://esm.sh/v128/react@18.2.0?pin=v135 */
 
-import { StrictMode } from 'https://esm.sh/v128/react@18.2.0';
-import { createRoot } from 'https://esm.sh/v128/react-dom@18.2.0/client';
+import { StrictMode } from 'https://esm.sh/v128/react@18.2.0?pin=v135';
+import { createRoot } from 'https://esm.sh/v128/react-dom@18.2.0/client?pin=v135';
 import App from './options/App.tsx';
 import { assertIsDefined } from './typeguards.ts';
 
