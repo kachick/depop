@@ -25,8 +25,7 @@
         {
           default = pkgs.mkShellNoCC {
             buildInputs =
-              with pkgs;
-              [
+              (with pkgs; [
                 bashInteractive
                 nil
                 nixfmt-rfc-style
@@ -38,8 +37,11 @@
                 # To maintain icons
                 imagemagick
                 exiftool
-              ]
-              ++ [ unstables.deno ];
+              ])
+              ++ (with unstables; [
+                deno
+                stylelint
+              ]);
           };
         }
       );
