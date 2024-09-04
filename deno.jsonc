@@ -22,7 +22,7 @@
       "deno.ns",
     ],
     "types": [
-      "https://esm.sh/v128/chrome-types@0.1.216/index.d.ts",
+      "https://esm.sh/v135/chrome-types@0.1.216/index.d.ts",
     ],
   },
   "lint": {

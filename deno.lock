@@ -974,7 +974,8 @@
   "redirects": {
     "https://esm.sh/v128/@types/react-dom@~18.2/client~.d.ts": "https://esm.sh/v128/@types/react-dom@18.2.25/client~.d.ts",
     "https://esm.sh/v128/@types/react@~18.2/index.d.ts": "https://esm.sh/v128/@types/react@18.2.38/index.d.ts",
-    "https://esm.sh/v128/@types/react@~18.2/jsx-runtime~.d.ts": "https://esm.sh/v128/@types/react@18.2.38/jsx-runtime~.d.ts"
+    "https://esm.sh/v128/@types/react@~18.2/jsx-runtime~.d.ts": "https://esm.sh/v128/@types/react@18.2.38/jsx-runtime~.d.ts",
+    "https://esm.sh/v135/@types/react-dom@~18.2/client~.d.ts": "https://esm.sh/v135/@types/react-dom@18.2.25/client~.d.ts"
   },
   "remote": {
     "https://cdn.skypack.dev/-/fflate@v0.8.2-5l9B8rfElbxSDZ5tcGZe/dist=es2019,mode=imports,min/optimized/fflate.js": "2f6e5e1b027a0608592f3568245555bc67dd0301f39feba925f0dd566712cba0",
@@ -1170,6 +1171,19 @@
     "https://esm.sh/v128/react@18.2.0": "8950a34a030620fce8349d6bd3913b3bdb186c5ec7968fa5ba4d054e22d78e6c",
     "https://esm.sh/v128/react@18.2.0/jsx-runtime": "914a55a07c388d345c5a0c11616ee5282242e8b8dfd0d505b83500ea04fd9870",
     "https://esm.sh/v128/scheduler@0.23.0/denonext/scheduler.mjs": "cdbc6d2823e2c6fffcb14501146ff2602a38c48d3c9dd9268f308e833ede2b49",
-    "https://esm.sh/v128/uri-js@4.4.1/denonext/uri-js.mjs": "901d462f9db207376b39ec603d841d87e6b9e9568ce97dfaab12aa77d0f99f74"
+    "https://esm.sh/v128/uri-js@4.4.1/denonext/uri-js.mjs": "901d462f9db207376b39ec603d841d87e6b9e9568ce97dfaab12aa77d0f99f74",
+    "https://esm.sh/v135/ajv@8.12.0": "cc1a73af661466c7f4e6a94d93ece78542d700f2165bdb16a531e9db8856c5aa",
+    "https://esm.sh/v135/ajv@8.12.0/denonext/ajv.mjs": "4645df9093d0f8be0e964070a4a7aea8adea06e8883660340931f7a3f979fc65",
+    "https://esm.sh/v135/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "6313b3e05436550e1c0aeb2a282206b9b8d9213b4c6f247964dd7bb4835fb9e5",
+    "https://esm.sh/v135/json-schema-traverse@1.0.0/denonext/json-schema-traverse.mjs": "c5da8353bc014e49ebbb1a2c0162d29969a14c325da19644e511f96ba670cc45",
+    "https://esm.sh/v135/pretty-bytes@6.1.0": "d2e8b3ace51802b38e4d55e4e79e429a0694d2210a55d88c30e7151359e38746",
+    "https://esm.sh/v135/pretty-bytes@6.1.0/denonext/pretty-bytes.mjs": "137f391dbf81c7059bf348414cb6c29ef994fa658cb1d57046eeea07a2ec690f",
+    "https://esm.sh/v135/react-dom@18.2.0/client": "391c0483ce063105b7d0422c653da70d52ac5f4efa02b0873ce8b70c4dc9ff61",
+    "https://esm.sh/v135/react-dom@18.2.0/denonext/client.js": "67082d736d11d0d288a4d10f260ab19cbf556c010b2d057088b0b4a5d10338a5",
+    "https://esm.sh/v135/react-dom@18.2.0/denonext/react-dom.mjs": "8191fc377ea7083cca5640699c4abd75de033089eb932799e29aa04bb136838f",
+    "https://esm.sh/v135/react@18.2.0": "04ad7dc6d11fa27b24c136686a334ecdd19e972fae627cd98cbdc13cdac238c2",
+    "https://esm.sh/v135/react@18.2.0/jsx-runtime": "aa011b336e339e6eaacc89787e7e3d6eb726b3701d9f8ac7fcd01db1595357cb",
+    "https://esm.sh/v135/scheduler@0.23.0/denonext/scheduler.mjs": "cdbc6d2823e2c6fffcb14501146ff2602a38c48d3c9dd9268f308e833ede2b49",
+    "https://esm.sh/v135/uri-js@4.4.1/denonext/uri-js.mjs": "901d462f9db207376b39ec603d841d87e6b9e9568ce97dfaab12aa77d0f99f74"
   }
 }
