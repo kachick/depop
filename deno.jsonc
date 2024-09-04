@@ -2,7 +2,7 @@
   "tasks": {
     "build": "deno run --node-modules-dir --quiet --allow-net --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
-    "check": "dprint check && typos && deno fmt --check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
+    "check": "dprint check && typos && dprint check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
     "stylelint": "deno task cache && stylelint src/*.css",
     "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
@@ -10,30 +10,26 @@
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
-    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize",
+    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
   },
   "compilerOptions": {
     "lib": [
       "dom",
       "dom.iterable",
       "dom.asynciterable",
-      "deno.ns",
+      "deno.ns"
     ],
     "types": [
-      "https://esm.sh/v135/chrome-types@0.1.301/index.d.ts",
+      "https://esm.sh/v135/chrome-types@0.1.301/index.d.ts"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "https://esm.sh/v135/react@18.3.1",
+    "jsxImportSource": "https://esm.sh/v135/react@18.3.1"
   },
   "lint": {
     "include": ["src/", "scripts/"],
     "rules": {
-      "tags": ["recommended"],
-    },
-  },
-  "fmt": {
-    "singleQuote": true,
-    "include": ["src/", "scripts/"],
+      "tags": ["recommended"]
+    }
   },
   "imports": {
     "@deno/emit": "jsr:@deno/emit@^0.45.0",
@@ -42,6 +38,6 @@
     "@std/path": "jsr:@std/path@^1.0.3",
     "ajv": "https://esm.sh/v135/ajv@8.17.1",
     "fflate": "https://esm.sh/v135/fflate@0.8.2",
-    "pretty-bytes": "https://esm.sh/v135/pretty-bytes@6.1.1",
-  },
+    "pretty-bytes": "https://esm.sh/v135/pretty-bytes@6.1.1"
+  }
 }
