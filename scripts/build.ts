@@ -14,7 +14,7 @@ import { assertEquals } from 'https://deno.land/std@0.215.0/testing/asserts.ts';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
 import { bundle } from 'https://deno.land/x/emit@0.35.0/mod.ts';
 import * as fflate from 'npm:fflate@0.8.2';
-import Ajv from 'npm:ajv@8.17.1';
+import { Ajv } from 'npm:ajv@8.17.1';
 import prettyBytes from 'npm:pretty-bytes@6.1.1';
 
 const cleanUpSync = () => {
