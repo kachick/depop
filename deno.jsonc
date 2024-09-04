@@ -21,7 +21,7 @@
       "deno.ns",
     ],
     "types": [
-      "npm:chrome-types@0.1.301/index.d.ts",
+      "https://esm.sh/v135/chrome-types@0.1.301/index.d.ts",
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "npm:react@18.3.1",

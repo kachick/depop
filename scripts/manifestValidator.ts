@@ -1,4 +1,4 @@
-import Ajv from 'npm:ajv@8.17.1';
+import { Ajv } from 'npm:ajv@8.17.1';
 // Do not include from https://json.schemastore.org/chrome-manifest, current official stored has wrong definitions
 // See https://github.com/SchemaStore/schemastore/issues/2861 for further detail
 import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
