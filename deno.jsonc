@@ -22,8 +22,10 @@
       "deno.ns",
     ],
     "types": [
-      "https://esm.sh/v135/chrome-types@0.1.216/index.d.ts",
+      "npm:chrome-types@0.1.301/index.d.ts",
     ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
   },
   "lint": {
     "include": ["src/", "scripts/"],
@@ -34,5 +36,8 @@
   "fmt": {
     "singleQuote": true,
     "include": ["src/", "scripts/"],
+  },
+  "imports": {
+    "react": "npm:react",
   },
 }
