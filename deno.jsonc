@@ -1,13 +1,13 @@
 {
   "tasks": {
-    "build": "deno run --quiet --allow-net --allow-read --allow-write --allow-env scripts/build.ts",
+    "build": "deno run --node-modules-dir --quiet --allow-net --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
-    "check": "dprint check && typos && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts && deno task check:manifest",
-    "check:manifest": "deno run scripts/manifestValidator.ts",
+    "check": "dprint check && typos && deno fmt --check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
+    "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
     "stylelint": "stylelint src/*.css",
     "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
     "cache": "deno cache --node-modules-dir --reload **/*.ts **/*.tsx",
-    "update": "deno cache --frozen=false --node-modules-dir **/*.ts **/*.tsx",
+    "update": "deno cache --frozen=false --reload --node-modules-dir **/*.ts **/*.tsx",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
