@@ -25,7 +25,7 @@
       "npm:chrome-types@0.1.301/index.d.ts",
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
+    "jsxImportSource": "npm:react@18.3.1",
   },
   "lint": {
     "include": ["src/", "scripts/"],
