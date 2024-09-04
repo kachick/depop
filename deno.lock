@@ -2,51 +2,51 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "npm:stylelint-config-recommended@13.0.0": "npm:stylelint-config-recommended@13.0.0_stylelint@15.10.3__@csstools+css-tokenizer@2.4.1__@csstools+css-parser-algorithms@2.7.1___@csstools+css-tokenizer@2.4.1__postcss-selector-parser@6.1.2__postcss@8.4.44",
-      "npm:stylelint@15.10.3": "npm:stylelint@15.10.3_@csstools+css-tokenizer@2.4.1_@csstools+css-parser-algorithms@2.7.1__@csstools+css-tokenizer@2.4.1_postcss-selector-parser@6.1.2_postcss@8.4.44"
+      "npm:stylelint-config-recommended@13.0.0": "npm:stylelint-config-recommended@13.0.0_stylelint@15.10.3__@csstools+css-tokenizer@2.3.1__@csstools+css-parser-algorithms@2.6.3___@csstools+css-tokenizer@2.3.1__postcss-selector-parser@6.0.16__postcss@8.4.38",
+      "npm:stylelint@15.10.3": "npm:stylelint@15.10.3_@csstools+css-tokenizer@2.3.1_@csstools+css-parser-algorithms@2.6.3__@csstools+css-tokenizer@2.3.1_postcss-selector-parser@6.0.16_postcss@8.4.38"
     },
     "npm": {
-      "@babel/code-frame@7.24.7": {
-        "integrity": "sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==",
+      "@babel/code-frame@7.24.2": {
+        "integrity": "sha512-y5+tLQyV8pg3fsiln67BVLD1P13Eg4lh5RW9mF0zUuvLrv9uIQ4MCL+CRT+FTsBlBjcIan6PGsLcBN0m3ClUyQ==",
         "dependencies": {
-          "@babel/highlight": "@babel/highlight@7.24.7",
-          "picocolors": "picocolors@1.1.0"
+          "@babel/highlight": "@babel/highlight@7.24.5",
+          "picocolors": "picocolors@1.0.1"
         }
       },
-      "@babel/helper-validator-identifier@7.24.7": {
-        "integrity": "sha512-rR+PBcQ1SMQDDyF6X0wxtG8QyLCgUB0eRAGguqRLfkCA87l7yAP7ehq8SNj96OOGTO8OBV70KhuFYcIkHXOg0w==",
+      "@babel/helper-validator-identifier@7.24.5": {
+        "integrity": "sha512-3q93SSKX2TWCG30M2G2kwaKeTYgEUp5Snjuj8qm729SObL6nbtUldAi37qbxkD5gg3xnBio+f9nqpSepGZMvxA==",
         "dependencies": {}
       },
-      "@babel/highlight@7.24.7": {
-        "integrity": "sha512-EStJpq4OuY8xYfhGVXngigBJRWxftKX9ksiGDnmlY3o7B/V7KIAc9X4oiK87uPJSc/vs5L869bem5fhZa8caZw==",
+      "@babel/highlight@7.24.5": {
+        "integrity": "sha512-8lLmua6AVh/8SLJRRVD6V8p73Hir9w5mJrhE+IPpILG31KKlI9iz5zmBYKcWPS59qSfgP9RaSBQSHHE81WKuEw==",
         "dependencies": {
-          "@babel/helper-validator-identifier": "@babel/helper-validator-identifier@7.24.7",
+          "@babel/helper-validator-identifier": "@babel/helper-validator-identifier@7.24.5",
           "chalk": "chalk@2.4.2",
           "js-tokens": "js-tokens@4.0.0",
-          "picocolors": "picocolors@1.1.0"
+          "picocolors": "picocolors@1.0.1"
         }
       },
-      "@csstools/css-parser-algorithms@2.7.1_@csstools+css-tokenizer@2.4.1": {
-        "integrity": "sha512-2SJS42gxmACHgikc1WGesXLIT8d/q2l0UFM7TaEeIzdFCE/FPMtTiizcPGGJtlPo2xuQzY09OhrLTzRxqJqwGw==",
+      "@csstools/css-parser-algorithms@2.6.3_@csstools+css-tokenizer@2.3.1": {
+        "integrity": "sha512-xI/tL2zxzEbESvnSxwFgwvy5HS00oCXxL4MLs6HUiDcYfwowsoQaABKxUElp1ARITrINzBnsECOc1q0eg2GOrA==",
         "dependencies": {
-          "@csstools/css-tokenizer": "@csstools/css-tokenizer@2.4.1"
+          "@csstools/css-tokenizer": "@csstools/css-tokenizer@2.3.1"
         }
       },
-      "@csstools/css-tokenizer@2.4.1": {
-        "integrity": "sha512-eQ9DIktFJBhGjioABJRtUucoWR2mwllurfnM8LuNGAqX3ViZXaUchqk+1s7jjtkFiT9ySdACsFEA3etErkALUg==",
+      "@csstools/css-tokenizer@2.3.1": {
+        "integrity": "sha512-iMNHTyxLbBlWIfGtabT157LH9DUx9X8+Y3oymFEuMj8HNc+rpE3dPFGFgHjpKfjeFDjLjYIAIhXPGvS2lKxL9g==",
         "dependencies": {}
       },
-      "@csstools/media-query-list-parser@2.1.13_@csstools+css-parser-algorithms@2.7.1__@csstools+css-tokenizer@2.4.1_@csstools+css-tokenizer@2.4.1": {
-        "integrity": "sha512-XaHr+16KRU9Gf8XLi3q8kDlI18d5vzKSKCY510Vrtc9iNR0NJzbY9hhTmwhzYZj/ZwGL4VmB3TA9hJW0Um2qFA==",
+      "@csstools/media-query-list-parser@2.1.11_@csstools+css-parser-algorithms@2.6.3__@csstools+css-tokenizer@2.3.1_@csstools+css-tokenizer@2.3.1": {
+        "integrity": "sha512-uox5MVhvNHqitPP+SynrB1o8oPxPMt2JLgp5ghJOWf54WGQ5OKu47efne49r1SWqs3wRP8xSWjnO9MBKxhB1dA==",
         "dependencies": {
-          "@csstools/css-parser-algorithms": "@csstools/css-parser-algorithms@2.7.1_@csstools+css-tokenizer@2.4.1",
-          "@csstools/css-tokenizer": "@csstools/css-tokenizer@2.4.1"
+          "@csstools/css-parser-algorithms": "@csstools/css-parser-algorithms@2.6.3_@csstools+css-tokenizer@2.3.1",
+          "@csstools/css-tokenizer": "@csstools/css-tokenizer@2.3.1"
         }
       },
-      "@csstools/selector-specificity@3.1.1_postcss-selector-parser@6.1.2": {
+      "@csstools/selector-specificity@3.1.1_postcss-selector-parser@6.0.16": {
         "integrity": "sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==",
         "dependencies": {
-          "postcss-selector-parser": "postcss-selector-parser@6.1.2"
+          "postcss-selector-parser": "postcss-selector-parser@6.0.16"
         }
       },
       "@nodelib/fs.scandir@2.1.5": {
@@ -75,13 +75,13 @@
         "integrity": "sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==",
         "dependencies": {}
       },
-      "ajv@8.17.1": {
-        "integrity": "sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==",
+      "ajv@8.13.0": {
+        "integrity": "sha512-PRA911Blj99jR5RMeTunVbNXMF6Lp4vZXnk5GQjcnUWUTsrXtekg/pnmFFI2u/I36Y/2bITGS30GZCXei6uNkA==",
         "dependencies": {
           "fast-deep-equal": "fast-deep-equal@3.1.3",
-          "fast-uri": "fast-uri@3.0.1",
           "json-schema-traverse": "json-schema-traverse@1.0.0",
-          "require-from-string": "require-from-string@2.0.2"
+          "require-from-string": "require-from-string@2.0.2",
+          "uri-js": "uri-js@4.4.1"
         }
       },
       "ansi-regex@5.0.1": {
@@ -131,10 +131,10 @@
           "concat-map": "concat-map@0.0.1"
         }
       },
-      "braces@3.0.3": {
-        "integrity": "sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==",
+      "braces@3.0.2": {
+        "integrity": "sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==",
         "dependencies": {
-          "fill-range": "fill-range@7.1.1"
+          "fill-range": "fill-range@7.0.1"
         }
       },
       "callsites@3.1.0": {
@@ -214,8 +214,8 @@
         "integrity": "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==",
         "dependencies": {}
       },
-      "debug@4.3.6": {
-        "integrity": "sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==",
+      "debug@4.3.4": {
+        "integrity": "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==",
         "dependencies": {
           "ms": "ms@2.1.2"
         }
@@ -266,12 +266,8 @@
           "@nodelib/fs.walk": "@nodelib/fs.walk@1.2.8",
           "glob-parent": "glob-parent@5.1.2",
           "merge2": "merge2@1.4.1",
-          "micromatch": "micromatch@4.0.8"
+          "micromatch": "micromatch@4.0.5"
         }
-      },
-      "fast-uri@3.0.1": {
-        "integrity": "sha512-MWipKbbYiYI0UC7cl8m/i/IWTqfC8YXsqjzybjddLsFjStroQzsHXkc73JutMvBiXmOvapk+axIl79ig5t55Bw==",
-        "dependencies": {}
       },
       "fastest-levenshtein@1.0.16": {
         "integrity": "sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==",
@@ -289,8 +285,8 @@
           "flat-cache": "flat-cache@3.2.0"
         }
       },
-      "fill-range@7.1.1": {
-        "integrity": "sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==",
+      "fill-range@7.0.1": {
+        "integrity": "sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==",
         "dependencies": {
           "to-regex-range": "to-regex-range@5.0.1"
         }
@@ -359,7 +355,7 @@
           "array-union": "array-union@2.1.0",
           "dir-glob": "dir-glob@3.0.1",
           "fast-glob": "fast-glob@3.3.2",
-          "ignore": "ignore@5.3.2",
+          "ignore": "ignore@5.3.1",
           "merge2": "merge2@1.4.1",
           "slash": "slash@3.0.0"
         }
@@ -396,8 +392,8 @@
         "integrity": "sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==",
         "dependencies": {}
       },
-      "ignore@5.3.2": {
-        "integrity": "sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==",
+      "ignore@5.3.1": {
+        "integrity": "sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==",
         "dependencies": {}
       },
       "import-fresh@3.3.0": {
@@ -438,8 +434,8 @@
         "integrity": "sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==",
         "dependencies": {}
       },
-      "is-core-module@2.15.1": {
-        "integrity": "sha512-z0vtXSwucUJtANQWldhbtbt7BnL0vxiFjIdDLAatwhDYty2bad6s+rijD6Ri4YuYJubLzIJLUidCh09e1djEVQ==",
+      "is-core-module@2.13.1": {
+        "integrity": "sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==",
         "dependencies": {
           "hasown": "hasown@2.0.2"
         }
@@ -567,10 +563,10 @@
         "integrity": "sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==",
         "dependencies": {}
       },
-      "micromatch@4.0.8": {
-        "integrity": "sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==",
+      "micromatch@4.0.5": {
+        "integrity": "sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==",
         "dependencies": {
-          "braces": "braces@3.0.3",
+          "braces": "braces@3.0.2",
           "picomatch": "picomatch@2.3.1"
         }
       },
@@ -604,8 +600,8 @@
         "integrity": "sha512-p2W1sgqij3zMMyRC067Dg16bfzVH+w7hyegmpIvZ4JNjqtGOVAIvLmjBx3yP7YTe9vKJgkoNOPjwQGogDoMXFA==",
         "dependencies": {
           "hosted-git-info": "hosted-git-info@4.1.0",
-          "is-core-module": "is-core-module@2.15.1",
-          "semver": "semver@7.6.3",
+          "is-core-module": "is-core-module@2.13.1",
+          "semver": "semver@7.6.2",
           "validate-npm-package-license": "validate-npm-package-license@3.0.4"
         }
       },
@@ -640,7 +636,7 @@
       "parse-json@5.2.0": {
         "integrity": "sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==",
         "dependencies": {
-          "@babel/code-frame": "@babel/code-frame@7.24.7",
+          "@babel/code-frame": "@babel/code-frame@7.24.2",
           "error-ex": "error-ex@1.3.2",
           "json-parse-even-better-errors": "json-parse-even-better-errors@2.3.1",
           "lines-and-columns": "lines-and-columns@1.2.4"
@@ -658,26 +654,26 @@
         "integrity": "sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==",
         "dependencies": {}
       },
-      "picocolors@1.1.0": {
-        "integrity": "sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==",
+      "picocolors@1.0.1": {
+        "integrity": "sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==",
         "dependencies": {}
       },
       "picomatch@2.3.1": {
         "integrity": "sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==",
         "dependencies": {}
       },
-      "postcss-resolve-nested-selector@0.1.6": {
-        "integrity": "sha512-0sglIs9Wmkzbr8lQwEyIzlDOOC9bGmfVKcJTaxv3vMmd3uo4o4DerC3En0bnmgceeql9BfC8hRkp7cg0fjdVqw==",
+      "postcss-resolve-nested-selector@0.1.1": {
+        "integrity": "sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==",
         "dependencies": {}
       },
-      "postcss-safe-parser@6.0.0_postcss@8.4.44": {
+      "postcss-safe-parser@6.0.0_postcss@8.4.38": {
         "integrity": "sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==",
         "dependencies": {
-          "postcss": "postcss@8.4.44"
+          "postcss": "postcss@8.4.38"
         }
       },
-      "postcss-selector-parser@6.1.2": {
-        "integrity": "sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==",
+      "postcss-selector-parser@6.0.16": {
+        "integrity": "sha512-A0RVJrX+IUkVZbW3ClroRWurercFhieevHB38sr2+l9eUClMqome3LmEmnhlNy+5Mr2EYN6B2Kaw9wYdd+VHiw==",
         "dependencies": {
           "cssesc": "cssesc@3.0.0",
           "util-deprecate": "util-deprecate@1.0.2"
@@ -687,13 +683,17 @@
         "integrity": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==",
         "dependencies": {}
       },
-      "postcss@8.4.44": {
-        "integrity": "sha512-Aweb9unOEpQ3ezu4Q00DPvvM2ZTUitJdNKeP/+uQgr1IBIqu574IaZoURId7BKtWMREwzKa9OgzPzezWGPWFQw==",
+      "postcss@8.4.38": {
+        "integrity": "sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==",
         "dependencies": {
           "nanoid": "nanoid@3.3.7",
-          "picocolors": "picocolors@1.1.0",
+          "picocolors": "picocolors@1.0.1",
           "source-map-js": "source-map-js@1.2.0"
         }
+      },
+      "punycode@2.3.1": {
+        "integrity": "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==",
+        "dependencies": {}
       },
       "queue-microtask@1.2.3": {
         "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==",
@@ -755,8 +755,8 @@
           "queue-microtask": "queue-microtask@1.2.3"
         }
       },
-      "semver@7.6.3": {
-        "integrity": "sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==",
+      "semver@7.6.2": {
+        "integrity": "sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==",
         "dependencies": {}
       },
       "signal-exit@4.1.0": {
@@ -783,7 +783,7 @@
         "integrity": "sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==",
         "dependencies": {
           "spdx-expression-parse": "spdx-expression-parse@3.0.1",
-          "spdx-license-ids": "spdx-license-ids@3.0.20"
+          "spdx-license-ids": "spdx-license-ids@3.0.17"
         }
       },
       "spdx-exceptions@2.5.0": {
@@ -794,11 +794,11 @@
         "integrity": "sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q==",
         "dependencies": {
           "spdx-exceptions": "spdx-exceptions@2.5.0",
-          "spdx-license-ids": "spdx-license-ids@3.0.20"
+          "spdx-license-ids": "spdx-license-ids@3.0.17"
         }
       },
-      "spdx-license-ids@3.0.20": {
-        "integrity": "sha512-jg25NiDV/1fLtSgEgyvVyDunvaNHbuwF9lfNV17gSmPFAlYzdfNBlLtLzXTevwkPj7DhGbmN9VnmJIgLnhvaBw==",
+      "spdx-license-ids@3.0.17": {
+        "integrity": "sha512-sh8PWc/ftMqAAdFiBu6Fy6JUOYjqDJBJvIhpfDMyHrr0Rbp5liZqd4TjtQ/RgfLjKFZb+LMx5hpml5qOWy0qvg==",
         "dependencies": {}
       },
       "string-width@4.2.3": {
@@ -825,25 +825,25 @@
         "integrity": "sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==",
         "dependencies": {}
       },
-      "stylelint-config-recommended@13.0.0_stylelint@15.10.3__@csstools+css-tokenizer@2.4.1__@csstools+css-parser-algorithms@2.7.1___@csstools+css-tokenizer@2.4.1__postcss-selector-parser@6.1.2__postcss@8.4.44": {
+      "stylelint-config-recommended@13.0.0_stylelint@15.10.3__@csstools+css-tokenizer@2.3.1__@csstools+css-parser-algorithms@2.6.3___@csstools+css-tokenizer@2.3.1__postcss-selector-parser@6.0.16__postcss@8.4.38": {
         "integrity": "sha512-EH+yRj6h3GAe/fRiyaoO2F9l9Tgg50AOFhaszyfov9v6ayXJ1IkSHwTxd7lB48FmOeSGDPLjatjO11fJpmarkQ==",
         "dependencies": {
-          "stylelint": "stylelint@15.10.3_@csstools+css-tokenizer@2.4.1_@csstools+css-parser-algorithms@2.7.1__@csstools+css-tokenizer@2.4.1_postcss-selector-parser@6.1.2_postcss@8.4.44"
+          "stylelint": "stylelint@15.10.3_@csstools+css-tokenizer@2.3.1_@csstools+css-parser-algorithms@2.6.3__@csstools+css-tokenizer@2.3.1_postcss-selector-parser@6.0.16_postcss@8.4.38"
         }
       },
-      "stylelint@15.10.3_@csstools+css-tokenizer@2.4.1_@csstools+css-parser-algorithms@2.7.1__@csstools+css-tokenizer@2.4.1_postcss-selector-parser@6.1.2_postcss@8.4.44": {
+      "stylelint@15.10.3_@csstools+css-tokenizer@2.3.1_@csstools+css-parser-algorithms@2.6.3__@csstools+css-tokenizer@2.3.1_postcss-selector-parser@6.0.16_postcss@8.4.38": {
         "integrity": "sha512-aBQMMxYvFzJJwkmg+BUUg3YfPyeuCuKo2f+LOw7yYbU8AZMblibwzp9OV4srHVeQldxvSFdz0/Xu8blq2AesiA==",
         "dependencies": {
-          "@csstools/css-parser-algorithms": "@csstools/css-parser-algorithms@2.7.1_@csstools+css-tokenizer@2.4.1",
-          "@csstools/css-tokenizer": "@csstools/css-tokenizer@2.4.1",
-          "@csstools/media-query-list-parser": "@csstools/media-query-list-parser@2.1.13_@csstools+css-parser-algorithms@2.7.1__@csstools+css-tokenizer@2.4.1_@csstools+css-tokenizer@2.4.1",
-          "@csstools/selector-specificity": "@csstools/selector-specificity@3.1.1_postcss-selector-parser@6.1.2",
+          "@csstools/css-parser-algorithms": "@csstools/css-parser-algorithms@2.6.3_@csstools+css-tokenizer@2.3.1",
+          "@csstools/css-tokenizer": "@csstools/css-tokenizer@2.3.1",
+          "@csstools/media-query-list-parser": "@csstools/media-query-list-parser@2.1.11_@csstools+css-parser-algorithms@2.6.3__@csstools+css-tokenizer@2.3.1_@csstools+css-tokenizer@2.3.1",
+          "@csstools/selector-specificity": "@csstools/selector-specificity@3.1.1_postcss-selector-parser@6.0.16",
           "balanced-match": "balanced-match@2.0.0",
           "colord": "colord@2.9.3",
           "cosmiconfig": "cosmiconfig@8.3.6",
           "css-functions-list": "css-functions-list@3.2.2",
           "css-tree": "css-tree@2.3.1",
-          "debug": "debug@4.3.6",
+          "debug": "debug@4.3.4",
           "fast-glob": "fast-glob@3.3.2",
           "fastest-levenshtein": "fastest-levenshtein@1.0.16",
           "file-entry-cache": "file-entry-cache@6.0.1",
@@ -851,26 +851,26 @@
           "globby": "globby@11.1.0",
           "globjoin": "globjoin@0.1.4",
           "html-tags": "html-tags@3.3.1",
-          "ignore": "ignore@5.3.2",
+          "ignore": "ignore@5.3.1",
           "import-lazy": "import-lazy@4.0.0",
           "imurmurhash": "imurmurhash@0.1.4",
           "is-plain-object": "is-plain-object@5.0.0",
           "known-css-properties": "known-css-properties@0.28.0",
           "mathml-tag-names": "mathml-tag-names@2.1.3",
           "meow": "meow@10.1.5",
-          "micromatch": "micromatch@4.0.8",
+          "micromatch": "micromatch@4.0.5",
           "normalize-path": "normalize-path@3.0.0",
-          "picocolors": "picocolors@1.1.0",
-          "postcss": "postcss@8.4.44",
-          "postcss-resolve-nested-selector": "postcss-resolve-nested-selector@0.1.6",
-          "postcss-safe-parser": "postcss-safe-parser@6.0.0_postcss@8.4.44",
-          "postcss-selector-parser": "postcss-selector-parser@6.1.2",
+          "picocolors": "picocolors@1.0.1",
+          "postcss": "postcss@8.4.38",
+          "postcss-resolve-nested-selector": "postcss-resolve-nested-selector@0.1.1",
+          "postcss-safe-parser": "postcss-safe-parser@6.0.0_postcss@8.4.38",
+          "postcss-selector-parser": "postcss-selector-parser@6.0.16",
           "postcss-value-parser": "postcss-value-parser@4.2.0",
           "resolve-from": "resolve-from@5.0.0",
           "string-width": "string-width@4.2.3",
           "strip-ansi": "strip-ansi@6.0.1",
           "style-search": "style-search@0.1.0",
-          "supports-hyperlinks": "supports-hyperlinks@3.1.0",
+          "supports-hyperlinks": "supports-hyperlinks@3.0.0",
           "svg-tags": "svg-tags@1.0.0",
           "table": "table@6.8.2",
           "write-file-atomic": "write-file-atomic@5.0.1"
@@ -888,8 +888,8 @@
           "has-flag": "has-flag@4.0.0"
         }
       },
-      "supports-hyperlinks@3.1.0": {
-        "integrity": "sha512-2rn0BZ+/f7puLOHZm1HOJfwBggfaHXUpPUSSG/SWM4TWp5KCfmNYwnC3hruy2rZlMnmWZ+QAGpZfchu3f3695A==",
+      "supports-hyperlinks@3.0.0": {
+        "integrity": "sha512-QBDPHyPQDRTy9ku4URNGY5Lah8PAaXs6tAAwp55sL5WCsSW7GIfdf6W5ixfziW+t7wh3GVvHyHHyQ1ESsoRvaA==",
         "dependencies": {
           "has-flag": "has-flag@4.0.0",
           "supports-color": "supports-color@7.2.0"
@@ -902,7 +902,7 @@
       "table@6.8.2": {
         "integrity": "sha512-w2sfv80nrAh2VCbqR5AK27wswXhqcck2AhfnNW76beQXskGZ1V12GwS//yYVa3d3fcvAip2OUnbDAjW2k3v9fA==",
         "dependencies": {
-          "ajv": "ajv@8.17.1",
+          "ajv": "ajv@8.13.0",
           "lodash.truncate": "lodash.truncate@4.4.2",
           "slice-ansi": "slice-ansi@4.0.0",
           "string-width": "string-width@4.2.3",
@@ -922,6 +922,12 @@
       "type-fest@1.4.0": {
         "integrity": "sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==",
         "dependencies": {}
+      },
+      "uri-js@4.4.1": {
+        "integrity": "sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==",
+        "dependencies": {
+          "punycode": "punycode@2.3.1"
+        }
       },
       "util-deprecate@1.0.2": {
         "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==",
@@ -1151,21 +1157,6 @@
     "https://deno.land/x/emit@0.35.0/mod.ts": "aec8555fdda59cc02cc1e646bb00bb3ed2811026b5f0816a34a1f17d104b1d6d",
     "https://deno.land/x/wasmbuild@0.15.1/cache.ts": "9d01b5cb24e7f2a942bbd8d14b093751fa690a6cde8e21709ddc97667e6669ed",
     "https://deno.land/x/wasmbuild@0.15.1/loader.ts": "8c2fc10e21678e42f84c5135d8ab6ab7dc92424c3f05d2354896a29ccfd02a63",
-    "https://esm.sh/stable/react@18.2.0/denonext/jsx-runtime.js": "309faa58fa4e914707daffa1a9514bef4593c952f930640cf93bb871aab7ceb6",
-    "https://esm.sh/stable/react@18.2.0/denonext/react.mjs": "3c4f23bcfc53b256fcfaf6f834fa9f584c3bb7be667b2682c6cb6ba8ef88f8e6",
-    "https://esm.sh/v128/ajv@8.12.0": "9cf173dc31ba12c06f03c4b1080258d57fd167f9c405a4c9d4bc7ac39221a263",
-    "https://esm.sh/v128/ajv@8.12.0/denonext/ajv.mjs": "dc90a154b69c78a64ffc18ac48bb51a379f1db75ac81a3b66f89cb9169cdaae2",
-    "https://esm.sh/v128/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "6313b3e05436550e1c0aeb2a282206b9b8d9213b4c6f247964dd7bb4835fb9e5",
-    "https://esm.sh/v128/json-schema-traverse@1.0.0/denonext/json-schema-traverse.mjs": "c5da8353bc014e49ebbb1a2c0162d29969a14c325da19644e511f96ba670cc45",
-    "https://esm.sh/v128/pretty-bytes@6.1.0": "b150ee251eddbfaa0cb2d582367d34f037b7a7f9dc01a08b180c51329714a117",
-    "https://esm.sh/v128/pretty-bytes@6.1.0/denonext/pretty-bytes.mjs": "137f391dbf81c7059bf348414cb6c29ef994fa658cb1d57046eeea07a2ec690f",
-    "https://esm.sh/v128/react-dom@18.2.0/client": "64b1a974cc818447c291cdc18f32ffa1d2f142db1b343d1c3bd1d9762785c25a",
-    "https://esm.sh/v128/react-dom@18.2.0/denonext/client.js": "04c17de4d1a4c89258ca034b40e2cef959df9fc9e26d7ec69afe23f62ac4923b",
-    "https://esm.sh/v128/react-dom@18.2.0/denonext/react-dom.mjs": "a2ae6182d08dcf63e912149425f52ecb37e7bd888438effe49ea71a58f9ab748",
-    "https://esm.sh/v128/react@18.2.0": "8950a34a030620fce8349d6bd3913b3bdb186c5ec7968fa5ba4d054e22d78e6c",
-    "https://esm.sh/v128/react@18.2.0/jsx-runtime": "914a55a07c388d345c5a0c11616ee5282242e8b8dfd0d505b83500ea04fd9870",
-    "https://esm.sh/v128/scheduler@0.23.0/denonext/scheduler.mjs": "cdbc6d2823e2c6fffcb14501146ff2602a38c48d3c9dd9268f308e833ede2b49",
-    "https://esm.sh/v128/uri-js@4.4.1/denonext/uri-js.mjs": "901d462f9db207376b39ec603d841d87e6b9e9568ce97dfaab12aa77d0f99f74",
     "https://esm.sh/v135/ajv@8.12.0": "cc1a73af661466c7f4e6a94d93ece78542d700f2165bdb16a531e9db8856c5aa",
     "https://esm.sh/v135/ajv@8.12.0/denonext/ajv.mjs": "4645df9093d0f8be0e964070a4a7aea8adea06e8883660340931f7a3f979fc65",
     "https://esm.sh/v135/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "6313b3e05436550e1c0aeb2a282206b9b8d9213b4c6f247964dd7bb4835fb9e5",
