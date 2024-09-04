@@ -9,9 +9,9 @@ import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
 import { assertEquals } from 'jsr:@std/assert';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
 import { bundle } from 'jsr:@deno/emit';
-import * as fflate from 'npm:fflate@0.8.2';
-import { Ajv } from 'npm:ajv@8.17.1';
-import prettyBytes from 'npm:pretty-bytes@6.1.1';
+import * as fflate from 'fflate';
+import { Ajv } from 'ajv';
+import prettyBytes from 'pretty-bytes';
 
 const cleanUpSync = () => {
   try {

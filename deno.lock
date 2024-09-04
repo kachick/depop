@@ -344,6 +344,10 @@
       "jsr:@std/assert@^1.0.3",
       "jsr:@std/encoding@^1.0.3",
       "jsr:@std/path@^1.0.3",
+      "npm:ajv@8.17.1",
+      "npm:fflate@0.8.2",
+      "npm:pretty-bytes@6.1.1",
+      "npm:react-dom@18.3.1",
       "npm:react@18.3.1"
     ]
   }

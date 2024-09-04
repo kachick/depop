@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'npm:react@18.3.1';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
