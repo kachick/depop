@@ -1,22 +1,17 @@
-import { encodeHex } from 'https://deno.land/std@0.215.0/encoding/hex.ts';
-import {
-  basename,
-  extname,
-  join,
-} from 'https://deno.land/std@0.215.0/path/mod.ts';
+import { assertEquals } from '@std/assert';
+import { encodeHex } from '@std/encoding';
+import { basename, extname, join } from '@std/path';
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
 import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
   type: 'json',
 };
-import { assertEquals } from 'https://deno.land/std@0.215.0/testing/asserts.ts';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
-import { bundle } from 'https://deno.land/x/emit@0.35.0/mod.ts';
-// @deno-types="https://cdn.skypack.dev/-/fflate@v0.8.2-5l9B8rfElbxSDZ5tcGZe/dist=es2019,mode=raw/lib/index.d.ts"
-import * as fflate from 'https://cdn.skypack.dev/fflate@0.8.2?min';
-import Ajv from 'https://esm.sh/v128/ajv@8.12.0';
-import prettyBytes from 'https://esm.sh/v128/pretty-bytes@6.1.0';
+import { bundle } from '@deno/emit';
+import { Ajv } from 'ajv';
+import * as fflate from 'fflate';
+import prettyBytes from 'pretty-bytes';
 
 const cleanUpSync = () => {
   try {
@@ -58,9 +53,7 @@ const gatherDist = Promise.all([
 await gatherDist;
 
 const getOrderedPathList = (dirPath: string): string[] =>
-  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) =>
-    dirEntity.isFile ? [dirEntity.name] : []
-  ).toSorted();
+  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) => dirEntity.isFile ? [dirEntity.name] : []).toSorted();
 
 const zipStructure = new Map<
   string,
@@ -102,9 +95,7 @@ const structure = Array.from(zipStructure.entries()).reduce(
 const structureSha256 = await sha256(
   textEncoder.encode(JSON.stringify(structure)),
 );
-const productBasename = `depop-${manifestJson.version}-${
-  structureSha256.slice(0, 7)
-}.zip`;
+const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}.zip`;
 const productPath = `dist/${productBasename}`;
 Deno.writeFileSync(productPath, zipped);
 

@@ -1,38 +1,43 @@
 {
   "tasks": {
-    "build": "deno run --quiet --allow-net --allow-read --allow-write --allow-env scripts/build.ts",
+    "build": "deno run --node-modules-dir --quiet --allow-net --allow-read --allow-write --allow-env scripts/build.ts",
     "clean": "rm -rf ./dist",
-    "check": "dprint check && typos && deno fmt --check && deno lint && deno check src/*.ts* scripts/*.ts && deno task check:manifest",
-    "check:manifest": "deno run scripts/manifestValidator.ts",
-    "stylelint": "deno task cache:stylelint && deno run --node-modules-dir --allow-env --allow-read --allow-sys npm:stylelint@15.10.3/stylelint src/*.css | deno run --allow-sys scripts/checkEmpty.ts",
+    "check": "dprint check && typos && dprint check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
+    "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
+    "stylelint": "deno task cache && stylelint src/*.css",
     "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
-    "cache": "deno cache --node-modules-dir --reload **/*.ts **/*.tsx",
-    "update": "deno cache --lock-write --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0 **/*.ts **/*.tsx",
-    "cache:stylelint": "deno cache --node-modules-dir npm:stylelint@15.10.3 npm:stylelint-config-recommended@13.0.0",
+    "cache": "deno cache --frozen=false --node-modules-dir --reload npm:stylelint-config-recommended@14.0.1 src/*.ts* scripts/*.ts",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
-    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize",
+    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
   },
   "compilerOptions": {
     "lib": [
       "dom",
       "dom.iterable",
       "dom.asynciterable",
-      "deno.ns",
+      "deno.ns"
     ],
     "types": [
-      "https://esm.sh/v128/chrome-types@0.1.216/index.d.ts",
+      "https://esm.sh/v135/chrome-types@0.1.301/index.d.ts"
     ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "https://esm.sh/v135/react@18.3.1"
   },
   "lint": {
     "include": ["src/", "scripts/"],
     "rules": {
-      "tags": ["recommended"],
-    },
+      "tags": ["recommended"]
+    }
   },
-  "fmt": {
-    "singleQuote": true,
-    "include": ["src/", "scripts/"],
-  },
+  "imports": {
+    "@deno/emit": "jsr:@deno/emit@^0.45.0",
+    "@std/assert": "jsr:@std/assert@^1.0.3",
+    "@std/encoding": "jsr:@std/encoding@^1.0.3",
+    "@std/path": "jsr:@std/path@^1.0.3",
+    "ajv": "https://esm.sh/v135/ajv@8.17.1",
+    "fflate": "https://esm.sh/v135/fflate@0.8.2",
+    "pretty-bytes": "https://esm.sh/v135/pretty-bytes@6.1.1"
+  }
 }
