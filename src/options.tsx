@@ -1,5 +1,5 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'https://esm.sh/v135/react@18.3.1';
+import { createRoot } from 'https://esm.sh/v135/react-dom@18.3.1/client';
 import App from './options/App.tsx';
 import { assertIsDefined } from './typeguards.ts';
 

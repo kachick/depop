@@ -162,7 +162,8 @@
   "redirects": {
     "https://esm.sh/v128/@types/react@~18.3/index.d.ts": "https://esm.sh/v128/@types/react@18.2.38/index.d.ts",
     "https://esm.sh/v128/@types/react@~18.3/jsx-runtime~.d.ts": "https://esm.sh/v128/@types/react@18.2.38/jsx-runtime~.d.ts",
-    "https://esm.sh/v135/@types/react-dom@~18.3/client~.d.ts": "https://esm.sh/v135/@types/react-dom@18.3.0/client~.d.ts"
+    "https://esm.sh/v135/@types/react-dom@~18.3/client~.d.ts": "https://esm.sh/v135/@types/react-dom@18.3.0/client~.d.ts",
+    "https://esm.sh/v135/@types/react-dom@~18.3/index.d.ts": "https://esm.sh/v135/@types/react-dom@18.3.0/index.d.ts"
   },
   "remote": {
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
@@ -344,6 +345,7 @@
     "https://deno.land/x/wasmbuild@0.15.1/loader.ts": "8c2fc10e21678e42f84c5135d8ab6ab7dc92424c3f05d2354896a29ccfd02a63",
     "https://esm.sh/stable/react@18.3.1/denonext/jsx-runtime.js": "5ff1e02a3bb5c69dd3535d77054b182f1ea51c5eeaf24a396984f6b7012c2716",
     "https://esm.sh/stable/react@18.3.1/denonext/react.mjs": "fc048ffc55366baf7669519127d186761db72046e2bebf35fe8d0de3964defa3",
+    "https://esm.sh/v135/react-dom@18.3.1": "8ce1b3c896918d0e6ccbe49775ca04866aba2fe0e8d2728bdbeb91faf60779b7",
     "https://esm.sh/v135/react-dom@18.3.1/client": "3e23a449c16029111f8fa64809dd83ea5f896a4065f956b6b6d87998854efa1e",
     "https://esm.sh/v135/react-dom@18.3.1/denonext/client.js": "51910a60c05a5614b9dbec634d8594f74a4300fed2023dbdf1f8ea2a41a82b96",
     "https://esm.sh/v135/react-dom@18.3.1/denonext/react-dom.mjs": "0c4ad76e514ad1c9d8987d49679c5f2a6299b34c1b7fbf10a5da056ae4a0963f",
