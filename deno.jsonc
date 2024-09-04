@@ -11,32 +11,33 @@
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
-    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize",
+    "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
   },
   "compilerOptions": {
     "lib": [
       "dom",
       "dom.iterable",
       "dom.asynciterable",
-      "deno.ns",
+      "deno.ns"
     ],
     "types": [
-      "npm:chrome-types@0.1.301/index.d.ts",
+      "npm:chrome-types@0.1.301/index.d.ts"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "npm:react@18.3.1",
+    "jsxImportSource": "npm:react@18.3.1"
   },
   "lint": {
     "include": ["src/", "scripts/"],
     "rules": {
-      "tags": ["recommended"],
-    },
+      "tags": ["recommended"]
+    }
   },
   "fmt": {
     "singleQuote": true,
-    "include": ["src/", "scripts/"],
+    "include": ["src/", "scripts/"]
   },
   "imports": {
-    "react": "npm:react@18.3.1",
-  },
+    "@deno/emit": "jsr:@deno/emit@^0.45.0",
+    "react": "npm:react@18.3.1"
+  }
 }

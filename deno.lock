@@ -327,6 +327,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@deno/emit@^0.45.0",
       "npm:react@18.3.1"
     ]
   }
