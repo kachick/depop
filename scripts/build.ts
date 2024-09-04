@@ -1,34 +1,34 @@
-import { encodeHex } from "@std/encoding";
-import { basename, extname, join } from "@std/path";
-import manifestJson from "../src/manifest.json" with {
-  type: "json",
+import { assertEquals } from '@std/assert';
+import { encodeHex } from '@std/encoding';
+import { basename, extname, join } from '@std/path';
+import manifestJson from '../src/manifest.json' with {
+  type: 'json',
 };
-import manifestSchema from "../src/manifestSchemaAdjusted.json" with {
-  type: "json",
+import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
+  type: 'json',
 };
-import { assertEquals } from "@std/assert";
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
-import { bundle } from "@deno/emit";
-import * as fflate from "fflate";
-import { Ajv } from "ajv";
-import prettyBytes from "pretty-bytes";
+import { bundle } from '@deno/emit';
+import { Ajv } from 'ajv';
+import * as fflate from 'fflate';
+import prettyBytes from 'pretty-bytes';
 
 const cleanUpSync = () => {
   try {
-    Deno.removeSync("./dist", { recursive: true });
+    Deno.removeSync('./dist', { recursive: true });
   } catch (error) {
     if (!(error instanceof Deno.errors.NotFound)) {
       throw error;
     }
   }
 
-  Deno.mkdirSync("dist/assets", { recursive: true });
+  Deno.mkdirSync('dist/assets', { recursive: true });
 };
 
 cleanUpSync();
 
 const transpile = async () => {
-  for (const entryTsPath of ["src/github-patcher.ts", "src/options.tsx"]) {
+  for (const entryTsPath of ['src/github-patcher.ts', 'src/options.tsx']) {
     const bundled = await bundle(entryTsPath);
     const outputPath = `dist/${basename(entryTsPath, extname(entryTsPath))}.js`;
     Deno.writeTextFileSync(outputPath, bundled.code);
@@ -37,25 +37,23 @@ const transpile = async () => {
 
 const gatherDist = Promise.all([
   transpile(),
-  Deno.copyFile("README.md", "dist/README.md"),
-  Deno.copyFile("LICENSE", "dist/LICENSE"),
-  Deno.copyFile("src/manifest.json", "dist/manifest.json"),
-  Deno.copyFile("src/github-patcher.css", "dist/github-patcher.css"),
-  Deno.copyFile("src/options.html", "dist/options.html"),
-  Deno.copyFile("src/options.css", "dist/options.css"),
-  Deno.copyFile("vendor/primer.css", "dist/primer.css"),
+  Deno.copyFile('README.md', 'dist/README.md'),
+  Deno.copyFile('LICENSE', 'dist/LICENSE'),
+  Deno.copyFile('src/manifest.json', 'dist/manifest.json'),
+  Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
+  Deno.copyFile('src/options.html', 'dist/options.html'),
+  Deno.copyFile('src/options.css', 'dist/options.css'),
+  Deno.copyFile('vendor/primer.css', 'dist/primer.css'),
   Deno.copyFile(
-    "assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png",
-    "dist/icon-sadness-star.png",
+    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png',
+    'dist/icon-sadness-star.png',
   ),
 ]);
 
 await gatherDist;
 
 const getOrderedPathList = (dirPath: string): string[] =>
-  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) =>
-    dirEntity.isFile ? [dirEntity.name] : []
-  ).toSorted();
+  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) => dirEntity.isFile ? [dirEntity.name] : []).toSorted();
 
 const zipStructure = new Map<
   string,
@@ -63,16 +61,16 @@ const zipStructure = new Map<
 >();
 
 const sha256 = async (content: Uint8Array) => {
-  const digest = await crypto.subtle.digest("SHA-256", content);
+  const digest = await crypto.subtle.digest('SHA-256', content);
   return encodeHex(digest);
 };
 
-for (const path of getOrderedPathList("dist")) {
-  const content = Deno.readFileSync(join("dist", path));
+for (const path of getOrderedPathList('dist')) {
+  const content = Deno.readFileSync(join('dist', path));
   zipStructure.set(path, {
     content,
     sha256: await sha256(content),
-    isCompressed: extname(path) === ".png",
+    isCompressed: extname(path) === '.png',
   });
 }
 
@@ -97,16 +95,14 @@ const structure = Array.from(zipStructure.entries()).reduce(
 const structureSha256 = await sha256(
   textEncoder.encode(JSON.stringify(structure)),
 );
-const productBasename = `depop-${manifestJson.version}-${
-  structureSha256.slice(0, 7)
-}.zip`;
+const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}.zip`;
 const productPath = `dist/${productBasename}`;
 Deno.writeFileSync(productPath, zipped);
 
 const validateProduct = async (zipped: Uint8Array) => {
   const unzipped = fflate.unzipSync(zipped);
 
-  assertEquals(JSON.parse(toString(unzipped["manifest.json"])), manifestJson);
+  assertEquals(JSON.parse(toString(unzipped['manifest.json'])), manifestJson);
 
   const ajv = new Ajv({ allErrors: true });
   const schemaOk = await ajv.validate(manifestSchema, manifestJson);
