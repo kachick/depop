@@ -1,16 +1,12 @@
-import { encodeHex } from 'https://deno.land/std@0.215.0/encoding/hex.ts';
-import {
-  basename,
-  extname,
-  join,
-} from 'https://deno.land/std@0.215.0/path/mod.ts';
+import { encodeHex } from 'jsr:@std/encoding';
+import { basename, extname, join } from 'jsr:@std/path';
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
 import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
   type: 'json',
 };
-import { assertEquals } from 'https://deno.land/std@0.215.0/testing/asserts.ts';
+import { assertEquals } from 'jsr:@std/assert';
 // Always require --allow-net https://github.com/denoland/deno_emit/issues/81
 import { bundle } from 'jsr:@deno/emit';
 import * as fflate from 'npm:fflate@0.8.2';
