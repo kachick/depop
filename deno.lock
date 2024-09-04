@@ -159,6 +159,11 @@
       }
     }
   },
+  "redirects": {
+    "https://esm.sh/v128/@types/react@~18.3/index.d.ts": "https://esm.sh/v128/@types/react@18.2.38/index.d.ts",
+    "https://esm.sh/v128/@types/react@~18.3/jsx-runtime~.d.ts": "https://esm.sh/v128/@types/react@18.2.38/jsx-runtime~.d.ts",
+    "https://esm.sh/v135/@types/react-dom@~18.3/client~.d.ts": "https://esm.sh/v135/@types/react-dom@18.3.0/client~.d.ts"
+  },
   "remote": {
     "https://deno.land/std@0.140.0/_util/assert.ts": "e94f2eb37cebd7f199952e242c77654e43333c1ac4c5c700e929ea3aa5489f74",
     "https://deno.land/std@0.140.0/_util/os.ts": "3b4c6e27febd119d36a416d7a97bd3b0251b77c88942c8f16ee5953ea13e2e49",
@@ -336,7 +341,15 @@
     "https://deno.land/x/emit@0.35.0/emit.generated.js": "66d557469c075faef296046c3be8911baf29613efd79ad07ff7434809e8efb21",
     "https://deno.land/x/emit@0.35.0/mod.ts": "aec8555fdda59cc02cc1e646bb00bb3ed2811026b5f0816a34a1f17d104b1d6d",
     "https://deno.land/x/wasmbuild@0.15.1/cache.ts": "9d01b5cb24e7f2a942bbd8d14b093751fa690a6cde8e21709ddc97667e6669ed",
-    "https://deno.land/x/wasmbuild@0.15.1/loader.ts": "8c2fc10e21678e42f84c5135d8ab6ab7dc92424c3f05d2354896a29ccfd02a63"
+    "https://deno.land/x/wasmbuild@0.15.1/loader.ts": "8c2fc10e21678e42f84c5135d8ab6ab7dc92424c3f05d2354896a29ccfd02a63",
+    "https://esm.sh/stable/react@18.3.1/denonext/jsx-runtime.js": "5ff1e02a3bb5c69dd3535d77054b182f1ea51c5eeaf24a396984f6b7012c2716",
+    "https://esm.sh/stable/react@18.3.1/denonext/react.mjs": "fc048ffc55366baf7669519127d186761db72046e2bebf35fe8d0de3964defa3",
+    "https://esm.sh/v135/react-dom@18.3.1/client": "3e23a449c16029111f8fa64809dd83ea5f896a4065f956b6b6d87998854efa1e",
+    "https://esm.sh/v135/react-dom@18.3.1/denonext/client.js": "51910a60c05a5614b9dbec634d8594f74a4300fed2023dbdf1f8ea2a41a82b96",
+    "https://esm.sh/v135/react-dom@18.3.1/denonext/react-dom.mjs": "0c4ad76e514ad1c9d8987d49679c5f2a6299b34c1b7fbf10a5da056ae4a0963f",
+    "https://esm.sh/v135/react@18.3.1": "52480d4c00855e4f76843caa4f2818eb001671523740cbf064cbd108721c29c8",
+    "https://esm.sh/v135/react@18.3.1/jsx-runtime": "f47f11639cc0531ad2f1e0f6334d9ae7a8d906c905d9b79cb2e8cd4331bc5b10",
+    "https://esm.sh/v135/scheduler@0.23.2/denonext/scheduler.mjs": "dc96e5be52b14a40ce36295d938d5211e520c4da3183fe2ad4283ed103747d82"
   },
   "workspace": {
     "dependencies": [
@@ -346,9 +359,7 @@
       "jsr:@std/path@^1.0.3",
       "npm:ajv@8.17.1",
       "npm:fflate@0.8.2",
-      "npm:pretty-bytes@6.1.1",
-      "npm:react-dom@18.3.1",
-      "npm:react@18.3.1"
+      "npm:pretty-bytes@6.1.1"
     ]
   }
 }
