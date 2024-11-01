@@ -23,7 +23,7 @@ jobs:
         with:
           dprint-version: '0.45.1' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","dprint --version | cut -d ' ' -f 2"]}
       - uses: crate-ci/typos@v1.21.0 # selfup {"extract":"\\d\\.\\d+\\.\\d+","replacer":["bash","-c","typos --version | cut -d ' ' -f 2"]}
-      - uses: denoland/setup-deno@v1
+      - uses: denoland/setup-deno@v2
         with:
           deno-version: '2.0.0' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
       - run: deno task check
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: denoland/setup-deno@v1
+      - uses: denoland/setup-deno@v2
         with:
           deno-version: '2.0.0' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
       - name: Ensure cache before build
