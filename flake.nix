@@ -1,18 +1,20 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    selfup = {
+      url = "github:kachick/selfup/v1.1.7";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      unstable-nixpkgs,
+      selfup,
     }:
     let
-      inherit (nixpkgs) lib;
-      forAllSystems = lib.genAttrs lib.systems.flakeExposed;
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     in
     {
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
@@ -20,7 +22,6 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          unstables = unstable-nixpkgs.legacyPackages.${system};
         in
         {
           default = pkgs.mkShellNoCC {
@@ -30,6 +31,8 @@
                 nil
                 nixfmt-rfc-style
 
+                deno
+                stylelint
                 dprint
                 ripgrep
                 typos
@@ -38,10 +41,7 @@
                 imagemagick
                 exiftool
               ])
-              ++ (with unstables; [
-                deno
-                stylelint
-              ]);
+              ++ [ selfup.packages.${system}.default ];
           };
         }
       );
