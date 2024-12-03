@@ -1,10 +1,10 @@
 const hide = (element: Element): void => {
   element.setAttribute(
     // Prefer hidden rather than display:none https://primer.style/css/utilities/layout#the-html-hidden-attribute
-    'hidden',
+    "hidden",
     // Both `true` and `false` will be interpreted as `true`.
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
-    'true',
+    "true",
   );
 };
 
@@ -18,6 +18,7 @@ const hideExploreRepositories = (): void => {
   }
 };
 
+// Sponsor: Received from
 const hideSponsors = (): void => {
   const sponsorsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
@@ -31,6 +32,23 @@ const hideSponsors = (): void => {
 
   if (sponsorsComponent) {
     hide(sponsorsComponent);
+  }
+};
+
+// Sponsoring: Paid for
+const hideSponsoring = (): void => {
+  const sponsorsing2Node = document.evaluate(
+    "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsoring']",
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null,
+  ).singleNodeValue;
+
+  const sponsoringComponent = sponsorsing2Node?.parentElement?.parentElement;
+
+  if (sponsoringComponent) {
+    hide(sponsoringComponent);
   }
 };
 
@@ -51,22 +69,29 @@ const hideHighlights = (): void => {
 
 const hideComponents = (): void => {
   chrome.storage.sync.get([
-    'isHideExploreRepositories',
-    'isHideSponsors',
-  ]).then(({ isHideExploreRepositories, isHideSponsors }): void => {
-    if (isHideExploreRepositories) {
-      hideExploreRepositories();
-    }
+    "isHideExploreRepositories",
+    "isHideSponsors",
+    "isHideSponsoring",
+  ]).then(
+    ({ isHideExploreRepositories, isHideSponsors, isHideSponsoring }): void => {
+      if (isHideExploreRepositories) {
+        hideExploreRepositories();
+      }
 
-    if (isHideSponsors) {
-      hideSponsors();
-    }
-  });
+      if (isHideSponsors) {
+        hideSponsors();
+      }
+
+      if (isHideSponsoring) {
+        hideSponsoring();
+      }
+    },
+  );
 
   hideHighlights();
 };
 
-if (document.readyState !== 'complete') {
-  document.addEventListener('load', hideComponents, { passive: true });
+if (document.readyState !== "complete") {
+  document.addEventListener("load", hideComponents, { passive: true });
 }
 hideComponents();

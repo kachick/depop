@@ -34,8 +34,9 @@ Some features can be hidden by enabling them on the [Options page](https://devel
 - Pinned Repositories
 - "Explore repositories" and/or the stars
 - Sponsors
-- Achievements # 0.0.0.13+
-- Highlights # 0.0.0.13+
+- Sponsoring
+- Achievements
+- Highlights
 
 ### Suppressible third party stats
 
