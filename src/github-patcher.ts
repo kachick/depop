@@ -18,6 +18,7 @@ const hideExploreRepositories = (): void => {
   }
 };
 
+// Sponsor: Received from
 const hideSponsors = (): void => {
   const sponsorsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
@@ -31,6 +32,23 @@ const hideSponsors = (): void => {
 
   if (sponsorsComponent) {
     hide(sponsorsComponent);
+  }
+};
+
+// Sponsoring: Paid for
+const hideSponsoring = (): void => {
+  const sponsoring2Node = document.evaluate(
+    "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsoring']",
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null,
+  ).singleNodeValue;
+
+  const sponsoringComponent = sponsoring2Node?.parentElement?.parentElement;
+
+  if (sponsoringComponent) {
+    hide(sponsoringComponent);
   }
 };
 
@@ -53,15 +71,22 @@ const hideComponents = (): void => {
   chrome.storage.sync.get([
     'isHideExploreRepositories',
     'isHideSponsors',
-  ]).then(({ isHideExploreRepositories, isHideSponsors }): void => {
-    if (isHideExploreRepositories) {
-      hideExploreRepositories();
-    }
+    'isHideSponsoring',
+  ]).then(
+    ({ isHideExploreRepositories, isHideSponsors, isHideSponsoring }): void => {
+      if (isHideExploreRepositories) {
+        hideExploreRepositories();
+      }
 
-    if (isHideSponsors) {
-      hideSponsors();
-    }
-  });
+      if (isHideSponsors) {
+        hideSponsors();
+      }
+
+      if (isHideSponsoring) {
+        hideSponsoring();
+      }
+    },
+  );
 
   hideHighlights();
 };

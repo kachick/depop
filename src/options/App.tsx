@@ -12,16 +12,22 @@ function App() {
     isHideSponsors,
     setIsHideSponsors,
   ] = useState(false);
+  const [
+    isHideSponsoring,
+    setIsHideSponsoring,
+  ] = useState(false);
 
   useEffect(() => {
     chrome.storage.sync.get([
       'isHideExploreRepositories',
       'isHideSponsors',
+      'isHideSponsoring',
     ]).then((keys): void => {
       setIsHideExploreRepositories(
         keys.isHideExploreRepositories,
       );
       setIsHideSponsors(keys.isHideSponsors);
+      setIsHideSponsoring(keys.isHideSponsoring);
     }).finally(() => setIsLoading(false));
   }, []);
 
@@ -85,6 +91,35 @@ function App() {
         <p
           className='note'
           id='help-text-for-isHideSponsors-checkbox'
+        >
+          Hide the section in left-sidebar if enabled this option
+        </p>
+      </div>
+      <div className='form-checkbox'>
+        <label>
+          <input
+            type='checkbox'
+            checked={isHideSponsoring}
+            aria-describedby='help-text-for-isHideSponsoring-checkbox'
+            onChange={(_ev) => {
+              const toggled = !isHideSponsoring;
+              setIsHideSponsoring(
+                toggled,
+              );
+              chrome.storage.sync.set({
+                'isHideSponsoring': toggled,
+              }).then(() => {
+                console.log(
+                  `isHideSponsoring is set to ${toggled}`,
+                );
+              });
+            }}
+          />
+          Hide "Sponsoring"
+        </label>
+        <p
+          className='note'
+          id='help-text-for-isHideSponsoring-checkbox'
         >
           Hide the section in left-sidebar if enabled this option
         </p>
