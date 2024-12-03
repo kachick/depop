@@ -5,11 +5,12 @@
     "check": "dprint check && typos && dprint check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
     "stylelint": "deno task cache && stylelint src/*.css",
-    "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
+    "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version && selfup -version",
     "cache": "deno cache --frozen=false --node-modules-dir --reload npm:stylelint-config-recommended@14.0.1 src/*.ts* scripts/*.ts",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
+    "selfup": "git ls-files '.github' | xargs selfup run",
     "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
   },
   "compilerOptions": {
