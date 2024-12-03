@@ -1,10 +1,10 @@
 const hide = (element: Element): void => {
   element.setAttribute(
     // Prefer hidden rather than display:none https://primer.style/css/utilities/layout#the-html-hidden-attribute
-    "hidden",
+    'hidden',
     // Both `true` and `false` will be interpreted as `true`.
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
-    "true",
+    'true',
   );
 };
 
@@ -69,9 +69,9 @@ const hideHighlights = (): void => {
 
 const hideComponents = (): void => {
   chrome.storage.sync.get([
-    "isHideExploreRepositories",
-    "isHideSponsors",
-    "isHideSponsoring",
+    'isHideExploreRepositories',
+    'isHideSponsors',
+    'isHideSponsoring',
   ]).then(
     ({ isHideExploreRepositories, isHideSponsors, isHideSponsoring }): void => {
       if (isHideExploreRepositories) {
@@ -91,7 +91,7 @@ const hideComponents = (): void => {
   hideHighlights();
 };
 
-if (document.readyState !== "complete") {
-  document.addEventListener("load", hideComponents, { passive: true });
+if (document.readyState !== 'complete') {
+  document.addEventListener('load', hideComponents, { passive: true });
 }
 hideComponents();
