@@ -5,7 +5,9 @@
 a[href$='/stargazers'],
 a[href$='?tab=followers'],
 a[href$='/network/members'],
+/* Restrict with <strong> to keep the icon */
 a[href$='/watchers'] strong,
+a[href$='/forks'] strong,
 /* Third party stats. "GitHub Readme Stats" */
 /* NOTE: Do not hide other endpoints like `api/top-langs` */
 a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
