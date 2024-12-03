@@ -11,12 +11,13 @@ A Chrome Extension to hide stars, followers, watchers, sponsors, and other stats
 
 I don't want my heart to be disturbed by the "±", especially during coding and research.
 
-## Install
+## Installation
 
 Choose one of the following options.
 
-- [Chrome Web Store](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
-- Download zip archive from [release page](https://github.com/kachick/depop/releases) and load it from `chrome://extensions/`.
+- Visit [Chrome Web Store](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
+- Download stable zip archive from [release page](https://github.com/kachick/depop/releases) and load it from `chrome://extensions/`.
+- Download unstable zip archive from the [uploaded artifacts](https://github.com/kachick/depop/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess). And use it same as stable.
 - [Run build task](CONTRIBUTING.md) and load "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Usage
