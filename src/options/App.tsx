@@ -115,7 +115,7 @@ function App() {
               });
             }}
           />
-          Hide "Sponsors"
+          Hide "Sponsoring"
         </label>
         <p
           className='note'
