@@ -103,7 +103,7 @@ function App() {
             aria-describedby='help-text-for-isHideSponsoring-checkbox'
             onChange={(_ev) => {
               const toggled = !isHideSponsoring;
-              setIsHideSponsors(
+              setIsHideSponsoring(
                 toggled,
               );
               chrome.storage.sync.set({

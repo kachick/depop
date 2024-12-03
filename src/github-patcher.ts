@@ -37,7 +37,7 @@ const hideSponsors = (): void => {
 
 // Sponsoring: Paid for
 const hideSponsoring = (): void => {
-  const sponsorsing2Node = document.evaluate(
+  const sponsoring2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsoring']",
     document,
     null,
@@ -45,7 +45,7 @@ const hideSponsoring = (): void => {
     null,
   ).singleNodeValue;
 
-  const sponsoringComponent = sponsorsing2Node?.parentElement?.parentElement;
+  const sponsoringComponent = sponsoring2Node?.parentElement?.parentElement;
 
   if (sponsoringComponent) {
     hide(sponsoringComponent);
