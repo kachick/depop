@@ -1,9 +1,8 @@
-// deno-lint-ignore no-unused-vars
 import * as React from 'https://esm.sh/react@19.0.0?target=es2022'; // Load whole `React` to avoid no reference, if omitting, should check options page manually
 import { useEffect, useState } from 'https://esm.sh/react@19.0.0?target=es2022';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, startLoading] = React.useTransition();
   const [
     isHideExploreRepositories,
     setIsHideExploreRepositories,
@@ -18,17 +17,18 @@ function App() {
   ] = useState(false);
 
   useEffect(() => {
-    chrome.storage.sync.get([
-      'isHideExploreRepositories',
-      'isHideSponsors',
-      'isHideSponsoring',
-    ]).then((keys): void => {
+    startLoading(async () => {
+      const keys = await chrome.storage.sync.get([
+        'isHideExploreRepositories',
+        'isHideSponsors',
+        'isHideSponsoring',
+      ]);
       setIsHideExploreRepositories(
         keys.isHideExploreRepositories,
       );
       setIsHideSponsors(keys.isHideSponsors);
       setIsHideSponsoring(keys.isHideSponsoring);
-    }).finally(() => setIsLoading(false));
+    });
   }, []);
 
   if (isLoading) {
