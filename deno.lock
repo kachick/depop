@@ -1,46 +1,41 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@deno/cache-dir@0.8": "0.8.0",
-    "jsr:@deno/emit@0.45": "0.45.0",
-    "jsr:@deno/graph@~0.69.7": "0.69.10",
+    "jsr:@deno/cache-dir@0.13.2": "0.13.2",
+    "jsr:@deno/emit@0.46": "0.46.0",
+    "jsr:@deno/graph@~0.73.1": "0.73.1",
     "jsr:@std/assert@0.223": "0.223.0",
     "jsr:@std/assert@^1.0.3": "1.0.10",
-    "jsr:@std/assert@~0.218.2": "0.218.2",
-    "jsr:@std/bytes@~0.218.2": "0.218.2",
+    "jsr:@std/bytes@0.223": "0.223.0",
     "jsr:@std/encoding@^1.0.3": "1.0.6",
-    "jsr:@std/fmt@~0.218.2": "0.218.2",
-    "jsr:@std/fs@~0.218.2": "0.218.2",
+    "jsr:@std/fmt@0.223": "0.223.0",
+    "jsr:@std/fs@0.223": "0.223.0",
     "jsr:@std/internal@^1.0.5": "1.0.5",
-    "jsr:@std/io@~0.218.2": "0.218.2",
+    "jsr:@std/io@0.223": "0.223.0",
     "jsr:@std/path@0.223": "0.223.0",
     "jsr:@std/path@^1.0.3": "1.0.8",
-    "jsr:@std/path@~0.218.2": "0.218.2",
     "npm:stylelint-config-recommended@14.0.1": "14.0.1_stylelint@16.13.2__@csstools+css-tokenizer@3.0.3__@csstools+css-parser-algorithms@3.0.4___@csstools+css-tokenizer@3.0.3__postcss-selector-parser@7.0.0__postcss@8.5.1"
   },
   "jsr": {
-    "@deno/cache-dir@0.8.0": {
-      "integrity": "e87e80a404958f6350d903e6238b72afb92468378b0b32111f7a1e4916ac7fe7",
+    "@deno/cache-dir@0.13.2": {
+      "integrity": "c22419dfe27ab85f345bee487aaaadba498b005cce3644e9d2528db035c5454d",
       "dependencies": [
         "jsr:@deno/graph",
         "jsr:@std/fmt",
         "jsr:@std/fs",
         "jsr:@std/io",
-        "jsr:@std/path@~0.218.2"
+        "jsr:@std/path@0.223"
       ]
     },
-    "@deno/emit@0.45.0": {
-      "integrity": "b59d632e61dbe4be7e9e61235f02ad08ff124c714c31deb080c4de778da1894d",
+    "@deno/emit@0.46.0": {
+      "integrity": "e276be2c77bac1b93caf775762e2a49a54cb00da2d48ca2b01ed8d7cba9d082c",
       "dependencies": [
         "jsr:@deno/cache-dir",
         "jsr:@std/path@0.223"
       ]
     },
-    "@deno/graph@0.69.10": {
-      "integrity": "38fe22ac5686f6ece5daeec5a4df65c6314d7d32adcc33f77917a13cfaffa26f"
-    },
-    "@std/assert@0.218.2": {
-      "integrity": "7f0a5a1a8cf86607cd6c2c030584096e1ffad27fc9271429a8cb48cfbdee5eaf"
+    "@deno/graph@0.73.1": {
+      "integrity": "cd69639d2709d479037d5ce191a422eabe8d71bb68b0098344f6b07411c84d41"
     },
     "@std/assert@0.223.0": {
       "integrity": "eb8d6d879d76e1cc431205bd346ed4d88dc051c6366365b1af47034b0670be24"
@@ -51,32 +46,26 @@
         "jsr:@std/internal"
       ]
     },
-    "@std/bytes@0.218.2": {
-      "integrity": "91fe54b232dcca73856b79a817247f4a651dbb60d51baafafb6408c137241670"
+    "@std/bytes@0.223.0": {
+      "integrity": "84b75052cd8680942c397c2631318772b295019098f40aac5c36cead4cba51a8"
     },
     "@std/encoding@1.0.6": {
       "integrity": "ca87122c196e8831737d9547acf001766618e78cd8c33920776c7f5885546069"
     },
-    "@std/fmt@0.218.2": {
-      "integrity": "99526449d2505aa758b6cbef81e7dd471d8b28ec0dcb1491d122b284c548788a"
+    "@std/fmt@0.223.0": {
+      "integrity": "6deb37794127dfc7d7bded2586b9fc6f5d50e62a8134846608baf71ffc1a5208"
     },
-    "@std/fs@0.218.2": {
-      "integrity": "dd9431453f7282e8c577cc22c9e6d036055a9a980b5549f887d6012969fabcca"
+    "@std/fs@0.223.0": {
+      "integrity": "3b4b0550b2c524cbaaa5a9170c90e96cbb7354e837ad1bdaf15fc9df1ae9c31c"
     },
     "@std/internal@1.0.5": {
       "integrity": "54a546004f769c1ac9e025abd15a76b6671ddc9687e2313b67376125650dc7ba"
     },
-    "@std/io@0.218.2": {
-      "integrity": "c64fbfa087b7c9d4d386c5672f291f607d88cb7d44fc299c20c713e345f2785f",
+    "@std/io@0.223.0": {
+      "integrity": "2d8c3c2ab3a515619b90da2c6ff5ea7b75a94383259ef4d02116b228393f84f1",
       "dependencies": [
-        "jsr:@std/assert@~0.218.2",
+        "jsr:@std/assert@0.223",
         "jsr:@std/bytes"
-      ]
-    },
-    "@std/path@0.218.2": {
-      "integrity": "b568fd923d9e53ad76d17c513e7310bda8e755a3e825e6289a0ce536404e2662",
-      "dependencies": [
-        "jsr:@std/assert@~0.218.2"
       ]
     },
     "@std/path@0.223.0": {
@@ -663,14 +652,13 @@
     }
   },
   "redirects": {
-    "https://esm.sh/@types/react-dom@~18.3.5/client.d.ts": "https://esm.sh/@types/react-dom@18.3.5/client.d.ts",
-    "https://esm.sh/@types/react@~18.3.18/index.d.ts": "https://esm.sh/@types/react@18.3.18/index.d.ts",
-    "https://esm.sh/@types/react@~18.3.18/jsx-runtime.d.ts": "https://esm.sh/@types/react@18.3.18/jsx-runtime.d.ts",
+    "https://esm.sh/@types/react-dom@~19.0.3/client.d.ts": "https://esm.sh/@types/react-dom@19.0.3/client.d.ts",
+    "https://esm.sh/@types/react@~19.0.7/index.d.ts": "https://esm.sh/@types/react@19.0.7/index.d.ts",
+    "https://esm.sh/@types/react@~19.0.7/jsx-runtime.d.ts": "https://esm.sh/@types/react@19.0.7/jsx-runtime.d.ts",
     "https://esm.sh/@types/scheduler@~0.23.0/index.d.ts": "https://esm.sh/@types/scheduler@0.23.0/index.d.ts",
     "https://esm.sh/fast-deep-equal@^3.1.3?target=denonext": "https://esm.sh/fast-deep-equal@3.1.3?target=denonext",
     "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.0.5?target=denonext",
-    "https://esm.sh/json-schema-traverse@^1.0.0?target=denonext": "https://esm.sh/json-schema-traverse@1.0.0?target=denonext",
-    "https://esm.sh/scheduler@^0.23.2?target=denonext": "https://esm.sh/scheduler@0.23.2?target=denonext"
+    "https://esm.sh/json-schema-traverse@^1.0.0?target=denonext": "https://esm.sh/json-schema-traverse@1.0.0?target=denonext"
   },
   "remote": {
     "https://esm.sh/ajv@8.17.1": "a04e4f86e082abdcbf765a7f54d9aa96f77e27ef5553254b5b049c7e6c489435",
@@ -685,19 +673,19 @@
     "https://esm.sh/json-schema-traverse@1.0.0?target=denonext": "3e60200c0d28b5e081db526a78c7911c094fd64c92484ebe050becb8f69788bb",
     "https://esm.sh/pretty-bytes@6.1.1": "8baebceaf88a283ad6c4add62212da36f3fb54289b704fd210b2d6a5db12f707",
     "https://esm.sh/pretty-bytes@6.1.1/denonext/pretty-bytes.mjs": "470b8396a57262a3206a51183b5b073e219efd011e2f607a888338dbed61d780",
-    "https://esm.sh/react-dom@18.3.1/client": "21721a0da8572c9017131699230e73bd29b31cae9763948f5a7e3966315d07a2",
-    "https://esm.sh/react-dom@18.3.1/denonext/client.mjs": "318f533d016f138272e71e96cfcd38e317eb5587769116698aa041b33c66b720",
-    "https://esm.sh/react-dom@18.3.1/denonext/react-dom.mjs": "26138c169a69a085aad47d9ad7b9c76354e41d6a84b3694bce126f3f1101c34c",
-    "https://esm.sh/react@18.3.1": "336090fd1f03fdb9530dce4ac761717b5e1e1a630c775bac184ec4ee0809cf89",
-    "https://esm.sh/react@18.3.1/denonext/jsx-runtime.mjs": "596605b8836d98f058e55f5b27d84c8d673a6468ae61516525a2da104353c5d9",
-    "https://esm.sh/react@18.3.1/denonext/react.mjs": "fec8d5ab4ffa55c8b563abc31060c3dc0205699aff20beec4aba0311efdcc1a0",
-    "https://esm.sh/react@18.3.1/jsx-runtime": "fae022412d077731999a21e4ed1eac632822bab088f04c980b08750ba33ade9a",
-    "https://esm.sh/scheduler@0.23.2/denonext/scheduler.mjs": "8a1a8a363eb417fc8d40f6b15132e8964320782d7169e68fc6ac98b8b8c201eb",
-    "https://esm.sh/scheduler@0.23.2?target=denonext": "5f446c6d28a83c4c3905e964a311ac654bf1b1993bb6647ee731a592068d5a1a"
+    "https://esm.sh/react-dom@19.0.0/client?target=es2022": "b326278217e074acc857a68d9bad82ee467c41400d1464829e5aa081467c63bf",
+    "https://esm.sh/react-dom@19.0.0/es2022/client.mjs": "edad6da7c1ea4c0752710f6db22c6339fbdb41f8ebfeccd2cfb79817377f0720",
+    "https://esm.sh/react-dom@19.0.0/es2022/react-dom.mjs": "5ce0cb1ee69fdd88cabf8576ad389881e5db96365c9025702b438b2d7863cc0c",
+    "https://esm.sh/react@19.0.0/es2022/jsx-runtime.mjs": "643b749fa9666fbf73619a99fd708722edb4acaa34c8cea7be783a3432367780",
+    "https://esm.sh/react@19.0.0/es2022/react.mjs": "92b896580737b8b2d75b0a84a92fd2b4f3a62e692d96be1994a5185050db289d",
+    "https://esm.sh/react@19.0.0?target=es2022": "b2d09997656003a0c3066d95bcf66a7bd0ac68333e66678655e983465e649145",
+    "https://esm.sh/react@19.0.0?target=es2022/jsx-runtime": "9c0e93410782b9cb51eb0532f6c1bd9157bd188bfe000387619462a716a4e605",
+    "https://esm.sh/scheduler@0.25.0/es2022/scheduler.mjs": "50687edf9e0034b6db97303b1b16893b59c5833c21ea8cf913dc380b537f6aaf",
+    "https://esm.sh/scheduler@^0.25.0?target=es2022": "4a900fbc45073d3bc2d0e2bc39b3bfa6b52289b6725a594181c97e0a10053e78"
   },
   "workspace": {
     "dependencies": [
-      "jsr:@deno/emit@0.45",
+      "jsr:@deno/emit@0.46",
       "jsr:@std/assert@^1.0.3",
       "jsr:@std/encoding@^1.0.3",
       "jsr:@std/path@^1.0.3"
