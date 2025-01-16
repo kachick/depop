@@ -1,6 +1,6 @@
 // deno-lint-ignore no-unused-vars
-import * as React from 'https://esm.sh/v135/react@18.3.1'; // Load whole `React` to avoid no reference, if omitting, should check options page manually
-import { useEffect, useState } from 'https://esm.sh/v135/react@18.3.1';
+import * as React from 'https://esm.sh/react@18.3.1'; // Load whole `React` to avoid no reference, if omitting, should check options page manually
+import { useEffect, useState } from 'https://esm.sh/react@18.3.1';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

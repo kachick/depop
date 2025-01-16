@@ -1,5 +1,5 @@
-import { createRoot } from 'https://esm.sh/v135/react-dom@18.3.1/client';
-import * as React from 'https://esm.sh/v135/react@18.3.1'; // Load whole `React` to avoid no reference, if omitting, should check options page manually
+import { createRoot } from 'https://esm.sh/react-dom@18.3.1/client';
+import * as React from 'https://esm.sh/react@18.3.1'; // Load whole `React` to avoid no reference, if omitting, should check options page manually
 import App from './options/App.tsx';
 import { assertIsDefined } from './typeguards.ts';
 
