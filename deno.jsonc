@@ -21,10 +21,10 @@
       "deno.ns"
     ],
     "types": [
-      "https://esm.sh/v135/chrome-types@0.1.301/index.d.ts"
+      "https://esm.sh/chrome-types@0.1.301/index.d.ts"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "https://esm.sh/v135/react@18.3.1"
+    "jsxImportSource": "https://esm.sh/react@18.3.1"
   },
   "lint": {
     "include": ["src/", "scripts/"],
@@ -37,8 +37,8 @@
     "@std/assert": "jsr:@std/assert@^1.0.3",
     "@std/encoding": "jsr:@std/encoding@^1.0.3",
     "@std/path": "jsr:@std/path@^1.0.3",
-    "ajv": "https://esm.sh/v135/ajv@8.17.1",
-    "fflate": "https://esm.sh/v135/fflate@0.8.2",
-    "pretty-bytes": "https://esm.sh/v135/pretty-bytes@6.1.1"
+    "ajv": "https://esm.sh/ajv@8.17.1",
+    "fflate": "https://esm.sh/fflate@0.8.2",
+    "pretty-bytes": "https://esm.sh/pretty-bytes@6.1.1"
   }
 }
