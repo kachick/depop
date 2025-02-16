@@ -19,11 +19,14 @@ jobs:
           deno-version: '1.45.5' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
       - name: Ensure cache before build
         run: deno task cache
-      - name: Install gh-action-escape
-        run: curl -fsSL https://raw.githubusercontent.com/kachick/gh-action-escape/v0.2.0/scripts/install-in-github-action.sh | sh -s v0.2.0
       - name: Build
         id: build
-        run: deno task build | gh-action-escape -name=report | tee --append "$GITHUB_OUTPUT"
+        run: |
+          {
+            echo 'report<<EOF'
+            deno task build
+            echo EOF
+          } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v3
         with:
