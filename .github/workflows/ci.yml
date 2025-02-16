@@ -43,7 +43,6 @@ jobs:
           {
             echo 'report<<JSON'
             deno task build
-            echo
             echo 'JSON'
           } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Upload the product for nightly use and debug
