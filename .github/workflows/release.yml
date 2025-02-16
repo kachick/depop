@@ -23,10 +23,10 @@ jobs:
         id: build
         run: |
           {
-            echo 'report<<EOF'
+            echo "report<<'JSON'"
             deno task build
             echo
-            echo 'EOF'
+            echo 'JSON'
           } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v3
