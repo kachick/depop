@@ -41,7 +41,7 @@ jobs:
         id: build
         run: |
           {
-            echo "report<<'JSON'"
+            echo 'report<<JSON'
             deno task build
             echo
             echo 'JSON'
