@@ -43,7 +43,7 @@ jobs:
           {
             echo 'report<<EOF'
             deno task build
-            echo EOF
+            echo "\nEOF"
           } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Upload the product for nightly use and debug
         uses: actions/upload-artifact@v4
