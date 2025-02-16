@@ -25,7 +25,8 @@ jobs:
           {
             echo 'report<<EOF'
             deno task build
-            echo "\nEOF"
+            echo
+            echo 'EOF'
           } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v3
