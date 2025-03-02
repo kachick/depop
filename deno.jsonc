@@ -6,7 +6,9 @@
     "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
     "stylelint": "deno task cache && stylelint src/*.css",
     "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version && selfup -version",
-    "cache": "deno cache --frozen=false --node-modules-dir --reload npm:stylelint-config-recommended@14.0.1 src/*.ts* scripts/*.ts",
+    // `deno clean` and this `--reload` does not make diff in local.
+    // ref: https://github.com/denoland/deno/issues/27837#issuecomment-2616366827
+    "cache": "deno cache --frozen=false --node-modules-dir --reload npm:stylelint-config-recommended@14.0.1 src/**/*.ts* scripts/*.ts",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
