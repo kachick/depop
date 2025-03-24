@@ -444,8 +444,8 @@
     "ms@2.1.3": {
       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
     },
-    "nanoid@3.3.10": {
-      "integrity": "sha512-vSJJTG+t/dIKAUhUDw/dLdZ9s//5OxcHqLaDWWrW4Cdq7o6tdLIczUkMXt2MBNmk6sJRZBZRXVixs7URY1CmIg=="
+    "nanoid@3.3.11": {
+      "integrity": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w=="
     },
     "normalize-path@3.0.0": {
       "integrity": "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA=="
@@ -653,8 +653,8 @@
   },
   "redirects": {
     "https://esm.sh/@types/react-dom@~19.0.3/client.d.ts": "https://esm.sh/@types/react-dom@19.0.4/client.d.ts",
-    "https://esm.sh/@types/react@~19.0.7/index.d.ts": "https://esm.sh/@types/react@19.0.10/index.d.ts",
-    "https://esm.sh/@types/react@~19.0.7/jsx-runtime.d.ts": "https://esm.sh/@types/react@19.0.10/jsx-runtime.d.ts",
+    "https://esm.sh/@types/react@~19.0.7/index.d.ts": "https://esm.sh/@types/react@19.0.12/index.d.ts",
+    "https://esm.sh/@types/react@~19.0.7/jsx-runtime.d.ts": "https://esm.sh/@types/react@19.0.12/jsx-runtime.d.ts",
     "https://esm.sh/@types/scheduler@~0.23.0/index.d.ts": "https://esm.sh/@types/scheduler@0.23.0/index.d.ts",
     "https://esm.sh/fast-deep-equal@^3.1.3?target=denonext": "https://esm.sh/fast-deep-equal@3.1.3?target=denonext",
     "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.0.6?target=denonext",
