@@ -5,12 +5,12 @@
     "check": "dprint check && typos && dprint check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
     "stylelint": "deno task cache && stylelint src/*.css",
-    "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version && selfup -version",
+    "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
     "cache": "deno cache --frozen=false --node-modules-dir --reload npm:stylelint-config-recommended@14.0.1 src/*.ts* scripts/*.ts",
     // Required ImageMagick dependency
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
-    "selfup": "git ls-files '.github' | xargs selfup run",
+    "selfup": "git ls-files '.github' | xargs nix run github:kachick/selfup/v1.2.0 -- run",
     // See https://github.com/kachick/depop/pull/209 for detail
     "bump:deno_lock": "deno clean && rm deno.lock && deno task all",
     "all": "deno task deps && deno task check && deno task build && deno task stylelint && deno task resize"
