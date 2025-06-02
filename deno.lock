@@ -10,11 +10,11 @@
     "jsr:@std/encoding@^1.0.3": "1.0.10",
     "jsr:@std/fmt@0.223": "0.223.0",
     "jsr:@std/fs@0.223": "0.223.0",
-    "jsr:@std/internal@^1.0.6": "1.0.7",
+    "jsr:@std/internal@^1.0.6": "1.0.8",
     "jsr:@std/io@0.223": "0.223.0",
     "jsr:@std/path@0.223": "0.223.0",
-    "jsr:@std/path@^1.0.3": "1.0.9",
-    "npm:stylelint-config-recommended@14.0.1": "14.0.1_stylelint@16.19.1__@csstools+css-tokenizer@3.0.3__@csstools+css-parser-algorithms@3.0.4___@csstools+css-tokenizer@3.0.3__postcss-selector-parser@7.1.0__postcss@8.5.3"
+    "jsr:@std/path@^1.0.3": "1.1.0",
+    "npm:stylelint-config-recommended@14.0.1": "14.0.1_stylelint@16.20.0__@csstools+css-tokenizer@3.0.4__@csstools+css-parser-algorithms@3.0.5___@csstools+css-tokenizer@3.0.4__postcss-selector-parser@7.1.0__postcss@8.5.4"
   },
   "jsr": {
     "@deno/cache-dir@0.13.2": {
@@ -58,8 +58,8 @@
     "@std/fs@0.223.0": {
       "integrity": "3b4b0550b2c524cbaaa5a9170c90e96cbb7354e837ad1bdaf15fc9df1ae9c31c"
     },
-    "@std/internal@1.0.7": {
-      "integrity": "39eeb5265190a7bc5d5591c9ff019490bd1f2c3907c044a11b0d545796158a0f"
+    "@std/internal@1.0.8": {
+      "integrity": "fc66e846d8d38a47cffd274d80d2ca3f0de71040f855783724bb6b87f60891f5"
     },
     "@std/io@0.223.0": {
       "integrity": "2d8c3c2ab3a515619b90da2c6ff5ea7b75a94383259ef4d02116b228393f84f1",
@@ -74,8 +74,8 @@
         "jsr:@std/assert@0.223"
       ]
     },
-    "@std/path@1.0.9": {
-      "integrity": "260a49f11edd3db93dd38350bf9cd1b4d1366afa98e81b86167b4e3dd750129e"
+    "@std/path@1.1.0": {
+      "integrity": "ddc94f8e3c275627281cbc23341df6b8bcc874d70374f75fec2533521e3d6886"
     }
   },
   "npm": {
@@ -90,17 +90,17 @@
     "@babel/helper-validator-identifier@7.27.1": {
       "integrity": "sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow=="
     },
-    "@csstools/css-parser-algorithms@3.0.4_@csstools+css-tokenizer@3.0.3": {
-      "integrity": "sha512-Up7rBoV77rv29d3uKHUIVubz1BTcgyUK72IvCQAbfbMv584xHcGKCKbWh7i8hPrRJ7qU4Y8IO3IY9m+iTB7P3A==",
+    "@csstools/css-parser-algorithms@3.0.5_@csstools+css-tokenizer@3.0.4": {
+      "integrity": "sha512-DaDeUkXZKjdGhgYaHNJTV9pV7Y9B3b644jCLs9Upc3VeNGg6LWARAT6O+Q+/COo+2gg/bM5rhpMAtf70WqfBdQ==",
       "dependencies": [
         "@csstools/css-tokenizer"
       ]
     },
-    "@csstools/css-tokenizer@3.0.3": {
-      "integrity": "sha512-UJnjoFsmxfKUdNYdWgOB0mWUypuLvAfQPH1+pyvRJs6euowbFkFC6P13w1l8mJyi3vxYMxc9kld5jZEGRQs6bw=="
+    "@csstools/css-tokenizer@3.0.4": {
+      "integrity": "sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw=="
     },
-    "@csstools/media-query-list-parser@4.0.2_@csstools+css-parser-algorithms@3.0.4__@csstools+css-tokenizer@3.0.3_@csstools+css-tokenizer@3.0.3": {
-      "integrity": "sha512-EUos465uvVvMJehckATTlNqGj4UJWkTmdWuDMjqvSUkjGpmOyFZBVwb4knxCm/k2GMTXY+c/5RkdndzFYWeX5A==",
+    "@csstools/media-query-list-parser@4.0.3_@csstools+css-parser-algorithms@3.0.5__@csstools+css-tokenizer@3.0.4_@csstools+css-tokenizer@3.0.4": {
+      "integrity": "sha512-HAYH7d3TLRHDOUQK4mZKf9k9Ph/m8Akstg66ywKR4SFAigjs3yBiUeZtFxywiTm5moZMAp/5W/ZuFnNXXYLuuQ==",
       "dependencies": [
         "@csstools/css-parser-algorithms",
         "@csstools/css-tokenizer"
@@ -349,8 +349,8 @@
     "ignore@5.3.2": {
       "integrity": "sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g=="
     },
-    "ignore@7.0.4": {
-      "integrity": "sha512-gJzzk+PQNznz8ysRrC0aOkBNVRBDtE1n53IqyqEf3PXrYwomFs5q4pGMizBMJF+ykh03insJ27hB8gSrD2Hn8A=="
+    "ignore@7.0.5": {
+      "integrity": "sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg=="
     },
     "import-fresh@3.3.1": {
       "integrity": "sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==",
@@ -477,7 +477,7 @@
     "postcss-resolve-nested-selector@0.1.6": {
       "integrity": "sha512-0sglIs9Wmkzbr8lQwEyIzlDOOC9bGmfVKcJTaxv3vMmd3uo4o4DerC3En0bnmgceeql9BfC8hRkp7cg0fjdVqw=="
     },
-    "postcss-safe-parser@7.0.1_postcss@8.5.3": {
+    "postcss-safe-parser@7.0.1_postcss@8.5.4": {
       "integrity": "sha512-0AioNCJZ2DPYz5ABT6bddIqlhgwhpHZ/l65YAYo0BCIn0xiDpsnTHz0gnoTGk0OXZW0JRs+cDwL8u/teRdz+8A==",
       "dependencies": [
         "postcss"
@@ -493,8 +493,8 @@
     "postcss-value-parser@4.2.0": {
       "integrity": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
     },
-    "postcss@8.5.3": {
-      "integrity": "sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==",
+    "postcss@8.5.4": {
+      "integrity": "sha512-QSa9EBe+uwlGTFmHsPKokv3B/oEMQZxfqW0QqNCyhpa6mB1afzulwn8hihglqAb2pOw+BJgNlmXQ8la2VeHB7w==",
       "dependencies": [
         "nanoid",
         "picocolors",
@@ -553,14 +553,14 @@
         "ansi-regex"
       ]
     },
-    "stylelint-config-recommended@14.0.1_stylelint@16.19.1__@csstools+css-tokenizer@3.0.3__@csstools+css-parser-algorithms@3.0.4___@csstools+css-tokenizer@3.0.3__postcss-selector-parser@7.1.0__postcss@8.5.3": {
+    "stylelint-config-recommended@14.0.1_stylelint@16.20.0__@csstools+css-tokenizer@3.0.4__@csstools+css-parser-algorithms@3.0.5___@csstools+css-tokenizer@3.0.4__postcss-selector-parser@7.1.0__postcss@8.5.4": {
       "integrity": "sha512-bLvc1WOz/14aPImu/cufKAZYfXs/A/owZfSMZ4N+16WGXLoX5lOir53M6odBxvhgmgdxCVnNySJmZKx73T93cg==",
       "dependencies": [
         "stylelint"
       ]
     },
-    "stylelint@16.19.1_@csstools+css-tokenizer@3.0.3_@csstools+css-parser-algorithms@3.0.4__@csstools+css-tokenizer@3.0.3_postcss-selector-parser@7.1.0_postcss@8.5.3": {
-      "integrity": "sha512-C1SlPZNMKl+d/C867ZdCRthrS+6KuZ3AoGW113RZCOL0M8xOGpgx7G70wq7lFvqvm4dcfdGFVLB/mNaLFChRKw==",
+    "stylelint@16.20.0_@csstools+css-tokenizer@3.0.4_@csstools+css-parser-algorithms@3.0.5__@csstools+css-tokenizer@3.0.4_postcss-selector-parser@7.1.0_postcss@8.5.4": {
+      "integrity": "sha512-B5Myu9WRxrgKuLs3YyUXLP2H0mrbejwNxPmyADlACWwFsrL8Bmor/nTSh4OMae5sHjOz6gkSeccQH34gM4/nAw==",
       "dependencies": [
         "@csstools/css-parser-algorithms",
         "@csstools/css-tokenizer",
@@ -580,7 +580,7 @@
         "globby",
         "globjoin",
         "html-tags",
-        "ignore@7.0.4",
+        "ignore@7.0.5",
         "imurmurhash",
         "is-plain-object",
         "known-css-properties",
