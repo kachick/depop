@@ -14,7 +14,7 @@
     "jsr:@std/io@0.223": "0.223.0",
     "jsr:@std/path@0.223": "0.223.0",
     "jsr:@std/path@^1.0.3": "1.1.0",
-    "npm:stylelint-config-recommended@14.0.1": "14.0.1_stylelint@16.20.0__@csstools+css-tokenizer@3.0.4__@csstools+css-parser-algorithms@3.0.5___@csstools+css-tokenizer@3.0.4__postcss-selector-parser@7.1.0__postcss@8.5.5"
+    "npm:stylelint-config-recommended@14.0.1": "14.0.1_stylelint@16.21.0__@csstools+css-tokenizer@3.0.4__@csstools+css-parser-algorithms@3.0.5___@csstools+css-tokenizer@3.0.4__postcss-selector-parser@7.1.0__postcss@8.5.6"
   },
   "jsr": {
     "@deno/cache-dir@0.13.2": {
@@ -413,8 +413,8 @@
     "kind-of@6.0.3": {
       "integrity": "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
     },
-    "known-css-properties@0.36.0": {
-      "integrity": "sha512-A+9jP+IUmuQsNdsLdcg6Yt7voiMF/D4K83ew0OpJtpu+l34ef7LaohWV0Rc6KNvzw6ZDizkqfyB5JznZnzuKQA=="
+    "known-css-properties@0.37.0": {
+      "integrity": "sha512-JCDrsP4Z1Sb9JwG0aJ8Eo2r7k4Ou5MwmThS/6lcIe1ICyb7UBJKGRIUUdqc2ASdE/42lgz6zFUnzAIhtXnBVrQ=="
     },
     "lines-and-columns@1.2.4": {
       "integrity": "sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg=="
@@ -477,7 +477,7 @@
     "postcss-resolve-nested-selector@0.1.6": {
       "integrity": "sha512-0sglIs9Wmkzbr8lQwEyIzlDOOC9bGmfVKcJTaxv3vMmd3uo4o4DerC3En0bnmgceeql9BfC8hRkp7cg0fjdVqw=="
     },
-    "postcss-safe-parser@7.0.1_postcss@8.5.5": {
+    "postcss-safe-parser@7.0.1_postcss@8.5.6": {
       "integrity": "sha512-0AioNCJZ2DPYz5ABT6bddIqlhgwhpHZ/l65YAYo0BCIn0xiDpsnTHz0gnoTGk0OXZW0JRs+cDwL8u/teRdz+8A==",
       "dependencies": [
         "postcss"
@@ -493,8 +493,8 @@
     "postcss-value-parser@4.2.0": {
       "integrity": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
     },
-    "postcss@8.5.5": {
-      "integrity": "sha512-d/jtm+rdNT8tpXuHY5MMtcbJFBkhXE6593XVR9UoGCH8jSFGci7jGvMGH5RYd5PBJW+00NZQt6gf7CbagJCrhg==",
+    "postcss@8.5.6": {
+      "integrity": "sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==",
       "dependencies": [
         "nanoid",
         "picocolors",
@@ -553,14 +553,14 @@
         "ansi-regex"
       ]
     },
-    "stylelint-config-recommended@14.0.1_stylelint@16.20.0__@csstools+css-tokenizer@3.0.4__@csstools+css-parser-algorithms@3.0.5___@csstools+css-tokenizer@3.0.4__postcss-selector-parser@7.1.0__postcss@8.5.5": {
+    "stylelint-config-recommended@14.0.1_stylelint@16.21.0__@csstools+css-tokenizer@3.0.4__@csstools+css-parser-algorithms@3.0.5___@csstools+css-tokenizer@3.0.4__postcss-selector-parser@7.1.0__postcss@8.5.6": {
       "integrity": "sha512-bLvc1WOz/14aPImu/cufKAZYfXs/A/owZfSMZ4N+16WGXLoX5lOir53M6odBxvhgmgdxCVnNySJmZKx73T93cg==",
       "dependencies": [
         "stylelint"
       ]
     },
-    "stylelint@16.20.0_@csstools+css-tokenizer@3.0.4_@csstools+css-parser-algorithms@3.0.5__@csstools+css-tokenizer@3.0.4_postcss-selector-parser@7.1.0_postcss@8.5.5": {
-      "integrity": "sha512-B5Myu9WRxrgKuLs3YyUXLP2H0mrbejwNxPmyADlACWwFsrL8Bmor/nTSh4OMae5sHjOz6gkSeccQH34gM4/nAw==",
+    "stylelint@16.21.0_@csstools+css-tokenizer@3.0.4_@csstools+css-parser-algorithms@3.0.5__@csstools+css-tokenizer@3.0.4_postcss-selector-parser@7.1.0_postcss@8.5.6": {
+      "integrity": "sha512-ki3PpJGG7xhm3WtINoWGnlvqAmbqSexoRMbEMJzlwewSIOqPRKPlq452c22xAdEJISVi80r+I7KL9GPUiwFgbg==",
       "dependencies": [
         "@csstools/css-parser-algorithms",
         "@csstools/css-tokenizer",
