@@ -17,9 +17,4 @@ a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) 
 /* Profile Sidebar */
 li:has(> a[href$='/followers']),
 div:has(> h2 a[href$='?tab=achievements']),
-/* Dashboard */
-aside[aria-label='Explore']
-  div[aria-label='Explore repositories']
-  div:has(> svg[aria-label='star']) {
-  display: none !important;
-}
+/* Dashboard - Explore repositories section removed as GitHub no longer provides this feature */

@@ -4,10 +4,6 @@ import { useEffect, useState } from 'https://esm.sh/react@19.0.0?target=es2022';
 function App() {
   const [isLoading, startLoading] = React.useTransition();
   const [
-    isHideExploreRepositories,
-    setIsHideExploreRepositories,
-  ] = useState(false);
-  const [
     isHideSponsors,
     setIsHideSponsors,
   ] = useState(false);
@@ -19,13 +15,9 @@ function App() {
   useEffect(() => {
     startLoading(async () => {
       const keys = await chrome.storage.sync.get([
-        'isHideExploreRepositories',
         'isHideSponsors',
         'isHideSponsoring',
       ]);
-      setIsHideExploreRepositories(
-        keys.isHideExploreRepositories,
-      );
       setIsHideSponsors(keys.isHideSponsors);
       setIsHideSponsoring(keys.isHideSponsoring);
     });
@@ -37,35 +29,6 @@ function App() {
 
   return (
     <form>
-      <div className='form-checkbox'>
-        <label>
-          <input
-            type='checkbox'
-            checked={isHideExploreRepositories}
-            aria-describedby='help-text-for-isHideExploreRepositories-checkbox'
-            onChange={(_ev) => {
-              const toggled = !isHideExploreRepositories;
-              setIsHideExploreRepositories(
-                toggled,
-              );
-              chrome.storage.sync.set({
-                'isHideExploreRepositories': toggled,
-              }).then(() => {
-                console.log(
-                  `isHideExploreRepositories is set to ${toggled}`,
-                );
-              });
-            }}
-          />
-          Hide "Explore repositories"
-        </label>
-        <p
-          className='note'
-          id='help-text-for-isHideExploreRepositories-checkbox'
-        >
-          Hide the section in right-sidebar if enabled this option
-        </p>
-      </div>
       <div className='form-checkbox'>
         <label>
           <input
