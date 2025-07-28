@@ -8,16 +8,6 @@ const hide = (element: Element): void => {
   );
 };
 
-const hideExploreRepositories = (): void => {
-  const exploreRepositoriesComponent = document.querySelector(
-    "aside[aria-label='Explore'] div[aria-label='Explore repositories']",
-  );
-
-  if (exploreRepositoriesComponent) {
-    hide(exploreRepositoriesComponent);
-  }
-};
-
 // Sponsor: Received from
 const hideSponsors = (): void => {
   const sponsorsH2Node = document.evaluate(
@@ -69,15 +59,10 @@ const hideHighlights = (): void => {
 
 const hideComponents = (): void => {
   chrome.storage.sync.get([
-    'isHideExploreRepositories',
     'isHideSponsors',
     'isHideSponsoring',
   ]).then(
-    ({ isHideExploreRepositories, isHideSponsors, isHideSponsoring }): void => {
-      if (isHideExploreRepositories) {
-        hideExploreRepositories();
-      }
-
+    ({ isHideSponsors, isHideSponsoring }): void => {
       if (isHideSponsors) {
         hideSponsors();
       }
