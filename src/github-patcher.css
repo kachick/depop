@@ -10,10 +10,7 @@ a[href$='/watchers'] strong,
 a[href$='/forks'] strong,
 /* Third party stats. "GitHub Readme Stats" */
 /* NOTE: Do not hide other endpoints like `api/top-langs` */
-a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
-  display: none;
-}
-
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']),
 /* Profile Sidebar */
 li:has(> a[href$='/followers']),
 div:has(> h2 a[href$='?tab=achievements']) {
