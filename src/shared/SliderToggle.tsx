@@ -72,13 +72,13 @@ export default function SliderToggle({
   const getLevelLabel = (level: FilterLevel) => {
     switch (level) {
       case 0:
-        return 'フィルタリングなし'; // No filtering (like uBlock Origin)
+        return 'Off'; // No filtering (like uBlock Origin)
       case 1:
-        return '最適'; // Optimal (default)
+        return 'Default'; // Optimal (default)
       case 2:
-        return '完全'; // Complete (all features)
+        return 'Max'; // Complete (all features)
       default:
-        return '最適';
+        return 'Default';
     }
   };
 
@@ -111,7 +111,7 @@ export default function SliderToggle({
     <div>
       <div style={{ textAlign: 'center', marginBottom: '16px' }}>
         <div style={{ fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>
-          フィルタリングモード
+          Filtering Mode
         </div>
         <div style={{ fontSize: '16px', fontWeight: '600', color: '#0969da' }}>
           {getLevelLabel(filterLevel)}
@@ -208,7 +208,7 @@ export default function SliderToggle({
               padding: '0'
             }}
           >
-            ⚙️ 設定
+            ⚙️ Options
           </button>
         </div>
       )}
