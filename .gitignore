@@ -4,8 +4,6 @@ dist/
 tmp/
 
 node_modules/
-package.json
-package-lock.json
 
 # For assets
 *.Zone.Identifier
