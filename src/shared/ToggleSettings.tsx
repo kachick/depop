@@ -1,4 +1,4 @@
-import * as React from 'https://esm.sh/react@19.0.0?target=es2022';
+import * as React from 'https://esm.sh/react@19.0.14?target=es2022';
 
 const { useEffect, useState } = React;
 
@@ -15,10 +15,6 @@ export default function ToggleSettings({
 }: ToggleSettingsProps) {
   const [isLoading, startLoading] = React.useTransition();
   const [
-    isHideExploreRepositories,
-    setIsHideExploreRepositories,
-  ] = useState(false);
-  const [
     isHideSponsors,
     setIsHideSponsors,
   ] = useState(false);
@@ -30,13 +26,9 @@ export default function ToggleSettings({
   useEffect(() => {
     startLoading(async () => {
       const keys = await chrome.storage.sync.get([
-        'isHideExploreRepositories',
         'isHideSponsors',
         'isHideSponsoring',
       ]);
-      setIsHideExploreRepositories(
-        keys.isHideExploreRepositories,
-      );
       setIsHideSponsors(keys.isHideSponsors);
       setIsHideSponsoring(keys.isHideSponsoring);
     });
@@ -66,32 +58,6 @@ export default function ToggleSettings({
 
   return (
     <form>
-      <div className='form-checkbox'>
-        <label>
-          <input
-            type='checkbox'
-            checked={isHideExploreRepositories}
-            {...(showDescriptions && {
-              'aria-describedby': 'help-text-for-isHideExploreRepositories-checkbox',
-            })}
-            onChange={(_ev) =>
-              handleToggle(
-                'isHideExploreRepositories',
-                isHideExploreRepositories,
-                setIsHideExploreRepositories,
-              )}
-          />
-          Hide "Explore repositories"
-        </label>
-        {showDescriptions && (
-          <p
-            className='note'
-            id='help-text-for-isHideExploreRepositories-checkbox'
-          >
-            Hide the section in right-sidebar if enabled this option
-          </p>
-        )}
-      </div>
       <div className='form-checkbox'>
         <label>
           <input

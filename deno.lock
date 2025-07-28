@@ -10,8 +10,8 @@
     "jsr:@std/encoding@^1.0.3": "1.0.10",
     "jsr:@std/fmt@0.223": "0.223.0",
     "jsr:@std/fs@0.223": "0.223.0",
-    "jsr:@std/internal@^1.0.6": "1.0.9",
-    "jsr:@std/internal@^1.0.9": "1.0.9",
+    "jsr:@std/internal@^1.0.6": "1.0.10",
+    "jsr:@std/internal@^1.0.9": "1.0.10",
     "jsr:@std/io@0.223": "0.223.0",
     "jsr:@std/path@0.223": "0.223.0",
     "jsr:@std/path@^1.0.3": "1.1.1",
@@ -59,8 +59,8 @@
     "@std/fs@0.223.0": {
       "integrity": "3b4b0550b2c524cbaaa5a9170c90e96cbb7354e837ad1bdaf15fc9df1ae9c31c"
     },
-    "@std/internal@1.0.9": {
-      "integrity": "bdfb97f83e4db7a13e8faab26fb1958d1b80cc64366501af78a0aee151696eb8"
+    "@std/internal@1.0.10": {
+      "integrity": "e3be62ce42cab0e177c27698e5d9800122f67b766a0bea6ca4867886cbde8cf7"
     },
     "@std/io@0.223.0": {
       "integrity": "2d8c3c2ab3a515619b90da2c6ff5ea7b75a94383259ef4d02116b228393f84f1",
@@ -175,8 +175,8 @@
         "fill-range"
       ]
     },
-    "cacheable@1.10.2": {
-      "integrity": "sha512-hMkETCRV4hwBAvjQY1/xGw15tlPj+7cM4d5HOlYJJFftLQVRCboVX+mT6AJ6eL0fsqUhSUwDiF+pgfTR2r2Hxg==",
+    "cacheable@1.10.3": {
+      "integrity": "sha512-M6p10iJ/VT0wT7TLIGUnm958oVrU2cUK8pQAVU21Zu7h8rbk/PeRtRWrvHJBql97Bhzk3g1N6+2VKC+Rjxna9Q==",
       "dependencies": [
         "hookified",
         "keyv"
@@ -268,8 +268,8 @@
         "reusify"
       ]
     },
-    "file-entry-cache@10.1.1": {
-      "integrity": "sha512-zcmsHjg2B2zjuBgjdnB+9q0+cWcgWfykIcsDkWDB4GTPtl1eXUA+gTI6sO0u01AqK3cliHryTU55/b2Ow1hfZg==",
+    "file-entry-cache@10.1.3": {
+      "integrity": "sha512-D+w75Ub8T55yor7fPgN06rkCAUbAYw2vpxJmmjv/GDAcvCnv9g7IvHhIZoxzRZThrXPFI2maeY24pPbtyYU7Lg==",
       "dependencies": [
         "flat-cache"
       ]
@@ -280,8 +280,8 @@
         "to-regex-range"
       ]
     },
-    "flat-cache@6.1.11": {
-      "integrity": "sha512-zfOAns94mp7bHG/vCn9Ru2eDCmIxVQ5dELUHKjHfDEOJmHNzE+uGa6208kfkgmtym4a0FFjEuFksCXFacbVhSg==",
+    "flat-cache@6.1.12": {
+      "integrity": "sha512-U+HqqpZPPXP5d24bWuRzjGqVqUcw64k4nZAbruniDwdRg0H10tvN7H6ku1tjhA4rg5B9GS3siEvwO2qjJJ6f8Q==",
       "dependencies": [
         "cacheable",
         "flatted",
@@ -328,8 +328,8 @@
     "has-flag@4.0.0": {
       "integrity": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ=="
     },
-    "hookified@1.10.0": {
-      "integrity": "sha512-dJw0492Iddsj56U1JsSTm9E/0B/29a1AuoSLRAte8vQg/kaTGF3IgjEWT8c8yG4cC10+HisE1x5QAwR0Xwc+DA=="
+    "hookified@1.11.0": {
+      "integrity": "sha512-aDdIN3GyU5I6wextPplYdfmWCo+aLmjjVbntmX6HLD5RCi/xKsivYEBhnRD+d9224zFf008ZpLMPlWF0ZodYZw=="
     },
     "html-tags@3.3.1": {
       "integrity": "sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ=="
@@ -642,13 +642,13 @@
   "redirects": {
     "https://esm.sh/@types/react-dom@~19.0.3/client.d.ts": "https://esm.sh/@types/react-dom@19.0.6/client.d.ts",
     "https://esm.sh/@types/react@~19.0.7/index.d.ts": "https://esm.sh/@types/react@19.0.14/index.d.ts",
-    "https://esm.sh/@types/react@~19.0.7/jsx-runtime.d.ts": "https://esm.sh/@types/react@19.0.14/jsx-runtime.d.ts",
     "https://esm.sh/@types/scheduler@~0.23.0/index.d.ts": "https://esm.sh/@types/scheduler@0.23.0/index.d.ts",
     "https://esm.sh/fast-deep-equal@^3.1.3?target=denonext": "https://esm.sh/fast-deep-equal@3.1.3?target=denonext",
     "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.0.6?target=denonext",
     "https://esm.sh/json-schema-traverse@^1.0.0?target=denonext": "https://esm.sh/json-schema-traverse@1.0.0?target=denonext"
   },
   "remote": {
+    "https://esm.sh/@types/react@19.0.14/jsx-runtime": "fabf6997a3adf11e45d11e3c4d58d0634ab98f9d72f3116f3694123818ccd457",
     "https://esm.sh/ajv@8.17.1": "a04e4f86e082abdcbf765a7f54d9aa96f77e27ef5553254b5b049c7e6c489435",
     "https://esm.sh/ajv@8.17.1/denonext/ajv.mjs": "93640b28521b7fca32e34a3534343176c06dd65bdd6ca6a14ec97562f278e949",
     "https://esm.sh/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "66e5d717af5e6a08366cc6aa421af1838a773895070bfee46c45102adf7ddc5f",
@@ -664,10 +664,8 @@
     "https://esm.sh/react-dom@19.0.0/client?target=es2022": "b326278217e074acc857a68d9bad82ee467c41400d1464829e5aa081467c63bf",
     "https://esm.sh/react-dom@19.0.0/es2022/client.mjs": "35dca24b88e50ff876e963ccbaec2cef1c41150ef8d9f00984ceb9b7089f3b70",
     "https://esm.sh/react-dom@19.0.0/es2022/react-dom.mjs": "5ce0cb1ee69fdd88cabf8576ad389881e5db96365c9025702b438b2d7863cc0c",
-    "https://esm.sh/react@19.0.0/es2022/jsx-runtime.mjs": "643b749fa9666fbf73619a99fd708722edb4acaa34c8cea7be783a3432367780",
     "https://esm.sh/react@19.0.0/es2022/react.mjs": "92b896580737b8b2d75b0a84a92fd2b4f3a62e692d96be1994a5185050db289d",
     "https://esm.sh/react@19.0.0?target=es2022": "b2d09997656003a0c3066d95bcf66a7bd0ac68333e66678655e983465e649145",
-    "https://esm.sh/react@19.0.0?target=es2022/jsx-runtime": "9c0e93410782b9cb51eb0532f6c1bd9157bd188bfe000387619462a716a4e605",
     "https://esm.sh/scheduler@0.25.0/es2022/scheduler.mjs": "50687edf9e0034b6db97303b1b16893b59c5833c21ea8cf913dc380b537f6aaf",
     "https://esm.sh/scheduler@^0.25.0?target=es2022": "4a900fbc45073d3bc2d0e2bc39b3bfa6b52289b6725a594181c97e0a10053e78"
   },
