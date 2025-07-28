@@ -26,7 +26,8 @@
       "https://esm.sh/chrome-types@0.1.301/index.d.ts"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "https://esm.sh/react@19.0.0?target=es2022"
+    "jsxImportSource": "https://esm.sh/react@19.0.14?target=es2022",
+    "jsxImportSourceTypes": "https://esm.sh/@types/react@19.0.14"
   },
   "lint": {
     "include": ["src/", "scripts/"],
