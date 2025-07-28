@@ -4,7 +4,7 @@ import SliderToggle from './shared/SliderToggle.tsx';
 import { assertIsDefined } from './typeguards.ts';
 
 function PopupApp() {
-  return <SliderToggle loadingText='Loading...' showFooter={true} />;
+  return <SliderToggle loadingText='Loading...' />;
 }
 
 const root = document.getElementById('root');

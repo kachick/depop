@@ -28,7 +28,7 @@ const cleanUpSync = () => {
 cleanUpSync();
 
 const transpile = async () => {
-  for (const entryTsPath of ['src/github-patcher.ts', 'src/options.tsx', 'src/popup.tsx']) {
+  for (const entryTsPath of ['src/github-patcher.ts', 'src/popup.tsx']) {
     const bundled = await bundle(entryTsPath);
     const outputPath = `dist/${basename(entryTsPath, extname(entryTsPath))}.js`;
     Deno.writeTextFileSync(outputPath, bundled.code);
@@ -41,8 +41,6 @@ const gatherDist = Promise.all([
   Deno.copyFile('LICENSE', 'dist/LICENSE'),
   Deno.copyFile('src/manifest.json', 'dist/manifest.json'),
   Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
-  Deno.copyFile('src/options.html', 'dist/options.html'),
-  Deno.copyFile('src/options.css', 'dist/options.css'),
   Deno.copyFile('src/popup.html', 'dist/popup.html'),
   Deno.copyFile('src/popup.css', 'dist/popup.css'),
   Deno.copyFile('vendor/primer.css', 'dist/primer.css'),
@@ -111,7 +109,6 @@ const validateProduct = async (zipped: Uint8Array) => {
 
   const definedPaths = [
     ...manifestJson.content_scripts.flatMap(({ css, js }) => [...css, ...js]),
-    manifestJson.options_page,
     ...Object.values(manifestJson.icons),
   ];
   const includedPaths = new Set(Object.keys(unzipped));

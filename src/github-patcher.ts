@@ -73,26 +73,34 @@ const handleHighlights = (shouldHide: boolean): void => {
   }
 };
 
-const updateComponents = (): void => {
-  chrome.storage.sync.get([
-    'isExtensionEnabled',
-    'isHideSponsors',
-    'isHideSponsoring',
-  ]).then(
-    ({ isExtensionEnabled, isHideSponsors, isHideSponsoring }): void => {
-      // Master toggle - if extension is disabled, show all elements (restore original state)
-      if (isExtensionEnabled === false) {
-        handleSponsors(false);
-        handleSponsoring(false);
-        handleHighlights(false);
-        return;
-      }
+enum FilterLevel {
+  Off = 'off',
+  Default = 'default',
+  Max = 'max'
+}
 
-      // If extension is enabled (or undefined for backward compatibility), apply individual settings
-      handleSponsors(isHideSponsors);
-      handleSponsoring(isHideSponsoring);
-      // Hide highlights when extension is enabled (not configurable for now)
-      handleHighlights(true);
+const updateComponents = (): void => {
+  chrome.storage.sync.get(['filterLevel']).then(
+    ({ filterLevel }): void => {
+      const level = filterLevel || FilterLevel.Default;
+      
+      switch (level) {
+        case FilterLevel.Off:
+          handleSponsors(false);
+          handleSponsoring(false);
+          handleHighlights(false);
+          break;
+        case FilterLevel.Default:
+          handleSponsors(false);
+          handleSponsoring(false);
+          handleHighlights(true);
+          break;
+        case FilterLevel.Max:
+          handleSponsors(true);
+          handleSponsoring(true);
+          handleHighlights(true);
+          break;
+      }
     },
   );
 };
@@ -102,10 +110,9 @@ if (document.readyState !== 'complete') {
 }
 updateComponents();
 
-// Listen for storage changes to apply options immediately without refresh
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
-    if (changes.isExtensionEnabled || changes.isHideSponsors || changes.isHideSponsoring) {
+    if (changes.filterLevel) {
       updateComponents();
     }
   }
