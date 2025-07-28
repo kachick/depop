@@ -91,7 +91,6 @@ hideComponents();
 // Listen for storage changes to apply options immediately without refresh
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
-    // Check if any of our tracked options changed
     if (changes.isHideSponsors || changes.isHideSponsoring) {
       hideComponents();
     }
