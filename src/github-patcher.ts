@@ -86,12 +86,14 @@ const setCSSVariable = (variableName: string, value: string): void => {
 const hideElementsWithCSS = (): void => {
   setCSSVariable('--depop-opacity', '0');
   setCSSVariable('--depop-max-height', '0');
+  setCSSVariable('--depop-max-width', '0');
   setCSSVariable('--depop-pointer-events', 'none');
 };
 
 const showElementsWithCSS = (): void => {
   setCSSVariable('--depop-opacity', '1');
   setCSSVariable('--depop-max-height', 'auto');
+  setCSSVariable('--depop-max-width', 'auto');
   setCSSVariable('--depop-pointer-events', 'auto');
 };
 
