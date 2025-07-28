@@ -2,11 +2,13 @@ import * as React from 'https://esm.sh/react@19.0.0?target=es2022'; // Load whol
 import ToggleSettings from '../shared/ToggleSettings.tsx';
 
 function App() {
-  return <ToggleSettings 
-    showDescriptions={true} 
-    showConsoleLog={true} 
-    loadingText="...Loading" 
-  />;
+  return (
+    <ToggleSettings
+      showDescriptions={true}
+      showConsoleLog={true}
+      loadingText='...Loading'
+    />
+  );
 }
 
 export default App;

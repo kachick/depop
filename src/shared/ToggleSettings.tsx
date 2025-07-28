@@ -8,10 +8,10 @@ interface ToggleSettingsProps {
   loadingText?: string;
 }
 
-export default function ToggleSettings({ 
-  showDescriptions = false, 
+export default function ToggleSettings({
+  showDescriptions = false,
   showConsoleLog = false,
-  loadingText = 'Loading...'
+  loadingText = 'Loading...',
 }: ToggleSettingsProps) {
   const [isLoading, startLoading] = React.useTransition();
   const [
@@ -49,14 +49,14 @@ export default function ToggleSettings({
   const handleToggle = (
     settingKey: string,
     currentValue: boolean,
-    setter: (value: boolean) => void
+    setter: (value: boolean) => void,
   ) => {
     const toggled = !currentValue;
     setter(toggled);
     const storagePromise = chrome.storage.sync.set({
       [settingKey]: toggled,
     });
-    
+
     if (showConsoleLog) {
       storagePromise.then(() => {
         console.log(`${settingKey} is set to ${toggled}`);
@@ -72,13 +72,14 @@ export default function ToggleSettings({
             type='checkbox'
             checked={isHideExploreRepositories}
             {...(showDescriptions && {
-              'aria-describedby': 'help-text-for-isHideExploreRepositories-checkbox'
+              'aria-describedby': 'help-text-for-isHideExploreRepositories-checkbox',
             })}
-            onChange={(_ev) => handleToggle(
-              'isHideExploreRepositories',
-              isHideExploreRepositories,
-              setIsHideExploreRepositories
-            )}
+            onChange={(_ev) =>
+              handleToggle(
+                'isHideExploreRepositories',
+                isHideExploreRepositories,
+                setIsHideExploreRepositories,
+              )}
           />
           Hide "Explore repositories"
         </label>
@@ -97,13 +98,14 @@ export default function ToggleSettings({
             type='checkbox'
             checked={isHideSponsors}
             {...(showDescriptions && {
-              'aria-describedby': 'help-text-for-isHideSponsors-checkbox'
+              'aria-describedby': 'help-text-for-isHideSponsors-checkbox',
             })}
-            onChange={(_ev) => handleToggle(
-              'isHideSponsors',
-              isHideSponsors,
-              setIsHideSponsors
-            )}
+            onChange={(_ev) =>
+              handleToggle(
+                'isHideSponsors',
+                isHideSponsors,
+                setIsHideSponsors,
+              )}
           />
           Hide "Sponsors"
         </label>
@@ -122,13 +124,14 @@ export default function ToggleSettings({
             type='checkbox'
             checked={isHideSponsoring}
             {...(showDescriptions && {
-              'aria-describedby': 'help-text-for-isHideSponsoring-checkbox'
+              'aria-describedby': 'help-text-for-isHideSponsoring-checkbox',
             })}
-            onChange={(_ev) => handleToggle(
-              'isHideSponsoring',
-              isHideSponsoring,
-              setIsHideSponsoring
-            )}
+            onChange={(_ev) =>
+              handleToggle(
+                'isHideSponsoring',
+                isHideSponsoring,
+                setIsHideSponsoring,
+              )}
           />
           Hide "Sponsoring"
         </label>
