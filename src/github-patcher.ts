@@ -79,6 +79,51 @@ enum FilterLevel {
   Max = 'max'
 }
 
+const CSS_ID = 'depop-github-patcher-styles';
+
+const injectCSS = (): void => {
+  // Don't inject if already present
+  if (document.getElementById(CSS_ID)) {
+    return;
+  }
+
+  const cssText = `
+/* Repository Header */
+#repository-container-header .Counter,
+/* Repository Sidebar */
+/* NOTE: Might be matched when it has same naming repository, however current GitHub does not set any meaningful class and ID */
+a[href$='/stargazers'],
+a[href$='?tab=followers'],
+a[href$='/network/members'],
+/* Restrict with <strong> to keep the icon */
+a[href$='/watchers'] strong,
+a[href$='/forks'] strong,
+/* Third party stats. "GitHub Readme Stats" */
+/* NOTE: Do not hide other endpoints like api/top-langs */
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
+  display: none;
+}
+
+/* Profile Sidebar */
+li:has(> a[href$='/followers']),
+div:has(> h2 a[href$='?tab=achievements']) {
+  display: none !important;
+}
+  `;
+
+  const styleElement = document.createElement('style');
+  styleElement.id = CSS_ID;
+  styleElement.textContent = cssText;
+  document.head.appendChild(styleElement);
+};
+
+const removeCSS = (): void => {
+  const existingStyle = document.getElementById(CSS_ID);
+  if (existingStyle) {
+    existingStyle.remove();
+  }
+};
+
 const updateComponents = (): void => {
   chrome.storage.sync.get(['filterLevel']).then(
     ({ filterLevel }): void => {
@@ -86,16 +131,19 @@ const updateComponents = (): void => {
       
       switch (level) {
         case FilterLevel.Off:
+          removeCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(false);
           break;
         case FilterLevel.Default:
+          injectCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(true);
           break;
         case FilterLevel.Max:
+          injectCSS();
           handleSponsors(true);
           handleSponsoring(true);
           handleHighlights(true);

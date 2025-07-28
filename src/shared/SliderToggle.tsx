@@ -45,9 +45,9 @@ export default function SliderToggle({
       case FilterLevel.Off:
         return 'Show original GitHub UI';
       case FilterLevel.Default:
-        return 'Hide highlights only (recommended)';
+        return 'Hide stars, followers, watchers, achievements, highlights';
       case FilterLevel.Max:
-        return 'Hide all: sponsors, sponsoring, highlights';
+        return 'Hide all: sponsors, sponsoring, highlights, stats';
     }
   };
 
@@ -140,36 +140,6 @@ export default function SliderToggle({
         }}
       >
         {getLevelDescription(filterLevel)}
-      </div>
-
-      {/* Visual indicator similar to uBlock Origin */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            width: '120px',
-            height: '8px',
-            background: '#d1d9e0',
-            borderRadius: '4px',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          <div
-            style={{
-              width: `${(getSliderValue(filterLevel) + 1) * 33.33}%`,
-              height: '100%',
-              background: getSliderValue(filterLevel) === 0 ? '#28a745' : '#0969da',
-              borderRadius: '4px',
-              transition: 'width 0.2s ease',
-            }}
-          />
-        </div>
       </div>
     </div>
   );
