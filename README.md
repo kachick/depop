@@ -34,7 +34,6 @@ If you installed it with Google Web Store, the URL should be `chrome-extension:/
 - Repository index
 - Repository detail
 - Pinned Repositories
-- "Explore repositories" and/or the stars
 - Sponsors
 - Sponsoring
 - Achievements
