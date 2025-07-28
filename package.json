@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "stylelint": "^16.22.0",
-    "stylelint-config-recommended": "^16.0.0"
-  }
-}
