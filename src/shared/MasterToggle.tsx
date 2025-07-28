@@ -56,7 +56,10 @@ export default function MasterToggle({
   return (
     <form>
       {/* Master Toggle */}
-      <div className='form-checkbox' style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid #d1d9e0' }}>
+      <div
+        className='form-checkbox'
+        style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid #d1d9e0' }}
+      >
         <label style={{ fontWeight: '600', fontSize: '14px' }}>
           <input
             type='checkbox'

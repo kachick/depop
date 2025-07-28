@@ -24,7 +24,7 @@ export default function SliderToggle({
         'isHideSponsors',
         'isHideSponsoring',
       ]);
-      
+
       // Determine current level based on stored settings
       if (keys.isExtensionEnabled === false) {
         setFilterLevel(0); // Min: Extension disabled
@@ -98,7 +98,7 @@ export default function SliderToggle({
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newLevel = parseInt(event.target.value) as FilterLevel;
     setFilterLevel(newLevel);
-    
+
     const settings = getLevelSettings(newLevel);
     chrome.storage.sync.set(settings);
   };
@@ -121,9 +121,9 @@ export default function SliderToggle({
       {/* Slider */}
       <div style={{ marginBottom: '16px' }}>
         <input
-          type="range"
-          min="0"
-          max="2"
+          type='range'
+          min='0'
+          max='2'
           value={filterLevel}
           onChange={handleSliderChange}
           style={{
@@ -135,15 +135,17 @@ export default function SliderToggle({
             appearance: 'none',
           }}
         />
-        
+
         {/* Level indicators */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          marginTop: '4px',
-          fontSize: '11px',
-          color: '#656d76'
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: '4px',
+            fontSize: '11px',
+            color: '#656d76',
+          }}
+        >
           <span>Min</span>
           <span>Mid</span>
           <span>Max</span>
@@ -151,51 +153,61 @@ export default function SliderToggle({
       </div>
 
       {/* Description */}
-      <div style={{ 
-        fontSize: '12px', 
-        color: '#656d76', 
-        textAlign: 'center',
-        marginBottom: '16px',
-        minHeight: '32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
+      <div
+        style={{
+          fontSize: '12px',
+          color: '#656d76',
+          textAlign: 'center',
+          marginBottom: '16px',
+          minHeight: '32px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         {getLevelDescription(filterLevel)}
       </div>
 
       {/* Visual indicator similar to uBlock Origin */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        marginBottom: showFooter ? '16px' : '0'
-      }}>
-        <div style={{
-          width: '120px',
-          height: '8px',
-          background: '#d1d9e0',
-          borderRadius: '4px',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
-          <div style={{
-            width: `${(filterLevel + 1) * 33.33}%`,
-            height: '100%',
-            background: filterLevel === 0 ? '#28a745' : filterLevel === 1 ? '#0969da' : '#0969da',
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: showFooter ? '16px' : '0',
+        }}
+      >
+        <div
+          style={{
+            width: '120px',
+            height: '8px',
+            background: '#d1d9e0',
             borderRadius: '4px',
-            transition: 'width 0.2s ease'
-          }} />
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              width: `${(filterLevel + 1) * 33.33}%`,
+              height: '100%',
+              background: filterLevel === 0 ? '#28a745' : filterLevel === 1 ? '#0969da' : '#0969da',
+              borderRadius: '4px',
+              transition: 'width 0.2s ease',
+            }}
+          />
         </div>
       </div>
 
       {/* Footer with options page link */}
       {showFooter && (
-        <div style={{ 
-          borderTop: '1px solid #d1d9e0',
-          paddingTop: '12px',
-          textAlign: 'center'
-        }}>
+        <div
+          style={{
+            borderTop: '1px solid #d1d9e0',
+            paddingTop: '12px',
+            textAlign: 'center',
+          }}
+        >
           <button
             onClick={handleOptionsPageClick}
             style={{
@@ -205,7 +217,7 @@ export default function SliderToggle({
               fontSize: '12px',
               textDecoration: 'underline',
               cursor: 'pointer',
-              padding: '0'
+              padding: '0',
             }}
           >
             ⚙️ Options
