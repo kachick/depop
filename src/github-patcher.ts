@@ -8,8 +8,12 @@ const hide = (element: Element): void => {
   );
 };
 
+const show = (element: Element): void => {
+  element.removeAttribute('hidden');
+};
+
 // Sponsor: Received from
-const hideSponsors = (): void => {
+const handleSponsors = (shouldHide: boolean): void => {
   const sponsorsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
     document,
@@ -21,12 +25,16 @@ const hideSponsors = (): void => {
   const sponsorsComponent = sponsorsH2Node?.parentElement?.parentElement;
 
   if (sponsorsComponent) {
-    hide(sponsorsComponent);
+    if (shouldHide) {
+      hide(sponsorsComponent);
+    } else {
+      show(sponsorsComponent);
+    }
   }
 };
 
 // Sponsoring: Paid for
-const hideSponsoring = (): void => {
+const handleSponsoring = (shouldHide: boolean): void => {
   const sponsoring2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsoring']",
     document,
@@ -38,7 +46,11 @@ const hideSponsoring = (): void => {
   const sponsoringComponent = sponsoring2Node?.parentElement?.parentElement;
 
   if (sponsoringComponent) {
-    hide(sponsoringComponent);
+    if (shouldHide) {
+      hide(sponsoringComponent);
+    } else {
+      show(sponsoringComponent);
+    }
   }
 };
 
@@ -57,19 +69,14 @@ const hideHighlights = (): void => {
   }
 };
 
-const hideComponents = (): void => {
+const updateComponents = (): void => {
   chrome.storage.sync.get([
     'isHideSponsors',
     'isHideSponsoring',
   ]).then(
     ({ isHideSponsors, isHideSponsoring }): void => {
-      if (isHideSponsors) {
-        hideSponsors();
-      }
-
-      if (isHideSponsoring) {
-        hideSponsoring();
-      }
+      handleSponsors(isHideSponsors);
+      handleSponsoring(isHideSponsoring);
     },
   );
 
@@ -77,6 +84,15 @@ const hideComponents = (): void => {
 };
 
 if (document.readyState !== 'complete') {
-  document.addEventListener('load', hideComponents, { passive: true });
+  document.addEventListener('load', updateComponents, { passive: true });
 }
-hideComponents();
+updateComponents();
+
+// Listen for storage changes to apply options immediately without refresh
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName === 'sync') {
+    if (changes.isHideSponsors || changes.isHideSponsoring) {
+      updateComponents();
+    }
+  }
+});
