@@ -69,7 +69,7 @@ const hideHighlights = (): void => {
   }
 };
 
-const hideComponents = (): void => {
+const updateComponents = (): void => {
   chrome.storage.sync.get([
     'isHideSponsors',
     'isHideSponsoring',
@@ -84,15 +84,15 @@ const hideComponents = (): void => {
 };
 
 if (document.readyState !== 'complete') {
-  document.addEventListener('load', hideComponents, { passive: true });
+  document.addEventListener('load', updateComponents, { passive: true });
 }
-hideComponents();
+updateComponents();
 
 // Listen for storage changes to apply options immediately without refresh
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
     if (changes.isHideSponsors || changes.isHideSponsoring) {
-      hideComponents();
+      updateComponents();
     }
   }
 });
