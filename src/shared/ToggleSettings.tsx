@@ -1,4 +1,4 @@
-import * as React from 'https://esm.sh/react@19.0.14?target=es2022';
+import * as React from 'https://esm.sh/react@19.0.0?target=es2022';
 
 const { useEffect, useState } = React;
 
