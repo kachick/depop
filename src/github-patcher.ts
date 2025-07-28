@@ -83,6 +83,18 @@ const setCSSVariable = (variableName: string, value: string): void => {
   document.documentElement.style.setProperty(variableName, value);
 };
 
+const hideElementsWithCSS = (): void => {
+  setCSSVariable('--depop-opacity', '0');
+  setCSSVariable('--depop-max-height', '0');
+  setCSSVariable('--depop-pointer-events', 'none');
+};
+
+const showElementsWithCSS = (): void => {
+  setCSSVariable('--depop-opacity', '1');
+  setCSSVariable('--depop-max-height', 'auto');
+  setCSSVariable('--depop-pointer-events', 'auto');
+};
+
 const updateComponents = (): void => {
   chrome.storage.sync.get(['filterLevel']).then(
     ({ filterLevel }): void => {
@@ -90,22 +102,22 @@ const updateComponents = (): void => {
       
       switch (level) {
         case FilterLevel.Off:
-          // Show all elements - CSS variables set to 1 (fully visible)
-          setCSSVariable('--depop-opacity', '1');
+          // Show all elements - CSS variables set to show (fully visible)
+          showElementsWithCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(false);
           break;
         case FilterLevel.Default:
           // Hide CSS-controlled elements, show sponsors/sponsoring
-          setCSSVariable('--depop-opacity', '0');
+          hideElementsWithCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(true);
           break;
         case FilterLevel.Max:
           // Hide all elements
-          setCSSVariable('--depop-opacity', '0');
+          hideElementsWithCSS();
           handleSponsors(true);
           handleSponsoring(true);
           handleHighlights(true);
