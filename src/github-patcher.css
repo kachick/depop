@@ -1,12 +1,11 @@
-/* Apply styles only when depop class is present */
-.depop #repository-container-header .Counter,
-.depop a[href$='/stargazers'],
-.depop a[href$='?tab=followers'],
-.depop a[href$='/network/members'],
-.depop a[href$='/watchers'] strong,
-.depop a[href$='/forks'] strong,
-.depop a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']),
-.depop li:has(> a[href$='/followers']),
-.depop div:has(> h2 a[href$='?tab=achievements']) {
-  display: none !important;
+#repository-container-header .Counter,
+a[href$='/stargazers'],
+a[href$='?tab=followers'],
+a[href$='/network/members'],
+a[href$='/watchers'] strong,
+a[href$='/forks'] strong,
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']),
+li:has(> a[href$='/followers']),
+div:has(> h2 a[href$='?tab=achievements']) {
+  opacity: var(--depop-opacity, 1) !important;
 }

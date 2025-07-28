@@ -79,12 +79,8 @@ enum FilterLevel {
   Max = 'max'
 }
 
-const toggleDepopClass = (shouldApply: boolean): void => {
-  if (shouldApply) {
-    document.documentElement.classList.add('depop');
-  } else {
-    document.documentElement.classList.remove('depop');
-  }
+const setCSSVariable = (variableName: string, value: string): void => {
+  document.documentElement.style.setProperty(variableName, value);
 };
 
 const updateComponents = (): void => {
@@ -94,19 +90,22 @@ const updateComponents = (): void => {
       
       switch (level) {
         case FilterLevel.Off:
-          toggleDepopClass(false);
+          // Show all elements - CSS variables set to 1 (fully visible)
+          setCSSVariable('--depop-opacity', '1');
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(false);
           break;
         case FilterLevel.Default:
-          toggleDepopClass(true);
+          // Hide CSS-controlled elements, show sponsors/sponsoring
+          setCSSVariable('--depop-opacity', '0');
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(true);
           break;
         case FilterLevel.Max:
-          toggleDepopClass(true);
+          // Hide all elements
+          setCSSVariable('--depop-opacity', '0');
           handleSponsors(true);
           handleSponsoring(true);
           handleHighlights(true);
