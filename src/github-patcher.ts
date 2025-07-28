@@ -71,15 +71,25 @@ const hideHighlights = (): void => {
 
 const updateComponents = (): void => {
   chrome.storage.sync.get([
+    'isExtensionEnabled',
     'isHideSponsors',
     'isHideSponsoring',
   ]).then(
-    ({ isHideSponsors, isHideSponsoring }): void => {
+    ({ isExtensionEnabled, isHideSponsors, isHideSponsoring }): void => {
+      // Master toggle - if extension is disabled, show all elements
+      if (isExtensionEnabled === false) {
+        handleSponsors(false);
+        handleSponsoring(false);
+        return;
+      }
+
+      // If extension is enabled (or undefined for backward compatibility), apply individual settings
       handleSponsors(isHideSponsors);
       handleSponsoring(isHideSponsoring);
     },
   );
 
+  // Hide highlights is always applied for now (not configurable)
   hideHighlights();
 };
 
@@ -91,7 +101,7 @@ updateComponents();
 // Listen for storage changes to apply options immediately without refresh
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
-    if (changes.isHideSponsors || changes.isHideSponsoring) {
+    if (changes.isExtensionEnabled || changes.isHideSponsors || changes.isHideSponsoring) {
       updateComponents();
     }
   }
