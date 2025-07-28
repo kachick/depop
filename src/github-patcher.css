@@ -11,7 +11,7 @@ a[href$='/forks'] strong,
 /* Third party stats. "GitHub Readme Stats" */
 /* NOTE: Do not hide other endpoints like `api/top-langs` */
 a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
-  display: none !important;
+  display: none;
 }
 
 /* Profile Sidebar */
