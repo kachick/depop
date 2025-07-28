@@ -8,7 +8,6 @@ const hide = (element: Element): void => {
   );
 };
 
-
 // Sponsor: Received from
 const hideSponsors = (): void => {
   const sponsorsH2Node = document.evaluate(
