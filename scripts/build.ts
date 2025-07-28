@@ -108,7 +108,7 @@ const validateProduct = async (zipped: Uint8Array) => {
   const schemaOk = await ajv.validate(manifestSchema, manifestJson);
 
   const definedPaths = [
-    ...manifestJson.content_scripts.flatMap(({ css, js }) => [...css, ...js]),
+    ...manifestJson.content_scripts.flatMap(({ css, js }) => [...(css || []), ...(js || [])]),
     ...Object.values(manifestJson.icons),
   ];
   const includedPaths = new Set(Object.keys(unzipped));
