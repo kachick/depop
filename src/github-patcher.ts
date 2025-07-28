@@ -79,22 +79,46 @@ enum FilterLevel {
   Max = 'max'
 }
 
-const setCSSVariable = (variableName: string, value: string): void => {
-  document.documentElement.style.setProperty(variableName, value);
+const CSS_CONTENT = `
+/* Repository Header */
+#repository-container-header .Counter,
+/* Repository Sidebar */
+/* NOTE: Might be matched when it has same naming repository, however current GitHub does not set any meaningful class and ID */
+a[href$='/stargazers'],
+a[href$='?tab=followers'],
+a[href$='/network/members'],
+/* Restrict with <strong> to keep the icon */
+a[href$='/watchers'] strong,
+a[href$='/forks'] strong,
+/* Third party stats. "GitHub Readme Stats" */
+/* NOTE: Do not hide other endpoints like \`api/top-langs\` */
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
+  display: none;
+}
+
+/* Profile Sidebar */
+li:has(> a[href$='/followers']),
+div:has(> h2 a[href$='?tab=achievements']) {
+  display: none !important;
+}
+`;
+
+let styleElement: HTMLStyleElement | null = null;
+
+const injectCSS = (): void => {
+  if (!styleElement) {
+    styleElement = document.createElement('style');
+    styleElement.textContent = CSS_CONTENT;
+    styleElement.id = 'depop-styles';
+    document.head.appendChild(styleElement);
+  }
 };
 
-const hideElementsWithCSS = (): void => {
-  setCSSVariable('--depop-opacity', '0');
-  setCSSVariable('--depop-max-height', '0');
-  setCSSVariable('--depop-max-width', '0');
-  setCSSVariable('--depop-pointer-events', 'none');
-};
-
-const showElementsWithCSS = (): void => {
-  setCSSVariable('--depop-opacity', '1');
-  setCSSVariable('--depop-max-height', 'auto');
-  setCSSVariable('--depop-max-width', 'auto');
-  setCSSVariable('--depop-pointer-events', 'auto');
+const removeCSS = (): void => {
+  if (styleElement) {
+    styleElement.remove();
+    styleElement = null;
+  }
 };
 
 const updateComponents = (): void => {
@@ -104,22 +128,22 @@ const updateComponents = (): void => {
       
       switch (level) {
         case FilterLevel.Off:
-          // Show all elements - CSS variables set to show (fully visible)
-          showElementsWithCSS();
+          // Remove CSS and show all elements
+          removeCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(false);
           break;
         case FilterLevel.Default:
-          // Hide CSS-controlled elements, show sponsors/sponsoring
-          hideElementsWithCSS();
+          // Inject CSS to hide stats, show sponsors/sponsoring
+          injectCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(true);
           break;
         case FilterLevel.Max:
-          // Hide all elements
-          hideElementsWithCSS();
+          // Inject CSS and hide all elements
+          injectCSS();
           handleSponsors(true);
           handleSponsoring(true);
           handleHighlights(true);
