@@ -54,7 +54,7 @@ const handleSponsoring = (shouldHide: boolean): void => {
   }
 };
 
-const hideHighlights = (): void => {
+const handleHighlights = (shouldHide: boolean): void => {
   const highlightsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
     document,
@@ -65,7 +65,11 @@ const hideHighlights = (): void => {
 
   const highlightsComponent = highlightsH2Node?.parentElement;
   if (highlightsComponent) {
-    hide(highlightsComponent);
+    if (shouldHide) {
+      hide(highlightsComponent);
+    } else {
+      show(highlightsComponent);
+    }
   }
 };
 
@@ -76,21 +80,21 @@ const updateComponents = (): void => {
     'isHideSponsoring',
   ]).then(
     ({ isExtensionEnabled, isHideSponsors, isHideSponsoring }): void => {
-      // Master toggle - if extension is disabled, show all elements
+      // Master toggle - if extension is disabled, show all elements (restore original state)
       if (isExtensionEnabled === false) {
         handleSponsors(false);
         handleSponsoring(false);
+        handleHighlights(false);
         return;
       }
 
       // If extension is enabled (or undefined for backward compatibility), apply individual settings
       handleSponsors(isHideSponsors);
       handleSponsoring(isHideSponsoring);
+      // Hide highlights when extension is enabled (not configurable for now)
+      handleHighlights(true);
     },
   );
-
-  // Hide highlights is always applied for now (not configurable)
-  hideHighlights();
 };
 
 if (document.readyState !== 'complete') {
