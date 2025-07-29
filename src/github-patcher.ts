@@ -79,7 +79,7 @@ enum FilterLevel {
   Max = 'max'
 }
 
-const CSS_CONTENT = `
+const HIDE_CSS_CONTENT = `
 /* Repository Header */
 #repository-container-header .Counter,
 /* Repository Sidebar */
@@ -103,15 +103,49 @@ div:has(> h2 a[href$='?tab=achievements']) {
 }
 `;
 
+const SHOW_CSS_CONTENT = `
+/* Override static CSS to show elements when extension is off */
+/* Repository Header */
+#repository-container-header .Counter,
+/* Repository Sidebar */
+a[href$='/stargazers'],
+a[href$='?tab=followers'],
+a[href$='/network/members'],
+/* Restrict with <strong> to keep the icon */
+a[href$='/watchers'] strong,
+a[href$='/forks'] strong,
+/* Third party stats. "GitHub Readme Stats" */
+a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
+  display: inherit !important;
+}
+
+/* Profile Sidebar */
+li:has(> a[href$='/followers']),
+div:has(> h2 a[href$='?tab=achievements']) {
+  display: inherit !important;
+}
+`;
+
 let styleElement: HTMLStyleElement | null = null;
 
-const injectCSS = (): void => {
-  if (!styleElement) {
-    styleElement = document.createElement('style');
-    styleElement.textContent = CSS_CONTENT;
-    styleElement.id = 'depop-styles';
-    document.head.appendChild(styleElement);
+const injectHideCSS = (): void => {
+  if (styleElement) {
+    styleElement.remove();
   }
+  styleElement = document.createElement('style');
+  styleElement.textContent = HIDE_CSS_CONTENT;
+  styleElement.id = 'depop-styles';
+  document.head.appendChild(styleElement);
+};
+
+const injectShowCSS = (): void => {
+  if (styleElement) {
+    styleElement.remove();
+  }
+  styleElement = document.createElement('style');
+  styleElement.textContent = SHOW_CSS_CONTENT;
+  styleElement.id = 'depop-styles';
+  document.head.appendChild(styleElement);
 };
 
 const removeCSS = (): void => {
@@ -128,22 +162,22 @@ const updateComponents = (): void => {
       
       switch (level) {
         case FilterLevel.Off:
-          // Remove CSS and show all elements
-          removeCSS();
+          // Inject CSS to override static CSS and show all elements
+          injectShowCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(false);
           break;
         case FilterLevel.Default:
           // Inject CSS to hide stats, show sponsors/sponsoring
-          injectCSS();
+          injectHideCSS();
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(true);
           break;
         case FilterLevel.Max:
           // Inject CSS and hide all elements
-          injectCSS();
+          injectHideCSS();
           handleSponsors(true);
           handleSponsoring(true);
           handleHighlights(true);
