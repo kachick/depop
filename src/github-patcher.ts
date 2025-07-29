@@ -104,25 +104,25 @@ div:has(> h2 a[href$='?tab=achievements']) {
 `;
 
 const SHOW_CSS_CONTENT = `
-/* Override static CSS to show elements when extension is off */
+/* Override static CSS to show elements when extension is off - using html prefix for higher specificity */
 /* Repository Header */
-#repository-container-header .Counter,
+html #repository-container-header .Counter,
 /* Repository Sidebar */
-a[href$='/stargazers'],
-a[href$='?tab=followers'],
-a[href$='/network/members'],
+html a[href$='/stargazers'],
+html a[href$='?tab=followers'],
+html a[href$='/network/members'],
 /* Restrict with <strong> to keep the icon */
-a[href$='/watchers'] strong,
-a[href$='/forks'] strong,
+html a[href$='/watchers'] strong,
+html a[href$='/forks'] strong,
 /* Third party stats. "GitHub Readme Stats" */
-a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
-  display: inherit !important;
+html a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
+  display: revert;
 }
 
 /* Profile Sidebar */
-li:has(> a[href$='/followers']),
-div:has(> h2 a[href$='?tab=achievements']) {
-  display: inherit !important;
+html li:has(> a[href$='/followers']),
+html div:has(> h2 a[href$='?tab=achievements']) {
+  display: revert;
 }
 `;
 
