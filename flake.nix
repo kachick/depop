@@ -32,7 +32,7 @@
               nixfmt-tree
 
               deno
-              stylelint
+              biome
               dprint
               ripgrep
               typos
