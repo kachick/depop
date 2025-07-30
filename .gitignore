@@ -9,3 +9,6 @@ node_modules/
 *.Zone.Identifier
 
 .direnv/
+
+# Auto-generated files
+src/css-constants.ts

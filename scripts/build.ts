@@ -27,6 +27,23 @@ const cleanUpSync = () => {
 
 cleanUpSync();
 
+// Generate CSS constants before transpiling
+const generateCSSConstants = async () => {
+  const process = new Deno.Command('deno', {
+    args: ['run', '--allow-read', '--allow-write', 'scripts/generate-css-constants.ts'],
+    stdout: 'piped',
+    stderr: 'piped',
+  });
+  const { code, stdout, stderr } = await process.output();
+  if (code !== 0) {
+    console.error('Failed to generate CSS constants:', new TextDecoder().decode(stderr));
+    Deno.exit(1);
+  }
+  console.log(new TextDecoder().decode(stdout));
+};
+
+await generateCSSConstants();
+
 const transpile = async () => {
   for (const entryTsPath of ['src/github-patcher.ts', 'src/popup.tsx']) {
     const bundled = await bundle(entryTsPath);

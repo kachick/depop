@@ -1,3 +1,5 @@
+import { HIDE_CSS_CONTENT, SHOW_CSS_CONTENT } from './css-constants.ts';
+
 const hide = (element: Element): void => {
   element.setAttribute(
     // Prefer hidden rather than display:none https://primer.style/css/utilities/layout#the-html-hidden-attribute
@@ -78,53 +80,6 @@ enum FilterLevel {
   Default = 'default',
   Max = 'max'
 }
-
-const HIDE_CSS_CONTENT = `
-/* Repository Header */
-#repository-container-header .Counter,
-/* Repository Sidebar */
-/* NOTE: Might be matched when it has same naming repository, however current GitHub does not set any meaningful class and ID */
-a[href$='/stargazers'],
-a[href$='?tab=followers'],
-a[href$='/network/members'],
-/* Restrict with <strong> to keep the icon */
-a[href$='/watchers'] strong,
-a[href$='/forks'] strong,
-/* Third party stats. "GitHub Readme Stats" */
-/* NOTE: Do not hide other endpoints like \`api/top-langs\` */
-a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
-  display: none;
-}
-
-/* Profile Sidebar */
-li:has(> a[href$='/followers']),
-div:has(> h2 a[href$='?tab=achievements']) {
-  display: none !important;
-}
-`;
-
-const SHOW_CSS_CONTENT = `
-/* Override static CSS to show elements when extension is off - using html prefix for higher specificity */
-/* Repository Header */
-html #repository-container-header .Counter,
-/* Repository Sidebar */
-html a[href$='/stargazers'],
-html a[href$='?tab=followers'],
-html a[href$='/network/members'],
-/* Restrict with <strong> to keep the icon */
-html a[href$='/watchers'] strong,
-html a[href$='/forks'] strong,
-/* Third party stats. "GitHub Readme Stats" */
-html a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
-  display: revert;
-}
-
-/* Profile Sidebar */
-html li:has(> a[href$='/followers']),
-html div:has(> h2 a[href$='?tab=achievements']) {
-  display: revert;
-}
-`;
 
 let styleElement: HTMLStyleElement | null = null;
 
