@@ -75,11 +75,13 @@ const handleHighlights = (shouldHide: boolean): void => {
   }
 };
 
-enum FilterLevel {
-  Off = 'off',
-  Default = 'default',
-  Max = 'max'
-}
+type FilterLevel = 'off' | 'default' | 'max';
+
+const FilterLevel = {
+  Off: 'off' as const,
+  Default: 'default' as const,
+  Max: 'max' as const
+} as const;
 
 let styleElement: HTMLStyleElement | null = null;
 
