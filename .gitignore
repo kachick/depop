@@ -12,4 +12,4 @@ node_modules/
 
 # Auto-generated files
 src/css-constants.ts
-src/github-patcher.css
+src/github-patcher-hide.css

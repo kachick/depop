@@ -57,7 +57,7 @@ const gatherDist = Promise.all([
   Deno.copyFile('README.md', 'dist/README.md'),
   Deno.copyFile('LICENSE', 'dist/LICENSE'),
   Deno.copyFile('src/manifest.json', 'dist/manifest.json'),
-  Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
+  Deno.copyFile('src/github-patcher-hide.css', 'dist/github-patcher-hide.css'),
   Deno.copyFile('src/github-patcher-show.css', 'dist/github-patcher-show.css'),
   Deno.copyFile('src/popup.html', 'dist/popup.html'),
   Deno.copyFile('src/popup.css', 'dist/popup.css'),

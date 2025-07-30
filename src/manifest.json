@@ -11,7 +11,7 @@
     {
       "matches": ["https://github.com/*"],
       "run_at": "document_idle",
-      "css": ["github-patcher.css"],
+      "css": ["github-patcher-hide.css"],
       "js": ["github-patcher.js"]
     }
   ],
