@@ -43,7 +43,7 @@ jobs:
           echo "/home/runner/.dprint/bin" >> "$GITHUB_PATH"
       - uses: denoland/setup-deno@v2
         with:
-          deno-version: '2.2.12' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
+          deno-version: '2.4.2' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
 
       # https://github.com/kachick/depop/pull/262/files#r2241814179
       - uses: DeterminateSystems/nix-installer-action@v19
