@@ -109,7 +109,7 @@ const updateComponents = (): void => {
   chrome.storage.sync.get(['filterLevel']).then(
     ({ filterLevel }): void => {
       const level = filterLevel || FilterLevel.Default;
-      
+
       switch (level) {
         case FilterLevel.Off:
           // Inject CSS to override static CSS and show all elements
