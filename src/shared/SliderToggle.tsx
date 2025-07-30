@@ -26,8 +26,6 @@ export default function SliderToggle({
 
   const getLevelLabel = (level: FilterLevel) => {
     switch (level) {
-      case FilterLevel.Off:
-        return 'Off';
       case FilterLevel.Default:
         return 'Default';
       case FilterLevel.Max:
@@ -37,8 +35,6 @@ export default function SliderToggle({
 
   const getLevelDescription = (level: FilterLevel) => {
     switch (level) {
-      case FilterLevel.Off:
-        return 'Show original GitHub UI';
       case FilterLevel.Default:
         return 'Hide stars, followers, watchers, achievements, highlights';
       case FilterLevel.Max:
@@ -48,22 +44,18 @@ export default function SliderToggle({
 
   const getSliderValue = (level: FilterLevel): number => {
     switch (level) {
-      case FilterLevel.Off:
-        return 0;
       case FilterLevel.Default:
-        return 1;
+        return 0;
       case FilterLevel.Max:
-        return 2;
+        return 1;
     }
   };
 
   const getFilterLevelFromSlider = (value: number): FilterLevel => {
     switch (value) {
       case 0:
-        return FilterLevel.Off;
-      case 1:
         return FilterLevel.Default;
-      case 2:
+      case 1:
         return FilterLevel.Max;
       default:
         return FilterLevel.Default;
@@ -92,7 +84,7 @@ export default function SliderToggle({
         <input
           type='range'
           min='0'
-          max='2'
+          max='1'
           value={getSliderValue(filterLevel)}
           onChange={handleSliderChange}
           style={{
@@ -115,8 +107,7 @@ export default function SliderToggle({
             color: '#656d76',
           }}
         >
-          <span>Min</span>
-          <span>Mid</span>
+          <span>Default</span>
           <span>Max</span>
         </div>
       </div>

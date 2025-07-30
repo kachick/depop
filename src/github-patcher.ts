@@ -1,4 +1,3 @@
-import { HIDE_CSS_CONTENT, SHOW_CSS_CONTENT } from './css-constants.ts';
 import { FilterLevel } from './shared/types.ts';
 
 const hide = (element: Element): void => {
@@ -76,58 +75,20 @@ const handleHighlights = (shouldHide: boolean): void => {
   }
 };
 
-let styleElement: HTMLStyleElement | null = null;
-
-const injectHideCSS = (): void => {
-  if (styleElement) {
-    styleElement.remove();
-  }
-  styleElement = document.createElement('style');
-  styleElement.textContent = HIDE_CSS_CONTENT;
-  styleElement.id = 'depop-styles';
-  document.head.appendChild(styleElement);
-};
-
-const injectShowCSS = (): void => {
-  if (styleElement) {
-    styleElement.remove();
-  }
-  styleElement = document.createElement('style');
-  styleElement.textContent = SHOW_CSS_CONTENT;
-  styleElement.id = 'depop-styles';
-  document.head.appendChild(styleElement);
-};
-
-const removeCSS = (): void => {
-  if (styleElement) {
-    styleElement.remove();
-    styleElement = null;
-  }
-};
-
 const updateComponents = (): void => {
   chrome.storage.sync.get(['filterLevel']).then(
     ({ filterLevel }): void => {
       const level = filterLevel || FilterLevel.Default;
 
       switch (level) {
-        case FilterLevel.Off:
-          // Inject CSS to override static CSS and show all elements
-          injectShowCSS();
-          handleSponsors(false);
-          handleSponsoring(false);
-          handleHighlights(false);
-          break;
         case FilterLevel.Default:
-          // Inject CSS to hide stats, show sponsors/sponsoring
-          injectHideCSS();
+          // Hide highlights, show sponsors/sponsoring
           handleSponsors(false);
           handleSponsoring(false);
           handleHighlights(true);
           break;
         case FilterLevel.Max:
-          // Inject CSS and hide all elements
-          injectHideCSS();
+          // Hide all elements
           handleSponsors(true);
           handleSponsoring(true);
           handleHighlights(true);
