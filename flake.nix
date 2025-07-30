@@ -36,6 +36,7 @@
               dprint
               ripgrep
               typos
+              zizmor
 
               # To maintain icons
               imagemagick
