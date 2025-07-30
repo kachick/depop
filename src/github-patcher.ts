@@ -1,4 +1,5 @@
 import { HIDE_CSS_CONTENT, SHOW_CSS_CONTENT } from './css-constants.ts';
+import { FilterLevel } from './shared/types.ts';
 
 const hide = (element: Element): void => {
   element.setAttribute(
@@ -74,14 +75,6 @@ const handleHighlights = (shouldHide: boolean): void => {
     }
   }
 };
-
-type FilterLevel = 'off' | 'default' | 'max';
-
-const FilterLevel = {
-  Off: 'off' as const,
-  Default: 'default' as const,
-  Max: 'max' as const
-} as const;
 
 let styleElement: HTMLStyleElement | null = null;
 

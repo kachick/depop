@@ -1,14 +1,7 @@
 import * as React from 'https://esm.sh/react@19.0.0?target=es2022';
+import { FilterLevel } from './types.ts';
 
 const { useEffect, useState } = React;
-
-export type FilterLevel = 'off' | 'default' | 'max';
-
-export const FilterLevel = {
-  Off: 'off' as const,
-  Default: 'default' as const,
-  Max: 'max' as const
-} as const;
 
 interface SliderToggleProps {
   loadingText?: string;
