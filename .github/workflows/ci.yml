@@ -26,6 +26,11 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: '2.4.2' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
+      - name: Setup Biome CLI
+        uses: biomejs/setup-biome@v2
+        with:
+          version: '2.1.2' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","biome --version | cut -d ' ' -f 2 | head -n 1"]}
+
       - run: deno task check
   build:
     timeout-minutes: 15
