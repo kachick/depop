@@ -1,5 +1,3 @@
-import { FilterLevel } from './shared/types.ts';
-
 const hide = (element: Element): void => {
   element.setAttribute(
     // Prefer hidden rather than display:none https://primer.style/css/utilities/layout#the-html-hidden-attribute
@@ -56,44 +54,11 @@ const handleSponsoring = (shouldHide: boolean): void => {
   }
 };
 
-const handleHighlights = (shouldHide: boolean): void => {
-  const highlightsH2Node = document.evaluate(
-    "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null,
-  ).singleNodeValue;
-
-  const highlightsComponent = highlightsH2Node?.parentElement;
-  if (highlightsComponent) {
-    if (shouldHide) {
-      hide(highlightsComponent);
-    } else {
-      show(highlightsComponent);
-    }
-  }
-};
-
 const updateComponents = (): void => {
-  chrome.storage.sync.get(['filterLevel']).then(
-    ({ filterLevel }): void => {
-      const level = filterLevel || FilterLevel.Default;
-
-      switch (level) {
-        case FilterLevel.Default:
-          // Hide highlights, show sponsors/sponsoring
-          handleSponsors(false);
-          handleSponsoring(false);
-          handleHighlights(true);
-          break;
-        case FilterLevel.Max:
-          // Hide all elements
-          handleSponsors(true);
-          handleSponsoring(true);
-          handleHighlights(true);
-          break;
-      }
+  chrome.storage.sync.get(['isHideSponsors', 'isHideSponsoring']).then(
+    ({ isHideSponsors, isHideSponsoring }): void => {
+      handleSponsors(!!isHideSponsors);
+      handleSponsoring(!!isHideSponsoring);
     },
   );
 };
@@ -105,7 +70,7 @@ updateComponents();
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
-    if (changes.filterLevel) {
+    if (changes.isHideSponsors || changes.isHideSponsoring) {
       updateComponents();
     }
   }
