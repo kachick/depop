@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs =
@@ -20,16 +20,23 @@
         in
         {
           default = pkgs.mkShellNoCC {
+            env = {
+              # Fix nixd pkgs versions in the inlay hints
+              NIX_PATH = "nixpkgs=${pkgs.path}";
+            };
+
             buildInputs = with pkgs; [
               bashInteractive
-              nil
-              nixfmt-rfc-style
+              nixd
+              nixfmt
+              nixfmt-tree
 
               deno
-              stylelint
+              biome
               dprint
               ripgrep
               typos
+              zizmor
 
               # To maintain icons
               imagemagick
