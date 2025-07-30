@@ -18,5 +18,5 @@ html a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api
 /* Profile Sidebar */
 html li:has(> a[href$='/followers']),
 html div:has(> h2 a[href$='?tab=achievements']) {
-  display: revert;
+  display: revert !important;
 }

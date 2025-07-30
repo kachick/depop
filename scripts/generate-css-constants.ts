@@ -3,10 +3,12 @@
 // Generate CSS files and TypeScript constants from source CSS
 const showCssContent = Deno.readTextFileSync('src/github-patcher-show.css');
 
-// Generate github-patcher.css by removing 'html ' prefixes from github-patcher-show.css
+// Generate github-patcher-hide.css by removing 'html ' prefixes from github-patcher-show.css
 const hideCssContent = showCssContent
   .replace(/^html /gm, '') // Remove 'html ' prefix at start of lines
-  .replace(/display: revert;/g, 'display: none;'); // Change revert back to none
+  .replace(/display: revert !important;/g, 'display: none !important;') // Change revert back to none with !important
+  .replace(/display: revert;/g, 'display: none;') // Change revert back to none
+  .replace('/* Override static CSS to show elements when extension is off - using html prefix for higher specificity */', '/* Hide GitHub elements when extension is active */'); // Update comment for hide CSS
 
 // Write the generated base CSS file
 Deno.writeTextFileSync('src/github-patcher-hide.css', hideCssContent);
