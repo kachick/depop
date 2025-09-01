@@ -84,7 +84,7 @@
     "https://esm.sh/@types/react-dom@~19.0.3/client.d.ts": "https://esm.sh/@types/react-dom@19.0.6/client.d.ts",
     "https://esm.sh/@types/react@~19.0.7/index.d.ts": "https://esm.sh/@types/react@19.0.14/index.d.ts",
     "https://esm.sh/fast-deep-equal@^3.1.3?target=denonext": "https://esm.sh/fast-deep-equal@3.1.3?target=denonext",
-    "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.0.6?target=denonext",
+    "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.1.0?target=denonext",
     "https://esm.sh/json-schema-traverse@^1.0.0?target=denonext": "https://esm.sh/json-schema-traverse@1.0.0?target=denonext"
   },
   "remote": {
@@ -93,8 +93,8 @@
     "https://esm.sh/ajv@8.17.1/denonext/ajv.mjs": "93640b28521b7fca32e34a3534343176c06dd65bdd6ca6a14ec97562f278e949",
     "https://esm.sh/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "66e5d717af5e6a08366cc6aa421af1838a773895070bfee46c45102adf7ddc5f",
     "https://esm.sh/fast-deep-equal@3.1.3?target=denonext": "2d47696bbd2c43a836e333ae5035542a56eb76e4fd728204c75eaaeea86c3b5c",
-    "https://esm.sh/fast-uri@3.0.6/denonext/fast-uri.mjs": "ac0e9bda651d725f8fd8605dc61dbf7a70b6d1ff69caf117dca503ab2d1e0fa4",
-    "https://esm.sh/fast-uri@3.0.6?target=denonext": "7559f8685f8098c63fa5f637561f5b653ee8363f3abde114a3897383bf73c49e",
+    "https://esm.sh/fast-uri@3.1.0/denonext/fast-uri.mjs": "fe0d9a3a208d8117fbba9cba08865dba4d95cd31ac5e8685a233714104383717",
+    "https://esm.sh/fast-uri@3.1.0?target=denonext": "cddcd73681e94a6022a6df3cb31cdf6a916eab4abcca6e316010b5f2674e584b",
     "https://esm.sh/fflate@0.8.2": "e0cdd268850b4eac9ef9f188a3b4c5c9dd3ebd0f66c4006a13911b2a0c0512bb",
     "https://esm.sh/fflate@0.8.2/denonext/fflate.mjs": "51759ec52e8522bbcd6dce941956a878c733975dcc159618c683c659270a59d3",
     "https://esm.sh/json-schema-traverse@1.0.0/denonext/json-schema-traverse.mjs": "4cd3fc9a056d4498d24e4862b19aa93f72f4f7785a00573b0c579576faa1783b",
