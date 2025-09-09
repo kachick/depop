@@ -46,4 +46,4 @@ jobs:
           deno-version: '2.4.4' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
 
       # https://github.com/kachick/depop/pull/262/files#r2241814179
-      - uses: DeterminateSystems/nix-installer-action@v19
+      - uses: DeterminateSystems/nix-installer-action@v20
