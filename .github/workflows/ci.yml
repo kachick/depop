@@ -65,7 +65,7 @@ jobs:
           } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
 
       - name: Upload the product for nightly use and debug
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: '${{ fromJson(steps.build.outputs.report).productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).productPath }}'
