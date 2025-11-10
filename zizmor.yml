@@ -5,5 +5,5 @@ rules:
         kachick/*: any
         actions/*: any
         crate-ci/*: any
-        DeterminateSystems/*: any
+        cachix/*: any
         denoland/*: any
