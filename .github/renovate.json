@@ -11,5 +11,13 @@
   "ignoreDeps": [
     "crate-ci/typos"
   ],
-  "schedule": ["on Tuesday"]
+  "schedule": ["on Tuesday"],
+  "packageRules": [
+    {
+      "description": "https://github.com/kachick/depop/issues/295",
+      "matchManagers": ["github-actions"],
+      "matchDatasources": ["deno"],
+      "enabled": false
+    }
+  ]
 }

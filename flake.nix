@@ -41,6 +41,11 @@
               # To maintain icons
               imagemagick
               exiftool
+
+              # Comment-out only if you want `renovate-config-validator`.
+              # It is a heavy nodejs package and does not detect wrong manager and datasource names.
+              # We can only use it checking key name correctness.
+              # renovate
             ];
           };
         }
