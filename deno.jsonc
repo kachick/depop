@@ -10,6 +10,7 @@
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "selfup": "git ls-files '.github' | xargs nix run github:kachick/selfup/v1.2.0 -- run",
+    "bump:biome_config": "biome migrate --write && dprint fmt",
     // See https://github.com/kachick/depop/pull/209 for detail
     "bump:deno_lock": "deno clean && rm deno.lock && deno task all",
     "all": "deno task deps && deno task check && deno task build && deno task resize"

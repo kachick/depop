@@ -17,6 +17,7 @@ jobs:
       dry-run: ${{ github.event_name == 'pull_request' }}
       pr-title: 'Bump flake.lock and related dependencies'
       optional-run: |
+        nix develop --command deno task 'bump:biome_config'
         nix develop --command deno task 'bump:deno_lock'
         git diff-index --quiet HEAD || git commit -m 'Bump deno.lock with `deno task bump:deno_lock`' deno.lock
     secrets:
