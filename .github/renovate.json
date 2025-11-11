@@ -1,23 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>kachick/renovate-config-dprint#1.3.0",
-    "github>kachick/renovate-config-dprint:self"
+    "github>kachick/renovate-config-dprint#1.3.0"
   ],
   "labels": ["dependencies", "renovate"],
-  "nix": {
-    "enabled": false
-  },
-  "ignoreDeps": [
-    "crate-ci/typos"
+  "enabledManagers": [
+    "custom.regex"
   ],
-  "schedule": ["on Tuesday"],
-  "packageRules": [
-    {
-      "description": "https://github.com/kachick/depop/issues/295",
-      "matchManagers": ["github-actions"],
-      "matchDatasources": ["deno"],
-      "enabled": false
-    }
-  ]
+  "schedule": ["on Tuesday"]
 }
