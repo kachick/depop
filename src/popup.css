@@ -1,0 +1,30 @@
+body {
+  width: 320px;
+  margin: 0;
+  padding: 0;
+}
+
+.Box {
+  border: none;
+  box-shadow: none;
+}
+
+.Box-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-checkbox {
+  margin-bottom: 12px;
+}
+
+.form-checkbox:last-child {
+  margin-bottom: 0;
+}
+
+.note {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
