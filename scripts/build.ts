@@ -60,7 +60,7 @@ const zipStructure = new Map<
   { content: Uint8Array; sha256: string; isCompressed: boolean }
 >();
 
-const sha256 = async (content: Uint8Array) => {
+const sha256 = async (content: Uint8Array<ArrayBuffer>) => {
   const digest = await crypto.subtle.digest('SHA-256', content);
   return encodeHex(digest);
 };
@@ -82,7 +82,7 @@ const zipped = fflate.zipSync(
     }),
     {},
   ),
-);
+) as Uint8Array<ArrayBuffer>; // This `as` is a workaround for: https://github.com/101arrowz/fflate/issues/242
 
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
@@ -99,7 +99,7 @@ const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0
 const productPath = `dist/${productBasename}`;
 Deno.writeFileSync(productPath, zipped);
 
-const validateProduct = async (zipped: Uint8Array) => {
+const validateProduct = async (zipped: Uint8Array<ArrayBuffer>) => {
   const unzipped = fflate.unzipSync(zipped);
 
   assertEquals(JSON.parse(toString(unzipped['manifest.json'])), manifestJson);
