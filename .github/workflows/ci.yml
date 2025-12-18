@@ -62,7 +62,7 @@ jobs:
           tempfile="$(mktemp report.XXXX.json)"
           # Don't use subprocess when getting the result, it makes not easy to get the error messages
           nix develop --command deno task build >"$tempfile"
-          printf "report<<JSON\n%s\nJSON\n" "$(<'$tempfile')" >> "$GITHUB_OUTPUT"
+          printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" >> "$GITHUB_OUTPUT"
 
       - name: Upload the product for nightly use and debug
         uses: actions/upload-artifact@v5
