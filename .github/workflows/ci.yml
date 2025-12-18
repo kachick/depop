@@ -59,8 +59,10 @@ jobs:
       - name: Build
         id: build
         run: |
-          report_json="$(nix develop --command deno task build 2>/dev/null)"
-          printf "report<<JSON\n%s\nJSON\n" "$report_json" >> "$GITHUB_OUTPUT"
+          tempfile="$(mktemp report.XXXX.json)"
+          # Don't use subprocess when getting the result, it makes not easy to get the error messages
+          nix develop --command deno task build >"$tempfile"
+          printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
 
       - name: Upload the product for nightly use and debug
         uses: actions/upload-artifact@v5
