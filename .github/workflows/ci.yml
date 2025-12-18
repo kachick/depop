@@ -59,8 +59,10 @@ jobs:
       - name: Build
         id: build
         run: |
-          report_json="$(nix develop --command deno task build 2>/dev/null)"
-          printf "report<<JSON\n%s\nJSON\n" "$report_json" >> "$GITHUB_OUTPUT"
+          nix develop --command deno task build >report.json
+          echo 'report<<JSON' >> "$GITHUB_OUTPUT"
+          <report.json >> "$GITHUB_OUTPUT"
+          echo 'JSON' >> "$GITHUB_OUTPUT"
 
       - name: Upload the product for nightly use and debug
         uses: actions/upload-artifact@v5
