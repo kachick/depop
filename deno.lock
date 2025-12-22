@@ -81,12 +81,8 @@
     }
   },
   "redirects": {
-    "https://esm.sh/@types/react-dom@~19.0.3/client.d.ts": "https://esm.sh/@types/react-dom@19.0.6/client.d.ts",
     "https://esm.sh/@types/react-dom@~19.0.6/client.d.ts": "https://esm.sh/@types/react-dom@19.0.6/client.d.ts",
     "https://esm.sh/@types/react@~19.0.14/index.d.ts": "https://esm.sh/@types/react@19.0.14/index.d.ts",
-    "https://esm.sh/@types/react@~19.0.14/jsx-runtime.d.ts": "https://esm.sh/@types/react@19.0.14/jsx-runtime.d.ts",
-    "https://esm.sh/@types/react@~19.0.7/index.d.ts": "https://esm.sh/@types/react@19.0.14/index.d.ts",
-    "https://esm.sh/@types/scheduler@~0.26.0/index.d.ts": "https://esm.sh/@types/scheduler@0.26.0/index.d.ts",
     "https://esm.sh/fast-deep-equal@^3.1.3?target=denonext": "https://esm.sh/fast-deep-equal@3.1.3?target=denonext",
     "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.1.0?target=denonext",
     "https://esm.sh/json-schema-traverse@^1.0.0?target=denonext": "https://esm.sh/json-schema-traverse@1.0.0?target=denonext"
@@ -106,14 +102,7 @@
     "https://esm.sh/pretty-bytes@6.1.1": "8baebceaf88a283ad6c4add62212da36f3fb54289b704fd210b2d6a5db12f707",
     "https://esm.sh/pretty-bytes@6.1.1/denonext/pretty-bytes.mjs": "470b8396a57262a3206a51183b5b073e219efd011e2f607a888338dbed61d780",
     "https://esm.sh/react-dom@19.0.0/client?target=es2022": "b326278217e074acc857a68d9bad82ee467c41400d1464829e5aa081467c63bf",
-    "https://esm.sh/react-dom@19.0.0/es2022/client.mjs": "f828e86d11b43796d2718e43ceb875c36ca5a45f6cfbeed387f89560850a5397",
-    "https://esm.sh/react-dom@19.0.0/es2022/react-dom.mjs": "5ce0cb1ee69fdd88cabf8576ad389881e5db96365c9025702b438b2d7863cc0c",
-    "https://esm.sh/react@19.0.0/es2022/jsx-runtime.mjs": "643b749fa9666fbf73619a99fd708722edb4acaa34c8cea7be783a3432367780",
-    "https://esm.sh/react@19.0.0/es2022/react.mjs": "92b896580737b8b2d75b0a84a92fd2b4f3a62e692d96be1994a5185050db289d",
-    "https://esm.sh/react@19.0.0?target=es2022": "b2d09997656003a0c3066d95bcf66a7bd0ac68333e66678655e983465e649145",
-    "https://esm.sh/react@19.0.0?target=es2022/jsx-runtime": "9c0e93410782b9cb51eb0532f6c1bd9157bd188bfe000387619462a716a4e605",
-    "https://esm.sh/scheduler@0.25.0/es2022/scheduler.mjs": "50687edf9e0034b6db97303b1b16893b59c5833c21ea8cf913dc380b537f6aaf",
-    "https://esm.sh/scheduler@^0.25.0?target=es2022": "4a900fbc45073d3bc2d0e2bc39b3bfa6b52289b6725a594181c97e0a10053e78"
+    "https://esm.sh/react@19.0.0?target=es2022": "b2d09997656003a0c3066d95bcf66a7bd0ac68333e66678655e983465e649145"
   },
   "workspace": {
     "dependencies": [
