@@ -12,7 +12,7 @@ on:
       - .github/workflows/copilot-setup-steps.yml
 
 env:
-  dprint-version: '0.50.2' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","dprint --version | cut -d ' ' -f 2"]}
+  dprint-version: '0.51.1' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","dprint --version | cut -d ' ' -f 2"]}
 
 jobs:
   # The job MUST be called `copilot-setup-steps` or it will not be picked up by Copilot.
