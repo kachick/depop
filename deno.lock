@@ -96,7 +96,7 @@
     "https://esm.sh/fast-uri@3.1.0/denonext/fast-uri.mjs": "fe0d9a3a208d8117fbba9cba08865dba4d95cd31ac5e8685a233714104383717",
     "https://esm.sh/fast-uri@3.1.0?target=denonext": "cddcd73681e94a6022a6df3cb31cdf6a916eab4abcca6e316010b5f2674e584b",
     "https://esm.sh/fflate@0.8.2": "e0cdd268850b4eac9ef9f188a3b4c5c9dd3ebd0f66c4006a13911b2a0c0512bb",
-    "https://esm.sh/fflate@0.8.2/denonext/fflate.mjs": "51759ec52e8522bbcd6dce941956a878c733975dcc159618c683c659270a59d3",
+    "https://esm.sh/fflate@0.8.2/denonext/fflate.mjs": "84afaa7491d754b566dd8608dcc784e7fdd4f0342e2c5b0bd1442e77782ec1a2",
     "https://esm.sh/json-schema-traverse@1.0.0/denonext/json-schema-traverse.mjs": "4cd3fc9a056d4498d24e4862b19aa93f72f4f7785a00573b0c579576faa1783b",
     "https://esm.sh/json-schema-traverse@1.0.0?target=denonext": "3e60200c0d28b5e081db526a78c7911c094fd64c92484ebe050becb8f69788bb",
     "https://esm.sh/pretty-bytes@6.1.1": "8baebceaf88a283ad6c4add62212da36f3fb54289b704fd210b2d6a5db12f707",
