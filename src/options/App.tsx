@@ -1,16 +1,17 @@
-import * as React from 'https://esm.sh/react@19.0.0?target=es2022'; // Load whole `React` to avoid no reference, if omitting, should check options page manually
-import { useEffect, useState } from 'https://esm.sh/react@19.0.0?target=es2022';
+import * as React from 'https://esm.sh/react@19.0.0?target=es2022';
 
-function App() {
+const { useEffect, useState } = React;
+
+interface CheckboxSettingsProps {
+  loadingText?: string;
+}
+
+export default function CheckboxSettings({
+  loadingText = 'Loading...',
+}: CheckboxSettingsProps) {
   const [isLoading, startLoading] = React.useTransition();
-  const [
-    isHideSponsors,
-    setIsHideSponsors,
-  ] = useState(false);
-  const [
-    isHideSponsoring,
-    setIsHideSponsoring,
-  ] = useState(false);
+  const [isHideSponsors, setIsHideSponsors] = useState(false);
+  const [isHideSponsoring, setIsHideSponsoring] = useState(false);
 
   useEffect(() => {
     startLoading(async () => {
@@ -24,8 +25,20 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <div>...Loading</div>;
+    return <div>{loadingText}</div>;
   }
+
+  const handleToggle = (
+    settingKey: string,
+    currentValue: boolean,
+    setter: (value: boolean) => void,
+  ) => {
+    const toggled = !currentValue;
+    setter(toggled);
+    chrome.storage.sync.set({
+      [settingKey]: toggled,
+    });
+  };
 
   return (
     <form>
@@ -34,61 +47,31 @@ function App() {
           <input
             type='checkbox'
             checked={isHideSponsors}
-            aria-describedby='help-text-for-isHideSponsors-checkbox'
-            onChange={(_ev) => {
-              const toggled = !isHideSponsors;
-              setIsHideSponsors(
-                toggled,
-              );
-              chrome.storage.sync.set({
-                'isHideSponsors': toggled,
-              }).then(() => {
-                console.log(
-                  `isHideSponsors is set to ${toggled}`,
-                );
-              });
-            }}
+            onChange={(_ev) =>
+              handleToggle(
+                'isHideSponsors',
+                isHideSponsors,
+                setIsHideSponsors,
+              )}
           />
           Hide "Sponsors"
         </label>
-        <p
-          className='note'
-          id='help-text-for-isHideSponsors-checkbox'
-        >
-          Hide the section in left-sidebar if enabled this option
-        </p>
       </div>
       <div className='form-checkbox'>
         <label>
           <input
             type='checkbox'
             checked={isHideSponsoring}
-            aria-describedby='help-text-for-isHideSponsoring-checkbox'
-            onChange={(_ev) => {
-              const toggled = !isHideSponsoring;
-              setIsHideSponsoring(
-                toggled,
-              );
-              chrome.storage.sync.set({
-                'isHideSponsoring': toggled,
-              }).then(() => {
-                console.log(
-                  `isHideSponsoring is set to ${toggled}`,
-                );
-              });
-            }}
+            onChange={(_ev) =>
+              handleToggle(
+                'isHideSponsoring',
+                isHideSponsoring,
+                setIsHideSponsoring,
+              )}
           />
           Hide "Sponsoring"
         </label>
-        <p
-          className='note'
-          id='help-text-for-isHideSponsoring-checkbox'
-        >
-          Hide the section in left-sidebar if enabled this option
-        </p>
       </div>
     </form>
   );
 }
-
-export default App;
