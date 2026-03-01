@@ -64,7 +64,7 @@ jobs:
           printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
 
       - name: Upload the product for nightly use and debug
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: '${{ fromJson(steps.build.outputs.report).productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).productPath }}'
