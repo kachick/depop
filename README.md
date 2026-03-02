@@ -23,7 +23,7 @@ Choose one of the following options.
 ## Usage
 
 By default, stars are hidden as much as possible.
-You can toggle features and global status from the extension's popup in your browser toolbar.
+You can enable/disable the extension and toggle optional features via the popup in your browser toolbar.
 
 ![Popup Screen Shot](assets/screenshots/options.png)
 
