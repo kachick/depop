@@ -22,11 +22,10 @@ Choose one of the following options.
 
 ## Usage
 
-By default, stars are hidden as much as possible.\
-Some features can be hidden by enabling them on the [Options page](https://developer.chrome.com/docs/extensions/mv3/options/).\
-If you installed it with Google Web Store, the URL should be `chrome-extension://bblbchjekobacogfioehogggccfagkmk/options.html`
+By default, stars are hidden as much as possible.
+You can toggle features and global status from the extension's popup in your browser toolbar.
 
-![Screen Shot](assets/screenshots/options.png)
+![Popup Screen Shot](assets/screenshots/options.png)
 
 ## Suppressible GitHub stats
 
