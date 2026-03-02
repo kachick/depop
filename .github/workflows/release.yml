@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/release.yml'
+      - '.github/workflows/ci.yml'
       - 'deno.jsonc'
       - 'deno.lock'
       - 'scripts/build.ts'
@@ -27,21 +28,9 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: cachix/install-nix-action@2126ae7fc54c9df00dd18f7f18754393182c73cd # v31.9.1
 
-      # On PR/push, build and report for verification
-      - name: Build for verification
-        id: build
-        if: "!startsWith(github.ref, 'refs/tags/')"
-        run: |
-          tempfile="$(mktemp report.XXXX.json)"
-          nix develop --command deno task build >"$tempfile"
-          printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
-
-      # On release (tag), wait for CI results and download artifacts
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v4
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           skip-same-workflow: 'true'
           skip-list: |
@@ -53,11 +42,13 @@ jobs:
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           pattern: '*-extension'
           merge-multiple: true
           path: dist/
+
+      - name: List artifacts
+        run: ls -R dist/
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
