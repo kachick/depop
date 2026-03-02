@@ -130,7 +130,7 @@ function App() {
           rel='noreferrer'
           className='Link--external'
         >
-          Source code (GitHub)
+          Source code
         </a>
         {globalThis.location.pathname.endsWith('popup.html') && (
           <>
@@ -138,9 +138,10 @@ function App() {
             <button
               type='button'
               className='btn-link color-fg-muted'
+              aria-label='Open options'
               onClick={() => chrome.runtime.openOptionsPage()}
             >
-              Open options
+              ⚙️
             </button>
           </>
         )}
