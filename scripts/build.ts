@@ -116,6 +116,8 @@ const validateProduct = async (zipped: Uint8Array<ArrayBuffer>, target: 'chrome'
   return [ok, { schemaErrors: ajv.errors, missingPaths }];
 };
 
+const reports: Record<string, unknown> = {};
+
 for (const target of ['chrome', 'firefox'] as const) {
   // 1. Prepare manifest for the target
   const targetManifest = target === 'firefox'
@@ -173,23 +175,19 @@ for (const target of ['chrome', 'firefox'] as const) {
   const [ok, errors] = await validateProduct(zipped, target);
 
   if (ok) {
-    console.log(
-      JSON.stringify(
-        {
-          target,
-          productPath,
-          productBasename,
-          structureSha256,
-          structure,
-          productSize: prettyBytes(zipped.length),
-          productSha256: await sha256(zipped),
-        },
-        undefined,
-        4,
-      ),
-    );
+    reports[target] = {
+      target,
+      productPath,
+      productBasename,
+      structureSha256,
+      structure,
+      productSize: prettyBytes(zipped.length),
+      productSha256: await sha256(zipped),
+    };
   } else {
     console.error(`Validation failed for ${target}:`, errors);
     Deno.exit(1);
   }
 }
+
+console.log(JSON.stringify(reports, undefined, 4));

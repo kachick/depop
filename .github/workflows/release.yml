@@ -24,7 +24,11 @@ jobs:
       - name: Build
         id: build
         run: |
-          deno task build
+          {
+            echo 'report<<JSON'
+            deno task build
+            echo 'JSON'
+          } 2>/dev/null | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v4
         with:
@@ -41,4 +45,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: 'dist/*.zip'
+          files: |
+            ${{ fromJson(steps.build.outputs.report).chrome.productPath }}
+            ${{ fromJson(steps.build.outputs.report).firefox.productPath }}
