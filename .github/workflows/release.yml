@@ -25,13 +25,15 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.chrome_artifact }}
-          path: dist/
+          path: .
+          merge-multiple: true
 
       - name: Download Firefox artifact
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.firefox_artifact }}
-          path: dist/
+          path: .
+          merge-multiple: true
 
       - name: List and verify artifacts
         run: |
