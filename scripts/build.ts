@@ -1,6 +1,12 @@
 import { assertEquals } from '@std/assert';
 import { encodeHex } from '@std/encoding';
 import { basename, extname, join } from '@std/path';
+import manifestChromeJson from '../src/manifest-chrome.json' with {
+  type: 'json',
+};
+import manifestFirefoxJson from '../src/manifest-firefox.json' with {
+  type: 'json',
+};
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
@@ -82,30 +88,28 @@ const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 const toString = (bytes: Uint8Array) => textDecoder.decode(bytes);
 
-const validateProduct = async (zipped: Uint8Array<ArrayBuffer>, target: 'chrome' | 'firefox') => {
+const validateProduct = async (
+  zipped: Uint8Array<ArrayBuffer>,
+  target: 'chrome' | 'firefox',
+) => {
   const unzipped = fflate.unzipSync(zipped);
 
   const productManifest = JSON.parse(toString(unzipped['manifest.json']));
-  assertEquals(
-    productManifest,
-    target === 'firefox'
-      ? {
-        ...manifestJson,
-        background: {
-          ...manifestJson.background,
-          scripts: [manifestJson.background.service_worker],
-        },
-      }
-      : manifestJson,
-  );
+  const expectedManifest = {
+    ...manifestJson,
+    ...(target === 'chrome' ? manifestChromeJson : manifestFirefoxJson),
+  } as Record<string, unknown>;
+
+  assertEquals(productManifest, expectedManifest);
 
   const ajv = new Ajv({ allErrors: true });
-  const schemaOk = await ajv.validate(manifestSchema, manifestJson);
+  const schemaOk = await ajv.validate(manifestSchema, expectedManifest);
 
   const definedPaths = [
-    ...manifestJson.content_scripts.flatMap(({ css, js }) => [...css, ...js]),
-    manifestJson.options_page,
-    ...Object.values(manifestJson.icons),
+    ...(expectedManifest.content_scripts as { css: string[]; js: string[] }[])
+      .flatMap(({ css, js }) => [...css, ...js]),
+    expectedManifest.options_page as string,
+    ...Object.values(expectedManifest.icons as Record<string, string>),
   ];
   const includedPaths = new Set(Object.keys(unzipped));
   // Except assets like css from options.html
@@ -120,17 +124,15 @@ const reports: Record<string, unknown> = {};
 
 for (const target of ['chrome', 'firefox'] as const) {
   // 1. Prepare manifest for the target
-  const targetManifest = target === 'firefox'
-    ? {
-      ...manifestJson,
-      background: {
-        ...manifestJson.background,
-        scripts: [manifestJson.background.service_worker],
-      },
-    }
-    : manifestJson;
+  const targetManifest = {
+    ...manifestJson,
+    ...(target === 'chrome' ? manifestChromeJson : manifestFirefoxJson),
+  };
 
-  Deno.writeTextFileSync('dist/manifest.json', JSON.stringify(targetManifest, null, 2));
+  Deno.writeTextFileSync(
+    'dist/manifest.json',
+    JSON.stringify(targetManifest, null, 2),
+  );
 
   // 2. Gather files for zip
   const zipStructure = new Map<
@@ -191,6 +193,9 @@ for (const target of ['chrome', 'firefox'] as const) {
 }
 
 // Ensure the dist directory is Chrome-ready for local development
-Deno.writeTextFileSync('dist/manifest.json', JSON.stringify(manifestJson, null, 2));
+Deno.writeTextFileSync(
+  'dist/manifest.json',
+  JSON.stringify({ ...manifestJson, ...manifestChromeJson }, null, 2),
+);
 
 console.log(JSON.stringify(reports, undefined, 4));

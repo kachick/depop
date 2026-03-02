@@ -3,30 +3,27 @@
   "description": "Hide stars, followers, and watchers on GitHub",
   "version": "0.0.0.15",
   "manifest_version": 3,
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "depop@kachick.github.com"
-    }
-  },
   "homepage_url": "https://github.com/kachick/depop",
   "permissions": [
     "storage"
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
-      "matches": ["https://github.com/*"],
-      "run_at": "document_idle",
-      "css": ["github-patcher.css"],
-      "js": ["github-patcher.js"]
+      "matches": [
+        "https://github.com/*"
+      ],
+      "css": [
+        "github-patcher.css"
+      ],
+      "js": [
+        "github-patcher.js"
+      ],
+      "run_at": "document_idle"
     }
   ],
-  "options_page": "options.html",
   "action": {
-    "default_popup": "popup.html",
     "default_title": "Toggle depop",
+    "default_popup": "popup.html",
     "default_icon": {
       "128": "icon-sadness-star.png"
     }
@@ -34,6 +31,7 @@
   "icons": {
     "128": "icon-sadness-star.png"
   },
+  "options_page": "options.html",
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self'"
   }
