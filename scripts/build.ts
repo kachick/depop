@@ -27,7 +27,11 @@ const cleanUpSync = () => {
 
 cleanUpSync();
 
-const browser = Deno.env.get('BROWSER') || 'chrome';
+const browser = Deno.env.get('BROWSER');
+if (browser !== 'chrome' && browser !== 'firefox') {
+  console.error('BROWSER environment variable must be set to "chrome" or "firefox"');
+  Deno.exit(1);
+}
 
 const transpile = async () => {
   for (
@@ -84,35 +88,33 @@ const gatherDist = Promise.all([
       throw new Error('Failed to generate disabled icon via mogrify');
     }
   }),
-  ]);
+]);
 
-  await gatherDist;
+await gatherDist;
 
-  const getOrderedPathList = (dirPath: string): string[] =>
-  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) =>
-    dirEntity.isFile ? [dirEntity.name] : []
-  ).toSorted();
+const getOrderedPathList = (dirPath: string): string[] =>
+  Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) => dirEntity.isFile ? [dirEntity.name] : []).toSorted();
 
-  const zipStructure = new Map<
+const zipStructure = new Map<
   string,
   { content: Uint8Array; sha256: string; isCompressed: boolean }
-  >();
+>();
 
-  const sha256 = async (content: Uint8Array<ArrayBuffer>) => {
+const sha256 = async (content: Uint8Array<ArrayBuffer>) => {
   const digest = await crypto.subtle.digest('SHA-256', content);
   return encodeHex(digest);
-  };
+};
 
-  for (const path of getOrderedPathList('dist')) {
+for (const path of getOrderedPathList('dist')) {
   const content = Deno.readFileSync(join('dist', path));
   zipStructure.set(path, {
     content,
     sha256: await sha256(content),
     isCompressed: extname(path) === '.png',
   });
-  }
+}
 
-  const zipped = fflate.zipSync(
+const zipped = fflate.zipSync(
   Array.from(zipStructure.entries()).reduce(
     (acc, [path, { content, isCompressed }]) => ({
       ...acc,
@@ -120,25 +122,24 @@ const gatherDist = Promise.all([
     }),
     {},
   ),
-  ) as Uint8Array<ArrayBuffer>; // This `as` is a workaround for: https://github.com/101arrowz/fflate/issues/242
+) as Uint8Array<ArrayBuffer>; // This `as` is a workaround for: https://github.com/101arrowz/fflate/issues/242
 
-  const textEncoder = new TextEncoder();
-  const textDecoder = new TextDecoder();
-  const toString = (bytes: Uint8Array) => textDecoder.decode(bytes);
+const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
+const toString = (bytes: Uint8Array) => textDecoder.decode(bytes);
 
-  const structure = Array.from(zipStructure.entries()).reduce(
+const structure = Array.from(zipStructure.entries()).reduce(
   (acc, [path, { sha256 }]) => ({ ...acc, [path]: sha256 }),
   {},
-  );
-  const structureSha256 = await sha256(
+);
+const structureSha256 = await sha256(
   textEncoder.encode(JSON.stringify(structure)),
-  );
-  const productBasename =
-  `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}-${browser}.zip`;
-  const productPath = `dist/${productBasename}`;
-  Deno.writeFileSync(productPath, zipped);
+);
+const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}-${browser}.zip`;
+const productPath = `dist/${productBasename}`;
+Deno.writeFileSync(productPath, zipped);
 
-  const validateProduct = async (zipped: Uint8Array<ArrayBuffer>) => {
+const validateProduct = async (zipped: Uint8Array<ArrayBuffer>) => {
   const unzipped = fflate.unzipSync(zipped);
 
   const productManifest = JSON.parse(toString(unzipped['manifest.json']));
