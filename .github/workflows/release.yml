@@ -41,18 +41,27 @@ jobs:
             ]
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
-        with:
-          pattern: '*-extension'
-          merge-multiple: true
-          path: dist/
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p dist
+          # Find the CI run ID for the current commit
+          run_id=$(gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status -q '.[] | select(.status == "completed" or .status == "success") | .databaseId' | head -n 1)
+          
+          if [ -z "$run_id" ]; then
+            echo "::error::Could not find a completed CI run for commit $GITHUB_SHA"
+            exit 1
+          fi
+          
+          # Download artifacts named '*-extension' (defined in ci.yml)
+          gh run download "$run_id" --pattern "*-extension" --dir dist/
 
       - name: List and verify artifacts
         run: |
-          mkdir -p dist
           ls -R dist/
-          if [ -z "$(ls -A dist)" ]; then
-            echo "::error::No artifacts found in dist/ directory. Integration failed."
+          # Ensure at least one zip file exists in dist/ (recursive check)
+          if [ -z "$(find dist/ -name "*.zip" -print -quit)" ]; then
+            echo "::error::No zip artifacts found in dist/ directory. Integration failed."
             exit 1
           fi
 
