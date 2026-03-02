@@ -190,4 +190,7 @@ for (const target of ['chrome', 'firefox'] as const) {
   }
 }
 
+// Ensure the dist directory is Chrome-ready for local development
+Deno.writeTextFileSync('dist/manifest.json', JSON.stringify(manifestJson, null, 2));
+
 console.log(JSON.stringify(reports, undefined, 4));
