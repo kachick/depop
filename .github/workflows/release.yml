@@ -1,6 +1,13 @@
 name: 🚀
 on:
   workflow_call:
+    inputs:
+      chrome_artifact:
+        required: true
+        type: string
+      firefox_artifact:
+        required: true
+        type: string
 
 jobs:
   release:
@@ -14,18 +21,27 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Download artifacts
+      - name: Download Chrome artifact
         uses: actions/download-artifact@v8
         with:
-          pattern: 'depop-*.zip'
-          path: .
+          name: ${{ inputs.chrome_artifact }}
+          path: dist/
+
+      - name: Download Firefox artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ inputs.firefox_artifact }}
+          path: dist/
 
       - name: List and verify artifacts
         run: |
-          ls -R
-          # Search for depop-*.zip in the entire workspace
-          if [ -z "$(find . -name "depop-*.zip" -print -quit)" ]; then
-            echo "::error::No depop-*.zip artifacts found in the workspace. Integration failed."
+          ls -R dist/
+          if [ ! -f "dist/${{ inputs.chrome_artifact }}" ]; then
+            echo "::error::Chrome artifact dist/${{ inputs.chrome_artifact }} not found."
+            exit 1
+          fi
+          if [ ! -f "dist/${{ inputs.firefox_artifact }}" ]; then
+            echo "::error::Firefox artifact dist/${{ inputs.firefox_artifact }} not found."
             exit 1
           fi
 
@@ -34,6 +50,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Use find to pick up zips from any location (expected dist/*.zip)
-          # Use xargs to handle potential multiple zips
-          find . -name "depop-*.zip" | xargs gh release create "$GITHUB_REF_NAME" --generate-notes
+          gh release create "$GITHUB_REF_NAME" \
+            "dist/${{ inputs.chrome_artifact }}" \
+            "dist/${{ inputs.firefox_artifact }}" \
+            --generate-notes

@@ -52,6 +52,9 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    outputs:
+      chrome_artifact: ${{ fromJson(steps.build.outputs.report).chrome.productBasename }}
+      firefox_artifact: ${{ fromJson(steps.build.outputs.report).firefox.productBasename }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -85,5 +88,8 @@ jobs:
   release:
     needs: [build]
     uses: ./.github/workflows/release.yml
+    with:
+      chrome_artifact: ${{ needs.build.outputs.chrome_artifact }}
+      firefox_artifact: ${{ needs.build.outputs.firefox_artifact }}
     permissions:
       contents: write
