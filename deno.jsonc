@@ -2,8 +2,9 @@
   "tasks": {
     "build": "deno run --node-modules-dir --quiet --allow-net --allow-read --allow-write --allow-env --allow-run scripts/build.ts",
     "clean": "rm -rf ./dist",
-    "check": "dprint check && typos && biome check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
+    "check": "dprint check && typos && biome check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest && deno task lint:extension",
     "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
+    "lint:extension": "deno task build && web-ext lint --source-dir dist --no-config-discovery",
     "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
     "cache": "deno cache --frozen=false --reload src/*.ts* scripts/*.ts",
     // Required ImageMagick dependency

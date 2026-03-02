@@ -32,6 +32,7 @@
               nixfmt-tree
 
               deno
+              nodePackages.web-ext
               biome
               dprint
               ripgrep
