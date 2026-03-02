@@ -79,9 +79,3 @@ We use a **CSS-class-based toggle** approach:
 - **Instant Reflect**: The browser's CSS engine updates the page immediately.
 - **Performance**: High performance with minimal reflow.
 - **Reliability**: This is a standard "best practice" for modern extensions like uBlock Origin.
-
-### Mandatory CSP Hash for Empty Styles
-
-In `manifest.json`, we explicitly allow `sha256-5sM6NtwiI9WtWZw9bryR+B9oiH9IDt7RhJYadq6eHLk=`.
-
-This is required because Chrome internally injects empty `<style>` tags for features like Autofill or translation, which triggers a CSP violation if not allowed. This is a known Chromium behavior discussed here: `https://groups.google.com/a/chromium.org/g/chromium-extensions/c/G2_rtRyu2xQ`
