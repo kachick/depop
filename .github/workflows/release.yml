@@ -37,21 +37,8 @@ jobs:
 
       - name: Verify artifacts
         run: |
-          echo "Chrome path: ${{ steps.download_chrome.outputs.download-path }}"
-          echo "Firefox path: ${{ steps.download_firefox.outputs.download-path }}"
-
-          # With skip-decompress: true, the ZIP file should be located directly
-          # under the download-path.
-          if [ ! -f "${{ steps.download_chrome.outputs.download-path }}/${{ inputs.chrome_artifact_name }}" ]; then
-            echo "::error::Chrome artifact not found at expected path."
-            ls -R "${{ steps.download_chrome.outputs.download-path }}"
-            exit 1
-          fi
-          if [ ! -f "${{ steps.download_firefox.outputs.download-path }}/${{ inputs.firefox_artifact_name }}" ]; then
-            echo "::error::Firefox artifact not found at expected path."
-            ls -R "${{ steps.download_firefox.outputs.download-path }}"
-            exit 1
-          fi
+          test -f "${{ steps.download_chrome.outputs.download-path }}/${{ inputs.chrome_artifact_name }}"
+          test -f "${{ steps.download_firefox.outputs.download-path }}/${{ inputs.firefox_artifact_name }}"
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
