@@ -21,10 +21,18 @@ Available tasks:
 
 ```console
 > deno task build
-...
-Built to dist/depop-0.0.0.15-hash.zip:
-...
 ```
+
+This command generates packages for both Chrome and Firefox in the `dist/` directory.
+
+- `dist/depop-*-chrome.zip`: For Chrome.
+- `dist/depop-*-firefox.zip`: For Firefox.
+- `dist/`: Ready for Chrome's "Load unpacked extension". The `manifest.json` in this folder is always overwritten with Chrome-compatible settings.
+
+### Loading in browser
+
+- **Chrome**: Open `chrome://extensions/`, enable "Developer mode", and "Load unpacked" the `dist/` folder.
+- **Firefox**: Open `about:debugging`, click "This Firefox", and "Load Temporary Add-on..." the `dist/manifest.json` file. Note that Firefox may require the zip file for some features, but temporary loading usually works with the manifest.
 
 ## Finding CSS selectors
 
