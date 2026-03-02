@@ -64,17 +64,15 @@ jobs:
           printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
 
       - name: Upload the chrome product
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: chrome-extension
           path: '${{ fromJson(steps.build.outputs.report).chrome.productPath }}'
-          archive: false
           if-no-files-found: error
 
       - name: Upload the firefox product
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: firefox-extension
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
-          archive: false
           if-no-files-found: error

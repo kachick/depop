@@ -48,7 +48,14 @@ jobs:
           path: dist/
 
       - name: List artifacts
-        run: ls -R dist/
+        run: |
+          if [ -d "dist" ]; then
+            ls -R dist/
+          else
+            echo "::error::dist/ directory not found. Download might have failed to find artifacts."
+            ls -R .
+            exit 1
+          fi
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
