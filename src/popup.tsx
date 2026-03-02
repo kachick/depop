@@ -20,23 +20,41 @@ function PopupApp() {
     await chrome.storage.sync.set({ isEnabled: toggled });
   };
 
+  const openOptions = () => {
+    chrome.runtime.openOptionsPage();
+  };
+
   if (isLoading) {
-    return <div className='text-center'>Loading...</div>;
+    return <div className='text-center p-3'>Loading...</div>;
   }
 
   return (
-    <div className='form-checkbox'>
-      <label>
-        <input
-          type='checkbox'
-          checked={isEnabled}
-          onChange={handleToggle}
-        />
-        Enable depop
-      </label>
-      <p className='note'>
-        Hide stars, followers, and other stats on GitHub
-      </p>
+    <div className='Box color-shadow-small'>
+      <div className='Box-header py-2 px-3'>
+        <h3 className='Box-title text-normal'>depop</h3>
+      </div>
+      <div className='Box-body p-3'>
+        <div className='form-checkbox mt-0 mb-3'>
+          <label>
+            <input
+              type='checkbox'
+              checked={isEnabled}
+              onChange={handleToggle}
+            />
+            <span className='text-bold'>Enable depop</span>
+          </label>
+          <p className='note mb-0'>
+            Hide GitHub stats
+          </p>
+        </div>
+        <button
+          type='button'
+          className='btn btn-sm btn-block'
+          onClick={openOptions}
+        >
+          Detailed Settings
+        </button>
+      </div>
     </div>
   );
 }
