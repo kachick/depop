@@ -60,8 +60,8 @@ jobs:
           path: dist/
 
       - name: Release
-        # TODO: Replace with gh command
-        uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: dist/*.zip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/*.zip --generate-notes
