@@ -76,9 +76,6 @@ function App() {
           </span>
           <span className='toggle-switch-label'>Enable depop</span>
         </label>
-        <p className='note mt-1'>
-          Master switch to enable/disable all features of this extension
-        </p>
       </div>
 
       <hr />
