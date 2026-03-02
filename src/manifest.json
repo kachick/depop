@@ -9,21 +9,16 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://github.com/*"
-      ],
-      "css": [
-        "github-patcher.css"
-      ],
-      "js": [
-        "github-patcher.js"
-      ],
-      "run_at": "document_idle"
+      "matches": ["https://github.com/*"],
+      "run_at": "document_idle",
+      "css": ["github-patcher.css"],
+      "js": ["github-patcher.js"]
     }
   ],
+  "options_page": "options.html",
   "action": {
-    "default_title": "Toggle depop",
     "default_popup": "popup.html",
+    "default_title": "Toggle depop",
     "default_icon": {
       "128": "icon-sadness-star.png"
     }
@@ -31,7 +26,6 @@
   "icons": {
     "128": "icon-sadness-star.png"
   },
-  "options_page": "options.html",
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self'"
   }
