@@ -21,20 +21,20 @@ function PopupApp() {
   };
 
   if (isLoading) {
-    return <div className="text-center">Loading...</div>;
+    return <div className='text-center'>Loading...</div>;
   }
 
   return (
-    <div className="form-checkbox">
+    <div className='form-checkbox'>
       <label>
         <input
-          type="checkbox"
+          type='checkbox'
           checked={isEnabled}
           onChange={handleToggle}
         />
         Enable depop
       </label>
-      <p className="note">
+      <p className='note'>
         Hide stars, followers, and other stats on GitHub
       </p>
     </div>

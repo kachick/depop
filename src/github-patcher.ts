@@ -107,9 +107,9 @@ updateComponents();
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
     if (
-      changes.isEnabled ||
-      changes.isHideSponsors ||
-      changes.isHideSponsoring
+      changes.isEnabled
+      || changes.isHideSponsors
+      || changes.isHideSponsoring
     ) {
       updateComponents();
     }
