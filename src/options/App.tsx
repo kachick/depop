@@ -132,6 +132,18 @@ function App() {
         >
           Source code (GitHub)
         </a>
+        {globalThis.location.pathname.endsWith('popup.html') && (
+          <>
+            {' · '}
+            <button
+              type='button'
+              className='btn-link color-fg-muted'
+              onClick={() => chrome.runtime.openOptionsPage()}
+            >
+              Open options
+            </button>
+          </>
+        )}
       </footer>
     </form>
   );
