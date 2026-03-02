@@ -26,24 +26,22 @@ jobs:
         with:
           name: ${{ inputs.chrome_artifact }}
           path: .
-          merge-multiple: true
 
       - name: Download Firefox artifact
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.firefox_artifact }}
           path: .
-          merge-multiple: true
 
       - name: List and verify artifacts
         run: |
-          ls -R dist/
-          if [ ! -f "dist/${{ inputs.chrome_artifact }}" ]; then
-            echo "::error::Chrome artifact dist/${{ inputs.chrome_artifact }} not found."
+          ls -l "${{ inputs.chrome_artifact }}" "${{ inputs.firefox_artifact }}"
+          if [ ! -f "${{ inputs.chrome_artifact }}" ]; then
+            echo "::error::Chrome artifact ${{ inputs.chrome_artifact }} not found."
             exit 1
           fi
-          if [ ! -f "dist/${{ inputs.firefox_artifact }}" ]; then
-            echo "::error::Firefox artifact dist/${{ inputs.firefox_artifact }} not found."
+          if [ ! -f "${{ inputs.firefox_artifact }}" ]; then
+            echo "::error::Firefox artifact ${{ inputs.firefox_artifact }} not found."
             exit 1
           fi
 
@@ -53,6 +51,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
-            "dist/${{ inputs.chrome_artifact }}" \
-            "dist/${{ inputs.firefox_artifact }}" \
+            "${{ inputs.chrome_artifact }}" \
+            "${{ inputs.firefox_artifact }}" \
             --generate-notes
