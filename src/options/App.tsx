@@ -134,6 +134,17 @@ function App() {
           </p>
         </div>
       </div>
+
+      <footer className='mt-3 pt-3 border-top color-fg-muted f6'>
+        <a
+          href='https://github.com/kachick/depop'
+          target='_blank'
+          rel='noreferrer'
+          className='Link--external'
+        >
+          Source code (GitHub)
+        </a>
+      </footer>
     </form>
   );
 }
