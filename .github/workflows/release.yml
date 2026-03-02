@@ -24,8 +24,7 @@ jobs:
       - name: Build
         id: build
         run: |
-          deno task build:chrome
-          deno task build:firefox
+          deno task build
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v4
         with:
