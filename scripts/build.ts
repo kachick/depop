@@ -1,6 +1,12 @@
 import { assertEquals } from '@std/assert';
 import { encodeHex } from '@std/encoding';
 import { basename, extname, join } from '@std/path';
+import manifestChromeJson from '../src/manifest-chrome.json' with {
+  type: 'json',
+};
+import manifestFirefoxJson from '../src/manifest-firefox.json' with {
+  type: 'json',
+};
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };
@@ -42,11 +48,10 @@ const transpile = async () => {
   }
 };
 
-const gatherDist = Promise.all([
+const gatherCommonAssets = Promise.all([
   transpile(),
   Deno.copyFile('README.md', 'dist/README.md'),
   Deno.copyFile('LICENSE', 'dist/LICENSE'),
-  Deno.copyFile('src/manifest.json', 'dist/manifest.json'),
   Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
   Deno.copyFile('src/options.html', 'dist/options.html'),
   Deno.copyFile('src/options.css', 'dist/options.css'),
@@ -69,67 +74,42 @@ const gatherDist = Promise.all([
   }),
 ]);
 
-await gatherDist;
+await gatherCommonAssets;
 
 const getOrderedPathList = (dirPath: string): string[] =>
   Array.from(Deno.readDirSync(dirPath)).flatMap((dirEntity) => dirEntity.isFile ? [dirEntity.name] : []).toSorted();
-
-const zipStructure = new Map<
-  string,
-  { content: Uint8Array; sha256: string; isCompressed: boolean }
->();
 
 const sha256 = async (content: Uint8Array<ArrayBuffer>) => {
   const digest = await crypto.subtle.digest('SHA-256', content);
   return encodeHex(digest);
 };
 
-for (const path of getOrderedPathList('dist')) {
-  const content = Deno.readFileSync(join('dist', path));
-  zipStructure.set(path, {
-    content,
-    sha256: await sha256(content),
-    isCompressed: extname(path) === '.png',
-  });
-}
-
-const zipped = fflate.zipSync(
-  Array.from(zipStructure.entries()).reduce(
-    (acc, [path, { content, isCompressed }]) => ({
-      ...acc,
-      [path]: isCompressed ? [content, { level: 0 }] : content,
-    }),
-    {},
-  ),
-) as Uint8Array<ArrayBuffer>; // This `as` is a workaround for: https://github.com/101arrowz/fflate/issues/242
-
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 const toString = (bytes: Uint8Array) => textDecoder.decode(bytes);
 
-const structure = Array.from(zipStructure.entries()).reduce(
-  (acc, [path, { sha256 }]) => ({ ...acc, [path]: sha256 }),
-  {},
-);
-const structureSha256 = await sha256(
-  textEncoder.encode(JSON.stringify(structure)),
-);
-const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}.zip`;
-const productPath = `dist/${productBasename}`;
-Deno.writeFileSync(productPath, zipped);
-
-const validateProduct = async (zipped: Uint8Array<ArrayBuffer>) => {
+const validateProduct = async (
+  zipped: Uint8Array<ArrayBuffer>,
+  target: 'chrome' | 'firefox',
+) => {
   const unzipped = fflate.unzipSync(zipped);
 
-  assertEquals(JSON.parse(toString(unzipped['manifest.json'])), manifestJson);
+  const productManifest = JSON.parse(toString(unzipped['manifest.json']));
+  const expectedManifest = {
+    ...manifestJson,
+    ...(target === 'chrome' ? manifestChromeJson : manifestFirefoxJson),
+  } as Record<string, unknown>;
+
+  assertEquals(productManifest, expectedManifest);
 
   const ajv = new Ajv({ allErrors: true });
-  const schemaOk = await ajv.validate(manifestSchema, manifestJson);
+  const schemaOk = await ajv.validate(manifestSchema, expectedManifest);
 
   const definedPaths = [
-    ...manifestJson.content_scripts.flatMap(({ css, js }) => [...css, ...js]),
-    manifestJson.options_page,
-    ...Object.values(manifestJson.icons),
+    ...(expectedManifest.content_scripts as { css: string[]; js: string[] }[])
+      .flatMap(({ css, js }) => [...css, ...js]),
+    expectedManifest.options_page as string,
+    ...Object.values(expectedManifest.icons as Record<string, string>),
   ];
   const includedPaths = new Set(Object.keys(unzipped));
   // Except assets like css from options.html
@@ -140,24 +120,82 @@ const validateProduct = async (zipped: Uint8Array<ArrayBuffer>) => {
   return [ok, { schemaErrors: ajv.errors, missingPaths }];
 };
 
-const [ok, errors] = await validateProduct(zipped);
+const reports: Record<string, unknown> = {};
 
-if (ok) {
-  console.log(
-    JSON.stringify(
-      {
-        productPath,
-        productBasename,
-        structureSha256,
-        structure,
-        productSize: prettyBytes(zipped.length),
-        productSha256: await sha256(zipped),
-      },
-      undefined,
-      4,
-    ),
+for (const target of ['chrome', 'firefox'] as const) {
+  // 1. Prepare manifest for the target
+  const targetManifest = {
+    ...manifestJson,
+    ...(target === 'chrome' ? manifestChromeJson : manifestFirefoxJson),
+  };
+
+  Deno.writeTextFileSync(
+    'dist/manifest.json',
+    JSON.stringify(targetManifest, null, 2),
   );
-} else {
-  console.error(errors);
-  Deno.exit(1);
+
+  // 2. Gather files for zip
+  const zipStructure = new Map<
+    string,
+    { content: Uint8Array; sha256: string; isCompressed: boolean }
+  >();
+
+  for (const path of getOrderedPathList('dist')) {
+    if (extname(path) === '.zip') continue;
+
+    const content = Deno.readFileSync(join('dist', path));
+    zipStructure.set(path, {
+      content,
+      sha256: await sha256(content),
+      isCompressed: extname(path) === '.png',
+    });
+  }
+
+  // 3. Create zip
+  const zipped = fflate.zipSync(
+    Array.from(zipStructure.entries()).reduce(
+      (acc, [path, { content, isCompressed }]) => ({
+        ...acc,
+        [path]: isCompressed ? [content, { level: 0 }] : content,
+      }),
+      {},
+    ),
+  ) as Uint8Array<ArrayBuffer>;
+
+  const structure = Array.from(zipStructure.entries()).reduce(
+    (acc, [path, { sha256 }]) => ({ ...acc, [path]: sha256 }),
+    {},
+  );
+  const structureSha256 = await sha256(
+    textEncoder.encode(JSON.stringify(structure)),
+  );
+  const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}-${target}.zip`;
+  const productPath = `dist/${productBasename}`;
+  Deno.writeFileSync(productPath, zipped);
+
+  // 4. Validate
+  const [ok, errors] = await validateProduct(zipped, target);
+
+  if (ok) {
+    reports[target] = {
+      target,
+      productPath,
+      productBasename,
+      structureSha256,
+      structure,
+      productSize: prettyBytes(zipped.length),
+      productSha256: await sha256(zipped),
+    };
+  } else {
+    console.error(`Validation failed for ${target}:`, errors);
+    Deno.exit(1);
+  }
 }
+
+// Ensure the dist directory is Chrome-ready for local development
+Deno.writeTextFileSync(
+  'dist/manifest.json',
+  JSON.stringify({ ...manifestJson, ...manifestChromeJson }, null, 2),
+);
+
+console.log(JSON.stringify(reports, undefined, 4));

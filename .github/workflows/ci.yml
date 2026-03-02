@@ -63,9 +63,18 @@ jobs:
           nix develop --command deno task build >"$tempfile"
           printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
 
-      - name: Upload the product for nightly use and debug
+      - name: Upload the chrome product
         uses: actions/upload-artifact@v7
         with:
-          name: '${{ fromJson(steps.build.outputs.report).productBasename }}'
-          path: '${{ fromJson(steps.build.outputs.report).productPath }}'
-          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+          name: '${{ fromJson(steps.build.outputs.report).chrome.productBasename }}'
+          path: '${{ fromJson(steps.build.outputs.report).chrome.productPath }}'
+          archive: false
+          if-no-files-found: error
+
+      - name: Upload the firefox product
+        uses: actions/upload-artifact@v7
+        with:
+          name: '${{ fromJson(steps.build.outputs.report).firefox.productBasename }}'
+          path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
+          archive: false
+          if-no-files-found: error

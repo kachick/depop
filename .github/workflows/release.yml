@@ -45,4 +45,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: '${{ fromJson(steps.build.outputs.report).productPath }}'
+          files: |
+            ${{ fromJson(steps.build.outputs.report).chrome.productPath }}
+            ${{ fromJson(steps.build.outputs.report).firefox.productPath }}

@@ -3,7 +3,7 @@
 [![CI](https://github.com/kachick/depop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kachick/depop/actions/workflows/ci.yml?query=event%3Apush++)
 [![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/bblbchjekobacogfioehogggccfagkmk?style=flat&logo=googlechrome&color=%231a73e8)](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
 
-A Chrome Extension to hide stars, followers, watchers, sponsors, and other stats on GitHub
+A browser extension for Chrome and Firefox to hide stars, followers, watchers, sponsors, and other stats on GitHub
 
 ![Screen Shot](assets/screenshots/overview.png)
 
@@ -16,8 +16,10 @@ I don't want my heart to be disturbed by the "±", especially during coding and 
 Choose one of the following options.
 
 - Visit [Chrome Web Store](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
-- Download stable zip archive from [release page](https://github.com/kachick/depop/releases) and load it from `chrome://extensions/`.
-- Download unstable zip archive from the [uploaded artifacts](https://github.com/kachick/depop/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess). Use it in the same way as stable.
+- Download the browser-specific zip archive from the [release page](https://github.com/kachick/depop/releases) (e.g., `depop-x.x.x-chrome.zip` or `depop-x.x.x-firefox.zip`) and load it:
+  - Chrome: `chrome://extensions/`
+  - Firefox: `about:debugging` -> "This Firefox" -> "Load Temporary Add-on"
+- Download the unstable zip archive from the [uploaded artifacts](https://github.com/kachick/depop/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess). Use it in the same way as stable.
 - [Run the build task](CONTRIBUTING.md) and load the "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Usage

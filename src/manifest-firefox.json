@@ -1,0 +1,12 @@
+{
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "depop@kachick.github.com"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
