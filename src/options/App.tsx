@@ -123,7 +123,7 @@ function App() {
         </div>
       </div>
 
-      <footer className='mt-3 pt-3 border-top color-fg-muted f6'>
+      <footer className='mt-3 pt-3 border-top color-fg-muted f6 text-right'>
         <a
           href='https://github.com/kachick/depop'
           target='_blank'
