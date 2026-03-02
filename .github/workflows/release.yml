@@ -15,7 +15,7 @@ jobs:
           persist-credentials: false
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: 'depop-*.zip'
           merge-multiple: true
@@ -24,9 +24,9 @@ jobs:
       - name: List and verify artifacts
         run: |
           ls -R dist/
-          # Ensure at least one zip file exists in dist/ (recursive check)
-          if [ -z "$(find dist/ -name "*.zip" -print -quit)" ]; then
-            echo "::error::No zip artifacts found in dist/ directory. Integration failed."
+          # Ensure at least one zip file exists in dist/
+          if [ -z "$(find dist/ -maxdepth 1 -name "depop-*.zip" -print -quit)" ]; then
+            echo "::error::No depop-*.zip artifacts found in dist/ directory. Integration failed."
             exit 1
           fi
 
