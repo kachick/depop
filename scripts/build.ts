@@ -46,7 +46,20 @@ const gatherDist = Promise.all([
   transpile(),
   Deno.copyFile('README.md', 'dist/README.md'),
   Deno.copyFile('LICENSE', 'dist/LICENSE'),
-  Deno.copyFile('src/manifest.json', 'dist/manifest.json'),
+  Deno.writeTextFile(
+    'dist/manifest.json',
+    JSON.stringify(
+      {
+        ...manifestJson,
+        background: {
+          ...manifestJson.background,
+          scripts: [manifestJson.background.service_worker],
+        },
+      },
+      null,
+      2,
+    ),
+  ),
   Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
   Deno.copyFile('src/options.html', 'dist/options.html'),
   Deno.copyFile('src/options.css', 'dist/options.css'),
@@ -121,7 +134,14 @@ Deno.writeFileSync(productPath, zipped);
 const validateProduct = async (zipped: Uint8Array<ArrayBuffer>) => {
   const unzipped = fflate.unzipSync(zipped);
 
-  assertEquals(JSON.parse(toString(unzipped['manifest.json'])), manifestJson);
+  const productManifest = JSON.parse(toString(unzipped['manifest.json']));
+  assertEquals(productManifest, {
+    ...manifestJson,
+    background: {
+      ...manifestJson.background,
+      scripts: [manifestJson.background.service_worker],
+    },
+  });
 
   const ajv = new Ajv({ allErrors: true });
   const schemaOk = await ajv.validate(manifestSchema, manifestJson);
