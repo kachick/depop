@@ -47,12 +47,12 @@ jobs:
           mkdir -p dist
           # Find the CI run ID for the current commit
           run_id=$(gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status -q '.[] | select(.status == "completed" or .status == "success") | .databaseId' | head -n 1)
-          
+
           if [ -z "$run_id" ]; then
             echo "::error::Could not find a completed CI run for commit $GITHUB_SHA"
             exit 1
           fi
-          
+
           # Download artifacts named 'depop-*.zip' (defined in ci.yml)
           gh run download "$run_id" --pattern "depop-*.zip" --dir dist/
 
