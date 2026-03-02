@@ -38,12 +38,12 @@ jobs:
         run: |
           echo "--- Current directory structure ---"
           find . -maxdepth 4 -not -path '*/.*'
-          
+
           echo "--- Searching for artifacts ---"
           # Find the actual path of the zip files
           CHROME_ZIP=$(find . -name "${{ inputs.chrome_artifact }}" -print -quit)
           FIREFOX_ZIP=$(find . -name "${{ inputs.firefox_artifact }}" -print -quit)
-          
+
           if [ -z "$CHROME_ZIP" ]; then
             echo "::error::Chrome artifact ${{ inputs.chrome_artifact }} not found anywhere."
             exit 1
@@ -52,7 +52,7 @@ jobs:
             echo "::error::Firefox artifact ${{ inputs.firefox_artifact }} not found anywhere."
             exit 1
           fi
-          
+
           echo "found_chrome_zip=$CHROME_ZIP" >> "$GITHUB_OUTPUT"
           echo "found_firefox_zip=$FIREFOX_ZIP" >> "$GITHUB_OUTPUT"
 
