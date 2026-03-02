@@ -28,14 +28,20 @@ jobs:
         with:
           persist-credentials: false
       - uses: cachix/install-nix-action@2126ae7fc54c9df00dd18f7f18754393182c73cd # v31.9.1
-      - name: Build
+
+      # On PR/push, build and report for verification
+      - name: Build for verification
         id: build
+        if: "!startsWith(github.ref, 'refs/tags/')"
         run: |
           tempfile="$(mktemp report.XXXX.json)"
           nix develop --command deno task build >"$tempfile"
           printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
+
+      # On release (tag), wait for CI results and download artifacts
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v4
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           skip-same-workflow: 'true'
           skip-list: |
@@ -44,12 +50,18 @@ jobs:
                 "workflowFile": "merge-bot-pr.yml"
               }
             ]
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
         if: startsWith(github.ref, 'refs/tags/')
+        with:
+          pattern: '*-extension'
+          merge-multiple: true
+          path: dist/
+
       - name: Release
         # TODO: Replace with gh command
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            ${{ fromJson(steps.build.outputs.report).chrome.productPath }}
-            ${{ fromJson(steps.build.outputs.report).firefox.productPath }}
+          files: dist/*.zip

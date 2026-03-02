@@ -66,7 +66,7 @@ jobs:
       - name: Upload the chrome product
         uses: actions/upload-artifact@v7
         with:
-          name: '${{ fromJson(steps.build.outputs.report).chrome.productBasename }}'
+          name: chrome-extension
           path: '${{ fromJson(steps.build.outputs.report).chrome.productPath }}'
           archive: false
           if-no-files-found: error
@@ -74,7 +74,7 @@ jobs:
       - name: Upload the firefox product
         uses: actions/upload-artifact@v7
         with:
-          name: '${{ fromJson(steps.build.outputs.report).firefox.productBasename }}'
+          name: firefox-extension
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
           archive: false
           if-no-files-found: error
