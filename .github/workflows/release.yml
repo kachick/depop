@@ -19,14 +19,14 @@ jobs:
         with:
           pattern: 'depop-*.zip'
           merge-multiple: true
-          path: dist/
+          path: .
 
       - name: List and verify artifacts
         run: |
-          ls -R dist/
-          # Ensure at least one zip file exists in dist/
-          if [ -z "$(find dist/ -maxdepth 1 -name "depop-*.zip" -print -quit)" ]; then
-            echo "::error::No depop-*.zip artifacts found in dist/ directory. Integration failed."
+          ls -R
+          # Search for depop-*.zip in the entire workspace
+          if [ -z "$(find . -name "depop-*.zip" -print -quit)" ]; then
+            echo "::error::No depop-*.zip artifacts found in the workspace. Integration failed."
             exit 1
           fi
 
@@ -35,4 +35,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/*.zip --generate-notes
+          # Use find to pick up zips from any location (expected dist/*.zip)
+          gh release create "$GITHUB_REF_NAME" $(find . -name "depop-*.zip") --generate-notes
