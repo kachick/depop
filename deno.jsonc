@@ -4,7 +4,6 @@
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos && biome check && deno lint && deno check --node-modules-dir src/*.ts* scripts/*.ts && deno task check:manifest",
     "check:manifest": "deno run --node-modules-dir scripts/manifestValidator.ts",
-
     "deps": "deno --version && mogrify --version && dprint --version && typos --version && rg --version",
     "cache": "deno cache --frozen=false --reload src/*.ts* scripts/*.ts",
     // Required ImageMagick dependency
