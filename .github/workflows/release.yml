@@ -46,10 +46,13 @@ jobs:
         run: |
           mkdir -p dist
           # Find the CI run ID for the current commit
-          run_id=$(gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status -q '.[] | select(.status == "completed" or .status == "success") | .databaseId' | head -n 1)
+          echo "Looking for CI run for commit $GITHUB_SHA..."
+          run_id=$(gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status,conclusion -q '.[] | select(.status == "completed") | .databaseId' | head -n 1)
 
           if [ -z "$run_id" ]; then
-            echo "::error::Could not find a completed CI run for commit $GITHUB_SHA"
+            echo "::error::Could not find a completed CI run for commit $GITHUB_SHA."
+            echo "Available runs for this commit:"
+            gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status,conclusion,workflowName
             exit 1
           fi
 
