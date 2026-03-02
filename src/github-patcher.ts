@@ -102,19 +102,19 @@ const updateComponents = (): void => {
   );
 };
 
-if (document.readyState !== 'complete') {
-  document.addEventListener('load', updateComponents, { passive: true });
+if (document.readyState === 'loading') {
+  document.addEventListener('readystatechange', updateComponents, {
+    passive: true,
+  });
 }
 updateComponents();
 
 // Listen for storage changes to apply options immediately without refresh
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
-    if (
-      changes.isEnabled
-      || changes.isHideSponsors
-      || changes.isHideSponsoring
-    ) {
+    // Re-update if any of our keys might have changed
+    const keys = ['isEnabled', 'isHideSponsors', 'isHideSponsoring'];
+    if (keys.some((key) => Object.prototype.hasOwnProperty.call(changes, key))) {
       updateComponents();
     }
   }
