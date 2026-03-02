@@ -18,7 +18,6 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           pattern: 'depop-*.zip'
-          merge-multiple: true
           path: .
 
       - name: List and verify artifacts
@@ -36,4 +35,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Use find to pick up zips from any location (expected dist/*.zip)
-          gh release create "$GITHUB_REF_NAME" $(find . -name "depop-*.zip") --generate-notes
+          # Use xargs to handle potential multiple zips
+          find . -name "depop-*.zip" | xargs gh release create "$GITHUB_REF_NAME" --generate-notes
