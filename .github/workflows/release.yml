@@ -53,8 +53,8 @@ jobs:
             exit 1
           fi
           
-          # Download artifacts named '*-extension' (defined in ci.yml)
-          gh run download "$run_id" --pattern "*-extension" --dir dist/
+          # Download artifacts named 'depop-*.zip' (defined in ci.yml)
+          gh run download "$run_id" --pattern "depop-*.zip" --dir dist/
 
       - name: List and verify artifacts
         run: |
