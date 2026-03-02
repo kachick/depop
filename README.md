@@ -55,7 +55,6 @@ However, I started this project for the following reasons:
 - There has been no activity for 8 years
 - It uses Manifest V2.
   [Google will disable it with Manifest V3](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/).
-- I want to focus on GitHub and do not intend to support Twitter
 
 ## Alternatives
 
