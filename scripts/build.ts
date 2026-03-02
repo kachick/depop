@@ -32,7 +32,7 @@ const transpile = async () => {
     const entryTsPath of [
       'src/github-patcher.ts',
       'src/options.tsx',
-      'src/popup.tsx',
+      'src/popup.ts',
       'src/background.ts',
     ]
   ) {
