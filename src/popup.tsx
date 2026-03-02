@@ -8,7 +8,7 @@ assertIsDefined<HTMLElement | null>(root);
 
 createRoot(root).render(
   <React.StrictMode>
-    <div className='p-3'>
+    <div className='p-2'>
       <App />
     </div>
   </React.StrictMode>,
