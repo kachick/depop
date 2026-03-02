@@ -2,11 +2,12 @@ main {
   padding: 1rem;
 }
 
-/* Toggle Switch Styles (Primer-like) */
+/* Toggle Switch Styles (Polished Primer-like) */
 .toggle-switch {
   position: relative;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   cursor: pointer;
   user-select: none;
 }
@@ -20,37 +21,75 @@ main {
 
 .toggle-switch-track {
   position: relative;
-  width: 44px;
+  width: 48px;
   height: 24px;
-  background-color: #d1d5da; /* color-border-default */
+  background-color: #6e7781; /* color-fg-muted / OFF color */
+  border: 1px solid transparent;
   border-radius: 12px;
-  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-right: 8px;
+  transition: background-color 0.1s ease;
+  flex-shrink: 0;
 }
 
-.toggle-switch input:checked + .toggle-switch-track {
-  background-color: #2ea44f; /* color-btn-primary-bg */
-}
-
-.toggle-switch input:focus + .toggle-switch-track {
+/* Focus ring */
+.toggle-switch input:focus-visible + .toggle-switch-track {
   outline: 2px solid #0969da;
   outline-offset: 2px;
 }
 
+.toggle-switch input:checked + .toggle-switch-track {
+  background-color: #2da44e; /* color-btn-primary-bg / ON color */
+}
+
+/* The Knob */
 .toggle-switch-knob {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background-color: #fff;
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.1s cubic-bezier(1, 0, 0, 1);
+  z-index: 2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .toggle-switch input:checked + .toggle-switch-track .toggle-switch-knob {
-  transform: translateX(20px);
+  transform: translateX(24px);
+}
+
+/* Icons inside track (ON/OFF markers) */
+.toggle-switch-track::before,
+.toggle-switch-track::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #fff;
+  font-weight: bold;
+  z-index: 1;
+}
+
+/* OFF icon (circle) - right side */
+.toggle-switch-track::after {
+  content: '○';
+  right: 8px;
+  opacity: 1;
+}
+
+/* ON icon (line) - left side */
+.toggle-switch-track::before {
+  content: '|';
+  left: 11px;
+  opacity: 0;
+}
+
+.toggle-switch input:checked + .toggle-switch-track::after {
+  opacity: 0;
+}
+
+.toggle-switch input:checked + .toggle-switch-track::before {
+  opacity: 1;
 }
 
 .toggle-switch-label {
