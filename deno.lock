@@ -101,7 +101,9 @@
     "https://esm.sh/json-schema-traverse@1.0.0?target=denonext": "3e60200c0d28b5e081db526a78c7911c094fd64c92484ebe050becb8f69788bb",
     "https://esm.sh/pretty-bytes@6.1.1": "8baebceaf88a283ad6c4add62212da36f3fb54289b704fd210b2d6a5db12f707",
     "https://esm.sh/pretty-bytes@6.1.1/denonext/pretty-bytes.mjs": "470b8396a57262a3206a51183b5b073e219efd011e2f607a888338dbed61d780",
+    "https://esm.sh/react-dom@19.0.0/client": "c972c16184c695fc5828dfa61d7f341edbc463d20d8108765c93a98027c24227",
     "https://esm.sh/react-dom@19.0.0/client?target=es2022": "b326278217e074acc857a68d9bad82ee467c41400d1464829e5aa081467c63bf",
+    "https://esm.sh/react@19.0.0": "ab1f4aa20ac56c237bbb204632bdb55f03a0ab005d21944eeb447e5e37879637",
     "https://esm.sh/react@19.0.0?target=es2022": "b2d09997656003a0c3066d95bcf66a7bd0ac68333e66678655e983465e649145"
   },
   "workspace": {

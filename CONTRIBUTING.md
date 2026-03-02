@@ -56,3 +56,26 @@ The filled enum is not perfect. It should contain URIs. But you can update as fo
 2. Add git tag and push.
 3. Download [released assets](https://github.com/kachick/depop/releases) and upload the `depop-VERSION.zip` into [Developer Dashboard](https://chrome.google.com/webstore/devconsole/2dc05d4b-8c8e-4356-a2be-080a15ab2903/bblbchjekobacogfioehogggccfagkmk/edit/package)
 4. ☕
+
+## Architecture Decisions
+
+### Global Toggle Strategy (ADR 001)
+
+We provide a global "ON/OFF" switch in the extension popup that updates GitHub pages immediately.
+
+#### The Problem
+
+Chrome extensions (Manifest V3) do not have a simple API to "unload" content scripts once they are injected.
+
+#### The Decision
+
+We use a **CSS-class-based toggle** approach:
+
+1. Wrap all CSS rules in `github-patcher.css` under a `.depop-enabled` class on the `<body>` element.
+2. The `github-patcher.ts` listens for storage changes and toggles this class.
+
+#### Why?
+
+- **Instant Reflect**: The browser's CSS engine updates the page immediately.
+- **Performance**: High performance with minimal reflow.
+- **Reliability**: This is a standard "best practice" for modern extensions like uBlock Origin.

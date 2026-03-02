@@ -28,7 +28,14 @@ const cleanUpSync = () => {
 cleanUpSync();
 
 const transpile = async () => {
-  for (const entryTsPath of ['src/github-patcher.ts', 'src/options.tsx']) {
+  for (
+    const entryTsPath of [
+      'src/github-patcher.ts',
+      'src/options.tsx',
+      'src/popup.ts',
+      'src/background.ts',
+    ]
+  ) {
     const bundled = await bundle(entryTsPath);
     const outputPath = `dist/${basename(entryTsPath, extname(entryTsPath))}.js`;
     Deno.writeTextFileSync(outputPath, bundled.code);
@@ -43,11 +50,23 @@ const gatherDist = Promise.all([
   Deno.copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
   Deno.copyFile('src/options.html', 'dist/options.html'),
   Deno.copyFile('src/options.css', 'dist/options.css'),
+  Deno.copyFile('src/popup.html', 'dist/popup.html'),
+  Deno.copyFile('src/popup.css', 'dist/popup.css'),
   Deno.copyFile('vendor/primer.css', 'dist/primer.css'),
   Deno.copyFile(
     'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png',
     'dist/icon-sadness-star.png',
-  ),
+  ).then(async () => {
+    const outputDisabledIcon = 'dist/icon-sadness-star-disabled.png';
+    await Deno.copyFile('dist/icon-sadness-star.png', outputDisabledIcon);
+    const command = new Deno.Command('mogrify', {
+      args: ['-colorspace', 'gray', outputDisabledIcon],
+    });
+    const { success } = await command.output();
+    if (!success) {
+      throw new Error('Failed to generate disabled icon via mogrify');
+    }
+  }),
 ]);
 
 await gatherDist;

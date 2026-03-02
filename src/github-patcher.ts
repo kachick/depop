@@ -54,7 +54,7 @@ const handleSponsoring = (shouldHide: boolean): void => {
   }
 };
 
-const hideHighlights = (): void => {
+const handleHighlights = (shouldHide: boolean): void => {
   const highlightsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
     document,
@@ -65,33 +65,56 @@ const hideHighlights = (): void => {
 
   const highlightsComponent = highlightsH2Node?.parentElement;
   if (highlightsComponent) {
-    hide(highlightsComponent);
+    if (shouldHide) {
+      hide(highlightsComponent);
+    } else {
+      show(highlightsComponent);
+    }
   }
 };
 
 const updateComponents = (): void => {
   chrome.storage.sync.get([
+    'isEnabled',
     'isHideSponsors',
     'isHideSponsoring',
   ]).then(
-    ({ isHideSponsors, isHideSponsoring }): void => {
-      handleSponsors(isHideSponsors);
-      handleSponsoring(isHideSponsoring);
+    ({ isEnabled, isHideSponsors, isHideSponsoring }): void => {
+      // Default to true if not set
+      const enabled = isEnabled !== false;
+
+      if (!document.body) {
+        return;
+      }
+
+      if (enabled) {
+        document.body.classList.add('depop-enabled');
+        handleSponsors(isHideSponsors);
+        handleSponsoring(isHideSponsoring);
+        handleHighlights(true);
+      } else {
+        document.body.classList.remove('depop-enabled');
+        handleSponsors(false);
+        handleSponsoring(false);
+        handleHighlights(false);
+      }
     },
   );
-
-  hideHighlights();
 };
 
-if (document.readyState !== 'complete') {
-  document.addEventListener('load', updateComponents, { passive: true });
+if (document.readyState === 'loading') {
+  document.addEventListener('readystatechange', updateComponents, {
+    passive: true,
+  });
 }
 updateComponents();
 
 // Listen for storage changes to apply options immediately without refresh
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'sync') {
-    if (changes.isHideSponsors || changes.isHideSponsoring) {
+    // Re-update if any of our keys might have changed
+    const keys = ['isEnabled', 'isHideSponsors', 'isHideSponsoring'];
+    if (keys.some((key) => Object.prototype.hasOwnProperty.call(changes, key))) {
       updateComponents();
     }
   }
