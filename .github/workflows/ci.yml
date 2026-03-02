@@ -53,8 +53,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     outputs:
-      chrome_artifact: ${{ fromJson(steps.build.outputs.report).chrome.productBasename }}
-      firefox_artifact: ${{ fromJson(steps.build.outputs.report).firefox.productBasename }}
+      chrome_artifact_name: chrome-extension
+      firefox_artifact_name: firefox-extension
+      chrome_zip_basename: ${{ fromJson(steps.build.outputs.report).chrome.productBasename }}
+      firefox_zip_basename: ${{ fromJson(steps.build.outputs.report).firefox.productBasename }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -72,24 +74,24 @@ jobs:
       - name: Upload the chrome product
         uses: actions/upload-artifact@v7
         with:
-          name: '${{ fromJson(steps.build.outputs.report).chrome.productBasename }}'
+          name: chrome-extension
           path: '${{ fromJson(steps.build.outputs.report).chrome.productPath }}'
-          archive: false
           if-no-files-found: error
 
       - name: Upload the firefox product
         uses: actions/upload-artifact@v7
         with:
-          name: '${{ fromJson(steps.build.outputs.report).firefox.productBasename }}'
+          name: firefox-extension
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
-          archive: false
           if-no-files-found: error
 
   release:
     needs: [build]
     uses: ./.github/workflows/release.yml
     with:
-      chrome_artifact: ${{ needs.build.outputs.chrome_artifact }}
-      firefox_artifact: ${{ needs.build.outputs.firefox_artifact }}
+      chrome_artifact_name: ${{ needs.build.outputs.chrome_artifact_name }}
+      firefox_artifact_name: ${{ needs.build.outputs.firefox_artifact_name }}
+      chrome_zip_basename: ${{ needs.build.outputs.chrome_zip_basename }}
+      firefox_zip_basename: ${{ needs.build.outputs.firefox_zip_basename }}
     permissions:
       contents: write

@@ -2,10 +2,16 @@ name: 🚀
 on:
   workflow_call:
     inputs:
-      chrome_artifact:
+      chrome_artifact_name:
         required: true
         type: string
-      firefox_artifact:
+      firefox_artifact_name:
+        required: true
+        type: string
+      chrome_zip_basename:
+        required: true
+        type: string
+      firefox_zip_basename:
         required: true
         type: string
 
@@ -24,37 +30,36 @@ jobs:
       - name: Download Chrome artifact
         uses: actions/download-artifact@v8
         with:
-          name: ${{ inputs.chrome_artifact }}
+          name: ${{ inputs.chrome_artifact_name }}
           path: .
 
       - name: Download Firefox artifact
         uses: actions/download-artifact@v8
         with:
-          name: ${{ inputs.firefox_artifact }}
+          name: ${{ inputs.firefox_artifact_name }}
           path: .
 
-      - name: Debug and verify artifacts
-        id: verify
+      - name: Locate and verify artifacts
+        id: locate
         run: |
           echo "--- Current directory structure ---"
           find . -maxdepth 4 -not -path '*/.*'
 
-          echo "--- Searching for artifacts ---"
-          # Find the actual path of the zip files
-          CHROME_ZIP=$(find . -name "${{ inputs.chrome_artifact }}" -print -quit)
-          FIREFOX_ZIP=$(find . -name "${{ inputs.firefox_artifact }}" -print -quit)
+          # Find the actual path of the zip files (likely dist/depop-*.zip)
+          CHROME_PATH=$(find . -name "${{ inputs.chrome_zip_basename }}" -print -quit)
+          FIREFOX_PATH=$(find . -name "${{ inputs.firefox_zip_basename }}" -print -quit)
 
-          if [ -z "$CHROME_ZIP" ]; then
-            echo "::error::Chrome artifact ${{ inputs.chrome_artifact }} not found anywhere."
+          if [ -z "$CHROME_PATH" ]; then
+            echo "::error::Chrome ZIP ${{ inputs.chrome_zip_basename }} not found."
             exit 1
           fi
-          if [ -z "$FIREFOX_ZIP" ]; then
-            echo "::error::Firefox artifact ${{ inputs.firefox_artifact }} not found anywhere."
+          if [ -z "$FIREFOX_PATH" ]; then
+            echo "::error::Firefox ZIP ${{ inputs.firefox_zip_basename }} not found."
             exit 1
           fi
 
-          echo "found_chrome_zip=$CHROME_ZIP" >> "$GITHUB_OUTPUT"
-          echo "found_firefox_zip=$FIREFOX_ZIP" >> "$GITHUB_OUTPUT"
+          echo "chrome_path=$CHROME_PATH" >> "$GITHUB_OUTPUT"
+          echo "firefox_path=$FIREFOX_PATH" >> "$GITHUB_OUTPUT"
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
@@ -62,6 +67,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
-            "${{ steps.verify.outputs.found_chrome_zip }}" \
-            "${{ steps.verify.outputs.found_firefox_zip }}" \
+            "${{ steps.locate.outputs.chrome_path }}" \
+            "${{ steps.locate.outputs.firefox_path }}" \
             --generate-notes
