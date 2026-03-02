@@ -26,21 +26,22 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.chrome_artifact_name }}
+          skip-decompress: true
 
       - name: Download Firefox artifact
         id: download_firefox
         uses: actions/download-artifact@v8
         with:
           name: ${{ inputs.firefox_artifact_name }}
+          skip-decompress: true
 
       - name: Verify artifacts
         run: |
           echo "Chrome path: ${{ steps.download_chrome.outputs.download-path }}"
           echo "Firefox path: ${{ steps.download_firefox.outputs.download-path }}"
 
-          # archive: false results in the file being at the download-path directly
-          # or within a directory named after the artifact.
-          # We check both for robustness with actions/download-artifact@v8 behavior.
+          # With skip-decompress: true, the ZIP file should be located directly
+          # under the download-path.
           if [ ! -f "${{ steps.download_chrome.outputs.download-path }}/${{ inputs.chrome_artifact_name }}" ]; then
             echo "::error::Chrome artifact not found at expected path."
             ls -R "${{ steps.download_chrome.outputs.download-path }}"
