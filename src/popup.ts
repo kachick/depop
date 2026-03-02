@@ -8,11 +8,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initial state
   const keys = await chrome.storage.sync.get(['isEnabled']);
-  isEnabledCheckbox.checked = keys.isEnabled !== false;
+  const initialEnabled = keys.isEnabled !== false;
+  isEnabledCheckbox.checked = initialEnabled;
+  console.log('depop popup initialized, isEnabled:', initialEnabled);
 
   // Toggle state
-  isEnabledCheckbox.addEventListener('change', async () => {
-    await chrome.storage.sync.set({ isEnabled: isEnabledCheckbox.checked });
+  isEnabledCheckbox.addEventListener('change', () => {
+    const toggled = isEnabledCheckbox.checked;
+    chrome.storage.sync.set({ isEnabled: toggled });
+    console.log('depop isEnabled toggled to:', toggled);
   });
 
   // Open options page
