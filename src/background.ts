@@ -1,10 +1,11 @@
 const updateIcon = (isEnabled: boolean): void => {
-  const path = isEnabled
-    ? 'icon-sadness-star.png'
-    : 'icon-sadness-star-disabled.png';
+  const suffix = isEnabled ? '' : '-disabled';
   chrome.action.setIcon({
     path: {
-      '128': path,
+      '16': `icon-16${suffix}.png`,
+      '32': `icon-32${suffix}.png`,
+      '48': `icon-48${suffix}.png`,
+      '128': `icon-128${suffix}.png`,
     },
   });
 };
