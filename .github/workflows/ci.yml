@@ -2,8 +2,10 @@ name: CI
 on:
   push:
     branches: [main]
+    tags: ['v*.*.*']
     paths:
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
       - '*.nix'
       - 'flake.*'
       - 'deno.jsonc'
@@ -13,6 +15,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
       - '*.nix'
       - 'flake.*'
       - 'deno.jsonc'
@@ -49,6 +52,9 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    outputs:
+      chrome_artifact_name: ${{ fromJson(steps.build.outputs.report).chrome.productBasename }}
+      firefox_artifact_name: ${{ fromJson(steps.build.outputs.report).firefox.productBasename }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -78,3 +84,12 @@ jobs:
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
           archive: false
           if-no-files-found: error
+
+  release:
+    needs: [build]
+    uses: ./.github/workflows/release.yml
+    with:
+      chrome_artifact_name: ${{ needs.build.outputs.chrome_artifact_name }}
+      firefox_artifact_name: ${{ needs.build.outputs.firefox_artifact_name }}
+    permissions:
+      contents: write
