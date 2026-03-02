@@ -5,13 +5,14 @@ import { assertIsDefined } from './typeguards.ts';
 
 function PopupApp() {
   const [isEnabled, setIsEnabled] = useState(true);
-  const [isLoading, startLoading] = React.useTransition();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    startLoading(async () => {
+    (async () => {
       const keys = await chrome.storage.sync.get(['isEnabled']);
       setIsEnabled(keys.isEnabled !== false);
-    });
+      setIsLoading(false);
+    })();
   }, []);
 
   const handleToggle = async () => {
