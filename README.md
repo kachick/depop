@@ -17,8 +17,8 @@ Choose one of the following options.
 
 - Visit [Chrome Web Store](https://chromewebstore.google.com/detail/depop/bblbchjekobacogfioehogggccfagkmk)
 - Download stable zip archive from [release page](https://github.com/kachick/depop/releases) and load it from `chrome://extensions/`.
-- Download unstable zip archive from the [uploaded artifacts](https://github.com/kachick/depop/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess). And use it same as stable.
-- [Run build task](CONTRIBUTING.md) and load "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+- Download unstable zip archive from the [uploaded artifacts](https://github.com/kachick/depop/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess). Use it in the same way as stable.
+- [Run the build task](CONTRIBUTING.md) and load the "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Usage
 
@@ -27,7 +27,7 @@ You can enable/disable the extension and toggle optional features via the popup 
 
 ![Popup Screen Shot](assets/screenshots/popup.png)
 
-## Suppressible GitHub stats
+## Supported GitHub stats
 
 - User
 - Repository index
@@ -38,24 +38,24 @@ You can enable/disable the extension and toggle optional features via the popup 
 - Achievements
 - Highlights
 
-### Suppressible third party stats
+### Supported third-party stats
 
 - [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats)
 
-## Inspired
+## Inspiration
 
 While digging into this feature, I noticed that
 [rentzsch/unpopular](https://github.com/rentzsch/unpopular/tree/863963e26c1a758a53eb33747e0fec6f26ac130d)
 exists.\
-The way looks simple and reasonable to me, it just apply CSS without any
+The approach looks simple and reasonable to me; it just applies CSS without any
 JavaScript.\
-However, I started this project from below reasons.
+However, I started this project for the following reasons:
 
-- Applying CSS doesn't work with the current GitHub WebUI
-- There is no activity in these 8 years
-- It uses manifest version2.
-  [Google will disable it with version3](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/).
-- I want to focus on GitHub, would not consider around Twitter
+- Applying only CSS doesn't work with the current GitHub WebUI
+- There has been no activity for 8 years
+- It uses Manifest V2.
+  [Google will disable it with Manifest V3](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/).
+- I want to focus on GitHub and do not intend to support Twitter
 
 ## Alternatives
 

@@ -1,6 +1,6 @@
 const hide = (element: Element): void => {
   element.setAttribute(
-    // Prefer hidden rather than display:none https://primer.style/css/utilities/layout#the-html-hidden-attribute
+    // Prefer the hidden attribute over display: none: https://primer.style/css/utilities/layout#the-html-hidden-attribute
     'hidden',
     // Both `true` and `false` will be interpreted as `true`.
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
@@ -12,7 +12,7 @@ const show = (element: Element): void => {
   element.removeAttribute('hidden');
 };
 
-// Sponsor: Received from
+// Sponsors: Received from
 const handleSponsors = (shouldHide: boolean): void => {
   const sponsorsH2Node = document.evaluate(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",

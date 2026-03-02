@@ -1,6 +1,6 @@
 import { Ajv } from 'ajv';
 // Do not include from https://json.schemastore.org/chrome-manifest, current official stored has wrong definitions
-// See https://github.com/SchemaStore/schemastore/issues/2861 for further detail
+// See https://github.com/SchemaStore/schemastore/issues/2861 for further details
 import manifestJson from '../src/manifest.json' with {
   type: 'json',
 };

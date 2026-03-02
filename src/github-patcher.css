@@ -1,16 +1,16 @@
-/* biome-ignore-all lint/complexity/noImportantStyles: They are actually required here
+/* biome-ignore-all lint/complexity/noImportantStyles: They are actually required here */
 
 /* Repository Header */
 .depop-enabled #repository-container-header .Counter,
 /* Repository Sidebar */
-/* NOTE: Might be matched when it has same naming repository, however current GitHub does not set any meaningful class and ID */
+/* NOTE: This might match repositories with the same name; however, the current GitHub UI does not provide unique classes or IDs. */
 .depop-enabled a[href$='/stargazers'],
 .depop-enabled a[href$='?tab=followers'],
 .depop-enabled a[href$='/network/members'],
 /* Restrict with <strong> to keep the icon */
 .depop-enabled a[href$='/watchers'] strong,
 .depop-enabled a[href$='/forks'] strong,
-/* Third party stats. "GitHub Readme Stats" */
+/* Third-party stats: "GitHub Readme Stats" */
 /* NOTE: Do not hide other endpoints like `api/top-langs` */
 .depop-enabled
   a:has(> img[data-canonical-src^='https://github-readme-stats.vercel.app/api?']) {
