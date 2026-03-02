@@ -68,7 +68,7 @@ jobs:
         with:
           name: '${{ fromJson(steps.build.outputs.report).chrome.productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).chrome.productPath }}'
-          compression-level: 0
+          archive: false
           if-no-files-found: error
 
       - name: Upload the firefox product
@@ -76,5 +76,5 @@ jobs:
         with:
           name: '${{ fromJson(steps.build.outputs.report).firefox.productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
-          compression-level: 0
+          archive: false
           if-no-files-found: error
