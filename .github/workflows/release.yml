@@ -41,16 +41,20 @@ jobs:
             ]
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: '*-extension'
           merge-multiple: true
           path: dist/
 
-      - name: List artifacts
+      - name: List and verify artifacts
         run: |
           mkdir -p dist
           ls -R dist/
+          if [ -z "$(ls -A dist)" ]; then
+            echo "::error::No artifacts found in dist/ directory. Integration failed."
+            exit 1
+          fi
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
