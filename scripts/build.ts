@@ -55,23 +55,16 @@ const gatherDist = Promise.all([
   Deno.copyFile('vendor/primer.css', 'dist/primer.css'),
   Deno.copyFile(
     'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png',
-    'dist/icon-128.png',
+    'dist/icon-sadness-star.png',
   ).then(async () => {
-    for (const size of [16, 32, 48, 128]) {
-      const normal = `dist/icon-${size}.png`;
-      const disabled = `dist/icon-${size}-disabled.png`;
-
-      // Generate normal sized icon
-      const resizeCmd = new Deno.Command('mogrify', {
-        args: ['-resize', `${size}x${size}`, '-write', normal, 'dist/icon-128.png'],
-      });
-      await resizeCmd.output();
-
-      // Generate disabled version
-      const grayCmd = new Deno.Command('mogrify', {
-        args: ['-colorspace', 'gray', '-write', disabled, normal],
-      });
-      await grayCmd.output();
+    const outputDisabledIcon = 'dist/icon-sadness-star-disabled.png';
+    await Deno.copyFile('dist/icon-sadness-star.png', outputDisabledIcon);
+    const command = new Deno.Command('mogrify', {
+      args: ['-colorspace', 'gray', outputDisabledIcon],
+    });
+    const { success } = await command.output();
+    if (!success) {
+      throw new Error('Failed to generate disabled icon via mogrify');
     }
   }),
 ]);
