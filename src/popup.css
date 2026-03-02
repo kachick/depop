@@ -8,7 +8,7 @@ body {
   padding: 12px;
 }
 
-/* Toggle Switch Styles (Polished Primer-like) */
+/* Toggle Switch Styles (Refined to match GitHub's Feature Previews) */
 .toggle-switch {
   position: relative;
   display: inline-flex;
@@ -30,8 +30,8 @@ body {
   width: 48px;
   height: 24px;
   background-color: #6e7781;
-  border: 1px solid transparent;
-  border-radius: 12px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
   transition: background-color 0.1s ease;
   flex-shrink: 0;
 }
@@ -42,7 +42,8 @@ body {
 }
 
 .toggle-switch input:checked + .toggle-switch-track {
-  background-color: #2da44e;
+  background-color: #0969da;
+  border-color: #0969da;
 }
 
 .toggle-switch-knob {
@@ -52,7 +53,7 @@ body {
   width: 18px;
   height: 18px;
   background-color: #fff;
-  border-radius: 50%;
+  border-radius: 4px;
   transition: transform 0.1s cubic-bezier(1, 0, 0, 1);
   z-index: 2;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
