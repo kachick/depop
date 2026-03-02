@@ -27,17 +27,13 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: '2.6.9' # selfup {"extract":"\\d[^']+","replacer":["bash","-c","deno --version | head -n 1 | cut -d ' ' -f 2"]}
-      - name: Ensure cache before build
-        run: deno task cache
+      - uses: cachix/install-nix-action@2126ae7fc54c9df00dd18f7f18754393182c73cd # v31.9.1
       - name: Build
         id: build
         run: |
-          echo "report<<JSON" >> "$GITHUB_OUTPUT"
-          deno run --node-modules-dir --quiet --allow-net --allow-read --allow-write --allow-env --allow-run scripts/build.ts >> "$GITHUB_OUTPUT"
-          echo "JSON" >> "$GITHUB_OUTPUT"
+          tempfile="$(mktemp report.XXXX.json)"
+          nix develop --command deno task build >"$tempfile"
+          printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
       - name: Wait other jobs
         uses: kachick/wait-other-jobs@v4
         with:
