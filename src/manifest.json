@@ -8,8 +8,7 @@
     "storage"
   ],
   "background": {
-    "service_worker": "background.js",
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -31,11 +30,6 @@
     "128": "icon-sadness-star.png"
   },
   "content_security_policy": {
-    "extension_pages": "default-src 'self'"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "depop@kachick.github.io"
-    }
+    "extension_pages": "default-src 'self'; style-src 'self' 'sha256-5sM6NtwiI9WtWZw9bryR+B9oiH9IDt7RhJYadq6eHLk='"
   }
 }
