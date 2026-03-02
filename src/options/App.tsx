@@ -60,8 +60,8 @@ function App() {
 
   return (
     <form>
-      <div className='form-checkbox'>
-        <label>
+      <div className='mb-3'>
+        <label className='toggle-switch'>
           <input
             type='checkbox'
             checked={isEnabled}
@@ -71,9 +71,12 @@ function App() {
               chrome.storage.sync.set({ 'isEnabled': toggled });
             }}
           />
-          <span className='text-bold'>Enable depop</span>
+          <span className='toggle-switch-track'>
+            <span className='toggle-switch-knob' />
+          </span>
+          <span className='toggle-switch-label'>Enable depop</span>
         </label>
-        <p className='note'>
+        <p className='note mt-1'>
           Master switch to enable/disable all features of this extension
         </p>
       </div>
