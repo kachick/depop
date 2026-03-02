@@ -31,5 +31,10 @@
   },
   "content_security_policy": {
     "extension_pages": "default-src 'self'; style-src 'self' 'sha256-5sM6NtwiI9WtWZw9bryR+B9oiH9IDt7RhJYadq6eHLk='"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "depop@kachick.github.io"
+    }
   }
 }
