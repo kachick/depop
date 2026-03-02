@@ -2,8 +2,10 @@ name: CI
 on:
   push:
     branches: [main]
+    tags: ['v*.*.*']
     paths:
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
       - '*.nix'
       - 'flake.*'
       - 'deno.jsonc'
@@ -13,6 +15,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
       - '*.nix'
       - 'flake.*'
       - 'deno.jsonc'
@@ -78,3 +81,9 @@ jobs:
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
           archive: false
           if-no-files-found: error
+
+  release:
+    needs: [build]
+    uses: ./.github/workflows/release.yml
+    permissions:
+      contents: write

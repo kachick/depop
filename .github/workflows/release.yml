@@ -1,21 +1,6 @@
 name: 🚀
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - 'v*.*.*'
-  pull_request:
-    paths:
-      - '.github/workflows/release.yml'
-      - '.github/workflows/ci.yml'
-      - 'deno.jsonc'
-      - 'deno.lock'
-      - 'scripts/build.ts'
-      - 'src/**'
-      - 'assets/**'
-      - 'vendor/**'
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   release:
@@ -29,35 +14,12 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Wait other jobs
-        uses: kachick/wait-other-jobs@v4
-        with:
-          skip-same-workflow: 'true'
-          skip-list: |
-            [
-              {
-                "workflowFile": "merge-bot-pr.yml"
-              }
-            ]
-
       - name: Download artifacts
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          mkdir -p dist
-          # Find the CI run ID for the current commit
-          echo "Looking for CI run for commit $GITHUB_SHA..."
-          run_id=$(gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status,conclusion -q '.[] | select(.status == "completed") | .databaseId' | head -n 1)
-
-          if [ -z "$run_id" ]; then
-            echo "::error::Could not find a completed CI run for commit $GITHUB_SHA."
-            echo "Available runs for this commit:"
-            gh run list --workflow CI --commit "$GITHUB_SHA" --json databaseId,status,conclusion,workflowName
-            exit 1
-          fi
-
-          # Download artifacts named 'depop-*.zip' (defined in ci.yml)
-          gh run download "$run_id" --pattern "depop-*.zip" --dir dist/
+        uses: actions/download-artifact@v4
+        with:
+          pattern: 'depop-*.zip'
+          merge-multiple: true
+          path: dist/
 
       - name: List and verify artifacts
         run: |
