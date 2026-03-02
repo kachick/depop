@@ -57,3 +57,10 @@ However, I started this project from below reasons.
 - It uses manifest version2.
   [Google will disable it with version3](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/).
 - I want to focus on GitHub, would not consider around Twitter
+
+## Alternatives
+
+You can use CSS filters(uBlock Origin / Stylus) for simple patterns, but they are hard to maintain for some dynamic components:
+
+- Selectors vary across pages and change frequently.
+- MV3 blockers cannot target elements by their display text (e.g., XPath `text()`). This makes it complex to hide sections that lack unique attributes.
