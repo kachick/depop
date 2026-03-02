@@ -87,7 +87,7 @@ function App() {
               type='checkbox'
               checked={isHideSponsors}
               disabled={!isEnabled}
-              aria-describedby='help-text-for-isHideSponsors-checkbox'
+              aria-label='Hide "Sponsors"'
               onChange={(_ev) => {
                 const toggled = !isHideSponsors;
                 setIsHideSponsors(
@@ -100,12 +100,6 @@ function App() {
             />
             Hide "Sponsors"
           </label>
-          <p
-            className='note'
-            id='help-text-for-isHideSponsors-checkbox'
-          >
-            Hide the section in left-sidebar if enabled this option
-          </p>
         </div>
         <div className='form-checkbox'>
           <label>
@@ -113,7 +107,7 @@ function App() {
               type='checkbox'
               checked={isHideSponsoring}
               disabled={!isEnabled}
-              aria-describedby='help-text-for-isHideSponsoring-checkbox'
+              aria-label='Hide "Sponsoring"'
               onChange={(_ev) => {
                 const toggled = !isHideSponsoring;
                 setIsHideSponsoring(
@@ -126,12 +120,6 @@ function App() {
             />
             Hide "Sponsoring"
           </label>
-          <p
-            className='note'
-            id='help-text-for-isHideSponsoring-checkbox'
-          >
-            Hide the section in left-sidebar if enabled this option
-          </p>
         </div>
       </div>
 
