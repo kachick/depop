@@ -16,10 +16,13 @@ jobs:
       app_id: ${{ vars.APP_ID }}
       dry-run: ${{ github.event_name == 'pull_request' }}
       pr-title: 'Bump flake.lock and related dependencies'
+      # Do not scope `git commit` to specific files.
+      # Other files like icons (via `mogrify`) or formatted codes (via `dprint`) may be updated during these tasks.
+      # Scoped commit will fail if the target file itself is not modified but others are.
       optional-run: |
         nix develop --command deno task 'bump:biome_config'
-        git diff-index --quiet HEAD || git commit -m 'Bump biome.json with `deno task bump:biome_config`' biome.json
+        git diff-index --quiet HEAD || git commit -m 'Bump biome.json and related changes' .
         nix develop --command deno task 'bump:deno_lock'
-        git diff-index --quiet HEAD || git commit -m 'Bump deno.lock with `deno task bump:deno_lock`' deno.lock
+        git diff-index --quiet HEAD || git commit -m 'Bump deno.lock and related changes' .
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
