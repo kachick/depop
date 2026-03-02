@@ -25,7 +25,7 @@ Choose one of the following options.
 By default, stars are hidden as much as possible.
 You can enable/disable the extension and toggle optional features via the popup in your browser toolbar.
 
-![Popup Screen Shot](assets/screenshots/options.png)
+![Popup Screen Shot](assets/screenshots/popup.png)
 
 ## Suppressible GitHub stats
 
