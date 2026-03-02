@@ -82,10 +82,8 @@ const updateComponents = (): void => {
     ({ isEnabled, isHideSponsors, isHideSponsoring }): void => {
       // Default to true if not set
       const enabled = isEnabled !== false;
-      console.log('depop: updateComponents called, enabled:', enabled);
 
       if (!document.body) {
-        console.warn('depop: document.body not found, skipping update');
         return;
       }
 
