@@ -1,8 +1,19 @@
 name: 🚀
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*.*.*'
+  pull_request:
+    paths:
+      - '.github/workflows/release.yml'
+      - 'deno.jsonc'
+      - 'deno.lock'
+      - 'scripts/build.ts'
+      - 'src/**'
+      - 'assets/**'
+      - 'vendor/**'
   workflow_dispatch:
 
 jobs:
