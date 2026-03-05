@@ -83,17 +83,22 @@ const updateComponents = (): void => {
       // Default to true if not set
       const enabled = isEnabled !== false;
 
-      if (!document.body) {
+      if (enabled) {
+        document.documentElement.classList.add('depop-enabled');
+      } else {
+        document.documentElement.classList.remove('depop-enabled');
+      }
+
+      // JS based DOM manipulation requires document.body and readyState != 'loading'
+      if (!document.body || document.readyState === 'loading') {
         return;
       }
 
       if (enabled) {
-        document.body.classList.add('depop-enabled');
         handleSponsors(isHideSponsors);
         handleSponsoring(isHideSponsoring);
         handleHighlights(true);
       } else {
-        document.body.classList.remove('depop-enabled');
         handleSponsors(false);
         handleSponsoring(false);
         handleHighlights(false);
