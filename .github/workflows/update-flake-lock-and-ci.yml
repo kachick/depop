@@ -21,8 +21,10 @@ jobs:
       # Scoped commit will fail if the target file itself is not modified but others are.
       optional-run: |
         nix develop --command deno task 'bump:biome_config'
-        git add . && git diff --cached --quiet || git commit -m 'Bump biome.json and related changes'
+        git update-index --refresh || true
+        git diff-index --quiet HEAD || git commit -m 'Bump biome.json and related changes' .
         nix develop --command deno task 'bump:deno_lock'
-        git add . && git diff --cached --quiet || git commit -m 'Bump deno.lock and related changes'
+        git update-index --refresh || true
+        git diff-index --quiet HEAD || git commit -m 'Bump deno.lock and related changes' .
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
