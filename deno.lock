@@ -10,7 +10,7 @@
     "jsr:@std/encoding@^1.0.3": "1.0.10",
     "jsr:@std/fmt@0.223": "0.223.0",
     "jsr:@std/fs@0.223": "0.223.0",
-    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/internal@^1.0.12": "1.0.13",
     "jsr:@std/io@0.223": "0.223.0",
     "jsr:@std/path@0.223": "0.223.0",
     "jsr:@std/path@^1.0.3": "1.1.4"
@@ -57,8 +57,8 @@
     "@std/fs@0.223.0": {
       "integrity": "3b4b0550b2c524cbaaa5a9170c90e96cbb7354e837ad1bdaf15fc9df1ae9c31c"
     },
-    "@std/internal@1.0.12": {
-      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    "@std/internal@1.0.13": {
+      "integrity": "2f9546691d4ac2d32859c82dff284aaeac980ddeca38430d07941e7e288725c0"
     },
     "@std/io@0.223.0": {
       "integrity": "2d8c3c2ab3a515619b90da2c6ff5ea7b75a94383259ef4d02116b228393f84f1",
