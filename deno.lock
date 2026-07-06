@@ -7,14 +7,14 @@
     "jsr:@std/assert@0.223": "0.223.0",
     "jsr:@std/assert@^1.0.3": "1.0.19",
     "jsr:@std/bytes@0.223": "0.223.0",
-    "jsr:@std/encoding@^1.0.3": "1.0.10",
+    "jsr:@std/encoding@^1.0.3": "1.0.11",
     "jsr:@std/fmt@0.223": "0.223.0",
     "jsr:@std/fs@0.223": "0.223.0",
     "jsr:@std/internal@^1.0.12": "1.0.14",
     "jsr:@std/internal@^1.0.14": "1.0.14",
     "jsr:@std/io@0.223": "0.223.0",
     "jsr:@std/path@0.223": "0.223.0",
-    "jsr:@std/path@^1.0.3": "1.1.5"
+    "jsr:@std/path@^1.0.3": "1.1.6"
   },
   "jsr": {
     "@deno/cache-dir@0.13.2": {
@@ -49,8 +49,8 @@
     "@std/bytes@0.223.0": {
       "integrity": "84b75052cd8680942c397c2631318772b295019098f40aac5c36cead4cba51a8"
     },
-    "@std/encoding@1.0.10": {
-      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    "@std/encoding@1.0.11": {
+      "integrity": "e7cef2f0b3153bccc17431e7c864a1de03a4b6d9647389c43e08aaa775d37385"
     },
     "@std/fmt@0.223.0": {
       "integrity": "6deb37794127dfc7d7bded2586b9fc6f5d50e62a8134846608baf71ffc1a5208"
@@ -74,8 +74,8 @@
         "jsr:@std/assert@0.223"
       ]
     },
-    "@std/path@1.1.5": {
-      "integrity": "ccea00982ea28c36becaf6e62f855406c76a8c32d462f66f415bbb7d83a271bc",
+    "@std/path@1.1.6": {
+      "integrity": "c68485c2a4dfbb5ae3cc74fae4e8c4e5d874cf8a8ed12927917235c758b46cbe",
       "dependencies": [
         "jsr:@std/internal@^1.0.14"
       ]
@@ -85,7 +85,7 @@
     "https://esm.sh/@types/react-dom@~19.0.6/client.d.ts": "https://esm.sh/@types/react-dom@19.0.6/client.d.ts",
     "https://esm.sh/@types/react@~19.0.14/index.d.ts": "https://esm.sh/@types/react@19.0.14/index.d.ts",
     "https://esm.sh/fast-deep-equal@^3.1.3?target=denonext": "https://esm.sh/fast-deep-equal@3.1.3?target=denonext",
-    "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.1.2?target=denonext",
+    "https://esm.sh/fast-uri@^3.0.1?target=denonext": "https://esm.sh/fast-uri@3.1.3?target=denonext",
     "https://esm.sh/json-schema-traverse@^1.0.0?target=denonext": "https://esm.sh/json-schema-traverse@1.0.0?target=denonext"
   },
   "remote": {
@@ -94,8 +94,8 @@
     "https://esm.sh/ajv@8.17.1/denonext/ajv.mjs": "93640b28521b7fca32e34a3534343176c06dd65bdd6ca6a14ec97562f278e949",
     "https://esm.sh/fast-deep-equal@3.1.3/denonext/fast-deep-equal.mjs": "66e5d717af5e6a08366cc6aa421af1838a773895070bfee46c45102adf7ddc5f",
     "https://esm.sh/fast-deep-equal@3.1.3?target=denonext": "2d47696bbd2c43a836e333ae5035542a56eb76e4fd728204c75eaaeea86c3b5c",
-    "https://esm.sh/fast-uri@3.1.2/denonext/fast-uri.mjs": "525f4d946512f6c9aaa5e9954202a5454ce5513b77b9709f76b2f208c2eded8a",
-    "https://esm.sh/fast-uri@3.1.2?target=denonext": "d1a1374b234f9f4d17751f82c0ef519d279fa13c4ba1cd79d66aea844c9f642c",
+    "https://esm.sh/fast-uri@3.1.3/denonext/fast-uri.mjs": "5f305ee6ac9506f6dd0bf655865f6dd056810210e9299b8b33d662786a5066ad",
+    "https://esm.sh/fast-uri@3.1.3?target=denonext": "17f9ccc25aa78ff624bb9ada7304c40042ebbe1dd8eba7f0962ac90a09eb3243",
     "https://esm.sh/fflate@0.8.2": "e0cdd268850b4eac9ef9f188a3b4c5c9dd3ebd0f66c4006a13911b2a0c0512bb",
     "https://esm.sh/fflate@0.8.2/denonext/fflate.mjs": "84afaa7491d754b566dd8608dcc784e7fdd4f0342e2c5b0bd1442e77782ec1a2",
     "https://esm.sh/json-schema-traverse@1.0.0/denonext/json-schema-traverse.mjs": "4cd3fc9a056d4498d24e4862b19aa93f72f4f7785a00573b0c579576faa1783b",
