@@ -5,5 +5,4 @@ rules:
         kachick/*: any
         actions/*: any
         crate-ci/*: any
-        cachix/*: any
         denoland/*: any
