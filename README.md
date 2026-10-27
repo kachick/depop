@@ -20,7 +20,7 @@ Choose one of the following options.
   - Chrome: `chrome://extensions/`
   - Firefox: `about:debugging` -> "This Firefox" -> "Load Temporary Add-on"
 - Download the unstable zip archive from the [uploaded artifacts](https://github.com/kachick/depop/actions/workflows/ci.yml?query=branch%3Amain+is%3Asuccess). Use it in the same way as stable.
-- [Run the build task](CONTRIBUTING.md) and load the "./dist" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
+- [Run the build task](CONTRIBUTING.md) and load the "./dist/chrome" folder as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
 
 ## Usage
 

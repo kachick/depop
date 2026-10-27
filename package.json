@@ -7,6 +7,7 @@
     "setup": "pnpm install --frozen-lockfile",
     "deps": "node --version && pnpm --version && mogrify --version && dprint --version && typos --version && rg --version",
     "build": "node scripts/build.ts",
+    "diff:browsers": "git diff --no-index dist/chrome dist/firefox || true",
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos && biome check && tsc --noEmit && pnpm run check:manifest",
     "check:manifest": "node scripts/manifestValidator.ts",

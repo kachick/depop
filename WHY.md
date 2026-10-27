@@ -1,23 +1,23 @@
-## Architecture Decisions
+# Design Choices and Trade-offs
 
-### Global Toggle Strategy (ADR 001)
+## Global Toggle Strategy
 
-We provide a global "ON/OFF" switch in the extension popup that updates GitHub pages immediately.
+Manifest V3 lacks an API to unload injected content scripts.
+depop toggles features by adding or removing the `.depop-enabled` class on the `<html>` element:
 
-#### The Problem
+- All CSS rules are scoped under `.depop-enabled`.
+- `github-patcher.ts` listens for storage changes and toggles the class at `document_start`.
+- The class persists across GitHub Turbo transitions and updates pages immediately without page reload.
 
-Chrome extensions (Manifest V3) do not have a simple API to "unload" content scripts once they are injected.
+## Build Output Structure
 
-#### The Decision
+`pnpm run build` generates three directories under `dist/`:
 
-We use a **CSS-class-based toggle** approach:
+- `chrome/`: Unpacked extension directory for Chrome.
+- `firefox/`: Unpacked extension directory for Firefox.
+- `packages/`: Distribution zip archives for releases.
 
-1. Wrap all CSS rules in `github-patcher.css` under a `.depop-enabled` class on the `<html>` or `<body>` element.
-2. The `github-patcher.ts` listens for storage changes and toggles this class on the `<html>` element as early as possible (`document_start`).
+### Trade-offs
 
-#### Why?
-
-- **Instant update**: The browser's CSS engine updates the page immediately.
-- **Minimal Lag**: Applying the class to the `<html>` element at `document_start` ensures that elements are hidden before they are even rendered.
-- **SPA Compatibility**: The `<html>` element's class persists during GitHub's Turbo (SPA) transitions, maintaining the hidden state.
-- **Performance**: High performance with minimal reflow.
+- **Why not symlinks?**: Chrome blocks unpacked extensions from reading files linked outside the extension root directory.
+- **Why full copy over hardlinks?**: Chose simple full copies for simplicity. Total build size is small enough that disk space is not a problem, and `pnpm run diff:browsers` makes checking differences easy.

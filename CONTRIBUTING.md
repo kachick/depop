@@ -8,14 +8,21 @@
 
 This command generates packages for both Chrome and Firefox in the `dist/` directory.
 
-- `dist/depop-*-chrome.zip`: For Chrome.
-- `dist/depop-*-firefox.zip`: For Firefox.
-- `dist/`: Ready for Chrome's "Load unpacked extension". The `manifest.json` in this folder is always overwritten with Chrome-compatible settings.
+- `dist/chrome/`: Ready for Chrome's "Load unpacked extension".
+- `dist/firefox/`: Ready for Firefox's "Load Temporary Add-on...".
+- `dist/packages/depop-*-chrome.zip`: For Chrome releases.
+- `dist/packages/depop-*-firefox.zip`: For Firefox releases.
 
 ### Loading in browser
 
-- **Chrome**: Open `chrome://extensions/`, enable "Developer mode", and "Load unpacked" the `dist/` folder.
-- **Firefox**: Open `about:debugging`, click "This Firefox", and "Load Temporary Add-on..." the `dist/manifest.json` file. Note that Firefox may require the zip file for some features, but temporary loading usually works with the manifest.
+- **Chrome**: Open `chrome://extensions/`, enable "Developer mode", and "Load unpacked" the `dist/chrome/` folder.
+- **Firefox**: Open `about:debugging`, click "This Firefox", and "Load Temporary Add-on..." the `dist/firefox/manifest.json` file.
+
+To check differences between Chrome and Firefox builds, run:
+
+```console
+> pnpm run diff:browsers
+```
 
 ## Finding CSS selectors
 
