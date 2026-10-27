@@ -40,15 +40,14 @@ Other's: socialStat__
   color: var(--fgColor-muted, var(--color-fg-muted, inherit));
 }
 
-/* Profile Sidebar: followers & following */
+/* Profile Sidebar: followers */
+/* Keep "following" visible because it reflects user's own action, not external popularity */
 .depop-enabled a[href*='tab=followers'] span.text-bold,
-.depop-enabled a[href*='tab=following'] span.text-bold,
 .depop-enabled a[href$='/followers'] span.text-bold {
   font-size: 0 !important;
 }
 
 .depop-enabled a[href*='tab=followers'] span.text-bold::after,
-.depop-enabled a[href*='tab=following'] span.text-bold::after,
 .depop-enabled a[href$='/followers'] span.text-bold::after {
   content: '\2014';
   font-size: 14px;
