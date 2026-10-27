@@ -23,7 +23,9 @@ import manifestSchema from '../src/manifestSchemaAdjusted.json' with {
 
 const cleanUpSync = () => {
   rmSync('./dist', { recursive: true, force: true });
-  mkdirSync('dist/assets', { recursive: true });
+  mkdirSync('dist/chrome', { recursive: true });
+  mkdirSync('dist/firefox', { recursive: true });
+  mkdirSync('dist/packages', { recursive: true });
 };
 
 cleanUpSync();
@@ -36,34 +38,60 @@ const transpile = async () => {
       'src/popup.tsx',
       'src/background.ts',
     ],
-    outdir: 'dist',
+    outdir: 'dist/chrome',
     bundle: true,
     format: 'iife',
     target: 'es2022',
   });
+
+  const generatedScripts = [
+    'github-patcher.js',
+    'options.js',
+    'popup.js',
+    'background.js',
+  ];
+  for (const script of generatedScripts) {
+    copyFileSync(join('dist/chrome', script), join('dist/firefox', script));
+  }
 };
 
-const gatherCommonAssets = Promise.all([
-  transpile(),
-  copyFile('README.md', 'dist/README.md'),
-  copyFile('LICENSE', 'dist/LICENSE'),
-  copyFile('src/github-patcher.css', 'dist/github-patcher.css'),
-  copyFile('src/options.html', 'dist/options.html'),
-  copyFile('src/options.css', 'dist/options.css'),
-  copyFile('src/popup.html', 'dist/popup.html'),
-  copyFile('src/popup.css', 'dist/popup.css'),
-  copyFile('vendor/primer.css', 'dist/primer.css'),
-  copyFile(
-    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png',
-    'dist/icon-sadness-star.png',
-  ).then(() => {
-    const outputDisabledIcon = 'dist/icon-sadness-star-disabled.png';
-    copyFileSync('dist/icon-sadness-star.png', outputDisabledIcon);
-    execFileSync('mogrify', ['-colorspace', 'gray', outputDisabledIcon]);
-  }),
-]);
+const commonStaticFiles = [
+  ['README.md', 'README.md'],
+  ['LICENSE', 'LICENSE'],
+  ['src/github-patcher.css', 'github-patcher.css'],
+  ['src/options.html', 'options.html'],
+  ['src/options.css', 'options.css'],
+  ['src/popup.html', 'popup.html'],
+  ['src/popup.css', 'popup.css'],
+  ['vendor/primer.css', 'primer.css'],
+] as const;
 
-await gatherCommonAssets;
+const copyStaticFiles = async () => {
+  await Promise.all(
+    commonStaticFiles.flatMap(([src, dest]) => [
+      copyFile(src, join('dist/chrome', dest)),
+      copyFile(src, join('dist/firefox', dest)),
+    ]),
+  );
+};
+
+const setupIcons = async () => {
+  const iconSrc = 'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png';
+  const chromeIcon = 'dist/chrome/icon-sadness-star.png';
+  const chromeDisabledIcon = 'dist/chrome/icon-sadness-star-disabled.png';
+
+  await copyFile(iconSrc, chromeIcon);
+  copyFileSync(chromeIcon, chromeDisabledIcon);
+  execFileSync('mogrify', ['-colorspace', 'gray', chromeDisabledIcon]);
+
+  copyFileSync(chromeIcon, 'dist/firefox/icon-sadness-star.png');
+  copyFileSync(
+    chromeDisabledIcon,
+    'dist/firefox/icon-sadness-star-disabled.png',
+  );
+};
+
+await Promise.all([transpile(), copyStaticFiles(), setupIcons()]);
 
 const getOrderedPathList = (dirPath: string): string[] =>
   readdirSync(dirPath, { withFileTypes: true })
@@ -120,7 +148,7 @@ for (const target of ['chrome', 'firefox'] as const) {
   };
 
   writeFileSync(
-    'dist/manifest.json',
+    join('dist', target, 'manifest.json'),
     JSON.stringify(targetManifest, null, 2),
     'utf-8',
   );
@@ -131,10 +159,9 @@ for (const target of ['chrome', 'firefox'] as const) {
     { content: Uint8Array; sha256: string; isCompressed: boolean }
   >();
 
-  for (const path of getOrderedPathList('dist')) {
-    if (extname(path) === '.zip') continue;
-
-    const content = readFileSync(join('dist', path));
+  const targetDir = join('dist', target);
+  for (const path of getOrderedPathList(targetDir)) {
+    const content = readFileSync(join(targetDir, path));
     zipStructure.set(path, {
       content,
       sha256: sha256(content),
@@ -161,7 +188,7 @@ for (const target of ['chrome', 'firefox'] as const) {
     textEncoder.encode(JSON.stringify(structure)),
   );
   const productBasename = `depop-${manifestJson.version}-${structureSha256.slice(0, 7)}-${target}.zip`;
-  const productPath = `dist/${productBasename}`;
+  const productPath = join('dist/packages', productBasename);
   writeFileSync(productPath, zipped);
 
   // 4. Validate
@@ -183,11 +210,25 @@ for (const target of ['chrome', 'firefox'] as const) {
   }
 }
 
-// Ensure the dist directory is Chrome-ready for local development
-writeFileSync(
-  'dist/manifest.json',
-  JSON.stringify({ ...manifestJson, ...manifestChromeJson }, null, 2),
-  'utf-8',
-);
+const distReadme = `# Build Outputs
+
+## Directories
+
+- \`chrome/\`: Unpacked extension for Chrome (\`chrome://extensions/\`).
+- \`firefox/\`: Unpacked extension for Firefox (\`about:debugging\`).
+- \`packages/\`: Distribution zip archives.
+
+## Differences between Chrome and Firefox
+
+Most files are identical across browsers. Only \`manifest.json\` differs due to Manifest V3 background script specifications and Firefox-specific IDs.
+
+To inspect differences between the two directories, run:
+
+\`\`\`console
+pnpm run diff:browsers
+\`\`\`
+`;
+
+writeFileSync('dist/README.md', distReadme, 'utf-8');
 
 console.log(JSON.stringify(reports, undefined, 4));
