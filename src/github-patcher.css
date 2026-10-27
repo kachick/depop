@@ -4,21 +4,6 @@
 .depop-enabled
   ul[data-testid='repo-header-actions']
   span[data-component='CounterLabel'],
-/* Repository Sidebar */
-/* NOTE: We should check both owned and other's repos. It seems required different selectors
-For example:
-Owned: stargazers, watchers
-Other's: socialStat__
-*/
-/* NOTE: This might match repositories with the same name; however, the current GitHub UI does not provide unique classes or IDs. */
-.depop-enabled a[href$='/stargazers'],
-.depop-enabled a[href$='?tab=followers'],
-.depop-enabled a[href$='/network/members'],
-/* Restrict with <strong> to keep the icon */
-.depop-enabled a[href$='/watchers'] strong,
-.depop-enabled a[href$='/forks'] strong,
-.depop-enabled [class*='socialStat__']:has(svg.octicon-star) strong,
-.depop-enabled [class*='socialStat__']:has(svg.octicon-eye) strong,
 /* Third-party stats: "GitHub Readme Stats" */
 /* NOTE: Do not hide other endpoints like `api/top-langs` */
 .depop-enabled
@@ -26,7 +11,37 @@ Other's: socialStat__
   display: none;
 }
 
+/* Repository Sidebar */
+/* NOTE: We should check both owned and other's repos. It seems required different selectors
+For example:
+Owned: stargazers, watchers
+Other's: socialStat__
+*/
+/* NOTE: This might match repositories with the same name; however, the current GitHub UI does not provide unique classes or IDs. */
+/* Replace stat numbers with an em dash to keep line layout without eye-catching figures */
+.depop-enabled a[href$='/stargazers'] strong,
+.depop-enabled a[href$='/watchers'] strong,
+.depop-enabled a[href$='/forks'] strong,
+.depop-enabled a[href$='/network/members'] strong,
+.depop-enabled [class*='socialStat__']:has(svg.octicon-star) strong,
+.depop-enabled [class*='socialStat__']:has(svg.octicon-eye) strong {
+  font-size: 0 !important;
+}
+
+.depop-enabled a[href$='/stargazers'] strong::after,
+.depop-enabled a[href$='/watchers'] strong::after,
+.depop-enabled a[href$='/forks'] strong::after,
+.depop-enabled a[href$='/network/members'] strong::after,
+.depop-enabled [class*='socialStat__']:has(svg.octicon-star) strong::after,
+.depop-enabled [class*='socialStat__']:has(svg.octicon-eye) strong::after {
+  content: '\2014';
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--fgColor-muted, var(--color-fg-muted, inherit));
+}
+
 /* Profile Sidebar */
+.depop-enabled a[href$='?tab=followers'],
 .depop-enabled li:has(> a[href$='/followers']),
 .depop-enabled div:has(> h2 a[href$='?tab=achievements']),
 .depop-enabled [data-depop-section='highlights'],
