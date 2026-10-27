@@ -6,12 +6,12 @@
   span[data-component='CounterLabel'],
 /* Repository Sidebar */
 /* NOTE: This might match repositories with the same name; however, the current GitHub UI does not provide unique classes or IDs. */
-.depop-enabled a[href$='/stargazers'],
 .depop-enabled a[href$='?tab=followers'],
 .depop-enabled a[href$='/network/members'],
 /* Restrict with <strong> to keep the icon */
-.depop-enabled a[href$='/watchers'] strong,
 .depop-enabled a[href$='/forks'] strong,
+.depop-enabled [class*='socialStat__']:has(svg.octicon-star) strong,
+.depop-enabled [class*='socialStat__']:has(svg.octicon-eye) strong,
 /* Third-party stats: "GitHub Readme Stats" */
 /* NOTE: Do not hide other endpoints like `api/top-langs` */
 .depop-enabled
