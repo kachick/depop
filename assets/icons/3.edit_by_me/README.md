@@ -1,14 +1,15 @@
 ## How to make the adjusted file
 
-Spec: https://developer.chrome.com/docs/webstore/images?hl=en#icons
-
-Fight with GIMP to crop 96x96
-
-And imagemagick
+Remove padding so the icon fills the canvas and does not look small on the browser toolbar:
 
 ```bash
-convert assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-3-96.png -gravity center -background white -extent 128x128 assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-3-128x128.png
-convert assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-3-128x128.png -transparent white assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-3-128x128-t.png
+magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png -trim +repage -resize 128x128! assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png
 ```
 
-But the cropping is not perfect, having ugly edge...
+### Note
+
+Chrome Web Store guidelines suggest 16px padding (96x96 actual icon inside 128x128):
+https://developer.chrome.com/docs/webstore/images?hl=en#icons
+
+However, with that padding, the icon looks much smaller than other extension icons in the Chrome toolbar.
+Therefore, this icon fills the full 128x128 canvas without padding.
