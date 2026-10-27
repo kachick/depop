@@ -1,76 +1,51 @@
-const hide = (element: Element): void => {
-  element.setAttribute(
-    // Prefer the hidden attribute over display: none: https://primer.style/css/utilities/layout#the-html-hidden-attribute
-    'hidden',
-    // Both `true` and `false` will be interpreted as `true`.
-    // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
-    'true',
-  );
+const markSection = (
+  selectorXPath: string,
+  sectionName: string,
+  parentLevel: 1 | 2,
+): void => {
+  // CSS cannot select by text content (e.g. <h2>Sponsors</h2>), so XPath finds the node.
+  // JS only adds a data attribute; CSS handles display: none for unified styling.
+  const h2Node = document.evaluate(
+    selectorXPath,
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null,
+  ).singleNodeValue;
+
+  const targetComponent = parentLevel === 2
+    ? h2Node?.parentElement?.parentElement
+    : h2Node?.parentElement;
+
+  if (targetComponent && !targetComponent.hasAttribute('data-depop-section')) {
+    targetComponent.setAttribute('data-depop-section', sectionName);
+  }
 };
 
-const show = (element: Element): void => {
-  element.removeAttribute('hidden');
-};
+const markSections = (): void => {
+  // JS based DOM manipulation requires document.body and readyState != 'loading'
+  if (!document.body || document.readyState === 'loading') {
+    return;
+  }
 
-// Sponsors: Received from
-const handleSponsors = (shouldHide: boolean): void => {
-  const sponsorsH2Node = document.evaluate(
+  // Sponsors: Received from
+  markSection(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsors']",
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null,
-  ).singleNodeValue;
-
-  const sponsorsComponent = sponsorsH2Node?.parentElement?.parentElement;
-
-  if (sponsorsComponent) {
-    if (shouldHide) {
-      hide(sponsorsComponent);
-    } else {
-      show(sponsorsComponent);
-    }
-  }
-};
-
-// Sponsoring: Paid for
-const handleSponsoring = (shouldHide: boolean): void => {
-  const sponsoring2Node = document.evaluate(
+    'sponsors',
+    2,
+  );
+  // Sponsoring: Paid for
+  markSection(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Sponsoring']",
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null,
-  ).singleNodeValue;
-
-  const sponsoringComponent = sponsoring2Node?.parentElement?.parentElement;
-
-  if (sponsoringComponent) {
-    if (shouldHide) {
-      hide(sponsoringComponent);
-    } else {
-      show(sponsoringComponent);
-    }
-  }
-};
-
-const handleHighlights = (shouldHide: boolean): void => {
-  const highlightsH2Node = document.evaluate(
+    'sponsoring',
+    2,
+  );
+  // Highlights
+  markSection(
     "/html/body//div[@class='Layout-sidebar']//h2[text()='Highlights']",
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null,
-  ).singleNodeValue;
-
-  const highlightsComponent = highlightsH2Node?.parentElement;
-  if (highlightsComponent) {
-    if (shouldHide) {
-      hide(highlightsComponent);
-    } else {
-      show(highlightsComponent);
-    }
-  }
+    'highlights',
+    1,
+  );
 };
 
 const updateComponents = (): void => {
@@ -83,26 +58,17 @@ const updateComponents = (): void => {
       // Default to true if not set
       const enabled = isEnabled !== false;
 
-      if (enabled) {
-        document.documentElement.classList.add('depop-enabled');
-      } else {
-        document.documentElement.classList.remove('depop-enabled');
-      }
+      document.documentElement.classList.toggle('depop-enabled', enabled);
+      document.documentElement.classList.toggle(
+        'depop-hide-sponsors',
+        enabled && Boolean(isHideSponsors),
+      );
+      document.documentElement.classList.toggle(
+        'depop-hide-sponsoring',
+        enabled && Boolean(isHideSponsoring),
+      );
 
-      // JS based DOM manipulation requires document.body and readyState != 'loading'
-      if (!document.body || document.readyState === 'loading') {
-        return;
-      }
-
-      if (enabled) {
-        handleSponsors(isHideSponsors);
-        handleSponsoring(isHideSponsoring);
-        handleHighlights(true);
-      } else {
-        handleSponsors(false);
-        handleSponsoring(false);
-        handleHighlights(false);
-      }
+      markSections();
     },
   );
 };
