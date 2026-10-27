@@ -40,9 +40,23 @@ Other's: socialStat__
   color: var(--fgColor-muted, var(--color-fg-muted, inherit));
 }
 
+/* Profile Sidebar: followers & following */
+.depop-enabled a[href*='tab=followers'] span.text-bold,
+.depop-enabled a[href*='tab=following'] span.text-bold,
+.depop-enabled a[href$='/followers'] span.text-bold {
+  font-size: 0 !important;
+}
+
+.depop-enabled a[href*='tab=followers'] span.text-bold::after,
+.depop-enabled a[href*='tab=following'] span.text-bold::after,
+.depop-enabled a[href$='/followers'] span.text-bold::after {
+  content: '\2014';
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--fgColor-muted, var(--color-fg-muted, inherit));
+}
+
 /* Profile Sidebar */
-.depop-enabled a[href$='?tab=followers'],
-.depop-enabled li:has(> a[href$='/followers']),
 .depop-enabled div:has(> h2 a[href$='?tab=achievements']),
 .depop-enabled [data-depop-section='highlights'],
 .depop-enabled.depop-hide-sponsors [data-depop-section='sponsors'],
