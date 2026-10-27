@@ -210,25 +210,6 @@ for (const target of ['chrome', 'firefox'] as const) {
   }
 }
 
-const distReadme = `# Build Outputs
-
-## Directories
-
-- \`chrome/\`: Unpacked extension for Chrome (\`chrome://extensions/\`).
-- \`firefox/\`: Unpacked extension for Firefox (\`about:debugging\`).
-- \`packages/\`: Distribution zip archives.
-
-## Differences between Chrome and Firefox
-
-Most files are identical across browsers. Only \`manifest.json\` differs due to Manifest V3 background script specifications and Firefox-specific IDs.
-
-To inspect differences between the two directories, run:
-
-\`\`\`console
-pnpm run diff:browsers
-\`\`\`
-`;
-
-writeFileSync('dist/README.md', distReadme, 'utf-8');
+copyFileSync('dist-README.md', 'dist/README.md');
 
 console.log(JSON.stringify(reports, undefined, 4));
