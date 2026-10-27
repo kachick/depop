@@ -73,6 +73,8 @@ jobs:
           nix develop --command pnpm run --silent build >"$tempfile"
           printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
 
+      - run: nix develop --command pnpm run check:firefox
+
       - name: Upload the chrome product
         uses: actions/upload-artifact@v7
         with:
