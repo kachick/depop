@@ -97,5 +97,8 @@ jobs:
     with:
       chrome_artifact_name: ${{ needs.build.outputs.chrome_artifact_name }}
       firefox_artifact_name: ${{ needs.build.outputs.firefox_artifact_name }}
+    secrets:
+      AMO_API_KEY: ${{ secrets.AMO_API_KEY }}
+      AMO_API_SECRET: ${{ secrets.AMO_API_SECRET }}
     permissions:
       contents: write
