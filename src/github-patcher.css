@@ -1,7 +1,9 @@
 /* biome-ignore-all lint/complexity/noImportantStyles: They are actually required here */
 
 /* Repository Header */
-.depop-enabled #repository-container-header .Counter,
+.depop-enabled
+  ul[data-testid='repo-header-actions']
+  span[data-component='CounterLabel'],
 /* Repository Sidebar */
 /* NOTE: This might match repositories with the same name; however, the current GitHub UI does not provide unique classes or IDs. */
 .depop-enabled a[href$='/stargazers'],
