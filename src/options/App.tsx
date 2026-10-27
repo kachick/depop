@@ -1,8 +1,10 @@
-import * as React from 'react'; // Import the entire React object to avoid reference issues; if omitted, the options page should be checked manually.
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'preact/hooks';
 
 function App() {
-  const [isLoading, startLoading] = React.useTransition();
+  const [
+    isLoading,
+    setIsLoading,
+  ] = useState(true);
   const [
     isEnabled,
     setIsEnabled,
@@ -26,9 +28,10 @@ function App() {
       setIsEnabled(keys.isEnabled !== false);
       setIsHideSponsors(keys.isHideSponsors);
       setIsHideSponsoring(keys.isHideSponsoring);
+      setIsLoading(false);
     };
 
-    startLoading(() => updateFromStorage());
+    updateFromStorage();
 
     const listener = (
       changes: { [key: string]: chrome.storage.StorageChange },
