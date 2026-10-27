@@ -17,5 +17,5 @@ const ajv = new Ajv({ allErrors: true });
 const ok = await ajv.validate(manifestSchema, manifestJson);
 if (!ok) {
   console.info(ajv.errors);
-  Deno.exit(1);
+  process.exit(1);
 }

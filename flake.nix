@@ -31,7 +31,11 @@
               nixfmt
               nixfmt-tree
 
-              deno
+              nodejs_24
+              (pnpm_10.override {
+                withNode = false;
+              })
+              typescript
               biome
               dprint
               ripgrep
