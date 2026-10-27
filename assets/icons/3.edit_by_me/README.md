@@ -1,9 +1,9 @@
 ## How to make the adjusted file
 
-Remove padding and sharpen edges slightly so the icon looks clear and does not look small on the browser toolbar:
+Remove padding so the icon fills the canvas and does not look small on the browser toolbar:
 
 ```bash
-magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png -trim +repage -resize 128x128! -unsharp 0x0.75+1.0+0.02 assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png
+magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png -trim +repage -resize 128x128! assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png
 ```
 
 ### Note
