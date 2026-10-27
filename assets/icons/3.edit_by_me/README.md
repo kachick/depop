@@ -1,15 +1,18 @@
-## How to make the adjusted file
+## How to make the adjusted files
 
-Remove padding so the icon fills the canvas and does not look small on the browser toolbar:
+Two different icon files are used to follow official guidelines:
 
-```bash
-magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png -trim +repage -resize 128x128! assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png
-```
+1. **Toolbar icon** (`from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png`):
+   Fills the 128x128 canvas without padding so it does not look small next to other extension buttons on the browser toolbar.
 
-### Note
+   ```bash
+   magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png -trim +repage -resize 128x128! assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png
+   ```
 
-Chrome Web Store guidelines suggest 16px padding (96x96 actual icon inside 128x128):
-https://developer.chrome.com/docs/webstore/images?hl=en#icons
+2. **Store and management icon** (`from-icon-sadness-star-2024-03-25-store-128x128-t.png`):
+   Follows Chrome Web Store guidelines (96x96 actual icon inside 128x128 with 16px transparent padding):
+   https://developer.chrome.com/docs/webstore/images?hl=en#icons
 
-However, with that padding, the icon looks much smaller than other extension icons in the Chrome toolbar.
-Therefore, this icon fills the full 128x128 canvas without padding.
+   ```bash
+   magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png -resize 96x96 -gravity center -background none -extent 128x128 assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-store-128x128-t.png
+   ```

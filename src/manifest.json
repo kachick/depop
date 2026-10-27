@@ -24,7 +24,7 @@
     }
   },
   "icons": {
-    "128": "icon-sadness-star.png"
+    "128": "icon-sadness-star-store.png"
   },
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self'"

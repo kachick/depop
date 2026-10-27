@@ -76,19 +76,27 @@ const copyStaticFiles = async () => {
 };
 
 const setupIcons = async () => {
-  const iconSrc = 'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-128x128-t.png';
-  const chromeIcon = 'dist/chrome/icon-sadness-star.png';
-  const chromeDisabledIcon = 'dist/chrome/icon-sadness-star-disabled.png';
+  const toolbarIconSrc = 'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png';
+  const storeIconSrc = 'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-store-128x128-t.png';
 
-  await copyFile(iconSrc, chromeIcon);
-  copyFileSync(chromeIcon, chromeDisabledIcon);
+  const chromeToolbarIcon = 'dist/chrome/icon-sadness-star.png';
+  const chromeDisabledIcon = 'dist/chrome/icon-sadness-star-disabled.png';
+  const chromeStoreIcon = 'dist/chrome/icon-sadness-star-store.png';
+
+  await Promise.all([
+    copyFile(toolbarIconSrc, chromeToolbarIcon),
+    copyFile(storeIconSrc, chromeStoreIcon),
+  ]);
+
+  copyFileSync(chromeToolbarIcon, chromeDisabledIcon);
   execFileSync('mogrify', ['-colorspace', 'gray', chromeDisabledIcon]);
 
-  copyFileSync(chromeIcon, 'dist/firefox/icon-sadness-star.png');
+  copyFileSync(chromeToolbarIcon, 'dist/firefox/icon-sadness-star.png');
   copyFileSync(
     chromeDisabledIcon,
     'dist/firefox/icon-sadness-star-disabled.png',
   );
+  copyFileSync(chromeStoreIcon, 'dist/firefox/icon-sadness-star-store.png');
 };
 
 await Promise.all([transpile(), copyStaticFiles(), setupIcons()]);
