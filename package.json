@@ -11,7 +11,7 @@
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos && biome check && tsc --noEmit && pnpm run check:manifest",
     "check:manifest": "node scripts/manifestValidator.ts",
-    "check:firefox": "web-ext lint --source-dir dist/firefox",
+    "check:firefox": "node scripts/lintFirefox.ts",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "selfup": "git ls-files '.github' | xargs nix run github:kachick/selfup/v1.2.0 -- run",
