@@ -14,7 +14,7 @@ jobs:
     uses: kachick/workflows/.github/workflows/reusable-bump-flake-lock.yml@main
     with:
       app-id: ${{ vars.SAMU_APP_ID }}
-      post-commit-lock-file: nix develop --command bash -c "deno task 'bump:biome_config' && deno task 'bump:deno_lock'"
-      post-commit-lock-file-title: 'Sync biome and deno dependencies'
+      post-commit-lock-file: nix develop --command pnpm run bump:biome_config
+      post-commit-lock-file-title: 'Sync biome config'
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.SAMU_APP_PRIVATE_KEY }}

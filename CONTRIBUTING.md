@@ -3,7 +3,7 @@
 ## Usage
 
 ```console
-> deno task build
+> pnpm run build
 ```
 
 This command generates packages for both Chrome and Firefox in the `dist/` directory.

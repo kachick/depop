@@ -1,0 +1,33 @@
+{
+  "name": "depop",
+  "version": "0.0.1.1",
+  "description": "Hide stars, followers, and watchers on GitHub",
+  "type": "module",
+  "scripts": {
+    "setup": "pnpm install --frozen-lockfile",
+    "deps": "node --version && pnpm --version && mogrify --version && dprint --version && typos --version && rg --version",
+    "build": "node scripts/build.ts",
+    "clean": "rm -rf ./dist",
+    "check": "dprint check && typos && biome check && tsc --noEmit && pnpm run check:manifest",
+    "check:manifest": "node scripts/manifestValidator.ts",
+    "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
+    "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
+    "selfup": "git ls-files '.github' | xargs nix run github:kachick/selfup/v1.2.0 -- run",
+    "bump:biome_config": "biome migrate --write && dprint fmt",
+    "all": "pnpm run setup && pnpm run deps && pnpm run check && pnpm run build && pnpm run resize"
+  },
+  "dependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "19.0.14",
+    "@types/react-dom": "19.0.4",
+    "ajv": "8.20.0",
+    "chrome-types": "0.1.301",
+    "esbuild": "0.28.2",
+    "fflate": "0.8.3",
+    "pretty-bytes": "6.1.1"
+  }
+}
