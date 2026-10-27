@@ -41,6 +41,7 @@
               ripgrep
               typos
               zizmor
+              web-ext
 
               # To maintain icons
               imagemagick

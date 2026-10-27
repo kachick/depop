@@ -1,7 +1,12 @@
 {
   "browser_specific_settings": {
     "gecko": {
-      "id": "depop@kachick.github.com"
+      "id": "depop@kachick.github.com",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
     }
   },
   "background": {

@@ -5,17 +5,18 @@
   "type": "module",
   "scripts": {
     "setup": "pnpm install --frozen-lockfile",
-    "deps": "node --version && pnpm --version && mogrify --version && dprint --version && typos --version && rg --version",
+    "deps": "node --version && pnpm --version && mogrify --version && dprint --version && typos --version && rg --version && web-ext --version",
     "build": "node scripts/build.ts",
     "diff:browsers": "git diff --no-index dist/chrome dist/firefox || true",
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos && biome check && tsc --noEmit && pnpm run check:manifest",
     "check:manifest": "node scripts/manifestValidator.ts",
+    "check:firefox": "web-ext lint --source-dir dist/firefox",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "selfup": "git ls-files '.github' | xargs nix run github:kachick/selfup/v1.2.0 -- run",
     "bump:biome_config": "biome migrate --write && dprint fmt",
-    "all": "pnpm run setup && pnpm run deps && pnpm run check && pnpm run build && pnpm run resize"
+    "all": "pnpm run setup && pnpm run deps && pnpm run check && pnpm run build && pnpm run check:firefox && pnpm run resize"
   },
   "dependencies": {
     "react": "19.0.0",
