@@ -28,6 +28,9 @@ Other's: socialStat__
 
 /* Profile Sidebar */
 .depop-enabled li:has(> a[href$='/followers']),
-.depop-enabled div:has(> h2 a[href$='?tab=achievements']) {
+.depop-enabled div:has(> h2 a[href$='?tab=achievements']),
+.depop-enabled [data-depop-section='highlights'],
+.depop-enabled.depop-hide-sponsors [data-depop-section='sponsors'],
+.depop-enabled.depop-hide-sponsoring [data-depop-section='sponsoring'] {
   display: none !important;
 }
