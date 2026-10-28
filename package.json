@@ -13,6 +13,7 @@
     "check:manifest": "node scripts/manifestValidator.ts",
     "check:firefox": "node scripts/lintFirefox.ts",
     "sign:firefox": "node scripts/signFirefox.ts",
+    "start:firefox": "web-ext run",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "selfup": "git ls-files '.github' | xargs nix run github:kachick/selfup/v1.2.0 -- run",
