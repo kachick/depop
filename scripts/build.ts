@@ -114,6 +114,18 @@ const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 const toString = (bytes: Uint8Array) => textDecoder.decode(bytes);
 
+const getTargetManifest = (target: 'chrome' | 'firefox') => {
+  const browserManifest = target === 'chrome' ? manifestChromeJson : manifestFirefoxJson;
+  return {
+    ...manifestJson,
+    ...browserManifest,
+    action: {
+      ...manifestJson.action,
+      ...('action' in browserManifest ? browserManifest.action : {}),
+    },
+  };
+};
+
 const validateProduct = async (
   zipped: Uint8Array<ArrayBuffer>,
   target: 'chrome' | 'firefox',
@@ -121,10 +133,7 @@ const validateProduct = async (
   const unzipped = fflate.unzipSync(zipped);
 
   const productManifest = JSON.parse(toString(unzipped['manifest.json']));
-  const expectedManifest = {
-    ...manifestJson,
-    ...(target === 'chrome' ? manifestChromeJson : manifestFirefoxJson),
-  } as Record<string, unknown>;
+  const expectedManifest = getTargetManifest(target);
 
   assert.deepStrictEqual(productManifest, expectedManifest);
 
@@ -150,10 +159,7 @@ const reports: Record<string, unknown> = {};
 
 for (const target of ['chrome', 'firefox'] as const) {
   // 1. Prepare manifest for the target
-  const targetManifest = {
-    ...manifestJson,
-    ...(target === 'chrome' ? manifestChromeJson : manifestFirefoxJson),
-  };
+  const targetManifest = getTargetManifest(target);
 
   writeFileSync(
     join('dist', target, 'manifest.json'),

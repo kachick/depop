@@ -4,22 +4,11 @@ module.exports = {
   run: {
     startUrl: ['https://github.com/kachick/depop'],
     pref: [
-      // Pin the extension button to the main toolbar (nav-bar) on startup instead of hiding it inside the extensions menu.
-      'browser.uiCustomization.state=' + JSON.stringify({
-        placements: {
-          'widget-overflow-fixed-list': [],
-          'unified-extensions-area': [],
-          'nav-bar': [
-            'back-button',
-            'forward-button',
-            'stop-reload-button',
-            'urlbar-container',
-            'unified-extensions-button',
-            'depop_kachick_github_com-browser-action',
-          ],
-        },
-        currentVersion: 20,
-      }),
+      // Disable the onboarding/welcome screen on first launch to directly show startUrl
+      'browser.aboutwelcome.enabled=false',
+      'trailhead.firstrun.didSeeAboutWelcome=true',
+      'browser.startup.page=1',
+      'browser.startup.homepage_override.mstone=ignore',
     ],
   },
 };
