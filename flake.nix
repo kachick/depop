@@ -17,52 +17,41 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-
-          ciPackages = with pkgs; [
-            bashInteractive
-            nixd
-            nixfmt
-            nixfmt-tree
-
-            nodejs_24
-            (pnpm_10.override {
-              withNode = false;
-            })
-            typescript
-            biome
-            dprint
-            ripgrep
-            typos
-            zizmor
-            web-ext
-
-            # To maintain icons
-            imagemagick
-            exiftool
-
-            # Comment-out only if you want `renovate-config-validator`.
-            # It is a heavy nodejs package and does not detect wrong manager and datasource names.
-            # We can only use it checking key name correctness.
-            # renovate
-          ];
         in
         {
-          ci = pkgs.mkShellNoCC {
-            env = {
-              # Fix nixd pkgs versions in the inlay hints
-              NIX_PATH = "nixpkgs=${pkgs.path}";
-            };
-
-            buildInputs = ciPackages;
-          };
-
           default = pkgs.mkShellNoCC {
             env = {
               # Fix nixd pkgs versions in the inlay hints
               NIX_PATH = "nixpkgs=${pkgs.path}";
             };
 
-            buildInputs = ciPackages ++ [ pkgs.firefox ];
+            buildInputs = with pkgs; [
+              bashInteractive
+              nixd
+              nixfmt
+              nixfmt-tree
+
+              nodejs_24
+              (pnpm_10.override {
+                withNode = false;
+              })
+              typescript
+              biome
+              dprint
+              ripgrep
+              typos
+              zizmor
+              web-ext
+
+              # To maintain icons
+              imagemagick
+              exiftool
+
+              # Comment-out only if you want `renovate-config-validator`.
+              # It is a heavy nodejs package and does not detect wrong manager and datasource names.
+              # We can only use it checking key name correctness.
+              # renovate
+            ];
           };
         }
       );
