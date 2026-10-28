@@ -9,7 +9,7 @@
     "build": "node scripts/build.ts",
     "diff:browsers": "git diff --no-index dist/chrome dist/firefox || true",
     "clean": "rm -rf ./dist",
-    "check": "dprint check && typos && biome check && tsc --noEmit && pnpm run check:manifest",
+    "check": "dprint check && typos . .github && biome check && tsc --noEmit && pnpm run check:manifest",
     "check:manifest": "node scripts/manifestValidator.ts",
     "check:firefox": "node scripts/lintFirefox.ts",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
