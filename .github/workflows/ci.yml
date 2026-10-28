@@ -49,8 +49,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
-      - run: nix develop --command pnpm run setup
-      - run: nix develop --command pnpm run check
+      - run: nix develop .#ci --command pnpm run setup
+      - run: nix develop .#ci --command pnpm run check
 
   build:
     runs-on: ubuntu-26.04
@@ -63,17 +63,17 @@ jobs:
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
-      - run: nix develop --command pnpm run setup
-      - run: nix develop --command pnpm run check
+      - run: nix develop .#ci --command pnpm run setup
+      - run: nix develop .#ci --command pnpm run check
       - name: Build
         id: build
         run: |
           tempfile="$(mktemp report.XXXX.json)"
           # Don't use subprocess when getting the result, it makes not easy to get the error messages
-          nix develop --command pnpm run --silent build >"$tempfile"
+          nix develop .#ci --command pnpm run --silent build >"$tempfile"
           printf "report<<JSON\n%s\nJSON\n" "$(<"$tempfile")" | tee --append "$GITHUB_OUTPUT"
 
-      - run: nix develop --command pnpm run check:firefox
+      - run: nix develop .#ci --command pnpm run check:firefox
 
       - name: Upload the chrome product
         uses: actions/upload-artifact@v7
