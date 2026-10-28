@@ -26,6 +26,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
+      - name: Install unzip
+        run: nix profile add --inputs-from . nixpkgs#unzip
 
       - name: Download Chrome artifact
         id: download_chrome
