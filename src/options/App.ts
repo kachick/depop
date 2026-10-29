@@ -119,18 +119,21 @@ function App() {
           },
           'Source code',
         ),
-        globalThis.location.pathname.endsWith('popup.html') && [
-          ' · ',
-          button(
-            {
-              type: 'button',
-              class: 'btn-link color-fg-muted',
-              'aria-label': 'Open options',
-              onclick: () => chrome.runtime.openOptionsPage(),
-            },
-            '⚙️',
-          ),
-        ],
+        // VanJS renders `false` as a text node, so `&&` cannot be used here.
+        globalThis.location.pathname.endsWith('popup.html')
+          ? [
+            ' · ',
+            button(
+              {
+                type: 'button',
+                class: 'btn-link color-fg-muted',
+                'aria-label': 'Open options',
+                onclick: () => chrome.runtime.openOptionsPage(),
+              },
+              '⚙️',
+            ),
+          ]
+          : null,
       ),
     );
   };
