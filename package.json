@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "setup": "pnpm install --frozen-lockfile",
-    "deps": "node --version && pnpm --version && mogrify --version && dprint --version && typos --version && rg --version && web-ext --version",
+    "deps": "node --version && pnpm --version && mogrify --version && dprint --version && typos --version && rg --version && web-ext --version && ghadiag --version",
     "build": "node scripts/build.ts",
     "diff:browsers": "git diff --no-index dist/chrome dist/firefox || true",
     "clean": "rm -rf ./dist",
-    "check": "dprint check && typos . .github && biome check && tsc --noEmit && pnpm run check:manifest",
+    "check": "dprint check && typos . .github && biome check && tsc --noEmit && pnpm run check:manifest && ghadiag",
     "check:manifest": "node scripts/manifestValidator.ts",
     "check:firefox": "node scripts/lintFirefox.ts",
     "sign:firefox": "node scripts/signFirefox.ts",
@@ -28,6 +28,7 @@
     "chrome-types": "0.1.459",
     "esbuild": "0.28.2",
     "fflate": "0.8.3",
+    "ghadiag": "github:kachick/ghadiag",
     "pretty-bytes": "7.2.0"
   }
 }

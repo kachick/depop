@@ -48,13 +48,18 @@ jobs:
           test -f "${{ steps.download_chrome.outputs.download-path }}/${{ inputs.chrome_artifact_name }}"
           test -f "${{ steps.download_firefox.outputs.download-path }}/${{ inputs.firefox_artifact_name }}"
 
+      # Cannot check `secrets` in `if:` because GitHub Actions does not support `secrets` context in conditionals.
       - name: Sign Firefox package
-        if: startsWith(github.ref, 'refs/tags/') && secrets.AMO_API_KEY != '' && secrets.AMO_API_SECRET != ''
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           AMO_API_KEY: ${{ secrets.AMO_API_KEY }}
           AMO_API_SECRET: ${{ secrets.AMO_API_SECRET }}
           FIREFOX_ZIP_PATH: ${{ steps.download_firefox.outputs.download-path }}/${{ inputs.firefox_artifact_name }}
         run: |
+          if [ -z "$AMO_API_KEY" ] || [ -z "$AMO_API_SECRET" ]; then
+            echo "AMO credentials are not set. Skipping Firefox signing."
+            exit 0
+          fi
           unzip "$FIREFOX_ZIP_PATH" -d dist/firefox
           nix develop --command pnpm run sign:firefox
 
