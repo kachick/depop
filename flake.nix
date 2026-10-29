@@ -31,7 +31,7 @@
               nixfmt
               nixfmt-tree
 
-              nodejs_24
+              nodejs_26
               (pnpm_10.override {
                 withNode = false;
               })
