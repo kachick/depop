@@ -51,6 +51,8 @@
               # To maintain icons
               imagemagick
               exiftool
+              oxipng
+              pngquant
 
               # Comment-out only if you want `renovate-config-validator`.
               # It is a heavy nodejs package and does not detect wrong manager and datasource names.

@@ -14,6 +14,7 @@
     "sign:firefox": "node scripts/signFirefox.ts",
     "start:firefox": "web-ext run -c web-ext-config.mts",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
+    "optimize-icons": "pngquant --force --ext .png --strip --speed 1 assets/icons/**/*128x128*.png && oxipng --opt max --strip safe assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "bump:biome_config": "biome migrate --write && dprint fmt",
     "all": "pnpm run setup && pnpm run check && pnpm run build && pnpm run check:firefox && pnpm run resize"
