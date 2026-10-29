@@ -8,9 +8,10 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "strict": true,
+    "allowJs": false,
     "noEmit": true,
     "skipLibCheck": true,
     "types": ["node", "chrome-types"]
   },
-  "include": ["src/**/*", "scripts/**/*"]
+  "include": ["src/**/*", "scripts/**/*", "web-ext-config.mts"]
 }

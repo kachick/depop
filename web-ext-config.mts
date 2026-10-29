@@ -1,5 +1,5 @@
 // https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/
-module.exports = {
+export default {
   sourceDir: 'dist/firefox',
   run: {
     startUrl: ['https://github.com/kachick/depop'],
@@ -11,4 +11,4 @@ module.exports = {
       'browser.startup.homepage_override.mstone=ignore',
     ],
   },
-};
+} as const;

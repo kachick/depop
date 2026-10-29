@@ -12,7 +12,7 @@
     "check:manifest": "node scripts/manifestValidator.ts",
     "check:firefox": "node scripts/lintFirefox.ts",
     "sign:firefox": "node scripts/signFirefox.ts",
-    "start:firefox": "web-ext run",
+    "start:firefox": "web-ext run -c web-ext-config.mts",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
     "remove-exif": "exiftool -all= ./assets/**/*.png ./assets/**/*.jpg",
     "bump:biome_config": "biome migrate --write && dprint fmt",
