@@ -1,13 +1,9 @@
-import { render } from 'preact';
-import App from './options/App.tsx';
+import h from 'solid-js/h';
+import { render } from 'solid-js/web';
+import App from './options/App.ts';
 import { assertIsDefined } from './typeguards.ts';
 
 const root = document.getElementById('root');
 assertIsDefined<HTMLElement | null>(root);
 
-render(
-  <div className='p-2'>
-    <App />
-  </div>,
-  root,
-);
+render(h(App), root);
