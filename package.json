@@ -10,7 +10,7 @@
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos . .github && biome check && tsc --noEmit && pnpm run check:manifest && ghadiag",
     "check:manifest": "node scripts/manifestValidator.ts",
-    "check:firefox": "node scripts/lintFirefox.ts",
+    "check:firefox": "web-ext lint --source-dir dist/firefox --warnings-as-errors",
     "sign:firefox": "node scripts/signFirefox.ts",
     "start:firefox": "web-ext run -c web-ext-config.mts",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
