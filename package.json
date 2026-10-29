@@ -27,6 +27,6 @@
     "chrome-types": "0.1.459",
     "esbuild": "0.28.2",
     "fflate": "0.8.3",
-    "pretty-bytes": "6.1.1"
+    "pretty-bytes": "7.2.0"
   }
 }

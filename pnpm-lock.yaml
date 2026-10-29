@@ -28,8 +28,8 @@ importers:
         specifier: 0.8.3
         version: 0.8.3
       pretty-bytes:
-        specifier: 6.1.1
-        version: 6.1.1
+        specifier: 7.2.0
+        version: 7.2.0
 
 packages:
 
@@ -223,9 +223,9 @@ packages:
       preact-render-to-string:
         optional: true
 
-  pretty-bytes@6.1.1:
-    resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
-    engines: {node: ^14.13.1 || >=16.0.0}
+  pretty-bytes@7.2.0:
+    resolution: {integrity: sha512-T2kroepGB5DRVbkN/nOpW03+VRWqdtJhZNuCW3wYk3chdPjgi4GcTBOaxWfHq1MIM0ypidxsSWbQaAiRpxnXmg==}
+    engines: {node: '>=20'}
 
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
@@ -366,7 +366,7 @@ snapshots:
 
   preact@11.1.0: {}
 
-  pretty-bytes@6.1.1: {}
+  pretty-bytes@7.2.0: {}
 
   require-from-string@2.0.2: {}
 
