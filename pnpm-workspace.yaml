@@ -1,0 +1,6 @@
+# optionalDependencies (@esbuild/<platform>-<arch>) already provide prebuilt binaries.
+allowBuilds:
+  esbuild: false
+
+minimumReleaseAgeExclude:
+  - '@types/node@26.6.6'
