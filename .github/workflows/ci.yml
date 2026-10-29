@@ -3,66 +3,74 @@ on:
   push:
     branches: [main]
     tags: ['v*.*.*']
-    paths:
-      - '.github/workflows/ci.yml'
-      - '.github/workflows/release.yml'
-      - '*.nix'
-      - 'flake.*'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - '**.css'
-      - '**.ts'
-      - '**/manifest.json'
   pull_request:
-    paths:
-      - '.github/workflows/ci.yml'
-      - '.github/workflows/release.yml'
-      - '*.nix'
-      - 'flake.*'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - '**.css'
-      - '**.ts'
-      - '**/manifest.json'
   schedule:
     # Every 10:42 JST
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
     - cron: '42 1 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   nix:
+    name: Flake check
     runs-on: ubuntu-26.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
+        with:
+          # access-tokens: Prevent GitHub API rate limiting during `nix run github:`
+          extra-conf: |
+            access-tokens = github.com=${{ github.token }}
+            extra-substituters = https://kachick.cachix.org
+            extra-trusted-public-keys = kachick.cachix.org-1:7giZGKW03gPFkbde09JNpDKCbDGGwBuU/Z11W/jUtEQ=
       - run: nix flake check
 
   check:
+    name: Check
     runs-on: ubuntu-26.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
+        with:
+          # access-tokens: Prevent GitHub API rate limiting during `nix run github:`
+          extra-conf: |
+            access-tokens = github.com=${{ github.token }}
+            extra-substituters = https://kachick.cachix.org
+            extra-trusted-public-keys = kachick.cachix.org-1:7giZGKW03gPFkbde09JNpDKCbDGGwBuU/Z11W/jUtEQ=
       - run: nix develop --command pnpm run setup
       - run: nix develop --command pnpm run check
 
   build:
+    name: Build
     runs-on: ubuntu-26.04
     timeout-minutes: 30
     outputs:
       chrome_artifact_name: ${{ fromJson(steps.build.outputs.report).chrome.productBasename }}
       firefox_artifact_name: ${{ fromJson(steps.build.outputs.report).firefox.productBasename }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
+        with:
+          # access-tokens: Prevent GitHub API rate limiting during `nix run github:`
+          extra-conf: |
+            access-tokens = github.com=${{ github.token }}
+            extra-substituters = https://kachick.cachix.org
+            extra-trusted-public-keys = kachick.cachix.org-1:7giZGKW03gPFkbde09JNpDKCbDGGwBuU/Z11W/jUtEQ=
       - run: nix develop --command pnpm run setup
       - run: nix develop --command pnpm run check
       - name: Build
@@ -76,7 +84,7 @@ jobs:
       - run: nix develop --command pnpm run check:firefox
 
       - name: Upload the chrome product
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: '${{ fromJson(steps.build.outputs.report).chrome.productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).chrome.productPath }}'
@@ -84,7 +92,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload the firefox product
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: '${{ fromJson(steps.build.outputs.report).firefox.productBasename }}'
           path: '${{ fromJson(steps.build.outputs.report).firefox.productPath }}'
@@ -93,7 +101,7 @@ jobs:
 
   release:
     needs: [build]
-    uses: ./.github/workflows/release.yml
+    uses: $/.github/workflows/release.yml
     with:
       chrome_artifact_name: ${{ needs.build.outputs.chrome_artifact_name }}
       firefox_artifact_name: ${{ needs.build.outputs.firefox_artifact_name }}

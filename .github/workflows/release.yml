@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-26.04
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - uses: NixOS/nix-installer-action@62c1943b776c509394b550f3f983adc14e9212d6 # v1.0.0
@@ -31,14 +31,14 @@ jobs:
 
       - name: Download Chrome artifact
         id: download_chrome
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: ${{ inputs.chrome_artifact_name }}
           skip-decompress: true
 
       - name: Download Firefox artifact
         id: download_firefox
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: ${{ inputs.firefox_artifact_name }}
           skip-decompress: true
