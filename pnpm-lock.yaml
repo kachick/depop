@@ -27,11 +27,26 @@ importers:
       fflate:
         specifier: 0.8.3
         version: 0.8.3
+      ghadiag:
+        specifier: github:kachick/ghadiag
+        version: https://codeload.github.com/kachick/ghadiag/tar.gz/e8e80c2255f0072014b82e556ff73dc7711676ea
       pretty-bytes:
         specifier: 7.2.0
         version: 7.2.0
 
 packages:
+
+  '@actions/expressions@0.3.61':
+    resolution: {integrity: sha512-Ig+tXELvTjlqxQAWBQnLNn2dPpNraLMdSnT+vDzDPmJtbNUhIAH/Z9kVT8pZ8UtJi9vUGs8hwHE8JFJmbOnLEA==}
+    engines: {node: '>= 20'}
+
+  '@actions/languageservice@0.3.61':
+    resolution: {integrity: sha512-PoBYhLZ3JG74ZBTAwvrs/V6JdpscCpXv8rprc4yzEQN7Z0FMEso0rewdmMUqwUxYKe7nq6J4RPp+ZVCRL82Zfg==}
+    engines: {node: '>= 20'}
+
+  '@actions/workflow-parser@0.3.61':
+    resolution: {integrity: sha512-NBjJrbwwrEN3LSN0NAISLpCWQLcPSBjmAIkLXHgjGX8Yql4PiD33ifSAvr9sIMU9uIs8wZiGUnvo9yPIMIfKdg==}
+    engines: {node: '>= 20'}
 
   '@esbuild/aix-ppc64@0.28.2':
     resolution: {integrity: sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==}
@@ -198,6 +213,10 @@ packages:
   chrome-types@0.1.459:
     resolution: {integrity: sha512-ev1r7o/gAQ4wU97Uz9yWAhAeXQrti1BbuPsMcleabjpgCigG9mF1rnDW7uVypDy2SyOIfqHZHp+Us4AZolDe6g==}
 
+  cronstrue@2.59.0:
+    resolution: {integrity: sha512-YKGmAy84hKH+hHIIER07VCAHf9u0Ldelx1uU6EBxsRPDXIA1m5fsKmJfyC3xBhw6cVC/1i83VdbL4PvepTrt8A==}
+    hasBin: true
+
   esbuild@0.28.2:
     resolution: {integrity: sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==}
     engines: {node: '>=18'}
@@ -211,6 +230,12 @@ packages:
 
   fflate@0.8.3:
     resolution: {integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==}
+
+  ghadiag@https://codeload.github.com/kachick/ghadiag/tar.gz/e8e80c2255f0072014b82e556ff73dc7711676ea:
+    resolution: {gitHosted: true, integrity: sha512-pI4ibXuQqE0D1rYvyQ2JD8mkNZDz3wuD05BPPbpNE+jt55hUamyVyjGOVGPXrqplfrebXHKSIaQqdsWyyLhXVg==, tarball: https://codeload.github.com/kachick/ghadiag/tar.gz/e8e80c2255f0072014b82e556ff73dc7711676ea}
+    version: 0.1.0
+    engines: {node: '>=24.x'}
+    hasBin: true
 
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
@@ -234,7 +259,38 @@ packages:
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
+  vscode-languageserver-textdocument@1.0.16:
+    resolution: {integrity: sha512-qeNEuOi9a3qkqRf7Gfez2WL2VwlBTLCNekHBGO9kxPVUp9XuY15yfTJ9jwvOwKI0I2MhUUfZq95NSp+LK1CLQg==}
+
+  vscode-languageserver-types@3.18.5:
+    resolution: {integrity: sha512-kPd6+JQNz3HMJvjKlqUxERSlZHAntl/aGpsk7ImwIh0ewDKDcjgAEyVSYciPiOJD3ftbK9IrfiqUeTZLSbCizw==}
+
+  vscode-uri@3.2.0:
+    resolution: {integrity: sha512-m2gXo3bn0G1kT9InzMf07fTbqMbGtyckj3bH5ktLO+1Ssv+yiATZ4dhwaQv9UZWxJh6E9IFGnQyjgWVDWVBDrg==}
+
+  yaml@2.9.1:
+    resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
 snapshots:
+
+  '@actions/expressions@0.3.61': {}
+
+  '@actions/languageservice@0.3.61':
+    dependencies:
+      '@actions/expressions': 0.3.61
+      '@actions/workflow-parser': 0.3.61
+      vscode-languageserver-textdocument: 1.0.16
+      vscode-languageserver-types: 3.18.5
+      vscode-uri: 3.2.0
+      yaml: 2.9.1
+
+  '@actions/workflow-parser@0.3.61':
+    dependencies:
+      '@actions/expressions': 0.3.61
+      cronstrue: 2.59.0
+      yaml: 2.9.1
 
   '@esbuild/aix-ppc64@0.28.2':
     optional: true
@@ -327,6 +383,8 @@ snapshots:
 
   chrome-types@0.1.459: {}
 
+  cronstrue@2.59.0: {}
+
   esbuild@0.28.2:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.28.2
@@ -362,6 +420,11 @@ snapshots:
 
   fflate@0.8.3: {}
 
+  ghadiag@https://codeload.github.com/kachick/ghadiag/tar.gz/e8e80c2255f0072014b82e556ff73dc7711676ea:
+    dependencies:
+      '@actions/languageservice': 0.3.61
+      vscode-languageserver-textdocument: 1.0.16
+
   json-schema-traverse@1.0.0: {}
 
   preact@11.1.0: {}
@@ -371,3 +434,11 @@ snapshots:
   require-from-string@2.0.2: {}
 
   undici-types@8.9.0: {}
+
+  vscode-languageserver-textdocument@1.0.16: {}
+
+  vscode-languageserver-types@3.18.5: {}
+
+  vscode-uri@3.2.0: {}
+
+  yaml@2.9.1: {}
