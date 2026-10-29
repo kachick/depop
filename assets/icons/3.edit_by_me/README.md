@@ -24,8 +24,8 @@ Three icon files are used:
    magick assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png -resize 96x96 -gravity center -background none -extent 128x128 assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-store-128x128-t.png
    ```
 
-4. **Optimize all icons**:
+4. **Generate and optimize all image assets**:
 
    ```bash
-   pnpm run optimize-icons
+   pnpm run optimize-assets
    ```
