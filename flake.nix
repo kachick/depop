@@ -12,7 +12,16 @@
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     in
     {
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+      formatter = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        pkgs.writeShellScriptBin "dprint-fmt" ''
+          exec "${pkgs.lib.getExe pkgs.dprint}" fmt "$@"
+        ''
+      );
+
       devShells = forAllSystems (
         system:
         let
@@ -28,8 +37,6 @@
             buildInputs = with pkgs; [
               bashInteractive
               nixd
-              nixfmt
-              nixfmt-tree
 
               nodejs_26
               pnpm_12
