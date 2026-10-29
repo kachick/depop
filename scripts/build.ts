@@ -2,7 +2,6 @@ import { Ajv } from 'ajv';
 import { build } from 'esbuild';
 import * as fflate from 'fflate';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { copyFileSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { copyFile } from 'node:fs/promises';
@@ -63,6 +62,18 @@ const commonStaticFiles = [
   ['src/options.css', 'options.css'],
   ['src/popup.html', 'popup.html'],
   ['src/popup.css', 'popup.css'],
+  [
+    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png',
+    'icon-sadness-star.png',
+  ],
+  [
+    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-disabled-128x128-t.png',
+    'icon-sadness-star-disabled.png',
+  ],
+  [
+    'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-store-128x128-t.png',
+    'icon-sadness-star-store.png',
+  ],
 ] as const;
 
 const copyStaticFiles = async () => {
@@ -74,31 +85,7 @@ const copyStaticFiles = async () => {
   );
 };
 
-const setupIcons = async () => {
-  const toolbarIconSrc = 'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-toolbar-128x128-t.png';
-  const storeIconSrc = 'assets/icons/3.edit_by_me/from-icon-sadness-star-2024-03-25-store-128x128-t.png';
-
-  const chromeToolbarIcon = 'dist/chrome/icon-sadness-star.png';
-  const chromeDisabledIcon = 'dist/chrome/icon-sadness-star-disabled.png';
-  const chromeStoreIcon = 'dist/chrome/icon-sadness-star-store.png';
-
-  await Promise.all([
-    copyFile(toolbarIconSrc, chromeToolbarIcon),
-    copyFile(storeIconSrc, chromeStoreIcon),
-  ]);
-
-  copyFileSync(chromeToolbarIcon, chromeDisabledIcon);
-  execFileSync('mogrify', ['-colorspace', 'gray', chromeDisabledIcon]);
-
-  copyFileSync(chromeToolbarIcon, 'dist/firefox/icon-sadness-star.png');
-  copyFileSync(
-    chromeDisabledIcon,
-    'dist/firefox/icon-sadness-star-disabled.png',
-  );
-  copyFileSync(chromeStoreIcon, 'dist/firefox/icon-sadness-star-store.png');
-};
-
-await Promise.all([transpile(), copyStaticFiles(), setupIcons()]);
+await Promise.all([transpile(), copyStaticFiles()]);
 
 const getOrderedPathList = (dirPath: string): string[] =>
   readdirSync(dirPath, { withFileTypes: true })
@@ -183,11 +170,13 @@ for (const target of ['chrome', 'firefox'] as const) {
   }
 
   // 3. Create zip
+  // Fixed mtime ensures deterministic zip archives across builds.
+  const mtime = new Date('2024-01-01T00:00:00Z');
   const zipped = fflate.zipSync(
     Array.from(zipStructure.entries()).reduce(
       (acc, [path, { content, isCompressed }]) => ({
         ...acc,
-        [path]: isCompressed ? [content, { level: 0 }] : content,
+        [path]: [content, { level: isCompressed ? 0 : 6, mtime }],
       }),
       {},
     ),
