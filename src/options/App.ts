@@ -1,140 +1,116 @@
-import { createSignal, onCleanup, onMount } from 'solid-js';
-import h from 'solid-js/h';
+import van from 'vanjs-core';
+
+const { a, button, div, footer, form, hr, input, label, span } = van.tags;
 
 function App() {
-  const [
-    isLoading,
-    setIsLoading,
-  ] = createSignal(true);
-  const [
-    isEnabled,
-    setIsEnabled,
-  ] = createSignal(true);
-  const [
-    isHideSponsors,
-    setIsHideSponsors,
-  ] = createSignal(false);
-  const [
-    isHideSponsoring,
-    setIsHideSponsoring,
-  ] = createSignal(false);
+  const isLoading = van.state(true);
+  const isEnabled = van.state(true);
+  const isHideSponsors = van.state(false);
+  const isHideSponsoring = van.state(false);
 
-  onMount(() => {
-    const updateFromStorage = async () => {
-      const keys = await chrome.storage.sync.get([
-        'isEnabled',
-        'isHideSponsors',
-        'isHideSponsoring',
-      ]);
-      setIsEnabled(keys.isEnabled !== false);
-      setIsHideSponsors(Boolean(keys.isHideSponsors));
-      setIsHideSponsoring(Boolean(keys.isHideSponsoring));
-      setIsLoading(false);
-    };
+  const updateFromStorage = async () => {
+    const keys = await chrome.storage.sync.get([
+      'isEnabled',
+      'isHideSponsors',
+      'isHideSponsoring',
+    ]);
+    isEnabled.val = keys.isEnabled !== false;
+    isHideSponsors.val = Boolean(keys.isHideSponsors);
+    isHideSponsoring.val = Boolean(keys.isHideSponsoring);
+    isLoading.val = false;
+  };
 
-    updateFromStorage();
+  updateFromStorage();
 
-    const listener = (
-      changes: { [key: string]: chrome.storage.StorageChange },
-      areaName: string,
-    ) => {
-      if (areaName === 'sync') {
-        if (changes.isEnabled) {
-          setIsEnabled(changes.isEnabled.newValue !== false);
-        }
-        if (changes.isHideSponsors) {
-          setIsHideSponsors(Boolean(changes.isHideSponsors.newValue));
-        }
-        if (changes.isHideSponsoring) {
-          setIsHideSponsoring(Boolean(changes.isHideSponsoring.newValue));
-        }
+  const listener = (
+    changes: { [key: string]: chrome.storage.StorageChange },
+    areaName: string,
+  ) => {
+    if (areaName === 'sync') {
+      if (changes.isEnabled) {
+        isEnabled.val = changes.isEnabled.newValue !== false;
       }
-    };
+      if (changes.isHideSponsors) {
+        isHideSponsors.val = Boolean(changes.isHideSponsors.newValue);
+      }
+      if (changes.isHideSponsoring) {
+        isHideSponsoring.val = Boolean(changes.isHideSponsoring.newValue);
+      }
+    }
+  };
 
-    chrome.storage.onChanged.addListener(listener);
-
-    onCleanup(() => {
-      chrome.storage.onChanged.removeListener(listener);
-    });
-  });
+  chrome.storage.onChanged.addListener(listener);
 
   return () => {
-    if (isLoading()) {
-      return h('div', null, '...Loading');
+    if (isLoading.val) {
+      return div('...Loading');
     }
 
-    return h('form', null, [
-      h('div', { class: 'mb-3' }, [
-        h('label', { class: 'toggle-switch' }, [
-          h('input', {
+    return form(
+      div(
+        { class: 'mb-3' },
+        label(
+          { class: 'toggle-switch' },
+          input({
             type: 'checkbox',
             checked: isEnabled,
-            onChange: () => {
-              const toggled = !isEnabled();
-              setIsEnabled(toggled);
-              chrome.storage.sync.set({ 'isEnabled': toggled });
+            onchange: (e) => {
+              const target = e.target as HTMLInputElement;
+              isEnabled.val = target.checked;
+              chrome.storage.sync.set({ 'isEnabled': target.checked });
             },
           }),
-          h('span', { class: 'toggle-switch-track' }, [
-            h('span', { class: 'toggle-switch-knob' }),
-          ]),
-          h('span', { class: 'toggle-switch-label' }, 'Enable depop'),
-        ]),
-      ]),
-
-      h('hr'),
-
-      h(
-        'div',
-        {
-          style: () => ({
-            opacity: isEnabled() ? '1' : '0.5',
-            'pointer-events': isEnabled() ? 'auto' : 'none',
-          }),
-        },
-        [
-          h('div', { class: 'form-checkbox' }, [
-            h('label', null, [
-              h('input', {
-                type: 'checkbox',
-                checked: isHideSponsors,
-                disabled: () => !isEnabled(),
-                'aria-label': 'Hide "Sponsors"',
-                onChange: () => {
-                  const toggled = !isHideSponsors();
-                  setIsHideSponsors(toggled);
-                  chrome.storage.sync.set({
-                    'isHideSponsors': toggled,
-                  });
-                },
-              }),
-              'Hide "Sponsors"',
-            ]),
-          ]),
-          h('div', { class: 'form-checkbox' }, [
-            h('label', null, [
-              h('input', {
-                type: 'checkbox',
-                checked: isHideSponsoring,
-                disabled: () => !isEnabled(),
-                'aria-label': 'Hide "Sponsoring"',
-                onChange: () => {
-                  const toggled = !isHideSponsoring();
-                  setIsHideSponsoring(toggled);
-                  chrome.storage.sync.set({
-                    'isHideSponsoring': toggled,
-                  });
-                },
-              }),
-              'Hide "Sponsoring"',
-            ]),
-          ]),
-        ],
+          span({ class: 'toggle-switch-track' }, span({ class: 'toggle-switch-knob' })),
+          span({ class: 'toggle-switch-label' }, 'Enable depop'),
+        ),
       ),
-
-      h('footer', { class: 'mt-3 pt-3 border-top color-fg-muted f6 text-right' }, [
-        h(
-          'a',
+      hr(),
+      div(
+        {
+          style: () => `opacity: ${isEnabled.val ? '1' : '0.5'}; pointer-events: ${isEnabled.val ? 'auto' : 'none'};`,
+        },
+        div(
+          { class: 'form-checkbox' },
+          label(
+            input({
+              type: 'checkbox',
+              checked: isHideSponsors,
+              disabled: () => !isEnabled.val,
+              'aria-label': 'Hide "Sponsors"',
+              onchange: (e) => {
+                const target = e.target as HTMLInputElement;
+                isHideSponsors.val = target.checked;
+                chrome.storage.sync.set({
+                  'isHideSponsors': target.checked,
+                });
+              },
+            }),
+            'Hide "Sponsors"',
+          ),
+        ),
+        div(
+          { class: 'form-checkbox' },
+          label(
+            input({
+              type: 'checkbox',
+              checked: isHideSponsoring,
+              disabled: () => !isEnabled.val,
+              'aria-label': 'Hide "Sponsoring"',
+              onchange: (e) => {
+                const target = e.target as HTMLInputElement;
+                isHideSponsoring.val = target.checked;
+                chrome.storage.sync.set({
+                  'isHideSponsoring': target.checked,
+                });
+              },
+            }),
+            'Hide "Sponsoring"',
+          ),
+        ),
+      ),
+      footer(
+        { class: 'mt-3 pt-3 border-top color-fg-muted f6 text-right' },
+        a(
           {
             href: 'https://github.com/kachick/depop',
             target: '_blank',
@@ -145,19 +121,18 @@ function App() {
         ),
         globalThis.location.pathname.endsWith('popup.html') && [
           ' · ',
-          h(
-            'button',
+          button(
             {
               type: 'button',
               class: 'btn-link color-fg-muted',
               'aria-label': 'Open options',
-              onClick: () => chrome.runtime.openOptionsPage(),
+              onclick: () => chrome.runtime.openOptionsPage(),
             },
             '⚙️',
           ),
         ],
-      ]),
-    ]);
+      ),
+    );
   };
 }
 

@@ -19,7 +19,7 @@
     "all": "pnpm run setup && pnpm run check && pnpm run build && pnpm run check:firefox && pnpm run resize"
   },
   "dependencies": {
-    "solid-js": "1.9.17"
+    "vanjs-core": "1.6.1"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
