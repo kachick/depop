@@ -6,7 +6,7 @@ const root = document.getElementById('root');
 assertIsDefined<HTMLElement | null>(root);
 
 render(
-  <div className='p-2'>
+  <div className='popup-container'>
     <App />
   </div>,
   root,

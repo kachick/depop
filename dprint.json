@@ -10,7 +10,7 @@
   "malva": {
     "quotes": "preferSingle"
   },
-  "excludes": ["dist/", "vendor/", "pnpm-lock.yaml"],
+  "excludes": ["dist/", "pnpm-lock.yaml"],
   "plugins": [
     "npm:@dprint/typescript@0.96.1",
     "npm:@dprint/json@0.25.2",

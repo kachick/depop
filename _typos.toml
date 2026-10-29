@@ -1,2 +1,2 @@
 [files]
-extend-exclude = ["dist/", "vendor/"]
+extend-exclude = ["dist/"]

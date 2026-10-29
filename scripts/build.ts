@@ -63,7 +63,6 @@ const commonStaticFiles = [
   ['src/options.css', 'options.css'],
   ['src/popup.html', 'popup.html'],
   ['src/popup.css', 'popup.css'],
-  ['vendor/primer.css', 'primer.css'],
 ] as const;
 
 const copyStaticFiles = async () => {

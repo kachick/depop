@@ -63,7 +63,7 @@ function App() {
 
   return (
     <form>
-      <div className='mb-3'>
+      <div className='toggle-group'>
         <label className='toggle-switch'>
           <input
             type='checkbox'
@@ -84,7 +84,7 @@ function App() {
       <hr />
 
       <div style={{ opacity: isEnabled ? 1 : 0.5, pointerEvents: isEnabled ? 'auto' : 'none' }}>
-        <div className='form-checkbox'>
+        <div className='checkbox-item'>
           <label>
             <input
               type='checkbox'
@@ -104,7 +104,7 @@ function App() {
             Hide "Sponsors"
           </label>
         </div>
-        <div className='form-checkbox'>
+        <div className='checkbox-item'>
           <label>
             <input
               type='checkbox'
@@ -126,12 +126,11 @@ function App() {
         </div>
       </div>
 
-      <footer className='mt-3 pt-3 border-top color-fg-muted f6 text-right'>
+      <footer className='app-footer'>
         <a
           href='https://github.com/kachick/depop'
           target='_blank'
           rel='noreferrer'
-          className='Link--external'
         >
           Source code
         </a>
@@ -140,7 +139,7 @@ function App() {
             {' · '}
             <button
               type='button'
-              className='btn-link color-fg-muted'
+              className='icon-button'
               aria-label='Open options'
               onClick={() => chrome.runtime.openOptionsPage()}
             >
