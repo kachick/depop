@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/node": "^24.19.2",
     "ajv": "8.20.0",
-    "chrome-types": "0.1.301",
+    "chrome-types": "0.1.459",
     "esbuild": "0.28.2",
     "fflate": "0.8.3",
     "pretty-bytes": "6.1.1"
