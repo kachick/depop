@@ -10,7 +10,7 @@
     "clean": "rm -rf ./dist",
     "check": "dprint check && typos . .github && biome check && tsc --noEmit && pnpm run check:manifest && ghadiag",
     "check:manifest": "node scripts/manifestValidator.ts",
-    "check:firefox": "web-ext lint --source-dir dist/firefox --warnings-as-errors",
+    "check:firefox": "node scripts/lintFirefox.ts",
     "sign:firefox": "node scripts/signFirefox.ts",
     "start:firefox": "web-ext run -c web-ext-config.mts",
     "resize": "mogrify -resize 128x128! assets/icons/**/*128x128*.png",
@@ -19,7 +19,7 @@
     "all": "pnpm run setup && pnpm run check && pnpm run build && pnpm run check:firefox && pnpm run resize"
   },
   "dependencies": {
-    "vanjs-core": "1.6.1"
+    "preact": "11.1.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

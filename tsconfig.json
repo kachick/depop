@@ -5,6 +5,8 @@
     "moduleResolution": "NodeNext",
     "lib": ["DOM", "DOM.Iterable", "ES2023"],
     "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "strict": true,
     "allowJs": false,
     "noEmit": true,

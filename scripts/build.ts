@@ -34,8 +34,8 @@ const transpile = async () => {
   await build({
     entryPoints: [
       'src/github-patcher.ts',
-      'src/options.ts',
-      'src/popup.ts',
+      'src/options.tsx',
+      'src/popup.tsx',
       'src/background.ts',
     ],
     outdir: 'dist/chrome',
