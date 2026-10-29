@@ -55,6 +55,25 @@ Other's: socialStat__
   color: var(--fgColor-muted, var(--color-fg-muted, inherit));
 }
 
+/* Popular repositories & Repository lists */
+.depop-enabled a[href$='/stargazers']:not(:has(strong)),
+.depop-enabled a[href$='/forks']:not(:has(strong)) {
+  font-size: 0 !important;
+}
+
+.depop-enabled a[href$='/stargazers']:not(:has(strong)) svg:not([class*='mr-']),
+.depop-enabled a[href$='/forks']:not(:has(strong)) svg:not([class*='mr-']) {
+  margin-right: 4px;
+}
+
+.depop-enabled a[href$='/stargazers']:not(:has(strong))::after,
+.depop-enabled a[href$='/forks']:not(:has(strong))::after {
+  content: '\2014';
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--fgColor-muted, var(--color-fg-muted, inherit));
+}
+
 /* Profile Sidebar */
 .depop-enabled div:has(> h2 a[href$='?tab=achievements']),
 .depop-enabled [data-depop-section='highlights'],
