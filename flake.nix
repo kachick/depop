@@ -32,9 +32,7 @@
               nixfmt-tree
 
               nodejs_26
-              (pnpm_10.override {
-                withNode = false;
-              })
+              pnpm_12
               typescript
               biome
               dprint
