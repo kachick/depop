@@ -60,6 +60,7 @@ jobs:
             echo "AMO credentials are not set. Skipping Firefox signing."
             exit 0
           fi
+          mkdir --parents dist/firefox
           unzip "$FIREFOX_ZIP_PATH" -d dist/firefox
           nix develop --command pnpm run sign:firefox
 
