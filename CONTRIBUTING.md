@@ -52,5 +52,5 @@ The filled enum is not perfect; it should contain URIs. You can update it by fol
 
 1. Bump version in [manifest file](src/manifest.json)
 2. Add git tag and push.
-3. Download [released assets](https://github.com/kachick/depop/releases) and upload the `depop-VERSION.zip` into the [Developer Dashboard](https://chrome.google.com/webstore/devconsole/2dc05d4b-8c8e-4356-a2be-080a15ab2903/bblbchjekobacogfioehogggccfagkmk/edit/package)
+3. Download [released assets](https://github.com/kachick/depop/releases) and upload the `depop-*-chrome.zip` into the [Developer Dashboard](https://chrome.google.com/webstore/devconsole/2dc05d4b-8c8e-4356-a2be-080a15ab2903/bblbchjekobacogfioehogggccfagkmk/edit/package)
 4. ☕
