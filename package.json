@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/node": "^26.6.6",
     "ajv": "8.20.0",
-    "chrome-types": "0.1.459",
+    "chrome-types": "0.1.460",
     "esbuild": "0.28.2",
     "fflate": "0.8.3",
     "ghadiag": "github:kachick/ghadiag",
