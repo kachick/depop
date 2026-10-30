@@ -30,9 +30,6 @@ importers:
       ghadiag:
         specifier: github:kachick/ghadiag
         version: https://codeload.github.com/kachick/ghadiag/tar.gz/e8e80c2255f0072014b82e556ff73dc7711676ea
-      pretty-bytes:
-        specifier: 7.2.0
-        version: 7.2.0
 
 packages:
 
@@ -248,10 +245,6 @@ packages:
       preact-render-to-string:
         optional: true
 
-  pretty-bytes@7.2.0:
-    resolution: {integrity: sha512-T2kroepGB5DRVbkN/nOpW03+VRWqdtJhZNuCW3wYk3chdPjgi4GcTBOaxWfHq1MIM0ypidxsSWbQaAiRpxnXmg==}
-    engines: {node: '>=20'}
-
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
@@ -428,8 +421,6 @@ snapshots:
   json-schema-traverse@1.0.0: {}
 
   preact@11.1.0: {}
-
-  pretty-bytes@7.2.0: {}
 
   require-from-string@2.0.2: {}
 

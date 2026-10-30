@@ -6,7 +6,6 @@ import { createHash } from 'node:crypto';
 import { copyFileSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { copyFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
-import prettyBytes from 'pretty-bytes';
 import manifestChromeJson from '../src/manifest-chrome.json' with {
   type: 'json',
 };
@@ -203,7 +202,7 @@ for (const target of ['chrome', 'firefox'] as const) {
       productBasename,
       structureSha256,
       structure,
-      productSize: prettyBytes(zipped.length),
+      productSize: `${(zipped.length / 1000).toFixed(1)} kB`,
       productSha256: sha256(zipped),
     };
   } else {
