@@ -19,8 +19,8 @@ importers:
         specifier: 8.20.0
         version: 8.20.0
       chrome-types:
-        specifier: 0.1.462
-        version: 0.1.462
+        specifier: 0.1.463
+        version: 0.1.463
       esbuild:
         specifier: 0.28.2
         version: 0.28.2
@@ -207,8 +207,8 @@ packages:
   ajv@8.20.0:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
 
-  chrome-types@0.1.462:
-    resolution: {integrity: sha512-nQKJjV0rOLPzCKjhusn4w/IjsTNvEHXNoBxJckKtuxyI57Ji0VGLlcwXJ81beeHXdD05nU1nCFiaR5L5dF7RbQ==}
+  chrome-types@0.1.463:
+    resolution: {integrity: sha512-Whhl9dsjYjL+qgsD3IpqpcRPZQ08PuWKBy8RmEAePCB8zvc8gxuOuNt9lWF0N0SQz4ePsAZgu055pc6bCaDesg==}
 
   cronstrue@2.59.0:
     resolution: {integrity: sha512-YKGmAy84hKH+hHIIER07VCAHf9u0Ldelx1uU6EBxsRPDXIA1m5fsKmJfyC3xBhw6cVC/1i83VdbL4PvepTrt8A==}
@@ -374,7 +374,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  chrome-types@0.1.462: {}
+  chrome-types@0.1.463: {}
 
   cronstrue@2.59.0: {}
 
