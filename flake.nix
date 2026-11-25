@@ -48,8 +48,8 @@
               zizmor
               web-ext
 
-              # To maintain icons
-              imagemagick
+              # To maintain icons and screenshots
+              resvg
               exiftool
               oxipng
               pngquant
